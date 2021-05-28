@@ -1,11 +1,12 @@
 ﻿//ToDo: Change the entries below indicated by {} to your values
 //*******************************************
 //*******************************************
-// Programmer: {Your name goes here}
-// Course: INEW 2332.{xxxx} (Final Project)
-// Program Description: {Program Purpose Goes here}
+// Programmer: Kevin Hack
+// Course: INEW 2332.7Z1 (Final Project)
+// Program Description: A t-shirts selling application used to sell and ship shirts across the U.S.
 //*******************************************
-// Form Purpose: {What is this form used for}
+// Form Purpose: This is the main menu to be used to either go shopping or to manage the
+// employees, orders, inventory, ect.
 //*******************************************
 //*******************************************
 
