@@ -9,8 +9,8 @@ Your Project Logo/Icon:
 
 ![alt text](https://github.com/JamesFlippin/Final-Project-21SP_StudentTemplate/blob/main/OctoCat_SM.png "My Pet Octocat Logo")
 
-# Project Name (Stylized)
-Very brief and to the point project description (one sentance preferred)
+# Project Name (Global Organic Tees)
+An application used to sell T-Shirts across the U.S.
 
 ## Detailed Description
 
@@ -78,10 +78,10 @@ Include any essential instructions for:
 
 Contact | Information
 --------|------
-Name | Your Name
-Email | Your Email Address
-Social Media Link | Your Social Media link(s) (if applicable)
-Google Group/mailing list | Your mail distribution list (if applicable)
+Name | Kevin Hack
+Email | khack@mymail.tstc.edu
+Social Media Link | N/A
+Google Group/mailing list | N/A
 
 ### License
 Indicate your license/License model, etc.
