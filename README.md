@@ -33,10 +33,10 @@ Type | Description
 -----|-------------
 Language | C#
 Development Environment | Visual Studio 2019 Community Edition
-SQL Server Type | MS SQL or MySQL (whichever you used)
+SQL Server Type | MS SQL
 Target Environment | Windows 10 Desktop
-Target Audience | Whatever your target audience is
-Help System | Describe
+Target Audience | Retail
+Help System | HTML Files
 Report Methods | HTML Reports
 
 ### Core Technical Concepts/Inspiration
