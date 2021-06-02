@@ -1,5 +1,7 @@
 Readme.md Version# 2021.05.02
+
 Student Given Access on 05/28/2021
+
 Review site this before modifing you Readme.md file:
 
 https://medium.com/swlh/how-to-make-the-perfect-readme-md-on-github-92ed5771c061
@@ -9,8 +11,8 @@ Your Project Logo/Icon:
 
 ![alt text](https://github.com/JamesFlippin/Final-Project-21SP_StudentTemplate/blob/main/OctoCat_SM.png "My Pet Octocat Logo")
 
-# Project Name (Stylized)
-Very brief and to the point project description (one sentance preferred)
+# Project Name (Global Organic Tees)
+An application used to sell T-Shirts across the U.S.
 
 ## Detailed Description
 
@@ -33,10 +35,10 @@ Type | Description
 -----|-------------
 Language | C#
 Development Environment | Visual Studio 2019 Community Edition
-SQL Server Type | MS SQL or MySQL (whichever you used)
+SQL Server Type | MS SQL
 Target Environment | Windows 10 Desktop
-Target Audience | Whatever your target audience is
-Help System | Describe
+Target Audience | Retail
+Help System | HTML Files
 Report Methods | HTML Reports
 
 ### Core Technical Concepts/Inspiration
@@ -78,10 +80,10 @@ Include any essential instructions for:
 
 Contact | Information
 --------|------
-Name | Your Name
-Email | Your Email Address
-Social Media Link | Your Social Media link(s) (if applicable)
-Google Group/mailing list | Your mail distribution list (if applicable)
+Name | Kevin Hack
+Email | khack@mymail.tstc.edu
+Social Media Link | N/A
+Google Group/mailing list | N/A
 
 ### License
 Indicate your license/License model, etc.
