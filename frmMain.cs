@@ -1,5 +1,4 @@
-﻿//ToDo: Change the entries below indicated by {} to your values
-//*******************************************
+﻿//*******************************************
 //*******************************************
 // Programmer: Kevin Hack
 // Course: INEW 2332.7Z1 (Final Project)
@@ -33,6 +32,19 @@ namespace SU21_Final_Project
         private void frmMain_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnManage_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnShop_Click(object sender, EventArgs e)
+        {
+            frmSignIn signIn = new frmSignIn();
+            this.Hide();
+            signIn.ShowDialog();
+            this.Show();
         }
     }
 }
