@@ -16,18 +16,12 @@ An application used to sell T-Shirts across the U.S.
 
 ## Detailed Description
 
-Clear semi-detailed professional description of your project. (about a paragraph or slightly more)
+This application can be used to purchase T-shirts and have them shipped anywhere in the U.S.A. Users can choose to create an account to make checkout quicker or proceed as a guest user.
 
 ### Project Introduction  
-
-- Describe very briefly but clearly what the project does.
-- State if it is out-of-the-box user-friendly, so it’s clear to the user.
-- List its most useful/innovative/noteworthy features.
-- State its goals/what problem(s) it solves.
-- Note and briefly describe any key concepts (technical, philosophical, or both) important to the user’s understanding.
-- Link to any supplementary blog posts or project main pages.
-- Note its development status.
-- If possible, include screenshots and demo videos.
+This project can be used right after installation and is simple to use, however will still have help files for anyone who may need them.
+Discount codes that are created by the manager(s) can be used to reduce the price of the products
+*NOTE: STILL IN DEVELOPMENT*
 
 ### Development Environment
 
