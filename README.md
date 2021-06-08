@@ -87,16 +87,9 @@ Indicate your license/License model, etc.
 https://docs.github.com/en/github/building-a-strong-community/adding-a-license-to-a-repository)
 
 **[For the Final Project course, we will use the GNU General Public License v3.0]**
-**[When you add the License file, make sure you update the references within it to yours]**
+**[When you add the License file, make sure you update the references within it to yours]** 
 
-The three major licenses used are:  
-
-Apache License v2.0
 
 GNU General Public License v3.0
-
-MIT License
-
-
 
 Permissions of this strong copyleft license are conditioned on making available complete source code of licensed works and modifications, which include larger works using a licensed work, under the same license. Copyright and license notices must be preserved. Contributors provide an express grant of patent rights.
