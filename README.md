@@ -16,18 +16,12 @@ An application used to sell T-Shirts across the U.S.
 
 ## Detailed Description
 
-Clear semi-detailed professional description of your project. (about a paragraph or slightly more)
+This application can be used to purchase T-shirts and have them shipped anywhere in the U.S.A. Users can choose to create an account to make checkout quicker or proceed as a guest user.
 
 ### Project Introduction  
-
-- Describe very briefly but clearly what the project does.
-- State if it is out-of-the-box user-friendly, so it’s clear to the user.
-- List its most useful/innovative/noteworthy features.
-- State its goals/what problem(s) it solves.
-- Note and briefly describe any key concepts (technical, philosophical, or both) important to the user’s understanding.
-- Link to any supplementary blog posts or project main pages.
-- Note its development status.
-- If possible, include screenshots and demo videos.
+This project can be used right after installation and is simple to use, however will still have help files for anyone who may need them.
+Discount codes that are created by the manager(s) can be used to reduce the price of the products
+*NOTE: STILL IN DEVELOPMENT*
 
 ### Development Environment
 
@@ -93,16 +87,9 @@ Indicate your license/License model, etc.
 https://docs.github.com/en/github/building-a-strong-community/adding-a-license-to-a-repository)
 
 **[For the Final Project course, we will use the GNU General Public License v3.0]**
-**[When you add the License file, make sure you update the references within it to yours]**
+**[When you add the License file, make sure you update the references within it to yours]** 
 
-The three major licenses used are:  
-
-Apache License v2.0
 
 GNU General Public License v3.0
-
-MIT License
-
-
 
 Permissions of this strong copyleft license are conditioned on making available complete source code of licensed works and modifications, which include larger works using a licensed work, under the same license. Copyright and license notices must be preserved. Contributors provide an express grant of patent rights.
