@@ -90,8 +90,7 @@ Indicate your license/License model, etc.
 
 https://docs.github.com/en/github/building-a-strong-community/adding-a-license-to-a-repository)
 
-**[For the Final Project course, we will use the GNU General Public License v3.0]**
-**[When you add the License file, make sure you update the references within it to yours]** 
+https://www.gnu.org/licenses/gpl-3.0.txt
 
 
 GNU General Public License v3.0
