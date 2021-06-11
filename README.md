@@ -37,17 +37,18 @@ Report Methods | HTML Reports
 
 ### Core Technical Concepts/Inspiration
 
-- Why does this project exist?
-- Frame your project for the potential user. 
-- Compare/contrast your project with other, similar projects so the user knows how it is different from those projects.
-- Highlight the technical concepts that your project demonstrates or supports. Keep it very brief.
+This product will make selling, managing, and purchasing products much easier and quicker. With easy to utilize UI's and help systems anyone can use this with little effort.
 
 ### Getting Started/Requirements/Prerequisites/Dependencies
 Include any essential instructions for:
 - Getting your program
+- Download here
 - Installing your program
+- Setup Wizard
 - Configuring your program
+- None Needed
 - Running your program
+- Windows OS
 
 ### More Specific Topics
 - Versioning: Services, APIs, Systems
@@ -56,8 +57,11 @@ Include any essential instructions for:
 
 ### Videos
 - URL for your Video Resume
+- N/A
 - URL for your Product Overview Video
+- N/A
 - URL for any other specific videos for this product
+- N/A
 
 ### Contributing
 - Contributor Guidelines
