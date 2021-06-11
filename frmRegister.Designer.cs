@@ -29,7 +29,7 @@ namespace SU21_Final_Project
         /// </summary>
         private void InitializeComponent()
         {
-            this.cmboStates = new System.Windows.Forms.ComboBox();
+            this.cboStates = new System.Windows.Forms.ComboBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
@@ -58,13 +58,13 @@ namespace SU21_Final_Project
             this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // cmboStates
+            // cboStates
             // 
-            this.cmboStates.FormattingEnabled = true;
-            this.cmboStates.Location = new System.Drawing.Point(95, 279);
-            this.cmboStates.Name = "cmboStates";
-            this.cmboStates.Size = new System.Drawing.Size(155, 21);
-            this.cmboStates.TabIndex = 56;
+            this.cboStates.FormattingEnabled = true;
+            this.cboStates.Location = new System.Drawing.Point(95, 279);
+            this.cboStates.Name = "cboStates";
+            this.cboStates.Size = new System.Drawing.Size(155, 21);
+            this.cboStates.TabIndex = 56;
             // 
             // txtUsername
             // 
@@ -307,7 +307,7 @@ namespace SU21_Final_Project
             this.Controls.Add(this.txtAddress2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.cmboStates);
+            this.Controls.Add(this.cboStates);
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtPassword);
@@ -340,7 +340,7 @@ namespace SU21_Final_Project
 
         #endregion
 
-        private System.Windows.Forms.ComboBox cmboStates;
+        private System.Windows.Forms.ComboBox cboStates;
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtPassword;

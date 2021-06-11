@@ -32,18 +32,18 @@ namespace SU21_Final_Project
 
             string[] years = new string[12];
 
-            cmboMonth.Items.Add("01");
-            cmboMonth.Items.Add("02");
-            cmboMonth.Items.Add("03");
-            cmboMonth.Items.Add("04");
-            cmboMonth.Items.Add("05");
-            cmboMonth.Items.Add("06");
-            cmboMonth.Items.Add("07");
-            cmboMonth.Items.Add("08");
-            cmboMonth.Items.Add("09");
-            cmboMonth.Items.Add("10");
-            cmboMonth.Items.Add("11");
-            cmboMonth.Items.Add("12");
+            cboMonth.Items.Add("01");
+            cboMonth.Items.Add("02");
+            cboMonth.Items.Add("03");
+            cboMonth.Items.Add("04");
+            cboMonth.Items.Add("05");
+            cboMonth.Items.Add("06");
+            cboMonth.Items.Add("07");
+            cboMonth.Items.Add("08");
+            cboMonth.Items.Add("09");
+            cboMonth.Items.Add("10");
+            cboMonth.Items.Add("11");
+            cboMonth.Items.Add("12");
 
             for(int i = 0; i < 12; i++)
             {
@@ -51,13 +51,8 @@ namespace SU21_Final_Project
             }
             for(int y = 0; y < years.Length; y++)
             {
-                cmboYear.Items.Add(years[y]);
+                cboYear.Items.Add(years[y]);
             }
-        }
-
-        private void comboBox2_SelectedIndexChanged(object sender, System.EventArgs e)
-        {
-
         }
     }
 }

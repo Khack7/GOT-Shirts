@@ -5,9 +5,9 @@
     <Setting Name="ConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;Provider=SQLNCLI11.1;Persist Security Info=False;User ID=HackK21Su2332;Initial Catalog=inew2332su21;Data Source=cstnt.tstc.edu;Initial File Name="";Server SPN=""&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;Persist Security Info=False;User ID=HackK21Su2332;Password=1791953;Initial Catalog=inew2332su21;Server=cstnt.tstc.edu&lt;/ConnectionString&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Provider=SQLNCLI11.1;Persist Security Info=False;User ID=HackK21Su2332;Initial Catalog=inew2332su21;Data Source=cstnt.tstc.edu;Initial File Name="";Server SPN=""</Value>
+      <Value Profile="(Default)">Persist Security Info=False;User ID=HackK21Su2332;Password=1791953;Initial Catalog=inew2332su21;Server=cstnt.tstc.edu</Value>
     </Setting>
   </Settings>
 </SettingsFile>

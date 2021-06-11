@@ -47,8 +47,8 @@ namespace SU21_Final_Project
             this.lblShip = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.cmboMonth = new System.Windows.Forms.ComboBox();
-            this.cmboYear = new System.Windows.Forms.ComboBox();
+            this.cboMonth = new System.Windows.Forms.ComboBox();
+            this.cboYear = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -241,30 +241,29 @@ namespace SU21_Final_Project
             this.label4.TabIndex = 46;
             this.label4.Text = "Exp. Date";
             // 
-            // cmboMonth
+            // cboMonth
             // 
-            this.cmboMonth.FormattingEnabled = true;
-            this.cmboMonth.Location = new System.Drawing.Point(84, 251);
-            this.cmboMonth.Name = "cmboMonth";
-            this.cmboMonth.Size = new System.Drawing.Size(49, 21);
-            this.cmboMonth.TabIndex = 47;
+            this.cboMonth.FormattingEnabled = true;
+            this.cboMonth.Location = new System.Drawing.Point(84, 251);
+            this.cboMonth.Name = "cboMonth";
+            this.cboMonth.Size = new System.Drawing.Size(49, 21);
+            this.cboMonth.TabIndex = 47;
             // 
-            // cmboYear
+            // cboYear
             // 
-            this.cmboYear.FormattingEnabled = true;
-            this.cmboYear.Location = new System.Drawing.Point(146, 251);
-            this.cmboYear.Name = "cmboYear";
-            this.cmboYear.Size = new System.Drawing.Size(49, 21);
-            this.cmboYear.TabIndex = 48;
-            this.cmboYear.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            this.cboYear.FormattingEnabled = true;
+            this.cboYear.Location = new System.Drawing.Point(146, 251);
+            this.cboYear.Name = "cboYear";
+            this.cboYear.Size = new System.Drawing.Size(49, 21);
+            this.cboYear.TabIndex = 48;
             // 
             // frmCheckout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(350, 436);
-            this.Controls.Add(this.cmboYear);
-            this.Controls.Add(this.cmboMonth);
+            this.Controls.Add(this.cboYear);
+            this.Controls.Add(this.cboMonth);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblShip);
@@ -311,7 +310,7 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label lblShip;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cmboMonth;
-        private System.Windows.Forms.ComboBox cmboYear;
+        private System.Windows.Forms.ComboBox cboMonth;
+        private System.Windows.Forms.ComboBox cboYear;
     }
 }

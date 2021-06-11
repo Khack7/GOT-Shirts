@@ -26,9 +26,8 @@ namespace SU21_Final_Project.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Provider=SQLNCLI11.1;Persist Security Info=False;User ID=HackK21Su2332;Initial Ca" +
-            "talog=inew2332su21;Data Source=cstnt.tstc.edu;Initial File Name=\"\";Server SPN=\"\"" +
-            "")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Persist Security Info=False;User ID=HackK21Su2332;Password=1791953;Initial Catalo" +
+            "g=inew2332su21;Server=cstnt.tstc.edu")]
         public string ConnectionString {
             get {
                 return ((string)(this["ConnectionString"]));

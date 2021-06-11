@@ -29,65 +29,99 @@ namespace SU21_Final_Project
             InitializeComponent();
         }
 
+        private Image resizeImage(Image src, int width, int height)
+        {
+            Image bmpNewImage = new Bitmap(width, height);
+            using (Graphics gfxNewImage = Graphics.FromImage(bmpNewImage))
+            {
+                gfxNewImage.DrawImage(
+                    src,
+                    new Rectangle(0, 0, bmpNewImage.Width, bmpNewImage.Height),
+                    0,
+                    0,
+                    src.Width,
+                    src.Height,
+                    GraphicsUnit.Pixel
+                );
+            }
+            return bmpNewImage;
+        }
+
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            //TODO: CHECK DB TO SEE IF AMOUNT SELECTED WILL MAKE NEGATIVE NUMBER
+            // AND GET PRICE TO DISPLAY
             string size, color, quantity;
+            int numOfShirts = (int)numUDQuantity.Value;
 
             color = currentColor;
             quantity = numUDQuantity.Value.ToString();
 
-            if (rdoSmall.Checked == true)
+            if (numOfShirts <= 0)
             {
-                size = "small";
-            }
-            else if (rdoMedium.Checked == true)
-            {
-                size = "medium";
+                MessageBox.Show("Zero is not a valid amount", "Please select a valid amount", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                size = "large";
-            }
+                if (rdoSmall.Checked == true)
+                {
+                    size = "small";
+                }
+                else if (rdoMedium.Checked == true)
+                {
+                    size = "medium";
+                }
+                else
+                {
+                    size = "large";
+                }
 
-            lstCart.Items.Add(quantity + " " + size + " " + color);
+                lstCart.Items.Add(quantity + " " + size + " " + color);
+            }
         }
 
-        private void getShirt()
+        private void getShirt(string color)
         {
-            string constr = ConfigurationManager.ConnectionStrings["SU21_Final_Project.Properties.Settings.ConnectionString"].ConnectionString;
-            try
-            {
-                using (SqlConnection con = new SqlConnection(constr))
-                {
-                    using (SqlCommand cmd = new SqlCommand("SELECT Image FROM HackK21Su2332.Products WHERE Image = @Image"))
-                    {
-                        cmd.CommandType = CommandType.Text;
-                        cmd.Parameters.AddWithValue("@Image", currentColor);
-                        cmd.Connection = con;
-                        con.Open();
-                        using (SqlDataReader sdr = cmd.ExecuteReader())
-                        {
-                            if (sdr.Read())
-                            {
-                                picbxShirt.Image = (Image)sdr["Image"];
-                            }
-                        }
-                        con.Close();
-                    }
-                }
-            }
-            catch
-            {
+            string shirt = color;
+            //string path = @"D:\tstc\Take 2\Project\Shirts\" + shirt + ".PNG";
 
+            using (Image image = Image.FromFile(@"D:\tstc\Take 2\Project\Shirts\" + shirt + ".PNG"))
+            {
+                picbxShirt.Image = resizeImage(image, picbxShirt.Width, picbxShirt.Height);
             }
+
+
+            //string constr = ConfigurationManager.ConnectionStrings["SU21_Final_Project.Properties.Settings.ConnectionString"].ConnectionString;
+            //try
+            //{
+            //    using (SqlConnection con = new SqlConnection(constr))
+            //    {
+            //        using (SqlCommand cmd = new SqlCommand("SELECT Image FROM HackK21Su2332.Products WHERE Image = @Image"))
+            //        {
+            //            cmd.CommandType = CommandType.Text;
+            //            cmd.Parameters.AddWithValue("@Image", currentColor);
+            //            cmd.Connection = con;
+            //            con.Open();
+            //            using (SqlDataReader sdr = cmd.ExecuteReader())
+            //            {
+            //                if (sdr.Read())
+            //                {
+            //                    picbxShirt.Image = (Image)sdr["Image"];
+            //                }
+            //            }
+            //            con.Close();
+            //        }
+            //    }
+            //}
+            //catch
+            //{
+
+            //}
 
         }
 
         string currentColor;
-        private void btnOrange_Click(object sender, EventArgs e)
-        {
-            currentColor = btnOrange.BackColor.Name;
-        }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -103,6 +137,72 @@ namespace SU21_Final_Project
         private void btnRemove_Click(object sender, EventArgs e)
         {
             lstCart.Items.Remove(lstCart.SelectedItem);
+        }
+
+        private void frmShop_Load(object sender, EventArgs e)
+        {
+            if (frmSignIn.CustomerType == "Guest")
+            {
+                btnAccount.Visible = false;
+            }
+            else
+            {
+                btnAccount.Visible = true;
+            }
+        }
+
+        private void btnOrange_Click(object sender, EventArgs e)
+        {
+            currentColor = btnOrange.BackColor.Name;
+            getShirt(currentColor);
+        }
+
+        private void btnBlack_Click(object sender, EventArgs e)
+        {
+            currentColor = btnBlack.BackColor.Name;
+            getShirt(currentColor);
+        }
+
+        private void btnBlue_Click(object sender, EventArgs e)
+        {
+            currentColor = btnBlue.BackColor.Name;
+            getShirt(currentColor);
+        }
+
+        private void btnGreen_Click(object sender, EventArgs e)
+        {
+            currentColor = btnGreen.BackColor.Name;
+            getShirt(currentColor);
+        }
+
+        private void btnPink_Click(object sender, EventArgs e)
+        {
+            currentColor = btnPink.BackColor.Name;
+            getShirt(currentColor);
+        }
+
+        private void btnPurple_Click(object sender, EventArgs e)
+        {
+            currentColor = btnPurple.BackColor.Name;
+            getShirt(currentColor);
+        }
+
+        private void btnRed_Click(object sender, EventArgs e)
+        {
+            currentColor = btnRed.BackColor.Name;
+            getShirt(currentColor);
+        }
+
+        private void btnWhite_Click(object sender, EventArgs e)
+        {
+            currentColor = btnWhite.BackColor.Name;
+            getShirt(currentColor);
+        }
+
+        private void btnYellow_Click(object sender, EventArgs e)
+        {
+            currentColor = btnYellow.BackColor.Name;
+            getShirt(currentColor);
         }
     }
 }

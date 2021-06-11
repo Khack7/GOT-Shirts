@@ -29,7 +29,7 @@ namespace SU21_Final_Project
         /// </summary>
         private void InitializeComponent()
         {
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnAccount = new System.Windows.Forms.Button();
             this.numUDQuantity = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
@@ -58,27 +58,27 @@ namespace SU21_Final_Project
             ((System.ComponentModel.ISupportInitialize)(this.picbxShirt)).BeginInit();
             this.SuspendLayout();
             // 
-            // button2
+            // btnAccount
             // 
-            this.button2.Location = new System.Drawing.Point(503, 54);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 51;
-            this.button2.Text = "Account";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnAccount.Location = new System.Drawing.Point(568, 49);
+            this.btnAccount.Name = "btnAccount";
+            this.btnAccount.Size = new System.Drawing.Size(75, 23);
+            this.btnAccount.TabIndex = 51;
+            this.btnAccount.Text = "Account";
+            this.btnAccount.UseVisualStyleBackColor = true;
             // 
             // numUDQuantity
             // 
-            this.numUDQuantity.Location = new System.Drawing.Point(282, 164);
+            this.numUDQuantity.Location = new System.Drawing.Point(347, 165);
             this.numUDQuantity.Name = "numUDQuantity";
-            this.numUDQuantity.Size = new System.Drawing.Size(54, 20);
+            this.numUDQuantity.Size = new System.Drawing.Size(52, 20);
             this.numUDQuantity.TabIndex = 50;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(225, 164);
+            this.label1.Location = new System.Drawing.Point(290, 165);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 15);
             this.label1.TabIndex = 49;
@@ -86,18 +86,18 @@ namespace SU21_Final_Project
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(228, 12);
+            this.button1.Location = new System.Drawing.Point(293, 7);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(108, 23);
+            this.button1.Size = new System.Drawing.Size(106, 23);
             this.button1.TabIndex = 48;
             this.button1.Text = "Have a code?";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(417, 242);
+            this.btnCancel.Location = new System.Drawing.Point(331, 229);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(80, 23);
+            this.btnCancel.Size = new System.Drawing.Size(148, 41);
             this.btnCancel.TabIndex = 47;
             this.btnCancel.Text = "Cancel Order";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -105,18 +105,18 @@ namespace SU21_Final_Project
             // 
             // btnCheckout
             // 
-            this.btnCheckout.Location = new System.Drawing.Point(503, 242);
+            this.btnCheckout.Location = new System.Drawing.Point(495, 229);
             this.btnCheckout.Name = "btnCheckout";
-            this.btnCheckout.Size = new System.Drawing.Size(80, 23);
+            this.btnCheckout.Size = new System.Drawing.Size(148, 41);
             this.btnCheckout.TabIndex = 46;
             this.btnCheckout.Text = "Checkout";
             this.btnCheckout.UseVisualStyleBackColor = true;
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(228, 187);
+            this.btnAdd.Location = new System.Drawing.Point(293, 188);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(108, 23);
+            this.btnAdd.Size = new System.Drawing.Size(106, 23);
             this.btnAdd.TabIndex = 45;
             this.btnAdd.Text = "Add To Cart";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -125,7 +125,7 @@ namespace SU21_Final_Project
             // btnRemove
             // 
             this.btnRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemove.Location = new System.Drawing.Point(377, 123);
+            this.btnRemove.Location = new System.Drawing.Point(442, 121);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(120, 23);
             this.btnRemove.TabIndex = 44;
@@ -135,7 +135,7 @@ namespace SU21_Final_Project
             // 
             // btnHelp
             // 
-            this.btnHelp.Location = new System.Drawing.Point(503, 12);
+            this.btnHelp.Location = new System.Drawing.Point(568, 7);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(75, 23);
             this.btnHelp.TabIndex = 43;
@@ -146,7 +146,7 @@ namespace SU21_Final_Project
             // 
             this.lblAmount.AutoSize = true;
             this.lblAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAmount.Location = new System.Drawing.Point(449, 149);
+            this.lblAmount.Location = new System.Drawing.Point(514, 144);
             this.lblAmount.Name = "lblAmount";
             this.lblAmount.Size = new System.Drawing.Size(64, 17);
             this.lblAmount.TabIndex = 42;
@@ -156,7 +156,7 @@ namespace SU21_Final_Project
             // 
             this.lblTotalPointer.AutoSize = true;
             this.lblTotalPointer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalPointer.Location = new System.Drawing.Point(374, 149);
+            this.lblTotalPointer.Location = new System.Drawing.Point(439, 144);
             this.lblTotalPointer.Name = "lblTotalPointer";
             this.lblTotalPointer.Size = new System.Drawing.Size(69, 17);
             this.lblTotalPointer.TabIndex = 41;
@@ -164,9 +164,10 @@ namespace SU21_Final_Project
             // 
             // rdoLarge
             // 
+            this.rdoLarge.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rdoLarge.AutoSize = true;
             this.rdoLarge.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoLarge.Location = new System.Drawing.Point(195, 237);
+            this.rdoLarge.Location = new System.Drawing.Point(195, 249);
             this.rdoLarge.Name = "rdoLarge";
             this.rdoLarge.Size = new System.Drawing.Size(63, 21);
             this.rdoLarge.TabIndex = 40;
@@ -175,9 +176,10 @@ namespace SU21_Final_Project
             // 
             // rdoMedium
             // 
+            this.rdoMedium.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rdoMedium.AutoSize = true;
             this.rdoMedium.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoMedium.Location = new System.Drawing.Point(96, 237);
+            this.rdoMedium.Location = new System.Drawing.Point(96, 249);
             this.rdoMedium.Name = "rdoMedium";
             this.rdoMedium.Size = new System.Drawing.Size(75, 21);
             this.rdoMedium.TabIndex = 39;
@@ -186,10 +188,11 @@ namespace SU21_Final_Project
             // 
             // rdoSmall
             // 
+            this.rdoSmall.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rdoSmall.AutoSize = true;
             this.rdoSmall.Checked = true;
             this.rdoSmall.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoSmall.Location = new System.Drawing.Point(12, 237);
+            this.rdoSmall.Location = new System.Drawing.Point(12, 249);
             this.rdoSmall.Name = "rdoSmall";
             this.rdoSmall.Size = new System.Drawing.Size(60, 21);
             this.rdoSmall.TabIndex = 38;
@@ -200,7 +203,7 @@ namespace SU21_Final_Project
             // lstCart
             // 
             this.lstCart.FormattingEnabled = true;
-            this.lstCart.Location = new System.Drawing.Point(377, 12);
+            this.lstCart.Location = new System.Drawing.Point(442, 7);
             this.lstCart.Name = "lstCart";
             this.lstCart.Size = new System.Drawing.Size(120, 108);
             this.lstCart.TabIndex = 37;
@@ -208,54 +211,59 @@ namespace SU21_Final_Project
             // btnYellow
             // 
             this.btnYellow.BackColor = System.Drawing.Color.Yellow;
-            this.btnYellow.Location = new System.Drawing.Point(304, 123);
+            this.btnYellow.Location = new System.Drawing.Point(369, 124);
             this.btnYellow.Name = "btnYellow";
-            this.btnYellow.Size = new System.Drawing.Size(32, 29);
+            this.btnYellow.Size = new System.Drawing.Size(30, 29);
             this.btnYellow.TabIndex = 36;
             this.btnYellow.UseVisualStyleBackColor = false;
+            this.btnYellow.Click += new System.EventHandler(this.btnYellow_Click);
             // 
             // btnWhite
             // 
             this.btnWhite.BackColor = System.Drawing.Color.White;
-            this.btnWhite.Location = new System.Drawing.Point(266, 123);
+            this.btnWhite.Location = new System.Drawing.Point(331, 124);
             this.btnWhite.Name = "btnWhite";
-            this.btnWhite.Size = new System.Drawing.Size(32, 29);
+            this.btnWhite.Size = new System.Drawing.Size(30, 29);
             this.btnWhite.TabIndex = 35;
             this.btnWhite.UseVisualStyleBackColor = false;
+            this.btnWhite.Click += new System.EventHandler(this.btnWhite_Click);
             // 
             // btnRed
             // 
             this.btnRed.BackColor = System.Drawing.Color.Red;
-            this.btnRed.Location = new System.Drawing.Point(228, 123);
+            this.btnRed.Location = new System.Drawing.Point(293, 124);
             this.btnRed.Name = "btnRed";
-            this.btnRed.Size = new System.Drawing.Size(32, 29);
+            this.btnRed.Size = new System.Drawing.Size(30, 29);
             this.btnRed.TabIndex = 34;
             this.btnRed.UseVisualStyleBackColor = false;
+            this.btnRed.Click += new System.EventHandler(this.btnRed_Click);
             // 
             // btnPurple
             // 
             this.btnPurple.BackColor = System.Drawing.Color.Purple;
-            this.btnPurple.Location = new System.Drawing.Point(304, 84);
+            this.btnPurple.Location = new System.Drawing.Point(369, 85);
             this.btnPurple.Name = "btnPurple";
-            this.btnPurple.Size = new System.Drawing.Size(32, 29);
+            this.btnPurple.Size = new System.Drawing.Size(30, 29);
             this.btnPurple.TabIndex = 33;
             this.btnPurple.UseVisualStyleBackColor = false;
+            this.btnPurple.Click += new System.EventHandler(this.btnPurple_Click);
             // 
             // btnPink
             // 
             this.btnPink.BackColor = System.Drawing.Color.Pink;
-            this.btnPink.Location = new System.Drawing.Point(266, 84);
+            this.btnPink.Location = new System.Drawing.Point(331, 85);
             this.btnPink.Name = "btnPink";
-            this.btnPink.Size = new System.Drawing.Size(32, 29);
+            this.btnPink.Size = new System.Drawing.Size(30, 29);
             this.btnPink.TabIndex = 32;
             this.btnPink.UseVisualStyleBackColor = false;
+            this.btnPink.Click += new System.EventHandler(this.btnPink_Click);
             // 
             // btnOrange
             // 
             this.btnOrange.BackColor = System.Drawing.Color.Orange;
-            this.btnOrange.Location = new System.Drawing.Point(228, 84);
+            this.btnOrange.Location = new System.Drawing.Point(293, 85);
             this.btnOrange.Name = "btnOrange";
-            this.btnOrange.Size = new System.Drawing.Size(32, 29);
+            this.btnOrange.Size = new System.Drawing.Size(30, 29);
             this.btnOrange.TabIndex = 31;
             this.btnOrange.UseVisualStyleBackColor = false;
             this.btnOrange.Click += new System.EventHandler(this.btnOrange_Click);
@@ -263,35 +271,40 @@ namespace SU21_Final_Project
             // btnGreen
             // 
             this.btnGreen.BackColor = System.Drawing.Color.Green;
-            this.btnGreen.Location = new System.Drawing.Point(304, 45);
+            this.btnGreen.Location = new System.Drawing.Point(369, 46);
             this.btnGreen.Name = "btnGreen";
-            this.btnGreen.Size = new System.Drawing.Size(32, 29);
+            this.btnGreen.Size = new System.Drawing.Size(30, 29);
             this.btnGreen.TabIndex = 30;
             this.btnGreen.UseVisualStyleBackColor = false;
+            this.btnGreen.Click += new System.EventHandler(this.btnGreen_Click);
             // 
             // btnBlack
             // 
             this.btnBlack.BackColor = System.Drawing.Color.Black;
-            this.btnBlack.Location = new System.Drawing.Point(228, 45);
+            this.btnBlack.Location = new System.Drawing.Point(293, 46);
             this.btnBlack.Name = "btnBlack";
-            this.btnBlack.Size = new System.Drawing.Size(32, 29);
+            this.btnBlack.Size = new System.Drawing.Size(30, 29);
             this.btnBlack.TabIndex = 29;
             this.btnBlack.UseVisualStyleBackColor = false;
+            this.btnBlack.Click += new System.EventHandler(this.btnBlack_Click);
             // 
             // btnBlue
             // 
             this.btnBlue.BackColor = System.Drawing.Color.Blue;
-            this.btnBlue.Location = new System.Drawing.Point(266, 45);
+            this.btnBlue.Location = new System.Drawing.Point(331, 46);
             this.btnBlue.Name = "btnBlue";
-            this.btnBlue.Size = new System.Drawing.Size(32, 29);
+            this.btnBlue.Size = new System.Drawing.Size(30, 29);
             this.btnBlue.TabIndex = 28;
             this.btnBlue.UseVisualStyleBackColor = false;
+            this.btnBlue.Click += new System.EventHandler(this.btnBlue_Click);
             // 
             // picbxShirt
             // 
+            this.picbxShirt.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.picbxShirt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.picbxShirt.Location = new System.Drawing.Point(12, 12);
             this.picbxShirt.Name = "picbxShirt";
-            this.picbxShirt.Size = new System.Drawing.Size(187, 198);
+            this.picbxShirt.Size = new System.Drawing.Size(267, 198);
             this.picbxShirt.TabIndex = 27;
             this.picbxShirt.TabStop = false;
             // 
@@ -299,8 +312,8 @@ namespace SU21_Final_Project
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(589, 272);
-            this.Controls.Add(this.button2);
+            this.ClientSize = new System.Drawing.Size(651, 284);
+            this.Controls.Add(this.btnAccount);
             this.Controls.Add(this.numUDQuantity);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
@@ -328,6 +341,7 @@ namespace SU21_Final_Project
             this.Name = "frmShop";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Shop";
+            this.Load += new System.EventHandler(this.frmShop_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numUDQuantity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picbxShirt)).EndInit();
             this.ResumeLayout(false);
@@ -337,7 +351,7 @@ namespace SU21_Final_Project
 
         #endregion
 
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnAccount;
         private System.Windows.Forms.NumericUpDown numUDQuantity;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;

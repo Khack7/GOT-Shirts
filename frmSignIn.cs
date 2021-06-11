@@ -33,7 +33,7 @@ namespace SU21_Final_Project
 
         private void btnGuest_Click(object sender, EventArgs e)
         {
-            CustomerType = "guest";
+            CustomerType = "Guest";
             frmShop shop = new frmShop();
             this.Hide();
             this.Close();
@@ -48,52 +48,78 @@ namespace SU21_Final_Project
             this.Show();
         }
 
+        public static int ID { get; set; }
         private void btnSign_Click(object sender, EventArgs e)
         {
             string constr = ConfigurationManager.ConnectionStrings["SU21_Final_Project.Properties.Settings.ConnectionString"].ConnectionString;
             try
             {
-                //THROWS ERROR FOR SOME REASON
                 using (SqlConnection con = new SqlConnection(constr))
                 {
-                    using (SqlCommand cmd = new SqlCommand("SELECT * FROM HackK21Su2332.Accounts WHERE Username = @Username"))
+                    using (SqlCommand cmd = new SqlCommand("SELECT UserName, Password FROM HackK21Su2332.Person"))
                     {
                         con.Open();
                         cmd.CommandType = CommandType.Text;
-                        cmd.Parameters.AddWithValue("@Username", txtUsername.Text);
                         cmd.Connection = con;
                         using (SqlDataReader sdr = cmd.ExecuteReader())
                         {
-                            sdr.Read();
-                            if (sdr == null)
+                            if(sdr.Read())
+                            {
+                                if (txtUsername.Text != sdr["UserName"].ToString())
+                                {
+                                    MessageBox.Show("This account doesn't exist", "Invalid Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    txtUsername.Focus();
+                                }
+                                else
+                                {
+                                    if (txtPassword.Text == sdr["Password"].ToString())
+                                    {
+                                        CustomerType = "Customer";
+
+                                        using(SqlCommand cmd2 = new SqlCommand("SELECT PersonID from FROM HackK21Su2332.Person WHERE UserName = @UserName"))
+                                        {
+                                            cmd2.CommandType = CommandType.Text;
+                                            cmd2.Connection = con;
+                                            using(SqlDataReader sdr2 = cmd2.ExecuteReader())
+                                            {
+                                                //ID = int.TryParse(sdr["PersonID"].ToString(), out int x);
+                                            }
+                                        }
+
+
+
+                                        frmShop shop = new frmShop();
+                                        this.Hide();
+                                        shop.ShowDialog();
+                                        this.Close();
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Your password is incorrect", "Invalid Password", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                        txtUsername.Focus();
+                                    }
+                                }
+                            }
+                            else
                             {
                                 MessageBox.Show("This account doesn't exist", "Invalid Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 txtUsername.Focus();
                             }
-                            else
-                            {
-                                if (txtPassword.Text == sdr["Password"].ToString())
-                                {
-                                    frmShop shop = new frmShop();
-                                    this.Hide();
-                                    shop.ShowDialog();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Your password is incorrect", "Invalid Password", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                    txtUsername.Focus();
-                                }
-                            }
-
                         }
                         con.Close();
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                //TODO
+                MessageBox.Show(ex.Message);
             }
+        }
+
+        private void btnForgot_Click(object sender, EventArgs e)
+        {
+            frmResetPassword reset = new frmResetPassword();
+            reset.ShowDialog();
         }
     }
 }

@@ -37,6 +37,7 @@ namespace SU21_Final_Project
             this.btnRegister = new System.Windows.Forms.Button();
             this.btnGuest = new System.Windows.Forms.Button();
             this.btnSign = new System.Windows.Forms.Button();
+            this.btnForgot = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnHelp
@@ -55,6 +56,7 @@ namespace SU21_Final_Project
             this.txtPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPassword.Location = new System.Drawing.Point(202, 154);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '•';
             this.txtPassword.Size = new System.Drawing.Size(152, 20);
             this.txtPassword.TabIndex = 14;
             // 
@@ -123,12 +125,24 @@ namespace SU21_Final_Project
             this.btnSign.UseVisualStyleBackColor = true;
             this.btnSign.Click += new System.EventHandler(this.btnSign_Click);
             // 
+            // btnForgot
+            // 
+            this.btnForgot.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnForgot.Location = new System.Drawing.Point(202, 180);
+            this.btnForgot.Name = "btnForgot";
+            this.btnForgot.Size = new System.Drawing.Size(152, 24);
+            this.btnForgot.TabIndex = 16;
+            this.btnForgot.Text = "Forgot Password?";
+            this.btnForgot.UseVisualStyleBackColor = true;
+            this.btnForgot.Click += new System.EventHandler(this.btnForgot_Click);
+            // 
             // frmSignIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(497, 315);
+            this.Controls.Add(this.btnForgot);
             this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUsername);
@@ -156,5 +170,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.Button btnGuest;
         private System.Windows.Forms.Button btnSign;
+        private System.Windows.Forms.Button btnForgot;
     }
 }

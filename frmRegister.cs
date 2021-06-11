@@ -30,56 +30,56 @@ namespace SU21_Final_Project
 
         private void frmRegister_Load(object sender, EventArgs e)
         {
-            cmboStates.Items.Add("AL");
-            cmboStates.Items.Add("AK");
-            cmboStates.Items.Add("AZ");
-            cmboStates.Items.Add("AR");
-            cmboStates.Items.Add("CA");
-            cmboStates.Items.Add("CO");
-            cmboStates.Items.Add("CT");
-            cmboStates.Items.Add("DE");
-            cmboStates.Items.Add("FL");
-            cmboStates.Items.Add("GA");
-            cmboStates.Items.Add("HI");
-            cmboStates.Items.Add("ID");
-            cmboStates.Items.Add("IL");
-            cmboStates.Items.Add("IN");
-            cmboStates.Items.Add("IA");
-            cmboStates.Items.Add("KS");
-            cmboStates.Items.Add("KY");
-            cmboStates.Items.Add("LA");
-            cmboStates.Items.Add("ME");
-            cmboStates.Items.Add("MD");
-            cmboStates.Items.Add("MA");
-            cmboStates.Items.Add("MI");
-            cmboStates.Items.Add("MN");
-            cmboStates.Items.Add("MS");
-            cmboStates.Items.Add("MO");
-            cmboStates.Items.Add("MT");
-            cmboStates.Items.Add("NE");
-            cmboStates.Items.Add("NV");
-            cmboStates.Items.Add("NH");
-            cmboStates.Items.Add("NJ");
-            cmboStates.Items.Add("NM");
-            cmboStates.Items.Add("NY");
-            cmboStates.Items.Add("NC");
-            cmboStates.Items.Add("ND");
-            cmboStates.Items.Add("OH");
-            cmboStates.Items.Add("OK");
-            cmboStates.Items.Add("OR");
-            cmboStates.Items.Add("PA");
-            cmboStates.Items.Add("RI");
-            cmboStates.Items.Add("SC");
-            cmboStates.Items.Add("SD");
-            cmboStates.Items.Add("TN");
-            cmboStates.Items.Add("TX");
-            cmboStates.Items.Add("UT");
-            cmboStates.Items.Add("VT");
-            cmboStates.Items.Add("VA");
-            cmboStates.Items.Add("WA");
-            cmboStates.Items.Add("WV");
-            cmboStates.Items.Add("WI");
-            cmboStates.Items.Add("WY");
+            cboStates.Items.Add("AL");
+            cboStates.Items.Add("AK");
+            cboStates.Items.Add("AZ");
+            cboStates.Items.Add("AR");
+            cboStates.Items.Add("CA");
+            cboStates.Items.Add("CO");
+            cboStates.Items.Add("CT");
+            cboStates.Items.Add("DE");
+            cboStates.Items.Add("FL");
+            cboStates.Items.Add("GA");
+            cboStates.Items.Add("HI");
+            cboStates.Items.Add("ID");
+            cboStates.Items.Add("IL");
+            cboStates.Items.Add("IN");
+            cboStates.Items.Add("IA");
+            cboStates.Items.Add("KS");
+            cboStates.Items.Add("KY");
+            cboStates.Items.Add("LA");
+            cboStates.Items.Add("ME");
+            cboStates.Items.Add("MD");
+            cboStates.Items.Add("MA");
+            cboStates.Items.Add("MI");
+            cboStates.Items.Add("MN");
+            cboStates.Items.Add("MS");
+            cboStates.Items.Add("MO");
+            cboStates.Items.Add("MT");
+            cboStates.Items.Add("NE");
+            cboStates.Items.Add("NV");
+            cboStates.Items.Add("NH");
+            cboStates.Items.Add("NJ");
+            cboStates.Items.Add("NM");
+            cboStates.Items.Add("NY");
+            cboStates.Items.Add("NC");
+            cboStates.Items.Add("ND");
+            cboStates.Items.Add("OH");
+            cboStates.Items.Add("OK");
+            cboStates.Items.Add("OR");
+            cboStates.Items.Add("PA");
+            cboStates.Items.Add("RI");
+            cboStates.Items.Add("SC");
+            cboStates.Items.Add("SD");
+            cboStates.Items.Add("TN");
+            cboStates.Items.Add("TX");
+            cboStates.Items.Add("UT");
+            cboStates.Items.Add("VT");
+            cboStates.Items.Add("VA");
+            cboStates.Items.Add("WA");
+            cboStates.Items.Add("WV");
+            cboStates.Items.Add("WI");
+            cboStates.Items.Add("WY");
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
@@ -88,7 +88,7 @@ namespace SU21_Final_Project
             try
             {
                 if (txtFirst.Text == "" || txtLast.Text == "" || txtAddress1.Text == "" ||
-                   txtCity.Text == "" || cmboStates.SelectedItem == null ||
+                   txtCity.Text == "" || cboStates.SelectedItem == null ||
                    txtZip.Text == "" || txtUsername.Text == "" || txtPassword.Text == "")
                 {
                     MessageBox.Show("Feilds with ' * ' are required", "Please fill out all required fields", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -98,9 +98,9 @@ namespace SU21_Final_Project
                     using (SqlConnection con = new SqlConnection(constr))
                     {
                         using (SqlCommand cmd = new SqlCommand("INSERT INTO HackK21Su2332.Person(NameFirst, NameLast, Address1, Address2, Address3," +
-                                                               " City, State, Zipcode, Email, PhonePrimary)" +
+                                                               " City, State, Zipcode, Email, PhonePrimary, UserName, Password, AccountType)" +
                                                                " VALUES(@NameFirst, @NameLast, @Address1, @Address2, @Address3," +
-                                                               " @City, @State, @Zipcode, @Email, @PhonePrimary)"))
+                                                               " @City, @State, @Zipcode, @Email, @PhonePrimary, @UserName, @Password, @AccountType)"))
                         {
                             con.Open();
                             cmd.CommandType = CommandType.Text;
@@ -110,10 +110,13 @@ namespace SU21_Final_Project
                             cmd.Parameters.AddWithValue("@Address2", txtAddress2.Text);
                             cmd.Parameters.AddWithValue("@Address3", txtAddress3.Text);
                             cmd.Parameters.AddWithValue("@City", txtCity.Text);
-                            cmd.Parameters.AddWithValue("@State", cmboStates.SelectedItem.ToString());
+                            cmd.Parameters.AddWithValue("@State", cboStates.SelectedItem.ToString());
                             cmd.Parameters.AddWithValue("@Zipcode", txtZip.Text);
                             cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
                             cmd.Parameters.AddWithValue("@PhonePrimary", txtPhone.Text);
+                            cmd.Parameters.AddWithValue("@UserName", txtUsername.Text);
+                            cmd.Parameters.AddWithValue("@Password", txtPassword.Text);
+                            cmd.Parameters.AddWithValue("@AccountType", "Customer");
 
                             cmd.Connection = con;
                             con.Close();
@@ -121,19 +124,9 @@ namespace SU21_Final_Project
                     }
                 }
             }
-            catch
+            catch(Exception ex)
             {
-                //TODO
-            }
-
-            //THIS WILL BE FOR THE ACCOUNTS TABLE
-            try
-            {
-
-            }
-            catch
-            {
-
+                MessageBox.Show(ex.Message);
             }
         }
 
