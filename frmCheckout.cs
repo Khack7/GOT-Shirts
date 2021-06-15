@@ -47,7 +47,8 @@ namespace SU21_Final_Project
 
             for(int i = 0; i < 12; i++)
             {
-                years[i] = (Convert.ToInt32(DateTime.Now.Year) + i).ToString();
+                int.TryParse(DateTime.Now.Year.ToString(), out int y);
+                years[i] = (y + i).ToString();
             }
             for(int y = 0; y < years.Length; y++)
             {

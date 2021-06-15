@@ -79,10 +79,12 @@ namespace SU21_Final_Project
                                         using(SqlCommand cmd2 = new SqlCommand("SELECT PersonID from FROM HackK21Su2332.Person WHERE UserName = @UserName"))
                                         {
                                             cmd2.CommandType = CommandType.Text;
+                                            cmd2.Parameters.AddWithValue("@UserName", txtUsername.Text);
                                             cmd2.Connection = con;
                                             using(SqlDataReader sdr2 = cmd2.ExecuteReader())
                                             {
-                                                //ID = int.TryParse(sdr["PersonID"].ToString(), out int x);
+                                                int.TryParse(sdr["PersonID"].ToString(), out int x);
+                                                ID = x;
                                             }
                                         }
 

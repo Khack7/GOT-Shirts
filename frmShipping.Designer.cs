@@ -31,12 +31,12 @@ namespace SU21_Final_Project
         {
             this.btnConfirm = new System.Windows.Forms.Button();
             this.btnReturn = new System.Windows.Forms.Button();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtZip = new System.Windows.Forms.TextBox();
+            this.txtCity = new System.Windows.Forms.TextBox();
+            this.txtLast = new System.Windows.Forms.TextBox();
+            this.txtState = new System.Windows.Forms.TextBox();
+            this.txtAddress = new System.Windows.Forms.TextBox();
+            this.txtFirst = new System.Windows.Forms.TextBox();
             this.lblZip = new System.Windows.Forms.Label();
             this.lblState = new System.Windows.Forms.Label();
             this.lblCity = new System.Windows.Forms.Label();
@@ -54,6 +54,7 @@ namespace SU21_Final_Project
             this.btnConfirm.TabIndex = 27;
             this.btnConfirm.Text = "Confirm";
             this.btnConfirm.UseVisualStyleBackColor = true;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // btnReturn
             // 
@@ -65,47 +66,47 @@ namespace SU21_Final_Project
             this.btnReturn.Text = "Return to Shop";
             this.btnReturn.UseVisualStyleBackColor = true;
             // 
-            // textBox6
+            // txtZip
             // 
-            this.textBox6.Location = new System.Drawing.Point(370, 175);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(155, 20);
-            this.textBox6.TabIndex = 25;
+            this.txtZip.Location = new System.Drawing.Point(370, 175);
+            this.txtZip.Name = "txtZip";
+            this.txtZip.Size = new System.Drawing.Size(155, 20);
+            this.txtZip.TabIndex = 25;
             // 
-            // textBox5
+            // txtCity
             // 
-            this.textBox5.Location = new System.Drawing.Point(370, 91);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(155, 20);
-            this.textBox5.TabIndex = 24;
+            this.txtCity.Location = new System.Drawing.Point(370, 91);
+            this.txtCity.Name = "txtCity";
+            this.txtCity.Size = new System.Drawing.Size(155, 20);
+            this.txtCity.TabIndex = 24;
             // 
-            // textBox4
+            // txtLast
             // 
-            this.textBox4.Location = new System.Drawing.Point(370, 8);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(155, 20);
-            this.textBox4.TabIndex = 23;
+            this.txtLast.Location = new System.Drawing.Point(370, 8);
+            this.txtLast.Name = "txtLast";
+            this.txtLast.Size = new System.Drawing.Size(155, 20);
+            this.txtLast.TabIndex = 23;
             // 
-            // textBox3
+            // txtState
             // 
-            this.textBox3.Location = new System.Drawing.Point(95, 175);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(155, 20);
-            this.textBox3.TabIndex = 22;
+            this.txtState.Location = new System.Drawing.Point(95, 175);
+            this.txtState.Name = "txtState";
+            this.txtState.Size = new System.Drawing.Size(155, 20);
+            this.txtState.TabIndex = 22;
             // 
-            // textBox2
+            // txtAddress
             // 
-            this.textBox2.Location = new System.Drawing.Point(95, 89);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(155, 20);
-            this.textBox2.TabIndex = 21;
+            this.txtAddress.Location = new System.Drawing.Point(95, 89);
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(155, 20);
+            this.txtAddress.TabIndex = 21;
             // 
-            // textBox1
+            // txtFirst
             // 
-            this.textBox1.Location = new System.Drawing.Point(95, 9);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(155, 20);
-            this.textBox1.TabIndex = 20;
+            this.txtFirst.Location = new System.Drawing.Point(95, 9);
+            this.txtFirst.Name = "txtFirst";
+            this.txtFirst.Size = new System.Drawing.Size(155, 20);
+            this.txtFirst.TabIndex = 20;
             // 
             // lblZip
             // 
@@ -174,12 +175,12 @@ namespace SU21_Final_Project
             this.ClientSize = new System.Drawing.Size(536, 323);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.btnReturn);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtZip);
+            this.Controls.Add(this.txtCity);
+            this.Controls.Add(this.txtLast);
+            this.Controls.Add(this.txtState);
+            this.Controls.Add(this.txtAddress);
+            this.Controls.Add(this.txtFirst);
             this.Controls.Add(this.lblZip);
             this.Controls.Add(this.lblState);
             this.Controls.Add(this.lblCity);
@@ -199,12 +200,12 @@ namespace SU21_Final_Project
 
         private System.Windows.Forms.Button btnConfirm;
         private System.Windows.Forms.Button btnReturn;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtZip;
+        private System.Windows.Forms.TextBox txtCity;
+        private System.Windows.Forms.TextBox txtLast;
+        private System.Windows.Forms.TextBox txtState;
+        private System.Windows.Forms.TextBox txtAddress;
+        private System.Windows.Forms.TextBox txtFirst;
         private System.Windows.Forms.Label lblZip;
         private System.Windows.Forms.Label lblState;
         private System.Windows.Forms.Label lblCity;

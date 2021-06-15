@@ -47,78 +47,108 @@ namespace SU21_Final_Project
             return bmpNewImage;
         }
 
+        double currentTotal = 0.00;
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            //TODO: CHECK DB TO SEE IF AMOUNT SELECTED WILL MAKE NEGATIVE NUMBER
-            // AND GET PRICE TO DISPLAY
             string size, color, quantity;
             int numOfShirts = (int)numUDQuantity.Value;
 
             color = currentColor;
             quantity = numUDQuantity.Value.ToString();
 
+
+            if (rdoSmall.Checked == true)
+            {
+                size = "Small";
+            }
+            else if (rdoMedium.Checked == true)
+            {
+                size = "Medium";
+            }
+            else
+            {
+                size = "Large";
+            }
+
             if (numOfShirts <= 0)
             {
                 MessageBox.Show("Zero is not a valid amount", "Please select a valid amount", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            else if(color == null)
+            {
+                MessageBox.Show("You have not selected a color", "Please select a color", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             else
             {
-                if (rdoSmall.Checked == true)
+                string constr = ConfigurationManager.ConnectionStrings["SU21_Final_Project.Properties.Settings.ConnectionString"].ConnectionString;
+                try
                 {
-                    size = "small";
-                }
-                else if (rdoMedium.Checked == true)
-                {
-                    size = "medium";
-                }
-                else
-                {
-                    size = "large";
-                }
+                    using (SqlConnection con = new SqlConnection(constr))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("SELECT QuantityOnHand, Color, Size, Cost FROM HackK21Su2332.Products WHERE Color = @Color AND Size = @Size"))
+                        {
+                            con.Open();
+                            cmd.CommandType = CommandType.Text;
+                            cmd.Parameters.AddWithValue("@Color", color);
+                            cmd.Parameters.AddWithValue("@Size", size);
+                            cmd.Connection = con;
+                            using (SqlDataReader sdr = cmd.ExecuteReader())
+                            {
+                                if (sdr.Read())
+                                {
+                                    int.TryParse(sdr["QuantityOnHand"].ToString(), out int q);
 
-                lstCart.Items.Add(quantity + " " + size + " " + color);
+                                    if (q - numOfShirts < 0)
+                                    {
+                                        MessageBox.Show(string.Format("The amount selected is more than we have on hand. We only have {0} total", q.ToString()), "Too many selected", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
+                                    }
+                                    else
+                                    {
+                                        lstCart.Items.Add(quantity + " " + size + " " + color);
+                                        double.TryParse(sdr["Cost"].ToString(), out double d);
+                                        currentTotal += (d * numOfShirts);
+                                        lblAmount.Text = currentTotal.ToString("C2");
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("There was a problem loading data", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
+                            con.Close();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    if (lstCart.Items.Count <= 0)
+                    {
+                        btnCheckout.Enabled = false;
+                    }
+                    else
+                    {
+                        btnCheckout.Enabled = true;
+                    }
+                    numUDQuantity.Value = 0;
+                }
             }
         }
 
         private void getShirt(string color)
         {
             string shirt = color;
-            //string path = @"D:\tstc\Take 2\Project\Shirts\" + shirt + ".PNG";
+            //NEED LOCAL PATH OF SHIRT FOLDER. THIS GOES INTO BIN/DEBUG
+            string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
 
             using (Image image = Image.FromFile(@"D:\tstc\Take 2\Project\Shirts\" + shirt + ".PNG"))
             {
                 picbxShirt.Image = resizeImage(image, picbxShirt.Width, picbxShirt.Height);
             }
-
-
-            //string constr = ConfigurationManager.ConnectionStrings["SU21_Final_Project.Properties.Settings.ConnectionString"].ConnectionString;
-            //try
-            //{
-            //    using (SqlConnection con = new SqlConnection(constr))
-            //    {
-            //        using (SqlCommand cmd = new SqlCommand("SELECT Image FROM HackK21Su2332.Products WHERE Image = @Image"))
-            //        {
-            //            cmd.CommandType = CommandType.Text;
-            //            cmd.Parameters.AddWithValue("@Image", currentColor);
-            //            cmd.Connection = con;
-            //            con.Open();
-            //            using (SqlDataReader sdr = cmd.ExecuteReader())
-            //            {
-            //                if (sdr.Read())
-            //                {
-            //                    picbxShirt.Image = (Image)sdr["Image"];
-            //                }
-            //            }
-            //            con.Close();
-            //        }
-            //    }
-            //}
-            //catch
-            //{
-
-            //}
-
         }
 
         string currentColor;
@@ -136,7 +166,83 @@ namespace SU21_Final_Project
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            lstCart.Items.Remove(lstCart.SelectedItem);
+            if (lstCart.SelectedItem == null || lstCart.SelectedItem.ToString() == "")
+            {
+                MessageBox.Show("Please select the item you want removed", "Must have an item selected", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                string selection = lstCart.SelectedItem.ToString();
+                string[] words = selection.Split(' ');
+
+                string[] stuff = new string[3];
+                int i = 0;
+
+                string constr = ConfigurationManager.ConnectionStrings["SU21_Final_Project.Properties.Settings.ConnectionString"].ConnectionString;
+
+                try
+                {
+                    foreach (var word in words)
+                    {
+                        stuff[i] = $"{word}";
+                        i++;
+                        if (i > 2)
+                        {
+                            break;
+                        }
+                    }
+
+                    int.TryParse(stuff[0], out int x);
+                    int numOfShirts = x;
+                    string size = stuff[1];
+                    string color = stuff[2];
+
+
+                    using (SqlConnection con = new SqlConnection(constr))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("SELECT QuantityOnHand, Color, Size, Cost FROM HackK21Su2332.Products WHERE Color = @Color AND Size = @Size"))
+                        {
+                            con.Open();
+                            cmd.CommandType = CommandType.Text;
+                            cmd.Parameters.AddWithValue("@Color", color);
+                            cmd.Parameters.AddWithValue("@Size", size);
+                            cmd.Connection = con;
+                            using (SqlDataReader sdr = cmd.ExecuteReader())
+                            {
+                                if (sdr.Read())
+                                {
+                                    int.TryParse(sdr["QuantityOnHand"].ToString(), out int q);
+                                    double.TryParse(sdr["Cost"].ToString(), out double d);
+
+                                    currentTotal -= (d * numOfShirts);
+                                    lblAmount.Text = currentTotal.ToString("C2");
+                                    lstCart.Items.Remove(lstCart.SelectedItem);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("There was a problem loading data", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
+                            con.Close();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    if (lstCart.Items.Count <= 0)
+                    {
+                        btnCheckout.Enabled = false;
+                    }
+                    else
+                    {
+                        btnCheckout.Enabled = true;
+                    }
+                }              
+            }
         }
 
         private void frmShop_Load(object sender, EventArgs e)
@@ -203,6 +309,17 @@ namespace SU21_Final_Project
         {
             currentColor = btnYellow.BackColor.Name;
             getShirt(currentColor);
+        }
+
+        private void btnCheckout_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCode_Click(object sender, EventArgs e)
+        {
+            frmCouponInput coupon = new frmCouponInput();
+            coupon.ShowDialog();
         }
     }
 }

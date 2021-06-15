@@ -32,7 +32,7 @@ namespace SU21_Final_Project
             this.btnAccount = new System.Windows.Forms.Button();
             this.numUDQuantity = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnCode = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnCheckout = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -84,14 +84,15 @@ namespace SU21_Final_Project
             this.label1.TabIndex = 49;
             this.label1.Text = "Quantity";
             // 
-            // button1
+            // btnCode
             // 
-            this.button1.Location = new System.Drawing.Point(293, 7);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(106, 23);
-            this.button1.TabIndex = 48;
-            this.button1.Text = "Have a code?";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnCode.Location = new System.Drawing.Point(293, 7);
+            this.btnCode.Name = "btnCode";
+            this.btnCode.Size = new System.Drawing.Size(106, 23);
+            this.btnCode.TabIndex = 48;
+            this.btnCode.Text = "Have a code?";
+            this.btnCode.UseVisualStyleBackColor = true;
+            this.btnCode.Click += new System.EventHandler(this.btnCode_Click);
             // 
             // btnCancel
             // 
@@ -105,12 +106,14 @@ namespace SU21_Final_Project
             // 
             // btnCheckout
             // 
+            this.btnCheckout.Enabled = false;
             this.btnCheckout.Location = new System.Drawing.Point(495, 229);
             this.btnCheckout.Name = "btnCheckout";
             this.btnCheckout.Size = new System.Drawing.Size(148, 41);
             this.btnCheckout.TabIndex = 46;
             this.btnCheckout.Text = "Checkout";
             this.btnCheckout.UseVisualStyleBackColor = true;
+            this.btnCheckout.Click += new System.EventHandler(this.btnCheckout_Click);
             // 
             // btnAdd
             // 
@@ -145,12 +148,13 @@ namespace SU21_Final_Project
             // lblAmount
             // 
             this.lblAmount.AutoSize = true;
+            this.lblAmount.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAmount.Location = new System.Drawing.Point(514, 144);
             this.lblAmount.Name = "lblAmount";
-            this.lblAmount.Size = new System.Drawing.Size(64, 17);
+            this.lblAmount.Size = new System.Drawing.Size(46, 19);
             this.lblAmount.TabIndex = 42;
-            this.lblAmount.Text = "$Amount";
+            this.lblAmount.Text = "$0.00";
             // 
             // lblTotalPointer
             // 
@@ -280,6 +284,7 @@ namespace SU21_Final_Project
             // 
             // btnBlack
             // 
+            this.btnBlack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBlack.BackColor = System.Drawing.Color.Black;
             this.btnBlack.Location = new System.Drawing.Point(293, 46);
             this.btnBlack.Name = "btnBlack";
@@ -316,7 +321,7 @@ namespace SU21_Final_Project
             this.Controls.Add(this.btnAccount);
             this.Controls.Add(this.numUDQuantity);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnCode);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnCheckout);
             this.Controls.Add(this.btnAdd);
@@ -354,7 +359,7 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Button btnAccount;
         private System.Windows.Forms.NumericUpDown numUDQuantity;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnCode;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnCheckout;
         private System.Windows.Forms.Button btnAdd;
