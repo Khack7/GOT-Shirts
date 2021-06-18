@@ -313,7 +313,9 @@ namespace SU21_Final_Project
 
         private void btnCheckout_Click(object sender, EventArgs e)
         {
-
+            frmShipping ship = new frmShipping();
+            this.Hide();
+            ship.ShowDialog();
         }
 
         private void btnCode_Click(object sender, EventArgs e)

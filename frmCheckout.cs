@@ -45,12 +45,18 @@ namespace SU21_Final_Project
             cboMonth.Items.Add("11");
             cboMonth.Items.Add("12");
 
-            for(int i = 0; i < 12; i++)
+            for (int i = 0; i < 12; i++)
             {
-                int.TryParse(DateTime.Now.Year.ToString(), out int y);
-                years[i] = (y + i).ToString();
+                if (int.TryParse(DateTime.Now.Year.ToString(), out int y))
+                {
+                    years[i] = (y + i).ToString();
+                }
+                else
+                {
+
+                }
             }
-            for(int y = 0; y < years.Length; y++)
+            for (int y = 0; y < years.Length; y++)
             {
                 cboYear.Items.Add(years[y]);
             }

@@ -108,100 +108,165 @@ namespace SU21_Final_Project
         private void btnRegister_Click(object sender, EventArgs e)
         {
             string constr = ConfigurationManager.ConnectionStrings["SU21_Final_Project.Properties.Settings.ConnectionString"].ConnectionString;
-            try
+
+            bool acceptedPassword = false;
+
+            string attemptedPassword = txtPassword.Text;
+
+            if(!attemptedPassword.Any(char.IsLower))
             {
-                List<TextBox> textBoxes = new List<TextBox>();
-                textBoxes.Add(txtFirst);
-                textBoxes.Add(txtLast);
-                textBoxes.Add(txtAddress1);
-                textBoxes.Add(txtCity);
-                textBoxes.Add(txtZip);
-                textBoxes.Add(txtUsername);
-                textBoxes.Add(txtPassword);
-                textBoxes.Add(txtFirst);
+                MessageBox.Show("Password must contain a lower case letter", "Missing password requirement", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
+                acceptedPassword = false;
+            }
+            else if(!attemptedPassword.Any(char.IsUpper))
+            {
+                MessageBox.Show("Password must contain an upper case letter", "Missing password requirement", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
+                acceptedPassword = false;
+            }
+            else if(!attemptedPassword.Any(char.IsDigit))
+            {
+                MessageBox.Show("Password must contain a number", "Missing password requirement", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
+                acceptedPassword = false;
+            }
+            else if(attemptedPassword.Length < 8 || attemptedPassword.Length > 10)
+            {
+                MessageBox.Show("Password must be between 8 and 10 charactors", "Invalid length", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
+                acceptedPassword = false;
+            }
+            else
+            {
+                acceptedPassword = true;
+            }
 
-                List<ComboBox> comboBoxes = new List<ComboBox>();
-                comboBoxes.Add(cboStates);
-                comboBoxes.Add(cmboSecurity1);
-                comboBoxes.Add(cmboSecurity2);
-                comboBoxes.Add(cmboSecurity3);
-
-                bool emptyTextbox = false;
-
-                if (txtFirst.Text == "" || txtLast.Text == "" || txtAddress1.Text == "" ||
-                   txtCity.Text == "" || cboStates.SelectedItem == null ||
-                   txtZip.Text == "" || txtUsername.Text == "" || txtPassword.Text == "" ||
-                   cmboSecurity1.SelectedItem == null || cmboSecurity2.SelectedItem == null ||
-                   cmboSecurity3.SelectedItem == null || txtAnswer1.Text == "" || txtAnswer2.Text == ""
-                   || txtAnswer3.Text == "")
+            if(acceptedPassword == true)
+            {
+                try
                 {
-                    MessageBox.Show("Feilds with ' * ' are required", "Please fill out all required fields", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    List<TextBox> textBoxes = new List<TextBox>();
+                    textBoxes.Add(txtFirst);
+                    textBoxes.Add(txtLast);
+                    textBoxes.Add(txtAddress1);
+                    textBoxes.Add(txtCity);
+                    textBoxes.Add(txtZip);
+                    textBoxes.Add(txtUsername);
+                    textBoxes.Add(txtPassword);
+                    textBoxes.Add(txtAnswer1);
+                    textBoxes.Add(txtAnswer2);
+                    textBoxes.Add(txtAnswer3);
 
-                    foreach (TextBox t in textBoxes)
+                    List<ComboBox> comboBoxes = new List<ComboBox>();
+                    comboBoxes.Add(cboStates);
+                    comboBoxes.Add(cmboSecurity1);
+                    comboBoxes.Add(cmboSecurity2);
+                    comboBoxes.Add(cmboSecurity3);
+
+                    bool emptyTextbox = false;
+
+                    if (txtFirst.Text == "" || txtLast.Text == "" || txtAddress1.Text == "" ||
+                       txtCity.Text == "" || cboStates.SelectedItem == null ||
+                       txtZip.Text == "" || txtUsername.Text == "" || txtPassword.Text == "" ||
+                       cmboSecurity1.SelectedItem == null || cmboSecurity2.SelectedItem == null ||
+                       cmboSecurity3.SelectedItem == null || txtAnswer1.Text == "" || txtAnswer2.Text == ""
+                       || txtAnswer3.Text == "")
                     {
-                        if (t.Text == null || t.Text == "")
+                        MessageBox.Show("Feilds with ' * ' are required", "Please fill out all required fields", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                        foreach (TextBox t in textBoxes)
                         {
-                            emptyTextbox = true;
-                            t.Focus();
-                            break;
-                        }                      
-                    }
-                    if(emptyTextbox == false)
-                    {
-                        foreach(ComboBox c in comboBoxes)
-                        {
-                            if(c.SelectedItem == null)
+                            if (t.Text == null || t.Text == "")
                             {
-                                c.Focus();
+                                emptyTextbox = true;
+                                t.Focus();
                                 break;
                             }
                         }
-                    }
-                }
-                else
-                {
-                    using (SqlConnection con = new SqlConnection(constr))
-                    {
-                        using (SqlCommand cmd = new SqlCommand("INSERT INTO HackK21Su2332.Person(NameFirst, NameLast, Address1, Address2, Address3," +
-                                                               " City, State, Zipcode, Email, PhonePrimary, UserName, Password, AccountType," +
-                                                               " SecurityQuestion1, SecurityAnswer1, SecurityQuestion2, SecurityAnswer2," +
-                                                               " SecurityQuestion3, SecurityAnswer3)" +
-                                                               " VALUES(@NameFirst, @NameLast, @Address1, @Address2, @Address3," +
-                                                               " @City, @State, @Zipcode, @Email, @PhonePrimary, @UserName, @Password, @AccountType," +
-                                                               " @SecurityQuestion1, @SecurityAnswer1, @SecurityQuestion2, @SecurityAnswer2, @SecurityQuestion3, @SecurityAnswer3)"))
+                        if (emptyTextbox == false)
                         {
-                            con.Open();
-                            cmd.CommandType = CommandType.Text;
-                            cmd.Parameters.AddWithValue("@NameFirst", txtFirst.Text);
-                            cmd.Parameters.AddWithValue("@NameLast", txtLast.Text);
-                            cmd.Parameters.AddWithValue("@Address1", txtAddress1.Text);
-                            cmd.Parameters.AddWithValue("@Address2", txtAddress2.Text);
-                            cmd.Parameters.AddWithValue("@Address3", txtAddress3.Text);
-                            cmd.Parameters.AddWithValue("@City", txtCity.Text);
-                            cmd.Parameters.AddWithValue("@State", cboStates.SelectedItem.ToString());
-                            cmd.Parameters.AddWithValue("@Zipcode", txtZip.Text);
-                            cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
-                            cmd.Parameters.AddWithValue("@PhonePrimary", txtPhone.Text);
-                            cmd.Parameters.AddWithValue("@UserName", txtUsername.Text);
-                            cmd.Parameters.AddWithValue("@Password", txtPassword.Text);
-                            cmd.Parameters.AddWithValue("@AccountType", "Customer");
-                            cmd.Parameters.AddWithValue("@SecurityQuestion1", cmboSecurity1.SelectedItem.ToString());
-                            cmd.Parameters.AddWithValue("@SecurityAnswer1", txtAnswer1.Text);
-                            cmd.Parameters.AddWithValue("@SecurityQuestion2", cmboSecurity2.SelectedItem.ToString());
-                            cmd.Parameters.AddWithValue("@SecurityAnswer2", txtAnswer2.Text);
-                            cmd.Parameters.AddWithValue("@SecurityQuestion3", cmboSecurity3.SelectedItem.ToString());
-                            cmd.Parameters.AddWithValue("@SecurityAnswer3", txtAnswer3.Text);
-
-                            cmd.Connection = con;
-                            con.Close();
+                            foreach (ComboBox c in comboBoxes)
+                            {
+                                if (c.SelectedItem == null)
+                                {
+                                    c.Focus();
+                                    break;
+                                }
+                            }
                         }
                     }
+                    else
+                    {
+
+                        using(SqlConnection connCheckUsername = new SqlConnection(constr))
+                        {
+                            using (SqlCommand cmdCheckUsername = new SqlCommand("SELECT UserName from HackK21Su2332.Person WHERE UserName = @UserName"))
+                            {
+                                connCheckUsername.Open();
+                                cmdCheckUsername.CommandType = CommandType.Text;
+                                cmdCheckUsername.Parameters.AddWithValue("@UserName", txtUsername.Text);
+                                cmdCheckUsername.Connection = connCheckUsername;
+
+                                using (SqlDataReader sdr = cmdCheckUsername.ExecuteReader())
+                                {
+                                    if(sdr.Read())
+                                    {
+                                        MessageBox.Show("This Username is already taken", "Name in use", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                    }
+                                    else
+                                    {
+                                        connCheckUsername.Close();
+                                        using (SqlConnection con = new SqlConnection(constr))
+                                        {
+                                            using (SqlCommand cmd = new SqlCommand("INSERT INTO HackK21Su2332.Person(NameFirst, NameLast, Address1, Address2, Address3," +
+                                                                                   " City, State, Zipcode, Email, PhonePrimary, UserName, Password, AccountType," +
+                                                                                   " SecurityQuestion1, SecurityAnswer1, SecurityQuestion2, SecurityAnswer2," +
+                                                                                   " SecurityQuestion3, SecurityAnswer3)" +
+                                                                                   " VALUES(@NameFirst, @NameLast, @Address1, @Address2, @Address3," +
+                                                                                   " @City, @State, @Zipcode, @Email, @PhonePrimary, @UserName, @Password, @AccountType," +
+                                                                                   " @SecurityQuestion1, @SecurityAnswer1, @SecurityQuestion2, @SecurityAnswer2, @SecurityQuestion3, @SecurityAnswer3)"))
+                                            {
+                                                con.Open();
+                                                cmd.CommandType = CommandType.Text;
+                                                cmd.Parameters.AddWithValue("@NameFirst", txtFirst.Text);
+                                                cmd.Parameters.AddWithValue("@NameLast", txtLast.Text);
+                                                cmd.Parameters.AddWithValue("@Address1", txtAddress1.Text);
+                                                cmd.Parameters.AddWithValue("@Address2", txtAddress2.Text);
+                                                cmd.Parameters.AddWithValue("@Address3", txtAddress3.Text);
+                                                cmd.Parameters.AddWithValue("@City", txtCity.Text);
+                                                cmd.Parameters.AddWithValue("@State", cboStates.SelectedItem.ToString());
+                                                cmd.Parameters.AddWithValue("@Zipcode", txtZip.Text);
+                                                cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
+                                                cmd.Parameters.AddWithValue("@PhonePrimary", txtPhone.Text);
+                                                cmd.Parameters.AddWithValue("@UserName", txtUsername.Text);
+                                                cmd.Parameters.AddWithValue("@Password", txtPassword.Text);
+                                                cmd.Parameters.AddWithValue("@AccountType", "Customer");
+                                                cmd.Parameters.AddWithValue("@SecurityQuestion1", cmboSecurity1.SelectedItem.ToString());
+                                                cmd.Parameters.AddWithValue("@SecurityAnswer1", txtAnswer1.Text);
+                                                cmd.Parameters.AddWithValue("@SecurityQuestion2", cmboSecurity2.SelectedItem.ToString());
+                                                cmd.Parameters.AddWithValue("@SecurityAnswer2", txtAnswer2.Text);
+                                                cmd.Parameters.AddWithValue("@SecurityQuestion3", cmboSecurity3.SelectedItem.ToString());
+                                                cmd.Parameters.AddWithValue("@SecurityAnswer3", txtAnswer3.Text);
+
+                                                cmd.ExecuteNonQuery();
+                                                cmd.Connection = con;
+                                                con.Close();
+
+                                                DialogResult dr = MessageBox.Show("Account Succesfully Created!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                                if (dr == DialogResult.OK)
+                                                {
+                                                    this.Close();
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }                      
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            } 
         }
 
         private void txtFirst_KeyPress(object sender, KeyPressEventArgs e)
@@ -224,18 +289,40 @@ namespace SU21_Final_Project
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            if(changesMade == false)
+            if (changesMade == false)
             {
                 this.Close();
             }
             else
             {
                 DialogResult dr = MessageBox.Show("All changes will be discarded. Are you sure you want to cancel?", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if(dr == DialogResult.Yes)
+                if (dr == DialogResult.Yes)
                 {
                     this.Close();
                 }
             }
+        }
+
+        private void txtZip_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            txtPhone.MaxLength = 10;
+        }
+
+        private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            txtPassword.MaxLength = 10;
         }
     }
 }

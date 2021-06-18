@@ -98,7 +98,7 @@ namespace SU21_Final_Project
                                     else
                                     {
                                         MessageBox.Show("Your password is incorrect", "Invalid Password", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                        txtUsername.Focus();
+                                        txtPassword.Focus();
                                     }
                                 }
                             }
