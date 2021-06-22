@@ -66,11 +66,11 @@ namespace SU21_Final_Project
             this.Controls.Add(this.btnShop);
             this.Controls.Add(this.btnManage);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Tag = "2021.05.02";
             this.Text = "GOT Shirts";
-            this.Load += new System.EventHandler(this.frmMain_Load);
             this.ResumeLayout(false);
 
         }

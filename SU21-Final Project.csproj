@@ -47,6 +47,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo_no_dots_fit_AHE_icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -63,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\DataMoney.cs" />
+    <Compile Include="Data\DataOrder.cs" />
     <Compile Include="Data\DataPerson.cs" />
     <Compile Include="frmCheckout.cs">
       <SubType>Form</SubType>
@@ -180,6 +184,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="logo_no_dots_fit_AHE_icon.ico" />
     <Content Include="Shirts\Black.PNG" />
     <Content Include="Shirts\Blue.PNG" />
     <Content Include="Shirts\Green.PNG" />

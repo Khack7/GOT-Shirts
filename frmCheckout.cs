@@ -61,11 +61,13 @@ namespace SU21_Final_Project
                     int discount = frmCouponInput.percentOff;
                     SubCost = (sub - (sub * discount));
 
-                    lblSubtotal.Text = (sub - (sub * discount)).ToString();
+                    lblSubtotal.Text = (sub - (sub * discount)).ToString("C2");
                 }
                 else
                 {
-                    lblSubtotal.Text = frmShop.Subtotal;
+                    lblSubtotal.Text = string.Format(frmShop.Subtotal, "C2");
+                    double.TryParse(frmShop.Subtotal, out double s);
+                    SubCost = s;
                 }
 
                 getShipping(shippingMethod);
@@ -78,7 +80,13 @@ namespace SU21_Final_Project
 
                 double taxes = d;
 
-                lblTax.Text = (taxes * SubCost).ToString();
+                TaxCost = taxes * SubCost;
+
+                lblTax.Text = (TaxCost).ToString("C2");
+
+                TotalCost = SubCost + TaxCost + shippingCost;
+
+                lblTotal.Text = (TotalCost).ToString("C2");
 
 
                 string[] years = new string[12];
@@ -102,10 +110,6 @@ namespace SU21_Final_Project
                     {
                         years[i] = (y + i).ToString();
                     }
-                    else
-                    {
-
-                    }
                 }
                 for (int y = 0; y < years.Length; y++)
                 {
@@ -124,18 +128,27 @@ namespace SU21_Final_Project
         {
             shippingMethod = "StandardShipping";
             getShipping(shippingMethod);
+            TotalCost = SubCost + TaxCost + shippingCost;
+
+            lblTotal.Text = (TotalCost).ToString("C2");
         }
 
         private void rdoNextDay_CheckedChanged(object sender, EventArgs e)
         {
             shippingMethod = "NextDayShipping";
             getShipping(shippingMethod);
+            TotalCost = SubCost + TaxCost + shippingCost;
+
+            lblTotal.Text = (TotalCost).ToString("C2");
         }
 
         private void rdoSecondDay_CheckedChanged(object sender, EventArgs e)
         {
             shippingMethod = "SecondDayShipping";
             getShipping(shippingMethod);
+            TotalCost = SubCost + TaxCost + shippingCost;
+
+            lblTotal.Text = (TotalCost).ToString("C2");
         }
     }
 }

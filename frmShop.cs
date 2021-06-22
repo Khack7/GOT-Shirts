@@ -320,7 +320,7 @@ namespace SU21_Final_Project
 
         private void btnCheckout_Click(object sender, EventArgs e)
         {
-            Subtotal = lblAmount.Text;
+            Subtotal = currentTotal.ToString();
             for(int i = 0; i < lstCart.Items.Count; i++)
             {
                 cartItems.Add(lstCart.Items[i].ToString());

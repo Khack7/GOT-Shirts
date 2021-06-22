@@ -29,6 +29,7 @@ namespace SU21_Final_Project
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCouponInput));
             this.btnEnter = new System.Windows.Forms.Button();
             this.txtCode = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -70,6 +71,7 @@ namespace SU21_Final_Project
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.txtCode);
             this.Controls.Add(this.btnEnter);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmCouponInput";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Input Code";

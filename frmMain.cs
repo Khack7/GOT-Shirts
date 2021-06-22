@@ -29,10 +29,16 @@ namespace SU21_Final_Project
             InitializeComponent();
         }
 
-        private void frmMain_Load(object sender, EventArgs e)
-        {
-
-        }
+        //private const int CP_DISABLE_CLOSE_BUTTON = 0x200;
+        //protected override CreateParams CreateParams
+        //{
+        //    get
+        //    {
+        //        CreateParams cp = base.CreateParams;
+        //        cp.ClassStyle = cp.ClassStyle | CP_DISABLE_CLOSE_BUTTON;
+        //        return cp;
+        //    }
+        //}USE THIS TO DISABLE 'X' BUTTON
 
         private void btnManage_Click(object sender, EventArgs e)
         {
