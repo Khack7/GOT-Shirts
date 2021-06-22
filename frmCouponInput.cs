@@ -25,6 +25,8 @@ namespace SU21_Final_Project
         }
 
         public static string CouponCode;
+        public static int percentOff;
+        public static bool CodeUsed = false;
 
         private void btnEnter_Click(object sender, EventArgs e)
         {
@@ -54,6 +56,11 @@ namespace SU21_Final_Project
                                     {
                                         CouponCode = txtCode.Text;
                                         MessageBox.Show("Code accepted! Your discount will be applied at checkout", "Accepted!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                        int.TryParse(sdr["PercentOff"].ToString(), out int p);
+                                        percentOff = p;
+                                        CodeUsed = true;
+                                        
                                         this.Close();
                                     }
                                     else

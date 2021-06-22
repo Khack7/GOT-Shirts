@@ -47,7 +47,7 @@ namespace SU21_Final_Project
             this.btnHelp.Location = new System.Drawing.Point(393, 12);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(90, 24);
-            this.btnHelp.TabIndex = 15;
+            this.btnHelp.TabIndex = 7;
             this.btnHelp.Text = "Help";
             this.btnHelp.UseVisualStyleBackColor = true;
             // 
@@ -58,7 +58,7 @@ namespace SU21_Final_Project
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '•';
             this.txtPassword.Size = new System.Drawing.Size(152, 20);
-            this.txtPassword.TabIndex = 14;
+            this.txtPassword.TabIndex = 3;
             // 
             // txtUsername
             // 
@@ -66,7 +66,7 @@ namespace SU21_Final_Project
             this.txtUsername.Location = new System.Drawing.Point(202, 104);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(152, 20);
-            this.txtUsername.TabIndex = 13;
+            this.txtUsername.TabIndex = 1;
             // 
             // lblPass
             // 
@@ -76,7 +76,7 @@ namespace SU21_Final_Project
             this.lblPass.Location = new System.Drawing.Point(128, 159);
             this.lblPass.Name = "lblPass";
             this.lblPass.Size = new System.Drawing.Size(61, 15);
-            this.lblPass.TabIndex = 12;
+            this.lblPass.TabIndex = 2;
             this.lblPass.Text = "Password";
             // 
             // lblUserName
@@ -87,7 +87,7 @@ namespace SU21_Final_Project
             this.lblUserName.Location = new System.Drawing.Point(128, 104);
             this.lblUserName.Name = "lblUserName";
             this.lblUserName.Size = new System.Drawing.Size(67, 15);
-            this.lblUserName.TabIndex = 11;
+            this.lblUserName.TabIndex = 0;
             this.lblUserName.Text = "UserName";
             // 
             // btnRegister
@@ -96,7 +96,7 @@ namespace SU21_Final_Project
             this.btnRegister.Location = new System.Drawing.Point(12, 12);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(90, 24);
-            this.btnRegister.TabIndex = 10;
+            this.btnRegister.TabIndex = 6;
             this.btnRegister.Text = "Register";
             this.btnRegister.UseVisualStyleBackColor = true;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
@@ -108,7 +108,7 @@ namespace SU21_Final_Project
             this.btnGuest.Location = new System.Drawing.Point(374, 253);
             this.btnGuest.Name = "btnGuest";
             this.btnGuest.Size = new System.Drawing.Size(109, 50);
-            this.btnGuest.TabIndex = 9;
+            this.btnGuest.TabIndex = 8;
             this.btnGuest.Text = "Shop as guest";
             this.btnGuest.UseVisualStyleBackColor = true;
             this.btnGuest.Click += new System.EventHandler(this.btnGuest_Click);
@@ -120,7 +120,7 @@ namespace SU21_Final_Project
             this.btnSign.Location = new System.Drawing.Point(12, 253);
             this.btnSign.Name = "btnSign";
             this.btnSign.Size = new System.Drawing.Size(109, 50);
-            this.btnSign.TabIndex = 8;
+            this.btnSign.TabIndex = 5;
             this.btnSign.Text = "Sign In";
             this.btnSign.UseVisualStyleBackColor = true;
             this.btnSign.Click += new System.EventHandler(this.btnSign_Click);
@@ -131,7 +131,7 @@ namespace SU21_Final_Project
             this.btnForgot.Location = new System.Drawing.Point(202, 180);
             this.btnForgot.Name = "btnForgot";
             this.btnForgot.Size = new System.Drawing.Size(152, 24);
-            this.btnForgot.TabIndex = 16;
+            this.btnForgot.TabIndex = 4;
             this.btnForgot.Text = "Forgot Password?";
             this.btnForgot.UseVisualStyleBackColor = true;
             this.btnForgot.Click += new System.EventHandler(this.btnForgot_Click);

@@ -29,38 +29,42 @@ namespace SU21_Final_Project
         /// </summary>
         private void InitializeComponent()
         {
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblShippingPointer = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.txtCard = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblCard = new System.Windows.Forms.Label();
             this.rdoDiscover = new System.Windows.Forms.RadioButton();
             this.rdoMasterCard = new System.Windows.Forms.RadioButton();
             this.rdoVisa = new System.Windows.Forms.RadioButton();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblTax = new System.Windows.Forms.Label();
             this.lblTotalPointer = new System.Windows.Forms.Label();
+            this.lblTaxPointer = new System.Windows.Forms.Label();
+            this.lblSubTotalPointer = new System.Windows.Forms.Label();
             this.lstCart = new System.Windows.Forms.ListBox();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
+            this.rdoSecondDay = new System.Windows.Forms.RadioButton();
+            this.rdoNextDay = new System.Windows.Forms.RadioButton();
             this.rdoStandard = new System.Windows.Forms.RadioButton();
-            this.lblShip = new System.Windows.Forms.Label();
+            this.lblShippingMethod = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblExpiration = new System.Windows.Forms.Label();
             this.cboMonth = new System.Windows.Forms.ComboBox();
             this.cboYear = new System.Windows.Forms.ComboBox();
+            this.lblSubtotal = new System.Windows.Forms.Label();
+            this.lblTax = new System.Windows.Forms.Label();
+            this.lblShipping = new System.Windows.Forms.Label();
+            this.lblTotal = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label3
+            // lblShippingPointer
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(201, 103);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 17);
-            this.label3.TabIndex = 40;
-            this.label3.Text = "Shipping:";
+            this.lblShippingPointer.AutoSize = true;
+            this.lblShippingPointer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblShippingPointer.Location = new System.Drawing.Point(201, 103);
+            this.lblShippingPointer.Name = "lblShippingPointer";
+            this.lblShippingPointer.Size = new System.Drawing.Size(67, 17);
+            this.lblShippingPointer.TabIndex = 40;
+            this.lblShippingPointer.Text = "Shipping:";
             // 
             // button2
             // 
@@ -89,15 +93,15 @@ namespace SU21_Final_Project
             this.txtCard.Size = new System.Drawing.Size(266, 20);
             this.txtCard.TabIndex = 37;
             // 
-            // label2
+            // lblCard
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(9, 222);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 17);
-            this.label2.TabIndex = 36;
-            this.label2.Text = "Card #";
+            this.lblCard.AutoSize = true;
+            this.lblCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCard.Location = new System.Drawing.Point(9, 222);
+            this.lblCard.Name = "lblCard";
+            this.lblCard.Size = new System.Drawing.Size(50, 17);
+            this.lblCard.TabIndex = 36;
+            this.lblCard.Text = "Card #";
             // 
             // rdoDiscover
             // 
@@ -134,35 +138,35 @@ namespace SU21_Final_Project
             this.rdoVisa.Text = "Visa";
             this.rdoVisa.UseVisualStyleBackColor = true;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(201, 143);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 17);
-            this.label1.TabIndex = 32;
-            this.label1.Text = "Total:";
-            // 
-            // lblTax
-            // 
-            this.lblTax.AutoSize = true;
-            this.lblTax.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTax.Location = new System.Drawing.Point(201, 53);
-            this.lblTax.Name = "lblTax";
-            this.lblTax.Size = new System.Drawing.Size(35, 17);
-            this.lblTax.TabIndex = 31;
-            this.lblTax.Text = "Tax:";
-            // 
             // lblTotalPointer
             // 
             this.lblTotalPointer.AutoSize = true;
             this.lblTotalPointer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalPointer.Location = new System.Drawing.Point(201, 8);
+            this.lblTotalPointer.Location = new System.Drawing.Point(201, 143);
             this.lblTotalPointer.Name = "lblTotalPointer";
-            this.lblTotalPointer.Size = new System.Drawing.Size(69, 17);
-            this.lblTotalPointer.TabIndex = 30;
-            this.lblTotalPointer.Text = "SubTotal:";
+            this.lblTotalPointer.Size = new System.Drawing.Size(44, 17);
+            this.lblTotalPointer.TabIndex = 32;
+            this.lblTotalPointer.Text = "Total:";
+            // 
+            // lblTaxPointer
+            // 
+            this.lblTaxPointer.AutoSize = true;
+            this.lblTaxPointer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTaxPointer.Location = new System.Drawing.Point(201, 53);
+            this.lblTaxPointer.Name = "lblTaxPointer";
+            this.lblTaxPointer.Size = new System.Drawing.Size(35, 17);
+            this.lblTaxPointer.TabIndex = 31;
+            this.lblTaxPointer.Text = "Tax:";
+            // 
+            // lblSubTotalPointer
+            // 
+            this.lblSubTotalPointer.AutoSize = true;
+            this.lblSubTotalPointer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSubTotalPointer.Location = new System.Drawing.Point(201, 8);
+            this.lblSubTotalPointer.Name = "lblSubTotalPointer";
+            this.lblSubTotalPointer.Size = new System.Drawing.Size(69, 17);
+            this.lblSubTotalPointer.TabIndex = 30;
+            this.lblSubTotalPointer.Text = "SubTotal:";
             // 
             // lstCart
             // 
@@ -175,27 +179,29 @@ namespace SU21_Final_Project
             this.lstCart.Size = new System.Drawing.Size(183, 148);
             this.lstCart.TabIndex = 29;
             // 
-            // radioButton3
+            // rdoSecondDay
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton3.Location = new System.Drawing.Point(252, 19);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(100, 21);
-            this.radioButton3.TabIndex = 43;
-            this.radioButton3.Text = "2nd Day Air";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.rdoSecondDay.AutoSize = true;
+            this.rdoSecondDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdoSecondDay.Location = new System.Drawing.Point(252, 19);
+            this.rdoSecondDay.Name = "rdoSecondDay";
+            this.rdoSecondDay.Size = new System.Drawing.Size(100, 21);
+            this.rdoSecondDay.TabIndex = 43;
+            this.rdoSecondDay.Text = "2nd Day Air";
+            this.rdoSecondDay.UseVisualStyleBackColor = true;
+            this.rdoSecondDay.CheckedChanged += new System.EventHandler(this.rdoSecondDay_CheckedChanged);
             // 
-            // radioButton5
+            // rdoNextDay
             // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton5.Location = new System.Drawing.Point(123, 19);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(104, 21);
-            this.radioButton5.TabIndex = 42;
-            this.radioButton5.Text = "Next Day Air";
-            this.radioButton5.UseVisualStyleBackColor = true;
+            this.rdoNextDay.AutoSize = true;
+            this.rdoNextDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdoNextDay.Location = new System.Drawing.Point(123, 19);
+            this.rdoNextDay.Name = "rdoNextDay";
+            this.rdoNextDay.Size = new System.Drawing.Size(104, 21);
+            this.rdoNextDay.TabIndex = 42;
+            this.rdoNextDay.Text = "Next Day Air";
+            this.rdoNextDay.UseVisualStyleBackColor = true;
+            this.rdoNextDay.CheckedChanged += new System.EventHandler(this.rdoNextDay_CheckedChanged);
             // 
             // rdoStandard
             // 
@@ -209,37 +215,38 @@ namespace SU21_Final_Project
             this.rdoStandard.TabStop = true;
             this.rdoStandard.Text = "Standard";
             this.rdoStandard.UseVisualStyleBackColor = true;
+            this.rdoStandard.CheckedChanged += new System.EventHandler(this.rdoStandard_CheckedChanged);
             // 
-            // lblShip
+            // lblShippingMethod
             // 
-            this.lblShip.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblShip.Location = new System.Drawing.Point(13, 298);
-            this.lblShip.Name = "lblShip";
-            this.lblShip.Size = new System.Drawing.Size(318, 23);
-            this.lblShip.TabIndex = 44;
-            this.lblShip.Text = "Select Shipping Method";
-            this.lblShip.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblShippingMethod.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblShippingMethod.Location = new System.Drawing.Point(13, 298);
+            this.lblShippingMethod.Name = "lblShippingMethod";
+            this.lblShippingMethod.Size = new System.Drawing.Size(318, 23);
+            this.lblShippingMethod.TabIndex = 44;
+            this.lblShippingMethod.Text = "Select Shipping Method";
+            this.lblShippingMethod.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.rdoStandard);
-            this.groupBox1.Controls.Add(this.radioButton5);
-            this.groupBox1.Controls.Add(this.radioButton3);
+            this.groupBox1.Controls.Add(this.rdoNextDay);
+            this.groupBox1.Controls.Add(this.rdoSecondDay);
             this.groupBox1.Location = new System.Drawing.Point(0, 317);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(356, 54);
             this.groupBox1.TabIndex = 45;
             this.groupBox1.TabStop = false;
             // 
-            // label4
+            // lblExpiration
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(9, 255);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(69, 17);
-            this.label4.TabIndex = 46;
-            this.label4.Text = "Exp. Date";
+            this.lblExpiration.AutoSize = true;
+            this.lblExpiration.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblExpiration.Location = new System.Drawing.Point(9, 255);
+            this.lblExpiration.Name = "lblExpiration";
+            this.lblExpiration.Size = new System.Drawing.Size(69, 17);
+            this.lblExpiration.TabIndex = 46;
+            this.lblExpiration.Text = "Exp. Date";
             // 
             // cboMonth
             // 
@@ -257,27 +264,67 @@ namespace SU21_Final_Project
             this.cboYear.Size = new System.Drawing.Size(49, 21);
             this.cboYear.TabIndex = 48;
             // 
+            // lblSubtotal
+            // 
+            this.lblSubtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSubtotal.Location = new System.Drawing.Point(276, 8);
+            this.lblSubtotal.Name = "lblSubtotal";
+            this.lblSubtotal.Size = new System.Drawing.Size(55, 17);
+            this.lblSubtotal.TabIndex = 49;
+            this.lblSubtotal.Text = "$0.00";
+            // 
+            // lblTax
+            // 
+            this.lblTax.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTax.Location = new System.Drawing.Point(276, 53);
+            this.lblTax.Name = "lblTax";
+            this.lblTax.Size = new System.Drawing.Size(55, 17);
+            this.lblTax.TabIndex = 50;
+            this.lblTax.Text = "$0.00";
+            // 
+            // lblShipping
+            // 
+            this.lblShipping.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblShipping.Location = new System.Drawing.Point(276, 103);
+            this.lblShipping.Name = "lblShipping";
+            this.lblShipping.Size = new System.Drawing.Size(55, 17);
+            this.lblShipping.TabIndex = 51;
+            this.lblShipping.Text = "$0.00";
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.Location = new System.Drawing.Point(276, 143);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(55, 17);
+            this.lblTotal.TabIndex = 52;
+            this.lblTotal.Text = "$0.00";
+            // 
             // frmCheckout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(350, 436);
+            this.Controls.Add(this.lblTotal);
+            this.Controls.Add(this.lblShipping);
+            this.Controls.Add(this.lblTax);
+            this.Controls.Add(this.lblSubtotal);
             this.Controls.Add(this.cboYear);
             this.Controls.Add(this.cboMonth);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lblExpiration);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.lblShip);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lblShippingMethod);
+            this.Controls.Add(this.lblShippingPointer);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtCard);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblCard);
             this.Controls.Add(this.rdoDiscover);
             this.Controls.Add(this.rdoMasterCard);
             this.Controls.Add(this.rdoVisa);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.lblTax);
             this.Controls.Add(this.lblTotalPointer);
+            this.Controls.Add(this.lblTaxPointer);
+            this.Controls.Add(this.lblSubTotalPointer);
             this.Controls.Add(this.lstCart);
             this.Name = "frmCheckout";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -292,25 +339,29 @@ namespace SU21_Final_Project
 
         #endregion
 
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblShippingPointer;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox txtCard;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblCard;
         private System.Windows.Forms.RadioButton rdoDiscover;
         private System.Windows.Forms.RadioButton rdoMasterCard;
         private System.Windows.Forms.RadioButton rdoVisa;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblTax;
         private System.Windows.Forms.Label lblTotalPointer;
+        private System.Windows.Forms.Label lblTaxPointer;
+        private System.Windows.Forms.Label lblSubTotalPointer;
         private System.Windows.Forms.ListBox lstCart;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton5;
+        private System.Windows.Forms.RadioButton rdoSecondDay;
+        private System.Windows.Forms.RadioButton rdoNextDay;
         private System.Windows.Forms.RadioButton rdoStandard;
-        private System.Windows.Forms.Label lblShip;
+        private System.Windows.Forms.Label lblShippingMethod;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblExpiration;
         private System.Windows.Forms.ComboBox cboMonth;
         private System.Windows.Forms.ComboBox cboYear;
+        private System.Windows.Forms.Label lblSubtotal;
+        private System.Windows.Forms.Label lblTax;
+        private System.Windows.Forms.Label lblShipping;
+        private System.Windows.Forms.Label lblTotal;
     }
 }

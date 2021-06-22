@@ -62,6 +62,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\DataMoney.cs" />
+    <Compile Include="Data\DataPerson.cs" />
     <Compile Include="frmCheckout.cs">
       <SubType>Form</SubType>
     </Compile>

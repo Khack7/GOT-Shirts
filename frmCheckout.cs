@@ -8,6 +8,7 @@
 // and the payment options.
 //*******************************************
 //*******************************************using System;
+using SU21_Final_Project.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,39 +28,114 @@ namespace SU21_Final_Project
             InitializeComponent();
         }
 
+        private void getShipping(string method)
+        {
+            DataMoney shipping = null;
+
+            shipping = DataMoney.GetValues(method);
+
+            double.TryParse(shipping.SettingValue, out double d);
+            shippingCost = d;
+
+            lblShipping.Text = string.Format(shipping.SettingValue, "C2");
+        }
+
+        double shippingCost, TaxCost, SubCost, TotalCost;
+
         private void frmCheckout_Load(object sender, System.EventArgs e)
         {
-
-            string[] years = new string[12];
-
-            cboMonth.Items.Add("01");
-            cboMonth.Items.Add("02");
-            cboMonth.Items.Add("03");
-            cboMonth.Items.Add("04");
-            cboMonth.Items.Add("05");
-            cboMonth.Items.Add("06");
-            cboMonth.Items.Add("07");
-            cboMonth.Items.Add("08");
-            cboMonth.Items.Add("09");
-            cboMonth.Items.Add("10");
-            cboMonth.Items.Add("11");
-            cboMonth.Items.Add("12");
-
-            for (int i = 0; i < 12; i++)
+            try
             {
-                if (int.TryParse(DateTime.Now.Year.ToString(), out int y))
+                string currentItem;
+                for (int i = 0; i < frmShop.cartItems.Count; i++)
                 {
-                    years[i] = (y + i).ToString();
+                    currentItem = frmShop.cartItems.ElementAt(i);
+                    lstCart.Items.Add(currentItem);
+                }
+
+                if (frmCouponInput.CodeUsed == true)
+                {
+                    double.TryParse(frmShop.Subtotal, out double s);
+                    double sub = s;
+
+                    int discount = frmCouponInput.percentOff;
+                    SubCost = (sub - (sub * discount));
+
+                    lblSubtotal.Text = (sub - (sub * discount)).ToString();
                 }
                 else
                 {
+                    lblSubtotal.Text = frmShop.Subtotal;
+                }
 
+                getShipping(shippingMethod);
+
+                DataMoney tax = null;
+
+                tax = DataMoney.GetValues("TaxRate");
+
+                double.TryParse(tax.SettingValue, out double d);
+
+                double taxes = d;
+
+                lblTax.Text = (taxes * SubCost).ToString();
+
+
+                string[] years = new string[12];
+
+                cboMonth.Items.Add("01");
+                cboMonth.Items.Add("02");
+                cboMonth.Items.Add("03");
+                cboMonth.Items.Add("04");
+                cboMonth.Items.Add("05");
+                cboMonth.Items.Add("06");
+                cboMonth.Items.Add("07");
+                cboMonth.Items.Add("08");
+                cboMonth.Items.Add("09");
+                cboMonth.Items.Add("10");
+                cboMonth.Items.Add("11");
+                cboMonth.Items.Add("12");
+
+                for (int i = 0; i < 12; i++)
+                {
+                    if (int.TryParse(DateTime.Now.Year.ToString(), out int y))
+                    {
+                        years[i] = (y + i).ToString();
+                    }
+                    else
+                    {
+
+                    }
+                }
+                for (int y = 0; y < years.Length; y++)
+                {
+                    cboYear.Items.Add(years[y]);
                 }
             }
-            for (int y = 0; y < years.Length; y++)
+            catch (Exception ex)
             {
-                cboYear.Items.Add(years[y]);
+                MessageBox.Show(ex.Message);
             }
+        }
+
+        string shippingMethod = "StandardShipping";
+
+        private void rdoStandard_CheckedChanged(object sender, EventArgs e)
+        {
+            shippingMethod = "StandardShipping";
+            getShipping(shippingMethod);
+        }
+
+        private void rdoNextDay_CheckedChanged(object sender, EventArgs e)
+        {
+            shippingMethod = "NextDayShipping";
+            getShipping(shippingMethod);
+        }
+
+        private void rdoSecondDay_CheckedChanged(object sender, EventArgs e)
+        {
+            shippingMethod = "SecondDayShipping";
+            getShipping(shippingMethod);
         }
     }
 }

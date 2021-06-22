@@ -15,6 +15,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,9 +25,12 @@ namespace SU21_Final_Project
 {
     public partial class frmShop : Form
     {
+        private string _appPath;
         public frmShop()
         {
             InitializeComponent();
+            _appPath = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
+            //MessageBox.Show($"{_appPath}\\Shirts");
         }
 
         private Image resizeImage(Image src, int width, int height)
@@ -160,7 +164,7 @@ namespace SU21_Final_Project
             if (result == DialogResult.Yes)
             {
                 this.Close();
-                //SIGN OUT TODO
+                frmSignIn.ID = 0;
             }
         }
 
@@ -311,8 +315,16 @@ namespace SU21_Final_Project
             getShirt(currentColor);
         }
 
+        public static List<string> cartItems = new List<string>();
+        public static string Subtotal;
+
         private void btnCheckout_Click(object sender, EventArgs e)
         {
+            Subtotal = lblAmount.Text;
+            for(int i = 0; i < lstCart.Items.Count; i++)
+            {
+                cartItems.Add(lstCart.Items[i].ToString());
+            }
             frmShipping ship = new frmShipping();
             this.Hide();
             ship.ShowDialog();

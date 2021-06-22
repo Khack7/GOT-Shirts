@@ -33,6 +33,57 @@ namespace SU21_Final_Project
         {
             string constr = ConfigurationManager.ConnectionStrings["SU21_Final_Project.Properties.Settings.ConnectionString"].ConnectionString;
 
+            cboStates.Items.Add("AL");
+            cboStates.Items.Add("AK");
+            cboStates.Items.Add("AZ");
+            cboStates.Items.Add("AR");
+            cboStates.Items.Add("CA");
+            cboStates.Items.Add("CO");
+            cboStates.Items.Add("CT");
+            cboStates.Items.Add("DE");
+            cboStates.Items.Add("FL");
+            cboStates.Items.Add("GA");
+            cboStates.Items.Add("HI");
+            cboStates.Items.Add("ID");
+            cboStates.Items.Add("IL");
+            cboStates.Items.Add("IN");
+            cboStates.Items.Add("IA");
+            cboStates.Items.Add("KS");
+            cboStates.Items.Add("KY");
+            cboStates.Items.Add("LA");
+            cboStates.Items.Add("ME");
+            cboStates.Items.Add("MD");
+            cboStates.Items.Add("MA");
+            cboStates.Items.Add("MI");
+            cboStates.Items.Add("MN");
+            cboStates.Items.Add("MS");
+            cboStates.Items.Add("MO");
+            cboStates.Items.Add("MT");
+            cboStates.Items.Add("NE");
+            cboStates.Items.Add("NV");
+            cboStates.Items.Add("NH");
+            cboStates.Items.Add("NJ");
+            cboStates.Items.Add("NM");
+            cboStates.Items.Add("NY");
+            cboStates.Items.Add("NC");
+            cboStates.Items.Add("ND");
+            cboStates.Items.Add("OH");
+            cboStates.Items.Add("OK");
+            cboStates.Items.Add("OR");
+            cboStates.Items.Add("PA");
+            cboStates.Items.Add("RI");
+            cboStates.Items.Add("SC");
+            cboStates.Items.Add("SD");
+            cboStates.Items.Add("TN");
+            cboStates.Items.Add("TX");
+            cboStates.Items.Add("UT");
+            cboStates.Items.Add("VT");
+            cboStates.Items.Add("VA");
+            cboStates.Items.Add("WA");
+            cboStates.Items.Add("WV");
+            cboStates.Items.Add("WI");
+            cboStates.Items.Add("WY");
+
             if (frmSignIn.CustomerType == "Customer" || frmSignIn.CustomerType == "Employee" || frmSignIn.CustomerType == "Manager")
             {
                 try
@@ -57,6 +108,7 @@ namespace SU21_Final_Project
                                     txtAddress3.Text = sdr["Address3"].ToString();
                                     txtCity.Text = sdr["City"].ToString();
                                     cboStates.SelectedItem = sdr["State"].ToString();
+                                    txtZip.Text = sdr["Zipcode"].ToString();
                                     txtPhone.Text = sdr["PhonePrimary"].ToString();
 
                                     txtFirst.ReadOnly = true;
@@ -65,7 +117,8 @@ namespace SU21_Final_Project
                                     txtAddress2.ReadOnly = true;
                                     txtAddress3.ReadOnly = true;
                                     txtCity.ReadOnly = true;
-                                    cboStates.Enabled = false;
+                                    txtPhone.ReadOnly = true;
+                                    txtZip.ReadOnly = true;
                                 }
                                 else
                                 {

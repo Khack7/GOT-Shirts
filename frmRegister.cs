@@ -7,6 +7,7 @@
 // Form Purpose: This is the form where new customers will create an account for quicker purchases
 //*******************************************
 //*******************************************
+using SU21_Final_Project.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -113,22 +114,22 @@ namespace SU21_Final_Project
 
             string attemptedPassword = txtPassword.Text;
 
-            if(!attemptedPassword.Any(char.IsLower))
+            if (!attemptedPassword.Any(char.IsLower))
             {
                 MessageBox.Show("Password must contain a lower case letter", "Missing password requirement", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
                 acceptedPassword = false;
             }
-            else if(!attemptedPassword.Any(char.IsUpper))
+            else if (!attemptedPassword.Any(char.IsUpper))
             {
                 MessageBox.Show("Password must contain an upper case letter", "Missing password requirement", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
                 acceptedPassword = false;
             }
-            else if(!attemptedPassword.Any(char.IsDigit))
+            else if (!attemptedPassword.Any(char.IsDigit))
             {
                 MessageBox.Show("Password must contain a number", "Missing password requirement", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
                 acceptedPassword = false;
             }
-            else if(attemptedPassword.Length < 8 || attemptedPassword.Length > 10)
+            else if (attemptedPassword.Length < 8 || attemptedPassword.Length > 10)
             {
                 MessageBox.Show("Password must be between 8 and 10 charactors", "Invalid length", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
                 acceptedPassword = false;
@@ -138,7 +139,7 @@ namespace SU21_Final_Project
                 acceptedPassword = true;
             }
 
-            if(acceptedPassword == true)
+            if (acceptedPassword == true)
             {
                 try
                 {
@@ -194,79 +195,51 @@ namespace SU21_Final_Project
                     }
                     else
                     {
-
-                        using(SqlConnection connCheckUsername = new SqlConnection(constr))
+                        DataPerson person = DataPerson.GetPerson(txtUsername.Text);
+                        if (person != null)
                         {
-                            using (SqlCommand cmdCheckUsername = new SqlCommand("SELECT UserName from HackK21Su2332.Person WHERE UserName = @UserName"))
+                            MessageBox.Show("This Username is already taken", "Name in use", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                        else
+                        {
+                            person = new DataPerson
                             {
-                                connCheckUsername.Open();
-                                cmdCheckUsername.CommandType = CommandType.Text;
-                                cmdCheckUsername.Parameters.AddWithValue("@UserName", txtUsername.Text);
-                                cmdCheckUsername.Connection = connCheckUsername;
-
-                                using (SqlDataReader sdr = cmdCheckUsername.ExecuteReader())
-                                {
-                                    if(sdr.Read())
-                                    {
-                                        MessageBox.Show("This Username is already taken", "Name in use", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                    }
-                                    else
-                                    {
-                                        connCheckUsername.Close();
-                                        using (SqlConnection con = new SqlConnection(constr))
-                                        {
-                                            using (SqlCommand cmd = new SqlCommand("INSERT INTO HackK21Su2332.Person(NameFirst, NameLast, Address1, Address2, Address3," +
-                                                                                   " City, State, Zipcode, Email, PhonePrimary, UserName, Password, AccountType," +
-                                                                                   " SecurityQuestion1, SecurityAnswer1, SecurityQuestion2, SecurityAnswer2," +
-                                                                                   " SecurityQuestion3, SecurityAnswer3)" +
-                                                                                   " VALUES(@NameFirst, @NameLast, @Address1, @Address2, @Address3," +
-                                                                                   " @City, @State, @Zipcode, @Email, @PhonePrimary, @UserName, @Password, @AccountType," +
-                                                                                   " @SecurityQuestion1, @SecurityAnswer1, @SecurityQuestion2, @SecurityAnswer2, @SecurityQuestion3, @SecurityAnswer3)"))
-                                            {
-                                                con.Open();
-                                                cmd.CommandType = CommandType.Text;
-                                                cmd.Parameters.AddWithValue("@NameFirst", txtFirst.Text);
-                                                cmd.Parameters.AddWithValue("@NameLast", txtLast.Text);
-                                                cmd.Parameters.AddWithValue("@Address1", txtAddress1.Text);
-                                                cmd.Parameters.AddWithValue("@Address2", txtAddress2.Text);
-                                                cmd.Parameters.AddWithValue("@Address3", txtAddress3.Text);
-                                                cmd.Parameters.AddWithValue("@City", txtCity.Text);
-                                                cmd.Parameters.AddWithValue("@State", cboStates.SelectedItem.ToString());
-                                                cmd.Parameters.AddWithValue("@Zipcode", txtZip.Text);
-                                                cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
-                                                cmd.Parameters.AddWithValue("@PhonePrimary", txtPhone.Text);
-                                                cmd.Parameters.AddWithValue("@UserName", txtUsername.Text);
-                                                cmd.Parameters.AddWithValue("@Password", txtPassword.Text);
-                                                cmd.Parameters.AddWithValue("@AccountType", "Customer");
-                                                cmd.Parameters.AddWithValue("@SecurityQuestion1", cmboSecurity1.SelectedItem.ToString());
-                                                cmd.Parameters.AddWithValue("@SecurityAnswer1", txtAnswer1.Text);
-                                                cmd.Parameters.AddWithValue("@SecurityQuestion2", cmboSecurity2.SelectedItem.ToString());
-                                                cmd.Parameters.AddWithValue("@SecurityAnswer2", txtAnswer2.Text);
-                                                cmd.Parameters.AddWithValue("@SecurityQuestion3", cmboSecurity3.SelectedItem.ToString());
-                                                cmd.Parameters.AddWithValue("@SecurityAnswer3", txtAnswer3.Text);
-
-                                                cmd.ExecuteNonQuery();
-                                                cmd.Connection = con;
-                                                con.Close();
-
-                                                DialogResult dr = MessageBox.Show("Account Succesfully Created!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                                if (dr == DialogResult.OK)
-                                                {
-                                                    this.Close();
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
+                                NameFirst = txtFirst.Text,
+                                NameLast = txtLast.Text,
+                                Address1 = txtAddress1.Text,
+                                Address2 = txtAddress2.Text,
+                                Address3 = txtAddress3.Text,
+                                City = txtCity.Text,
+                                State = cboStates.SelectedItem.ToString(),
+                                Zipcode = txtZip.Text,
+                                Email = txtEmail.Text,
+                                PhonePrimary = txtPhone.Text,
+                                UserName = txtUsername.Text,
+                                Password = txtPassword.Text,
+                                AccountType = "Customer",
+                                SecurityQuestion1 = cmboSecurity1.SelectedItem.ToString(),
+                                SecurityAnswer1 = txtAnswer1.Text,
+                                SecurityQuestion2 = cmboSecurity2.SelectedItem.ToString(),
+                                SecurityAnswer2 = txtAnswer2.Text,
+                                SecurityQuestion3 = cmboSecurity3.SelectedItem.ToString(),
+                                SecurityAnswer3 = txtAnswer3.Text
+                            };
+                            DataPerson.SavePerson(person);
+                            DialogResult dr = MessageBox.Show("Account Succesfully Created!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            if (dr == DialogResult.OK)
+                            {
+                                this.Close();
                             }
-                        }                      
+                        }
+
                     }
+
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            } 
+            }
         }
 
         private void txtFirst_KeyPress(object sender, KeyPressEventArgs e)
@@ -283,7 +256,7 @@ namespace SU21_Final_Project
 
         private void txtCity_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Space);
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Space || e.KeyChar == (char)Keys.OemPeriod);
             changesMade = true;
         }
 

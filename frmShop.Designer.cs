@@ -96,6 +96,7 @@ namespace SU21_Final_Project
             // 
             // btnCancel
             // 
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.Location = new System.Drawing.Point(331, 229);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(148, 41);
@@ -106,6 +107,7 @@ namespace SU21_Final_Project
             // 
             // btnCheckout
             // 
+            this.btnCheckout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCheckout.Enabled = false;
             this.btnCheckout.Location = new System.Drawing.Point(495, 229);
             this.btnCheckout.Name = "btnCheckout";
@@ -370,7 +372,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.RadioButton rdoLarge;
         private System.Windows.Forms.RadioButton rdoMedium;
         private System.Windows.Forms.RadioButton rdoSmall;
-        private System.Windows.Forms.ListBox lstCart;
         private System.Windows.Forms.Button btnYellow;
         private System.Windows.Forms.Button btnWhite;
         private System.Windows.Forms.Button btnRed;
@@ -381,5 +382,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Button btnBlack;
         private System.Windows.Forms.Button btnBlue;
         private System.Windows.Forms.PictureBox picbxShirt;
+        private System.Windows.Forms.ListBox lstCart;
     }
 }
