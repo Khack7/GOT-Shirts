@@ -8,6 +8,7 @@
 // cart, remove items from cart they no longer want, and/or use codes to get discounts
 //*******************************************
 //*******************************************
+using SU21_Final_Project.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -79,49 +80,58 @@ namespace SU21_Final_Project
             {
                 MessageBox.Show("Zero is not a valid amount", "Please select a valid amount", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else if(color == null)
+            else if (color == null)
             {
                 MessageBox.Show("You have not selected a color", "Please select a color", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                string constr = ConfigurationManager.ConnectionStrings["SU21_Final_Project.Properties.Settings.ConnectionString"].ConnectionString;
                 try
                 {
-                    using (SqlConnection con = new SqlConnection(constr))
+                    DataProduct product = DataProduct.GetProduct(color, size);
+                    if (product != null)
                     {
-                        using (SqlCommand cmd = new SqlCommand("SELECT QuantityOnHand, Color, Size, Cost FROM HackK21Su2332.Products WHERE Color = @Color AND Size = @Size"))
-                        {
-                            con.Open();
-                            cmd.CommandType = CommandType.Text;
-                            cmd.Parameters.AddWithValue("@Color", color);
-                            cmd.Parameters.AddWithValue("@Size", size);
-                            cmd.Connection = con;
-                            using (SqlDataReader sdr = cmd.ExecuteReader())
-                            {
-                                if (sdr.Read())
-                                {
-                                    int.TryParse(sdr["QuantityOnHand"].ToString(), out int q);
+                        CartItem existingItem = GetExistingCartItem(product);
+                        int quantityAvailable = product.QuantityOnHand;
 
-                                    if (q - numOfShirts < 0)
-                                    {
-                                        MessageBox.Show(string.Format("The amount selected is more than we have on hand. We only have {0} total", q.ToString()), "Too many selected", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
-                                    }
-                                    else
-                                    {
-                                        lstCart.Items.Add(quantity + " " + size + " " + color);
-                                        double.TryParse(sdr["Cost"].ToString(), out double d);
-                                        currentTotal += (d * numOfShirts);
-                                        lblAmount.Text = currentTotal.ToString("C2");
-                                    }
-                                }
-                                else
-                                {
-                                    MessageBox.Show("There was a problem loading data", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                }
-                            }
-                            con.Close();
+                        if(existingItem != null)
+                        {
+                            quantityAvailable -= existingItem.Quantity;
                         }
+
+                        if (quantityAvailable - numOfShirts < 0)
+                        {
+                            MessageBox.Show(
+                                string.Format(
+                                    "The amount selected is more than we have on hand. We only have {0} total", 
+                                    product.QuantityOnHand.ToString()
+                                ), 
+                                "Too many selected", MessageBoxButtons.OK, MessageBoxIcon.Information
+                           );
+                        }
+                        else if(existingItem == null)
+                        {
+                            lstCart.Items.Add(new CartItem { Product = product, Quantity = numOfShirts});
+                            
+                            currentTotal += (product.Price * numOfShirts);
+                            lblAmount.Text = currentTotal.ToString("C2");
+                        }
+                        else
+                        {
+                            existingItem.Quantity += numOfShirts;
+                            
+                            for(int i = 0; i < lstCart.Items.Count; i++)
+                            {
+                                lstCart.Items[i] = lstCart.Items[i];
+                            }
+
+                            currentTotal += (product.Price * numOfShirts);
+                            lblAmount.Text = currentTotal.ToString("C2");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("There was a problem loading data", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 catch (Exception ex)
@@ -143,13 +153,29 @@ namespace SU21_Final_Project
             }
         }
 
+        private CartItem GetExistingCartItem(DataProduct product)
+        {
+            CartItem result = null;
+
+            for (int i = 0; i < lstCart.Items.Count; i++)
+            {
+                CartItem item = (CartItem)lstCart.Items[i];
+                if (item.Product.ProductID == product.ProductID)
+                {
+                    result = item;
+                    break;
+                }
+            }
+
+            return result;
+        }
+
         private void getShirt(string color)
         {
             string shirt = color;
-            //NEED LOCAL PATH OF SHIRT FOLDER. THIS GOES INTO BIN/DEBUG
             string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
 
-            using (Image image = Image.FromFile(@"D:\tstc\Take 2\Project\Shirts\" + shirt + ".PNG"))
+            using (Image image = Image.FromFile($"{path}\\Shirts\\{shirt}.PNG"))
             {
                 picbxShirt.Image = resizeImage(image, picbxShirt.Width, picbxShirt.Height);
             }
@@ -245,7 +271,7 @@ namespace SU21_Final_Project
                     {
                         btnCheckout.Enabled = true;
                     }
-                }              
+                }
             }
         }
 
@@ -321,7 +347,7 @@ namespace SU21_Final_Project
         private void btnCheckout_Click(object sender, EventArgs e)
         {
             Subtotal = currentTotal.ToString();
-            for(int i = 0; i < lstCart.Items.Count; i++)
+            for (int i = 0; i < lstCart.Items.Count; i++)
             {
                 cartItems.Add(lstCart.Items[i].ToString());
             }
@@ -336,4 +362,16 @@ namespace SU21_Final_Project
             coupon.ShowDialog();
         }
     }
+
+    public class CartItem
+    {
+        public DataProduct Product { get; set; }
+        public int Quantity { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Quantity}  {Product.Size} {Product.Color}";
+        }
+    }
+
 }

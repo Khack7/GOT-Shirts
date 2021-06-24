@@ -127,6 +127,7 @@ namespace SU21_Final_Project
             // 
             // btnForgot
             // 
+            this.btnForgot.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.btnForgot.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnForgot.Location = new System.Drawing.Point(202, 180);
             this.btnForgot.Name = "btnForgot";

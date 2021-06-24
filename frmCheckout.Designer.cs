@@ -31,8 +31,8 @@ namespace SU21_Final_Project
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCheckout));
             this.lblShippingPointer = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnConfirm = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.txtCard = new System.Windows.Forms.TextBox();
             this.lblCard = new System.Windows.Forms.Label();
             this.rdoDiscover = new System.Windows.Forms.RadioButton();
@@ -67,25 +67,26 @@ namespace SU21_Final_Project
             this.lblShippingPointer.TabIndex = 40;
             this.lblShippingPointer.Text = "Shipping:";
             // 
-            // button2
+            // btnConfirm
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(229, 377);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(102, 47);
-            this.button2.TabIndex = 39;
-            this.button2.Text = "Confirm";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirm.Location = new System.Drawing.Point(229, 377);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Size = new System.Drawing.Size(102, 47);
+            this.btnConfirm.TabIndex = 39;
+            this.btnConfirm.Text = "Confirm";
+            this.btnConfirm.UseVisualStyleBackColor = true;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
-            // button1
+            // btnCancel
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(12, 377);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(102, 47);
-            this.button1.TabIndex = 38;
-            this.button1.Text = "Cancel Order";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Location = new System.Drawing.Point(12, 377);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(102, 47);
+            this.btnCancel.TabIndex = 38;
+            this.btnCancel.Text = "Cancel Order";
+            this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // txtCard
             // 
@@ -93,6 +94,7 @@ namespace SU21_Final_Project
             this.txtCard.Name = "txtCard";
             this.txtCard.Size = new System.Drawing.Size(266, 20);
             this.txtCard.TabIndex = 37;
+            this.txtCard.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCard_KeyPress);
             // 
             // lblCard
             // 
@@ -251,6 +253,7 @@ namespace SU21_Final_Project
             // 
             // cboMonth
             // 
+            this.cboMonth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMonth.FormattingEnabled = true;
             this.cboMonth.Location = new System.Drawing.Point(84, 251);
             this.cboMonth.Name = "cboMonth";
@@ -259,6 +262,7 @@ namespace SU21_Final_Project
             // 
             // cboYear
             // 
+            this.cboYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboYear.FormattingEnabled = true;
             this.cboYear.Location = new System.Drawing.Point(146, 251);
             this.cboYear.Name = "cboYear";
@@ -316,8 +320,8 @@ namespace SU21_Final_Project
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblShippingMethod);
             this.Controls.Add(this.lblShippingPointer);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnConfirm);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.txtCard);
             this.Controls.Add(this.lblCard);
             this.Controls.Add(this.rdoDiscover);
@@ -342,8 +346,8 @@ namespace SU21_Final_Project
         #endregion
 
         private System.Windows.Forms.Label lblShippingPointer;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnConfirm;
+        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.TextBox txtCard;
         private System.Windows.Forms.Label lblCard;
         private System.Windows.Forms.RadioButton rdoDiscover;

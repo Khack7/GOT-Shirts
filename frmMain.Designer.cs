@@ -36,6 +36,7 @@ namespace SU21_Final_Project
             // 
             // btnShop
             // 
+            this.btnShop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnShop.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnShop.Location = new System.Drawing.Point(439, 251);
             this.btnShop.Name = "btnShop";
@@ -47,6 +48,7 @@ namespace SU21_Final_Project
             // 
             // btnManage
             // 
+            this.btnManage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnManage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnManage.Location = new System.Drawing.Point(12, 251);
             this.btnManage.Name = "btnManage";

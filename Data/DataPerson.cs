@@ -151,7 +151,6 @@ namespace SU21_Final_Project.Data
 
                         if (person.PersonID > 0)
                         {
-
                             cmd.ExecuteNonQuery();
                         }
                         else

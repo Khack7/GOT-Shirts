@@ -71,9 +71,19 @@ namespace SU21_Final_Project
             // numUDQuantity
             // 
             this.numUDQuantity.Location = new System.Drawing.Point(347, 165);
+            this.numUDQuantity.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
             this.numUDQuantity.Name = "numUDQuantity";
             this.numUDQuantity.Size = new System.Drawing.Size(52, 20);
             this.numUDQuantity.TabIndex = 50;
+            this.numUDQuantity.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label1
             // 

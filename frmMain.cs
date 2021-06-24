@@ -42,7 +42,7 @@ namespace SU21_Final_Project
 
         private void btnManage_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show(DateTime.Now.ToString("yyyy-MM-dd"));
         }
 
         private void BtnShop_Click(object sender, EventArgs e)

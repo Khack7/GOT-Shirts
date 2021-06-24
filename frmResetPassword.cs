@@ -141,5 +141,10 @@ namespace SU21_Final_Project
                 }
             }
         }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            //TODO
+        }
     }
 }

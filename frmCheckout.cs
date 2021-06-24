@@ -55,8 +55,7 @@ namespace SU21_Final_Project
 
                 if (frmCouponInput.CodeUsed == true)
                 {
-                    double.TryParse(frmShop.Subtotal, out double s);
-                    double sub = s;
+                    double.TryParse(frmShop.Subtotal, out double sub);
 
                     int discount = frmCouponInput.percentOff;
                     SubCost = (sub - (sub * discount));
@@ -118,11 +117,66 @@ namespace SU21_Final_Project
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         string shippingMethod = "StandardShipping";
+
+        private void btnConfirm_Click(object sender, EventArgs e)
+        {
+            DataOrder order = null;
+
+            DateTime.TryParse(DateTime.Now.ToString("yyyy-MM-dd"), out DateTime todaysDate);
+
+            string code;
+
+            if(frmCouponInput.CouponCode == null)
+            {
+                code = null;
+            }
+            else
+            {
+                code = frmCouponInput.CouponCode;
+            }
+
+            string cardType;
+
+            if (rdoDiscover.Checked == true)
+            {
+                cardType = "Discover";
+            }
+            else if(rdoVisa.Checked == true)
+            {
+                cardType = "Visa";
+            }
+            else
+            {
+                cardType = "MasterCard";
+            }
+
+            order = new DataOrder
+            {
+                PersonID = frmSignIn.ID,
+                OrderDate = todaysDate,
+                DiscountCode = code,
+                Shipping = shippingCost,
+                CardType = cardType,
+                CardNumber = Convert.ToInt32(txtCard.Text),
+                CardExperation = cboMonth.SelectedItem + "/" + cboYear.SelectedItem
+            };
+
+            DataOrder.SaveOrder(order);
+
+        }
+
+        private void txtCard_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
 
         private void rdoStandard_CheckedChanged(object sender, EventArgs e)
         {

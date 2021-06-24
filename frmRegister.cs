@@ -225,11 +225,9 @@ namespace SU21_Final_Project
                                 SecurityAnswer3 = txtAnswer3.Text
                             };
                             DataPerson.SavePerson(person);
-                            DialogResult dr = MessageBox.Show("Account Succesfully Created!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            if (dr == DialogResult.OK)
-                            {
-                                this.Close();
-                            }
+                            MessageBox.Show("Account Succesfully Created!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.Close();
+
                         }
 
                     }
