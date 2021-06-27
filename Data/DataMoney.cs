@@ -22,35 +22,28 @@ namespace SU21_Final_Project.Data
 
             string constr = ConfigurationManager.ConnectionStrings["SU21_Final_Project.Properties.Settings.ConnectionString"].ConnectionString;
 
-            try
+            using (SqlConnection con = new SqlConnection(constr))
             {
-                using (SqlConnection con = new SqlConnection(constr))
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM HackK21Su2332.Settings WHERE SettingName = @SettingName"))
                 {
-                    using (SqlCommand cmd = new SqlCommand("SELECT * FROM HackK21Su2332.Settings WHERE SettingName = @SettingName"))
+                    con.Open();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@SettingName", name);
+                    cmd.Connection = con;
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
                     {
-                        con.Open();
-                        cmd.CommandType = CommandType.Text;
-                        cmd.Parameters.AddWithValue("@SettingName", name);
-                        cmd.Connection = con;
-                        using (SqlDataReader sdr = cmd.ExecuteReader())
+                        if (sdr.Read())
                         {
-                            if (sdr.Read())
-                            {
-                                double.TryParse(sdr["SettingValue"].ToString(), out double amount);
+                            double.TryParse(sdr["SettingValue"].ToString(), out double amount);
 
-                                result = new DataMoney
-                                {
-                                    SettingName = name,
-                                    SettingValue = amount.ToString()
-                                };
-                            }
+                            result = new DataMoney
+                            {
+                                SettingName = name,
+                                SettingValue = amount.ToString()
+                            };
                         }
                     }
                 }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return result;
         }

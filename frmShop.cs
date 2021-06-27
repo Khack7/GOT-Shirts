@@ -148,7 +148,7 @@ namespace SU21_Final_Project
                     {
                         btnCheckout.Enabled = true;
                     }
-                    numUDQuantity.Value = 0;
+                    numUDQuantity.Value = 1;
                 }
             }
         }
@@ -241,7 +241,6 @@ namespace SU21_Final_Project
                             {
                                 if (sdr.Read())
                                 {
-                                    int.TryParse(sdr["QuantityOnHand"].ToString(), out int q);
                                     double.TryParse(sdr["Cost"].ToString(), out double d);
 
                                     currentTotal -= (d * numOfShirts);
@@ -360,6 +359,14 @@ namespace SU21_Final_Project
         {
             frmCouponInput coupon = new frmCouponInput();
             coupon.ShowDialog();
+        }
+
+        private void btnAccount_Click(object sender, EventArgs e)
+        {
+            frmAccountInfo accountInfo = new frmAccountInfo();
+            this.Hide();
+            accountInfo.ShowDialog();
+            this.Show();
         }
     }
 

@@ -67,6 +67,7 @@ namespace SU21_Final_Project
             this.btnAccount.TabIndex = 51;
             this.btnAccount.Text = "Account";
             this.btnAccount.UseVisualStyleBackColor = true;
+            this.btnAccount.Click += new System.EventHandler(this.btnAccount_Click);
             // 
             // numUDQuantity
             // 

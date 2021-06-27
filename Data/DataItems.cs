@@ -24,50 +24,43 @@ namespace SU21_Final_Project.Data
         {
             string constr = ConfigurationManager.ConnectionStrings["SU21_Final_Project.Properties.Settings.ConnectionString"].ConnectionString;
 
-            try
+            using (SqlConnection con = new SqlConnection(constr))
             {
-                using (SqlConnection con = new SqlConnection(constr))
+                string sql = "INSERT INTO HackK21Su2332.OrderItem(OrderNum, ProductID, Quantity, Price)" +
+                            " VALUES(@OrderNum, @ProductID, @Quantity, @Price);" +
+                            " SELECT OrderItemID = SCOPE_IDENTITY()";
+
+                using (SqlCommand cmd = new SqlCommand(sql))
                 {
-                    string sql = "INSERT INTO HackK21Su2332.OrderItem(OrderNum, ProductID, Quantity, Price)" +
-                                " VALUES(@OrderNum, @ProductID, @Quantity, @Price);" +
-                                " SELECT OrderItemID = SCOPE_IDENTITY()";
+                    con.Open();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Connection = con;
 
-                    using (SqlCommand cmd = new SqlCommand(sql))
+                    if (items.OrderNum != 0)
                     {
-                        con.Open();
-                        cmd.CommandType = CommandType.Text;
-                        cmd.Connection = con;
+                        cmd.Parameters.AddWithValue("@OrderNum", items.OrderNum);
+                    }
+                    cmd.Parameters.AddWithValue("ProductID", items.ProductID);
+                    cmd.Parameters.AddWithValue("Quantity", items.Quantity);
+                    cmd.Parameters.AddWithValue("Price", items.Price);
 
-                        if (items.OrderNum != 0)
+                    if (items.OrderNum > 0)
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        using (SqlDataReader sdr = cmd.ExecuteReader())
                         {
-                            cmd.Parameters.AddWithValue("@OrderNum", items.OrderNum);
-                        }
-                        cmd.Parameters.AddWithValue("ProductID", items.ProductID);
-                        cmd.Parameters.AddWithValue("Quantity", items.Quantity);
-                        cmd.Parameters.AddWithValue("Price", items.Price);
-
-                        if (items.OrderNum > 0)
-                        {
-                            cmd.ExecuteNonQuery();
-                        }
-                        else
-                        {
-                            using (SqlDataReader sdr = cmd.ExecuteReader())
+                            if (sdr.Read())
                             {
-                                if (sdr.Read())
-                                {
-                                    int.TryParse(sdr["OrderNum"].ToString(), out int num);
-                                    items.OrderNum = num;
-                                }
+                                int.TryParse(sdr["OrderNum"].ToString(), out int num);
+                                items.OrderNum = num;
                             }
                         }
-                        con.Close();
                     }
+                    con.Close();
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

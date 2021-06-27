@@ -280,6 +280,7 @@ namespace SU21_Final_Project
             {
                 e.Handled = true;
             }
+            changesMade = true;
         }
 
         private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
@@ -289,11 +290,13 @@ namespace SU21_Final_Project
                 e.Handled = true;
             }
             txtPhone.MaxLength = 10;
+            changesMade = true;
         }
 
         private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
         {
             txtPassword.MaxLength = 10;
+            changesMade = true;
         }
     }
 }

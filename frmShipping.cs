@@ -161,7 +161,7 @@ namespace SU21_Final_Project
             if (frmSignIn.CustomerType == "Customer" || frmSignIn.CustomerType == "Employee" || frmSignIn.CustomerType == "Manager")
             {
                 frmCheckout checkout = new frmCheckout();
-                this.Hide();
+                this.Close();
                 checkout.ShowDialog();
             }
             else

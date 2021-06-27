@@ -50,6 +50,7 @@ namespace SU21_Final_Project
         }
 
         public static int ID { get; set; }
+        public static string UserName { get; set; }
         private void btnSign_Click(object sender, EventArgs e)
         {
             try
@@ -60,9 +61,10 @@ namespace SU21_Final_Project
 
                     if (txtPassword.Text == person.Password)
                     {
-                        CustomerType = "Customer";
+                        CustomerType = person.AccountType;
 
                         ID = person.PersonID;
+                        UserName = txtUsername.Text;
 
                         frmShop shop = new frmShop();
                         this.Hide();

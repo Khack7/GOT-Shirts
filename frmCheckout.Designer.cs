@@ -69,6 +69,7 @@ namespace SU21_Final_Project
             // 
             // btnConfirm
             // 
+            this.btnConfirm.Enabled = false;
             this.btnConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirm.Location = new System.Drawing.Point(229, 377);
             this.btnConfirm.Name = "btnConfirm";
@@ -259,6 +260,7 @@ namespace SU21_Final_Project
             this.cboMonth.Name = "cboMonth";
             this.cboMonth.Size = new System.Drawing.Size(49, 21);
             this.cboMonth.TabIndex = 47;
+            this.cboMonth.SelectedIndexChanged += new System.EventHandler(this.cboMonth_SelectedIndexChanged);
             // 
             // cboYear
             // 
@@ -268,6 +270,7 @@ namespace SU21_Final_Project
             this.cboYear.Name = "cboYear";
             this.cboYear.Size = new System.Drawing.Size(49, 21);
             this.cboYear.TabIndex = 48;
+            this.cboYear.SelectedIndexChanged += new System.EventHandler(this.cboYear_SelectedIndexChanged);
             // 
             // lblSubtotal
             // 

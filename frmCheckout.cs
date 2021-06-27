@@ -30,14 +30,21 @@ namespace SU21_Final_Project
 
         private void getShipping(string method)
         {
-            DataMoney shipping = null;
+            try
+            {
+                DataMoney shipping = null;
 
-            shipping = DataMoney.GetValues(method);
+                shipping = DataMoney.GetValues(method);
 
-            double.TryParse(shipping.SettingValue, out double d);
-            shippingCost = d;
+                double.TryParse(shipping.SettingValue, out double d);
+                shippingCost = d;
 
-            lblShipping.Text = string.Format(shipping.SettingValue, "C2");
+                lblShipping.Text = shippingCost.ToString("C2");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         double shippingCost, TaxCost, SubCost, TotalCost;
@@ -60,13 +67,15 @@ namespace SU21_Final_Project
                     int discount = frmCouponInput.percentOff;
                     SubCost = (sub - (sub * discount));
 
-                    lblSubtotal.Text = (sub - (sub * discount)).ToString("C2");
+
+
+                    lblSubtotal.Text = SubCost.ToString("C2");
                 }
                 else
                 {
-                    lblSubtotal.Text = string.Format(frmShop.Subtotal, "C2");
                     double.TryParse(frmShop.Subtotal, out double s);
                     SubCost = s;
+                    lblSubtotal.Text = SubCost.ToString("C2");
                 }
 
                 getShipping(shippingMethod);
@@ -125,56 +134,97 @@ namespace SU21_Final_Project
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            DataOrder order = null;
-
-            DateTime.TryParse(DateTime.Now.ToString("yyyy-MM-dd"), out DateTime todaysDate);
-
-            string code;
-
-            if(frmCouponInput.CouponCode == null)
+            try
             {
-                code = null;
+
+                DataOrder order = null;
+
+                DateTime.TryParse(DateTime.Now.ToString("yyyy-MM-dd"), out DateTime todaysDate);
+
+                string code;
+
+                if (frmCouponInput.CouponCode == null)
+                {
+                    code = null;
+                }
+                else
+                {
+                    code = frmCouponInput.CouponCode;
+                }
+
+                string cardType;
+
+                if (rdoDiscover.Checked == true)
+                {
+                    cardType = "Discover";
+                }
+                else if (rdoVisa.Checked == true)
+                {
+                    cardType = "Visa";
+                }
+                else
+                {
+                    cardType = "MasterCard";
+                }
+
+                order = new DataOrder
+                {
+                    PersonID = frmSignIn.ID,
+                    OrderDate = todaysDate,
+                    DiscountCode = code,
+                    Shipping = shippingCost,
+                    CardType = cardType,
+                    CardNumber = Convert.ToInt32(txtCard.Text),
+                    CardExperation = cboMonth.SelectedItem + "/" + cboYear.SelectedItem
+                };
+
+                DataOrder.SaveOrder(order);
             }
-            else
+            catch (Exception ex)
             {
-                code = frmCouponInput.CouponCode;
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            string cardType;
-
-            if (rdoDiscover.Checked == true)
-            {
-                cardType = "Discover";
-            }
-            else if(rdoVisa.Checked == true)
-            {
-                cardType = "Visa";
-            }
-            else
-            {
-                cardType = "MasterCard";
-            }
-
-            order = new DataOrder
-            {
-                PersonID = frmSignIn.ID,
-                OrderDate = todaysDate,
-                DiscountCode = code,
-                Shipping = shippingCost,
-                CardType = cardType,
-                CardNumber = Convert.ToInt32(txtCard.Text),
-                CardExperation = cboMonth.SelectedItem + "/" + cboYear.SelectedItem
-            };
-
-            DataOrder.SaveOrder(order);
 
         }
 
         private void txtCard_KeyPress(object sender, KeyPressEventArgs e)
         {
+            txtCard.MaxLength = 16;
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
+            }
+            if (cboMonth.SelectedIndex >= 0 && cboYear.SelectedIndex >= 0 && txtCard.Text.Length == 16)
+            {
+                btnConfirm.Enabled = true;
+            }
+            else
+            {
+                btnConfirm.Enabled = false;
+            }
+        }
+
+        private void cboMonth_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboMonth.SelectedIndex >= 0 && cboYear.SelectedIndex >= 0 && txtCard.Text.Length == 16)
+            {
+                btnConfirm.Enabled = true;
+            }
+            else
+            {
+                btnConfirm.Enabled = false;
+            }
+        }
+
+        private void cboYear_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboMonth.SelectedIndex >= 0 && cboYear.SelectedIndex >= 0 && txtCard.Text.Length == 16)
+            {
+                btnConfirm.Enabled = true;
+            }
+            else
+            {
+                btnConfirm.Enabled = false;
             }
         }
 
