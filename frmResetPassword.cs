@@ -27,9 +27,9 @@ namespace SU21_Final_Project
 
         private void btnEnter_Click(object sender, EventArgs e)
         {
-            bool acceptedUsername = false;
+            bool bolAcceptedUsername = false;
 
-            string constr = ConfigurationManager.ConnectionStrings["SU21_Final_Project.Properties.Settings.ConnectionString"].ConnectionString;
+            string strConstr = ConfigurationManager.ConnectionStrings["SU21_Final_Project.Properties.Settings.ConnectionString"].ConnectionString;
             try
             {
                 DataPerson person = DataPerson.GetPerson(txtUsername.Text);
@@ -88,21 +88,21 @@ namespace SU21_Final_Project
                 }
                 else
                 {
-                    string attemptedPassword = txtPassword.Text;
+                    string strAttemptedPassword = txtPassword.Text;
 
-                    if (!attemptedPassword.Any(char.IsLower))
+                    if (!strAttemptedPassword.Any(char.IsLower))
                     {
                         MessageBox.Show("Password must contain a lower case letter", "Missing password requirement", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
                     }
-                    else if (!attemptedPassword.Any(char.IsUpper))
+                    else if (!strAttemptedPassword.Any(char.IsUpper))
                     {
                         MessageBox.Show("Password must contain an upper case letter", "Missing password requirement", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
                     }
-                    else if (!attemptedPassword.Any(char.IsDigit))
+                    else if (!strAttemptedPassword.Any(char.IsDigit))
                     {
                         MessageBox.Show("Password must contain a number", "Missing password requirement", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
                     }
-                    else if (attemptedPassword.Length < 8 || attemptedPassword.Length > 10)
+                    else if (strAttemptedPassword.Length < 8 || strAttemptedPassword.Length > 10)
                     {
                         MessageBox.Show("Password must be between 8 and 10 charactors", "Invalid length", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
                     }
@@ -114,7 +114,7 @@ namespace SU21_Final_Project
                             DataPerson.SavePerson(person);
 
                             MessageBox.Show("Password successfully changed!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            acceptedUsername = true;
+                            bolAcceptedUsername = true;
 
                         }
                         else
@@ -135,7 +135,7 @@ namespace SU21_Final_Project
             }
             finally
             {
-                if(acceptedUsername == true)
+                if(bolAcceptedUsername == true)
                 {
                     this.Close();
                 }
