@@ -52,35 +52,35 @@ namespace SU21_Final_Project
             return bmpNewImage;
         }
 
-        double currentTotal = 0.00;
+        double dblCurrentTotal = 0.00;
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            string size, color, quantity;
-            int numOfShirts = (int)numUDQuantity.Value;
+            string strSize, strColor, strQuantity;
+            int intNumOfShirts = (int)numUDQuantity.Value;
 
-            color = currentColor;
-            quantity = numUDQuantity.Value.ToString();
+            strColor = strCurrentColor;
+            strQuantity = numUDQuantity.Value.ToString();
 
 
             if (rdoSmall.Checked == true)
             {
-                size = "Small";
+                strSize = "Small";
             }
             else if (rdoMedium.Checked == true)
             {
-                size = "Medium";
+                strSize = "Medium";
             }
             else
             {
-                size = "Large";
+                strSize = "Large";
             }
 
-            if (numOfShirts <= 0)
+            if (intNumOfShirts <= 0)
             {
                 MessageBox.Show("Zero is not a valid amount", "Please select a valid amount", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else if (color == null)
+            else if (strColor == null)
             {
                 MessageBox.Show("You have not selected a color", "Please select a color", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -88,45 +88,45 @@ namespace SU21_Final_Project
             {
                 try
                 {
-                    DataProduct product = DataProduct.GetProduct(color, size);
+                    DataProduct product = DataProduct.GetProduct(strColor, strSize);
                     if (product != null)
                     {
                         CartItem existingItem = GetExistingCartItem(product);
-                        int quantityAvailable = product.QuantityOnHand;
+                        int intQuantityAvailable = product.QuantityOnHand;
 
-                        if(existingItem != null)
+                        if (existingItem != null)
                         {
-                            quantityAvailable -= existingItem.Quantity;
+                            intQuantityAvailable -= existingItem.intQuantity;
                         }
 
-                        if (quantityAvailable - numOfShirts < 0)
+                        if (intQuantityAvailable - intNumOfShirts < 0)
                         {
                             MessageBox.Show(
                                 string.Format(
-                                    "The amount selected is more than we have on hand. We only have {0} total", 
+                                    "The amount selected is more than we have on hand. We only have {0} total",
                                     product.QuantityOnHand.ToString()
-                                ), 
+                                ),
                                 "Too many selected", MessageBoxButtons.OK, MessageBoxIcon.Information
                            );
                         }
-                        else if(existingItem == null)
+                        else if (existingItem == null)
                         {
-                            lstCart.Items.Add(new CartItem { Product = product, Quantity = numOfShirts});
-                            
-                            currentTotal += (product.Price * numOfShirts);
-                            lblAmount.Text = currentTotal.ToString("C2");
+                            lstCart.Items.Add(new CartItem { Product = product, intQuantity = intNumOfShirts });
+
+                            dblCurrentTotal += (product.Price * intNumOfShirts);
+                            lblAmount.Text = dblCurrentTotal.ToString("C2");
                         }
                         else
                         {
-                            existingItem.Quantity += numOfShirts;
-                            
-                            for(int i = 0; i < lstCart.Items.Count; i++)
+                            existingItem.intQuantity += intNumOfShirts;
+
+                            for (int i = 0; i < lstCart.Items.Count; i++)
                             {
                                 lstCart.Items[i] = lstCart.Items[i];
                             }
 
-                            currentTotal += (product.Price * numOfShirts);
-                            lblAmount.Text = currentTotal.ToString("C2");
+                            dblCurrentTotal += (product.Price * intNumOfShirts);
+                            lblAmount.Text = dblCurrentTotal.ToString("C2");
                         }
                     }
                     else
@@ -175,13 +175,20 @@ namespace SU21_Final_Project
             string shirt = color;
             string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
 
-            using (Image image = Image.FromFile($"{path}\\Shirts\\{shirt}.PNG"))
+            try
             {
-                picbxShirt.Image = resizeImage(image, picbxShirt.Width, picbxShirt.Height);
+                using (Image image = Image.FromFile($"{path}\\Shirts\\{shirt}.PNG"))
+                {
+                    picbxShirt.Image = resizeImage(image, picbxShirt.Width, picbxShirt.Height);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        string currentColor;
+        string strCurrentColor;
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -190,7 +197,7 @@ namespace SU21_Final_Project
             if (result == DialogResult.Yes)
             {
                 this.Close();
-                frmSignIn.ID = 0;
+                frmSignIn.intID = 0;
             }
         }
 
@@ -202,19 +209,19 @@ namespace SU21_Final_Project
             }
             else
             {
-                string selection = lstCart.SelectedItem.ToString();
-                string[] words = selection.Split(' ');
+                string strSelection = lstCart.SelectedItem.ToString();
+                string[] arrWords = strSelection.Split(' ');
 
-                string[] stuff = new string[3];
+                string[] arrStuff = new string[3];
                 int i = 0;
 
-                string constr = ConfigurationManager.ConnectionStrings["SU21_Final_Project.Properties.Settings.ConnectionString"].ConnectionString;
+                string strConstr = ConfigurationManager.ConnectionStrings["SU21_Final_Project.Properties.Settings.ConnectionString"].ConnectionString;
 
                 try
                 {
-                    foreach (var word in words)
+                    foreach (var word in arrWords)
                     {
-                        stuff[i] = $"{word}";
+                        arrStuff[i] = $"{word}";
                         i++;
                         if (i > 2)
                         {
@@ -222,20 +229,20 @@ namespace SU21_Final_Project
                         }
                     }
 
-                    int.TryParse(stuff[0], out int x);
-                    int numOfShirts = x;
-                    string size = stuff[1];
-                    string color = stuff[2];
+                    int.TryParse(arrStuff[0], out int x);
+                    int intNumOfShirts = x;
+                    string strSize = arrStuff[1];
+                    string strColor = arrStuff[2];
 
 
-                    using (SqlConnection con = new SqlConnection(constr))
+                    using (SqlConnection con = new SqlConnection(strConstr))
                     {
                         using (SqlCommand cmd = new SqlCommand("SELECT QuantityOnHand, Color, Size, Cost FROM HackK21Su2332.Products WHERE Color = @Color AND Size = @Size"))
                         {
                             con.Open();
                             cmd.CommandType = CommandType.Text;
-                            cmd.Parameters.AddWithValue("@Color", color);
-                            cmd.Parameters.AddWithValue("@Size", size);
+                            cmd.Parameters.AddWithValue("@Color", strColor);
+                            cmd.Parameters.AddWithValue("@Size", strSize);
                             cmd.Connection = con;
                             using (SqlDataReader sdr = cmd.ExecuteReader())
                             {
@@ -243,8 +250,8 @@ namespace SU21_Final_Project
                                 {
                                     double.TryParse(sdr["Cost"].ToString(), out double d);
 
-                                    currentTotal -= (d * numOfShirts);
-                                    lblAmount.Text = currentTotal.ToString("C2");
+                                    dblCurrentTotal -= (d * intNumOfShirts);
+                                    lblAmount.Text = dblCurrentTotal.ToString("C2");
                                     lstCart.Items.Remove(lstCart.SelectedItem);
                                 }
                                 else
@@ -276,7 +283,7 @@ namespace SU21_Final_Project
 
         private void frmShop_Load(object sender, EventArgs e)
         {
-            if (frmSignIn.CustomerType == "Guest")
+            if (frmSignIn.strCustomerType == "Guest")
             {
                 btnAccount.Visible = false;
             }
@@ -288,71 +295,83 @@ namespace SU21_Final_Project
 
         private void btnOrange_Click(object sender, EventArgs e)
         {
-            currentColor = btnOrange.BackColor.Name;
-            getShirt(currentColor);
+            strCurrentColor = btnOrange.BackColor.Name;
+            getShirt(strCurrentColor);
         }
 
         private void btnBlack_Click(object sender, EventArgs e)
         {
-            currentColor = btnBlack.BackColor.Name;
-            getShirt(currentColor);
+            strCurrentColor = btnBlack.BackColor.Name;
+            getShirt(strCurrentColor);
         }
 
         private void btnBlue_Click(object sender, EventArgs e)
         {
-            currentColor = btnBlue.BackColor.Name;
-            getShirt(currentColor);
+            strCurrentColor = btnBlue.BackColor.Name;
+            getShirt(strCurrentColor);
         }
 
         private void btnGreen_Click(object sender, EventArgs e)
         {
-            currentColor = btnGreen.BackColor.Name;
-            getShirt(currentColor);
+            strCurrentColor = btnGreen.BackColor.Name;
+            getShirt(strCurrentColor);
         }
 
         private void btnPink_Click(object sender, EventArgs e)
         {
-            currentColor = btnPink.BackColor.Name;
-            getShirt(currentColor);
+            strCurrentColor = btnPink.BackColor.Name;
+            getShirt(strCurrentColor);
         }
 
         private void btnPurple_Click(object sender, EventArgs e)
         {
-            currentColor = btnPurple.BackColor.Name;
-            getShirt(currentColor);
+            strCurrentColor = btnPurple.BackColor.Name;
+            getShirt(strCurrentColor);
         }
 
         private void btnRed_Click(object sender, EventArgs e)
         {
-            currentColor = btnRed.BackColor.Name;
-            getShirt(currentColor);
+            strCurrentColor = btnRed.BackColor.Name;
+            getShirt(strCurrentColor);
         }
 
         private void btnWhite_Click(object sender, EventArgs e)
         {
-            currentColor = btnWhite.BackColor.Name;
-            getShirt(currentColor);
+            strCurrentColor = btnWhite.BackColor.Name;
+            getShirt(strCurrentColor);
         }
 
         private void btnYellow_Click(object sender, EventArgs e)
         {
-            currentColor = btnYellow.BackColor.Name;
-            getShirt(currentColor);
+            strCurrentColor = btnYellow.BackColor.Name;
+            getShirt(strCurrentColor);
         }
 
-        public static List<string> cartItems = new List<string>();
-        public static string Subtotal;
+        public static List<string> lstCartItems = new List<string>();
+        public static string strSubtotal;
 
         private void btnCheckout_Click(object sender, EventArgs e)
         {
-            Subtotal = currentTotal.ToString();
+            strSubtotal = dblCurrentTotal.ToString();
+            lstCartItems.Clear();
+
             for (int i = 0; i < lstCart.Items.Count; i++)
             {
-                cartItems.Add(lstCart.Items[i].ToString());
+                lstCartItems.Add(lstCart.Items[i].ToString());
             }
             frmShipping ship = new frmShipping();
             this.Hide();
             ship.ShowDialog();
+
+            if (frmCheckout.bolCloseShop == false)
+            {
+                this.Show();
+            }
+            else
+            {
+                this.Close();
+            }
+
         }
 
         private void btnCode_Click(object sender, EventArgs e)
@@ -368,16 +387,21 @@ namespace SU21_Final_Project
             accountInfo.ShowDialog();
             this.Show();
         }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            //CALL HTML FILE HERE
+        }
     }
 
     public class CartItem
     {
         public DataProduct Product { get; set; }
-        public int Quantity { get; set; }
+        public int intQuantity { get; set; }
 
         public override string ToString()
         {
-            return $"{Quantity}  {Product.Size} {Product.Color}";
+            return $"{intQuantity}  {Product.Size} {Product.Color}";
         }
     }
 

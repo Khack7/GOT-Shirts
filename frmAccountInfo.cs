@@ -73,7 +73,7 @@ namespace SU21_Final_Project
 
             DataPerson person = null;
 
-            person = DataPerson.GetPerson(frmSignIn.UserName);
+            person = DataPerson.GetPerson(frmSignIn.strUserName);
 
             txtFirst.Text = person.NameFirst;
             txtLast.Text = person.NameLast;
@@ -119,7 +119,7 @@ namespace SU21_Final_Project
                 }
                 else
                 {
-                    DataPerson person = DataPerson.GetPerson(frmSignIn.UserName);
+                    DataPerson person = DataPerson.GetPerson(frmSignIn.strUserName);
 
                     person.NameFirst = txtFirst.Text;
                     person.NameLast = txtLast.Text;

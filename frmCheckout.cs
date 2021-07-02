@@ -37,9 +37,9 @@ namespace SU21_Final_Project
                 shipping = DataMoney.GetValues(method);
 
                 double.TryParse(shipping.SettingValue, out double d);
-                shippingCost = d;
+                dblShippingCost = d;
 
-                lblShipping.Text = shippingCost.ToString("C2");
+                lblShipping.Text = dblShippingCost.ToString("C2");
             }
             catch(Exception ex)
             {
@@ -47,38 +47,38 @@ namespace SU21_Final_Project
             }
         }
 
-        double shippingCost, TaxCost, SubCost, TotalCost;
+        double dblShippingCost, dblTaxCost, dblSubCost, dblTotalCost;
 
         private void frmCheckout_Load(object sender, System.EventArgs e)
         {
             try
             {
-                string currentItem;
-                for (int i = 0; i < frmShop.cartItems.Count; i++)
+                string strCurrentItem;
+                for (int i = 0; i < frmShop.lstCartItems.Count; i++)
                 {
-                    currentItem = frmShop.cartItems.ElementAt(i);
-                    lstCart.Items.Add(currentItem);
+                    strCurrentItem = frmShop.lstCartItems.ElementAt(i);
+                    lstCart.Items.Add(strCurrentItem);
                 }
 
                 if (frmCouponInput.CodeUsed == true)
                 {
-                    double.TryParse(frmShop.Subtotal, out double sub);
+                    double.TryParse(frmShop.strSubtotal, out double sub);
 
-                    int discount = frmCouponInput.percentOff;
-                    SubCost = (sub - (sub * discount));
+                    int intDiscount = frmCouponInput.percentOff;
+                    dblSubCost = (sub - (sub * intDiscount));
 
 
 
-                    lblSubtotal.Text = SubCost.ToString("C2");
+                    lblSubtotal.Text = dblSubCost.ToString("C2");
                 }
                 else
                 {
-                    double.TryParse(frmShop.Subtotal, out double s);
-                    SubCost = s;
-                    lblSubtotal.Text = SubCost.ToString("C2");
+                    double.TryParse(frmShop.strSubtotal, out double s);
+                    dblSubCost = s;
+                    lblSubtotal.Text = dblSubCost.ToString("C2");
                 }
 
-                getShipping(shippingMethod);
+                getShipping(strShippingMethod);
 
                 DataMoney tax = null;
 
@@ -86,18 +86,18 @@ namespace SU21_Final_Project
 
                 double.TryParse(tax.SettingValue, out double d);
 
-                double taxes = d;
+                double dblTaxes = d;
 
-                TaxCost = taxes * SubCost;
+                dblTaxCost = dblTaxes * dblSubCost;
 
-                lblTax.Text = (TaxCost).ToString("C2");
+                lblTax.Text = (dblTaxCost).ToString("C2");
 
-                TotalCost = SubCost + TaxCost + shippingCost;
+                dblTotalCost = dblSubCost + dblTaxCost + dblShippingCost;
 
-                lblTotal.Text = (TotalCost).ToString("C2");
+                lblTotal.Text = (dblTotalCost).ToString("C2");
 
 
-                string[] years = new string[12];
+                string[] arrYears = new string[12];
 
                 cboMonth.Items.Add("01");
                 cboMonth.Items.Add("02");
@@ -116,12 +116,12 @@ namespace SU21_Final_Project
                 {
                     if (int.TryParse(DateTime.Now.Year.ToString(), out int y))
                     {
-                        years[i] = (y + i).ToString();
+                        arrYears[i] = (y + i).ToString();
                     }
                 }
-                for (int y = 0; y < years.Length; y++)
+                for (int y = 0; y < arrYears.Length; y++)
                 {
-                    cboYear.Items.Add(years[y]);
+                    cboYear.Items.Add(arrYears[y]);
                 }
             }
             catch (Exception ex)
@@ -130,50 +130,49 @@ namespace SU21_Final_Project
             }
         }
 
-        string shippingMethod = "StandardShipping";
+        string strShippingMethod = "StandardShipping";
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             try
-            {
-
+            {                 
                 DataOrder order = null;
 
                 DateTime.TryParse(DateTime.Now.ToString("yyyy-MM-dd"), out DateTime todaysDate);
 
-                string code;
+                string strCode;
 
                 if (frmCouponInput.CouponCode == null)
                 {
-                    code = null;
+                    strCode = null;
                 }
                 else
                 {
-                    code = frmCouponInput.CouponCode;
+                    strCode = frmCouponInput.CouponCode;
                 }
 
-                string cardType;
+                string strCardType;
 
                 if (rdoDiscover.Checked == true)
                 {
-                    cardType = "Discover";
+                    strCardType = "Discover";
                 }
                 else if (rdoVisa.Checked == true)
                 {
-                    cardType = "Visa";
+                    strCardType = "Visa";
                 }
                 else
                 {
-                    cardType = "MasterCard";
+                    strCardType = "MasterCard";
                 }
 
                 order = new DataOrder
                 {
-                    PersonID = frmSignIn.ID,
+                    PersonID = frmSignIn.intID,
                     OrderDate = todaysDate,
-                    DiscountCode = code,
-                    Shipping = shippingCost,
-                    CardType = cardType,
+                    DiscountCode = strCode,
+                    Shipping = dblShippingCost,
+                    CardType = strCardType,
                     CardNumber = Convert.ToInt32(txtCard.Text),
                     CardExperation = cboMonth.SelectedItem + "/" + cboYear.SelectedItem
                 };
@@ -228,31 +227,44 @@ namespace SU21_Final_Project
             }
         }
 
+        public static bool bolCloseShop = false;
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure want to quit? Your order will be canceled and you will be signed out", "Alert!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes)
+            {
+                bolCloseShop = true;
+                this.Close();
+                frmSignIn.intID = 0;
+            }
+        }
+
         private void rdoStandard_CheckedChanged(object sender, EventArgs e)
         {
-            shippingMethod = "StandardShipping";
-            getShipping(shippingMethod);
-            TotalCost = SubCost + TaxCost + shippingCost;
+            strShippingMethod = "StandardShipping";
+            getShipping(strShippingMethod);
+            dblTotalCost = dblSubCost + dblTaxCost + dblShippingCost;
 
-            lblTotal.Text = (TotalCost).ToString("C2");
+            lblTotal.Text = (dblTotalCost).ToString("C2");
         }
 
         private void rdoNextDay_CheckedChanged(object sender, EventArgs e)
         {
-            shippingMethod = "NextDayShipping";
-            getShipping(shippingMethod);
-            TotalCost = SubCost + TaxCost + shippingCost;
+            strShippingMethod = "NextDayShipping";
+            getShipping(strShippingMethod);
+            dblTotalCost = dblSubCost + dblTaxCost + dblShippingCost;
 
-            lblTotal.Text = (TotalCost).ToString("C2");
+            lblTotal.Text = (dblTotalCost).ToString("C2");
         }
 
         private void rdoSecondDay_CheckedChanged(object sender, EventArgs e)
         {
-            shippingMethod = "SecondDayShipping";
-            getShipping(shippingMethod);
-            TotalCost = SubCost + TaxCost + shippingCost;
+            strShippingMethod = "SecondDayShipping";
+            getShipping(strShippingMethod);
+            dblTotalCost = dblSubCost + dblTaxCost + dblShippingCost;
 
-            lblTotal.Text = (TotalCost).ToString("C2");
+            lblTotal.Text = (dblTotalCost).ToString("C2");
         }
     }
 }

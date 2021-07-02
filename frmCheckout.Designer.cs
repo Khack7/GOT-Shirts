@@ -71,7 +71,7 @@ namespace SU21_Final_Project
             // 
             this.btnConfirm.Enabled = false;
             this.btnConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirm.Location = new System.Drawing.Point(229, 377);
+            this.btnConfirm.Location = new System.Drawing.Point(256, 377);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(102, 47);
             this.btnConfirm.TabIndex = 39;
@@ -88,6 +88,7 @@ namespace SU21_Final_Project
             this.btnCancel.TabIndex = 38;
             this.btnCancel.Text = "Cancel Order";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // txtCard
             // 
@@ -238,7 +239,7 @@ namespace SU21_Final_Project
             this.groupBox1.Controls.Add(this.rdoSecondDay);
             this.groupBox1.Location = new System.Drawing.Point(0, 317);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(356, 54);
+            this.groupBox1.Size = new System.Drawing.Size(370, 54);
             this.groupBox1.TabIndex = 45;
             this.groupBox1.TabStop = false;
             // 
@@ -312,7 +313,7 @@ namespace SU21_Final_Project
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(350, 436);
+            this.ClientSize = new System.Drawing.Size(370, 436);
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.lblShipping);
             this.Controls.Add(this.lblTax);

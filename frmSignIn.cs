@@ -30,11 +30,11 @@ namespace SU21_Final_Project
             InitializeComponent();
         }
 
-        public static string CustomerType { get; set; }
+        public static string strCustomerType { get; set; }
 
         private void btnGuest_Click(object sender, EventArgs e)
         {
-            CustomerType = "Guest";
+            strCustomerType = "Guest";
             frmShop shop = new frmShop();
             this.Hide();
             this.Close();
@@ -49,8 +49,8 @@ namespace SU21_Final_Project
             this.Show();
         }
 
-        public static int ID { get; set; }
-        public static string UserName { get; set; }
+        public static int intID { get; set; }
+        public static string strUserName { get; set; }
         private void btnSign_Click(object sender, EventArgs e)
         {
             try
@@ -61,10 +61,10 @@ namespace SU21_Final_Project
 
                     if (txtPassword.Text == person.Password)
                     {
-                        CustomerType = person.AccountType;
+                        strCustomerType = person.AccountType;
 
-                        ID = person.PersonID;
-                        UserName = txtUsername.Text;
+                        intID = person.PersonID;
+                        strUserName = txtUsername.Text;
 
                         frmShop shop = new frmShop();
                         this.Hide();

@@ -85,7 +85,7 @@ namespace SU21_Final_Project
             cboStates.Items.Add("WI");
             cboStates.Items.Add("WY");
 
-            if (frmSignIn.CustomerType == "Customer" || frmSignIn.CustomerType == "Employee" || frmSignIn.CustomerType == "Manager")
+            if (frmSignIn.strCustomerType == "Customer" || frmSignIn.strCustomerType == "Employee" || frmSignIn.strCustomerType == "Manager")
             {
                 try
                 {
@@ -96,7 +96,7 @@ namespace SU21_Final_Project
                         {
                             con.Open();
                             cmd.CommandType = CommandType.Text;
-                            cmd.Parameters.AddWithValue("@PersonID", frmSignIn.ID);
+                            cmd.Parameters.AddWithValue("@PersonID", frmSignIn.intID);
                             cmd.Connection = con;
                             using (SqlDataReader sdr = cmd.ExecuteReader())
                             {
@@ -156,55 +156,14 @@ namespace SU21_Final_Project
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            string constr = ConfigurationManager.ConnectionStrings["SU21_Final_Project.Properties.Settings.ConnectionString"].ConnectionString;
+            frmCheckout checkout = new frmCheckout();
+            this.Close();
+            checkout.ShowDialog();
+        }
 
-            if (frmSignIn.CustomerType == "Customer" || frmSignIn.CustomerType == "Employee" || frmSignIn.CustomerType == "Manager")
-            {
-                frmCheckout checkout = new frmCheckout();
-                this.Close();
-                checkout.ShowDialog();
-            }
-            else
-            {
-                //THIS IS THE GUEST CONFIRMATION. WILL MOST LIKELY REMOVE SINCE NO LONGER NECCESSARY,
-                //UNLESS IT'S FULLY WORKING PROPERLY.
-                //!!!DON'T SPEND TIME ON THIS UNLESS EVERYTHING ELSE REQUIRED IS DONE AND WORKING!!!
-                try
-                {
-                    using (SqlConnection con = new SqlConnection(constr))
-                    {
-                        using (SqlCommand cmd = new SqlCommand("SELECT NameFirst, NameLast, Address1, Address2, Address3," +
-                                                               " City, State, Zipcode, PhonePrimary FROM HackK21Su2332.Person"))
-                        {
-                            con.Open();
-                            cmd.CommandType = CommandType.Text;
-                            cmd.Connection = con;
-                            using (SqlDataReader sdr = cmd.ExecuteReader())
-                            {
-                                if (sdr.Read())
-                                {
-                                    if (txtFirst.Text != sdr["NameFirst"].ToString() && txtLast.Text != sdr["NameLast"].ToString() &&
-                                       txtAddress1.Text != sdr["Address1"].ToString() && txtAddress2.Text != sdr["Address2"].ToString() &&
-                                       cboStates.SelectedItem.ToString() != sdr["State"].ToString() && txtAddress3.Text != sdr["Address3"].ToString() &&
-                                       txtCity.Text != sdr["City"].ToString() && txtZip.Text != sdr["Zipcode"].ToString() && txtPhone.Text != sdr["PhonePrimary"].ToString())
-                                    {
-
-                                    }
-                                }
-                                else
-                                {
-                                    MessageBox.Show("There was a problem.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                }
-                            }
-                            con.Close();
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

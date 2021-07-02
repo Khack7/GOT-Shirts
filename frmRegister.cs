@@ -29,7 +29,7 @@ namespace SU21_Final_Project
             InitializeComponent();
         }
 
-        bool changesMade = false;
+        bool bolChangesMade = false;
 
         private void frmRegister_Load(object sender, EventArgs e)
         {
@@ -108,60 +108,60 @@ namespace SU21_Final_Project
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            string constr = ConfigurationManager.ConnectionStrings["SU21_Final_Project.Properties.Settings.ConnectionString"].ConnectionString;
+            string strConstr = ConfigurationManager.ConnectionStrings["SU21_Final_Project.Properties.Settings.ConnectionString"].ConnectionString;
 
-            bool acceptedPassword = false;
+            bool bolAcceptedPassword = false;
 
-            string attemptedPassword = txtPassword.Text;
+            string strAttemptedPassword = txtPassword.Text;
 
-            if (!attemptedPassword.Any(char.IsLower))
+            if (!strAttemptedPassword.Any(char.IsLower))
             {
                 MessageBox.Show("Password must contain a lower case letter", "Missing password requirement", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
-                acceptedPassword = false;
+                bolAcceptedPassword = false;
             }
-            else if (!attemptedPassword.Any(char.IsUpper))
+            else if (!strAttemptedPassword.Any(char.IsUpper))
             {
                 MessageBox.Show("Password must contain an upper case letter", "Missing password requirement", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
-                acceptedPassword = false;
+                bolAcceptedPassword = false;
             }
-            else if (!attemptedPassword.Any(char.IsDigit))
+            else if (!strAttemptedPassword.Any(char.IsDigit))
             {
                 MessageBox.Show("Password must contain a number", "Missing password requirement", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
-                acceptedPassword = false;
+                bolAcceptedPassword = false;
             }
-            else if (attemptedPassword.Length < 8 || attemptedPassword.Length > 10)
+            else if (strAttemptedPassword.Length < 8 || strAttemptedPassword.Length > 10)
             {
                 MessageBox.Show("Password must be between 8 and 10 charactors", "Invalid length", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
-                acceptedPassword = false;
+                bolAcceptedPassword = false;
             }
             else
             {
-                acceptedPassword = true;
+                bolAcceptedPassword = true;
             }
 
-            if (acceptedPassword == true)
+            if (bolAcceptedPassword == true)
             {
                 try
                 {
-                    List<TextBox> textBoxes = new List<TextBox>();
-                    textBoxes.Add(txtFirst);
-                    textBoxes.Add(txtLast);
-                    textBoxes.Add(txtAddress1);
-                    textBoxes.Add(txtCity);
-                    textBoxes.Add(txtZip);
-                    textBoxes.Add(txtUsername);
-                    textBoxes.Add(txtPassword);
-                    textBoxes.Add(txtAnswer1);
-                    textBoxes.Add(txtAnswer2);
-                    textBoxes.Add(txtAnswer3);
+                    List<TextBox> lstTextBoxes = new List<TextBox>();
+                    lstTextBoxes.Add(txtFirst);
+                    lstTextBoxes.Add(txtLast);
+                    lstTextBoxes.Add(txtAddress1);
+                    lstTextBoxes.Add(txtCity);
+                    lstTextBoxes.Add(txtZip);
+                    lstTextBoxes.Add(txtUsername);
+                    lstTextBoxes.Add(txtPassword);
+                    lstTextBoxes.Add(txtAnswer1);
+                    lstTextBoxes.Add(txtAnswer2);
+                    lstTextBoxes.Add(txtAnswer3);
 
-                    List<ComboBox> comboBoxes = new List<ComboBox>();
-                    comboBoxes.Add(cboStates);
-                    comboBoxes.Add(cmboSecurity1);
-                    comboBoxes.Add(cmboSecurity2);
-                    comboBoxes.Add(cmboSecurity3);
+                    List<ComboBox> lstComboBoxes = new List<ComboBox>();
+                    lstComboBoxes.Add(cboStates);
+                    lstComboBoxes.Add(cmboSecurity1);
+                    lstComboBoxes.Add(cmboSecurity2);
+                    lstComboBoxes.Add(cmboSecurity3);
 
-                    bool emptyTextbox = false;
+                    bool bolEmptyTextbox = false;
 
                     if (txtFirst.Text == "" || txtLast.Text == "" || txtAddress1.Text == "" ||
                        txtCity.Text == "" || cboStates.SelectedItem == null ||
@@ -172,18 +172,18 @@ namespace SU21_Final_Project
                     {
                         MessageBox.Show("Feilds with ' * ' are required", "Please fill out all required fields", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
-                        foreach (TextBox t in textBoxes)
+                        foreach (TextBox t in lstTextBoxes)
                         {
                             if (t.Text == null || t.Text == "")
                             {
-                                emptyTextbox = true;
+                                bolEmptyTextbox = true;
                                 t.Focus();
                                 break;
                             }
                         }
-                        if (emptyTextbox == false)
+                        if (bolEmptyTextbox == false)
                         {
-                            foreach (ComboBox c in comboBoxes)
+                            foreach (ComboBox c in lstComboBoxes)
                             {
                                 if (c.SelectedItem == null)
                                 {
@@ -243,24 +243,24 @@ namespace SU21_Final_Project
         private void txtFirst_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
-            changesMade = true;
+            bolChangesMade = true;
         }
 
         private void txtLast_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
-            changesMade = true;
+            bolChangesMade = true;
         }
 
         private void txtCity_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Space || e.KeyChar == (char)Keys.OemPeriod);
-            changesMade = true;
+            bolChangesMade = true;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            if (changesMade == false)
+            if (bolChangesMade == false)
             {
                 this.Close();
             }
@@ -280,7 +280,7 @@ namespace SU21_Final_Project
             {
                 e.Handled = true;
             }
-            changesMade = true;
+            bolChangesMade = true;
         }
 
         private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
@@ -290,13 +290,13 @@ namespace SU21_Final_Project
                 e.Handled = true;
             }
             txtPhone.MaxLength = 10;
-            changesMade = true;
+            bolChangesMade = true;
         }
 
         private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
         {
             txtPassword.MaxLength = 10;
-            changesMade = true;
+            bolChangesMade = true;
         }
     }
 }

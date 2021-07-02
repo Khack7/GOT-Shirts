@@ -71,6 +71,7 @@ namespace SU21_Final_Project
             this.btnReturn.TabIndex = 26;
             this.btnReturn.Text = "Return to Shop";
             this.btnReturn.UseVisualStyleBackColor = true;
+            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
             // txtAddress3
             // 
