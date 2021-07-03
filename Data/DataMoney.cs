@@ -20,13 +20,11 @@ namespace SU21_Final_Project.Data
         {
             DataMoney result = null;
 
-            string constr = ConfigurationManager.ConnectionStrings["SU21_Final_Project.Properties.Settings.ConnectionString"].ConnectionString;
 
-            using (SqlConnection con = new SqlConnection(constr))
+            using (SqlConnection con = DataCommon.StartConnection())
             {
                 using (SqlCommand cmd = new SqlCommand("SELECT * FROM HackK21Su2332.Settings WHERE SettingName = @SettingName"))
                 {
-                    con.Open();
                     cmd.CommandType = CommandType.Text;
                     cmd.Parameters.AddWithValue("@SettingName", name);
                     cmd.Connection = con;
@@ -44,6 +42,7 @@ namespace SU21_Final_Project.Data
                         }
                     }
                 }
+                con.Close();
             }
             return result;
         }

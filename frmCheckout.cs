@@ -41,7 +41,7 @@ namespace SU21_Final_Project
 
                 lblShipping.Text = dblShippingCost.ToString("C2");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -53,11 +53,11 @@ namespace SU21_Final_Project
         {
             try
             {
-                string strCurrentItem;
+                CartItem objCurrentItem;
                 for (int i = 0; i < frmShop.lstCartItems.Count; i++)
                 {
-                    strCurrentItem = frmShop.lstCartItems.ElementAt(i);
-                    lstCart.Items.Add(strCurrentItem);
+                    objCurrentItem = frmShop.lstCartItems[i];
+                    lstCart.Items.Add(objCurrentItem);
                 }
 
                 if (frmCouponInput.CodeUsed == true)
@@ -135,7 +135,7 @@ namespace SU21_Final_Project
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             try
-            {                 
+            {
                 DataOrder order = null;
 
                 DateTime.TryParse(DateTime.Now.ToString("yyyy-MM-dd"), out DateTime todaysDate);
@@ -173,11 +173,51 @@ namespace SU21_Final_Project
                     DiscountCode = strCode,
                     Shipping = dblShippingCost,
                     CardType = strCardType,
-                    CardNumber = Convert.ToInt32(txtCard.Text),
+                    CardNumber = txtCard.Text,
                     CardExperation = cboMonth.SelectedItem + "/" + cboYear.SelectedItem
                 };
 
-                DataOrder.SaveOrder(order);
+
+                using (var con = DataCommon.StartConnection())
+                {
+                    var objTrans = con.BeginTransaction();
+                    try
+                    {
+                        DataOrder.SaveOrder(con, order, objTrans);
+
+                        List<DataOrderItem> orderItems = new List<DataOrderItem>();
+
+                        for (int i = 0; i < lstCart.Items.Count; i++)
+                        {
+                            CartItem objItem = (CartItem)lstCart.Items[i];
+
+                            orderItems.Add(new DataOrderItem
+                            {
+                                intOrderNum = order.OrderNum,
+                                intProductID = objItem.Product.ProductID,
+                                intQuantity = objItem.intQuantity
+                            });
+                        }
+
+                        DataOrderItem.SaveItems(con, orderItems, objTrans);
+
+                        objTrans.Commit();
+                        MessageBox.Show("Order successfully placed!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        objTrans.Rollback();
+                        MessageBox.Show(ex.Message);
+                    }
+
+                    con.Close();
+                }
+
+
+
+               
+
+
             }
             catch (Exception ex)
             {
@@ -265,6 +305,19 @@ namespace SU21_Final_Project
             dblTotalCost = dblSubCost + dblTaxCost + dblShippingCost;
 
             lblTotal.Text = (dblTotalCost).ToString("C2");
+        }
+
+        private void frmCheckout_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure want to quit? Your order will be canceled and you will be signed out", "Alert!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes)
+            {
+                bolCloseShop = true;
+
+                this.Close();
+                frmSignIn.intID = 0;
+            }
         }
     }
 }

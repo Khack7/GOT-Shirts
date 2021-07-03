@@ -203,65 +203,26 @@ namespace SU21_Final_Project
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            if (lstCart.SelectedItem == null || lstCart.SelectedItem.ToString() == "")
+            if (lstCart.SelectedItem == null)
             {
                 MessageBox.Show("Please select the item you want removed", "Must have an item selected", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
-                string strSelection = lstCart.SelectedItem.ToString();
-                string[] arrWords = strSelection.Split(' ');
-
-                string[] arrStuff = new string[3];
-                int i = 0;
-
-                string strConstr = ConfigurationManager.ConnectionStrings["SU21_Final_Project.Properties.Settings.ConnectionString"].ConnectionString;
-
                 try
                 {
-                    foreach (var word in arrWords)
+                    lstCart.Items.RemoveAt(lstCart.SelectedIndex);
+
+
+                    dblCurrentTotal = 0;
+                    for (int i = 0; i < lstCart.Items.Count; i++)
                     {
-                        arrStuff[i] = $"{word}";
-                        i++;
-                        if (i > 2)
-                        {
-                            break;
-                        }
+                        CartItem objItem = (CartItem)lstCart.Items[i];
+                        dblCurrentTotal += objItem.Product.Price * objItem.intQuantity;
                     }
 
-                    int.TryParse(arrStuff[0], out int x);
-                    int intNumOfShirts = x;
-                    string strSize = arrStuff[1];
-                    string strColor = arrStuff[2];
+                    lblAmount.Text = dblCurrentTotal.ToString("C2");
 
-
-                    using (SqlConnection con = new SqlConnection(strConstr))
-                    {
-                        using (SqlCommand cmd = new SqlCommand("SELECT QuantityOnHand, Color, Size, Cost FROM HackK21Su2332.Products WHERE Color = @Color AND Size = @Size"))
-                        {
-                            con.Open();
-                            cmd.CommandType = CommandType.Text;
-                            cmd.Parameters.AddWithValue("@Color", strColor);
-                            cmd.Parameters.AddWithValue("@Size", strSize);
-                            cmd.Connection = con;
-                            using (SqlDataReader sdr = cmd.ExecuteReader())
-                            {
-                                if (sdr.Read())
-                                {
-                                    double.TryParse(sdr["Cost"].ToString(), out double d);
-
-                                    dblCurrentTotal -= (d * intNumOfShirts);
-                                    lblAmount.Text = dblCurrentTotal.ToString("C2");
-                                    lstCart.Items.Remove(lstCart.SelectedItem);
-                                }
-                                else
-                                {
-                                    MessageBox.Show("There was a problem loading data", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                }
-                            }
-                            con.Close();
-                        }
-                    }
                 }
                 catch (Exception ex)
                 {
@@ -347,7 +308,7 @@ namespace SU21_Final_Project
             getShirt(strCurrentColor);
         }
 
-        public static List<string> lstCartItems = new List<string>();
+        public static List<CartItem> lstCartItems = new List<CartItem>();
         public static string strSubtotal;
 
         private void btnCheckout_Click(object sender, EventArgs e)
@@ -357,7 +318,7 @@ namespace SU21_Final_Project
 
             for (int i = 0; i < lstCart.Items.Count; i++)
             {
-                lstCartItems.Add(lstCart.Items[i].ToString());
+                lstCartItems.Add((CartItem)lstCart.Items[i]);
             }
             frmShipping ship = new frmShipping();
             this.Hide();

@@ -26,55 +26,45 @@ namespace SU21_Final_Project.Data
 
         public string CardType { get; set; }
 
-        public int CardNumber { get; set; }
+        public string CardNumber { get; set; }
 
         public string CardExperation { get; set; }
 
-        public static void SaveOrder(DataOrder order)
+        public static void SaveOrder(SqlConnection con, DataOrder order, SqlTransaction transaction)
         {
-            string constr = ConfigurationManager.ConnectionStrings["SU21_Final_Project.Properties.Settings.ConnectionString"].ConnectionString;
+            string sql = "INSERT INTO HackK21Su2332.Orders(PersonID, OrderDate, DiscountCode, Shipping," +
+                        " CardType, CardNumber, CardExperation)" +
+                        " VALUES(@PersonID, @OrderDate, @DiscountCode, @Shipping, @CardType, @CardNumber, @CardExperation);" +
+                        " SELECT OrderNum = SCOPE_IDENTITY()";
 
-            using (SqlConnection con = new SqlConnection(constr))
+            using (SqlCommand cmd = DataCommon.StartTextCommand(con, sql, transaction))
             {
-                string sql = "INSERT INTO HackK21Su2332.Orders(PersonID, OrderDate, DiscountCode, Shipping," +
-                            " CardType, CardNumber, CardExperation)" +
-                            " VALUES(@PersonID, @OrderDate, @DiscountCode, @Shipping, @CardType, @CardNumber, @CardExperation);" +
-                            " SELECT OrderNum = SCOPE_IDENTITY()";
-
-                using (SqlCommand cmd = new SqlCommand(sql))
+                if (order.OrderNum != 0)
                 {
-                    con.Open();
-                    cmd.CommandType = CommandType.Text;
-                    cmd.Connection = con;
+                    cmd.Parameters.AddWithValue("@OrderNum", order.OrderNum);
+                }
+                cmd.Parameters.AddWithValue("@PersonID", order.PersonID);
+                cmd.Parameters.AddWithValue("@OrderDate", order.OrderDate);
+                cmd.Parameters.AddWithValue("@DiscountCode", order.DiscountCode == null ? DBNull.Value : (object)order.DiscountCode);
+                cmd.Parameters.AddWithValue("@Shipping", order.Shipping);
+                cmd.Parameters.AddWithValue("@CardType", order.CardType);
+                cmd.Parameters.AddWithValue("@CardNumber", order.CardNumber);
+                cmd.Parameters.AddWithValue("@CardExperation", order.CardExperation);
 
-                    if (order.OrderNum != 0)
+                if (order.OrderNum > 0)
+                {
+                    cmd.ExecuteNonQuery();
+                }
+                else
+                {
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
                     {
-                        cmd.Parameters.AddWithValue("@OrderNum", order.OrderNum);
-                    }
-                    cmd.Parameters.AddWithValue("@PersonID", order.PersonID);
-                    cmd.Parameters.AddWithValue("@OrderDate", order.OrderDate);
-                    cmd.Parameters.AddWithValue("@DiscountCode", order.DiscountCode);
-                    cmd.Parameters.AddWithValue("@Shipping", order.Shipping);
-                    cmd.Parameters.AddWithValue("@CardType", order.CardType);
-                    cmd.Parameters.AddWithValue("@CardNumber", order.CardNumber);
-                    cmd.Parameters.AddWithValue("@CardExperation", order.CardExperation);
-
-                    if (order.OrderNum > 0)
-                    {
-                        cmd.ExecuteNonQuery();
-                    }
-                    else
-                    {
-                        using (SqlDataReader sdr = cmd.ExecuteReader())
+                        if (sdr.Read())
                         {
-                            if (sdr.Read())
-                            {
-                                int.TryParse(sdr["OrderNum"].ToString(), out int num);
-                                order.OrderNum = num;
-                            }
+                            int.TryParse(sdr["OrderNum"].ToString(), out int num);
+                            order.OrderNum = num;
                         }
                     }
-                    con.Close();
                 }
             }
         }

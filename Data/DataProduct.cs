@@ -21,14 +21,12 @@ namespace SU21_Final_Project.Data
         public static DataProduct GetProduct(string color, string size)
         {
             DataProduct product = null;
-            string constr = ConfigurationManager.ConnectionStrings["SU21_Final_Project.Properties.Settings.ConnectionString"].ConnectionString;
+           
 
-
-            using (SqlConnection con = new SqlConnection(constr))
+            using (SqlConnection con = DataCommon.StartConnection())
             {
                 using (SqlCommand cmd = new SqlCommand("SELECT * FROM HackK21Su2332.Products WHERE Color = @Color AND Size = @Size"))
                 {
-                    con.Open();
                     cmd.CommandType = CommandType.Text;
                     cmd.Parameters.AddWithValue("@Color", color);
                     cmd.Parameters.AddWithValue("@Size", size);
@@ -46,14 +44,11 @@ namespace SU21_Final_Project.Data
         public static DataProduct GetProduct(int productID)
         {
             DataProduct product = null;
-            string constr = ConfigurationManager.ConnectionStrings["SU21_Final_Project.Properties.Settings.ConnectionString"].ConnectionString;
-
-
-            using (SqlConnection con = new SqlConnection(constr))
+          
+            using (SqlConnection con = DataCommon.StartConnection())
             {
                 using (SqlCommand cmd = new SqlCommand("SELECT * FROM HackK21Su2332.Products WHERE ProductID = @ProductID"))
                 {
-                    con.Open();
                     cmd.CommandType = CommandType.Text;
                     cmd.Parameters.AddWithValue("@ProductID", productID);
                     cmd.Connection = con;

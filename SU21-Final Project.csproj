@@ -65,7 +65,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\DataItems.cs" />
+    <Compile Include="Data\DataCommon.cs" />
+    <Compile Include="Data\DataOrderItem.cs" />
     <Compile Include="Data\DataMoney.cs" />
     <Compile Include="Data\DataOrder.cs" />
     <Compile Include="Data\DataPerson.cs" />

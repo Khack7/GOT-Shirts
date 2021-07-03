@@ -96,5 +96,11 @@ namespace SU21_Final_Project
             frmResetPassword reset = new frmResetPassword();
             reset.ShowDialog();
         }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            //string helpPath = "D:\tstc\Take 2\HTML files\Sign_In_Help.html";
+            //Help.ShowHelp(this, helpPath);
+        }
     }
 }

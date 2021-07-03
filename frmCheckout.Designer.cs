@@ -54,6 +54,7 @@ namespace SU21_Final_Project
             this.lblTax = new System.Windows.Forms.Label();
             this.lblShipping = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
+            this.btnHelp = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -94,6 +95,7 @@ namespace SU21_Final_Project
             // 
             this.txtCard.Location = new System.Drawing.Point(65, 219);
             this.txtCard.Name = "txtCard";
+            this.txtCard.PasswordChar = '•';
             this.txtCard.Size = new System.Drawing.Size(266, 20);
             this.txtCard.TabIndex = 37;
             this.txtCard.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCard_KeyPress);
@@ -309,11 +311,22 @@ namespace SU21_Final_Project
             this.lblTotal.TabIndex = 52;
             this.lblTotal.Text = "$0.00";
             // 
+            // btnHelp
+            // 
+            this.btnHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHelp.Location = new System.Drawing.Point(134, 377);
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Size = new System.Drawing.Size(102, 47);
+            this.btnHelp.TabIndex = 53;
+            this.btnHelp.Text = "Help";
+            this.btnHelp.UseVisualStyleBackColor = true;
+            // 
             // frmCheckout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(370, 436);
+            this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.lblShipping);
             this.Controls.Add(this.lblTax);
@@ -373,5 +386,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label lblTax;
         private System.Windows.Forms.Label lblShipping;
         private System.Windows.Forms.Label lblTotal;
+        private System.Windows.Forms.Button btnHelp;
     }
 }

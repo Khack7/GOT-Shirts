@@ -396,6 +396,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Button btnBlack;
         private System.Windows.Forms.Button btnBlue;
         private System.Windows.Forms.PictureBox picbxShirt;
-        private System.Windows.Forms.ListBox lstCart;
+        public System.Windows.Forms.ListBox lstCart;
     }
 }

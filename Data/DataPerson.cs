@@ -37,13 +37,11 @@ namespace SU21_Final_Project.Data
         public static DataPerson GetPerson(string UserName)
         {
             DataPerson result = null;
-            string constr = ConfigurationManager.ConnectionStrings["SU21_Final_Project.Properties.Settings.ConnectionString"].ConnectionString;
-
-            using (SqlConnection con = new SqlConnection(constr))
+           
+            using (SqlConnection con = DataCommon.StartConnection())
             {
                 using (SqlCommand cmd = new SqlCommand("SELECT * FROM HackK21Su2332.Person WHERE UserName = @UserName"))
                 {
-                    con.Open();
                     cmd.CommandType = CommandType.Text;
                     cmd.Parameters.AddWithValue("@UserName", UserName);
                     cmd.Connection = con;
@@ -80,6 +78,7 @@ namespace SU21_Final_Project.Data
                         }
                     }
                 }
+                con.Close();
             }
 
             return result;
@@ -87,9 +86,8 @@ namespace SU21_Final_Project.Data
 
         public static void SavePerson(DataPerson person)
         {
-            string constr = ConfigurationManager.ConnectionStrings["SU21_Final_Project.Properties.Settings.ConnectionString"].ConnectionString;
-
-            using (SqlConnection con = new SqlConnection(constr))
+           
+            using (SqlConnection con = DataCommon.StartConnection())
             {
                 string sql;
                 if (person.PersonID == 0)
@@ -114,7 +112,6 @@ namespace SU21_Final_Project.Data
                 }
                 using (SqlCommand cmd = new SqlCommand(sql))
                 {
-                    con.Open();
                     cmd.CommandType = CommandType.Text;
                     cmd.Connection = con;
                     if (person.PersonID != 0)
