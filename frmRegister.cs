@@ -281,6 +281,7 @@ namespace SU21_Final_Project
                 e.Handled = true;
             }
             bolChangesMade = true;
+            txtZip.MaxLength = 5;
         }
 
         private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)

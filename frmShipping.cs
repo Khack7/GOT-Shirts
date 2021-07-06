@@ -147,6 +147,7 @@ namespace SU21_Final_Project
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             frmCheckout checkout = new frmCheckout();
+            this.Hide();
             this.Close();
             checkout.ShowDialog();
         }
