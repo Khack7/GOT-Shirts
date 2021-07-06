@@ -35,7 +35,7 @@ namespace SU21_Final_Project
             this.lblPass = new System.Windows.Forms.Label();
             this.lblUserName = new System.Windows.Forms.Label();
             this.btnRegister = new System.Windows.Forms.Button();
-            this.btnGuest = new System.Windows.Forms.Button();
+            this.btnReturn = new System.Windows.Forms.Button();
             this.btnSign = new System.Windows.Forms.Button();
             this.btnForgot = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -102,23 +102,23 @@ namespace SU21_Final_Project
             this.btnRegister.UseVisualStyleBackColor = true;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
-            // btnGuest
+            // btnReturn
             // 
-            this.btnGuest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGuest.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuest.Location = new System.Drawing.Point(374, 253);
-            this.btnGuest.Name = "btnGuest";
-            this.btnGuest.Size = new System.Drawing.Size(109, 50);
-            this.btnGuest.TabIndex = 8;
-            this.btnGuest.Text = "Shop as guest";
-            this.btnGuest.UseVisualStyleBackColor = true;
-            this.btnGuest.Click += new System.EventHandler(this.btnGuest_Click);
+            this.btnReturn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnReturn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReturn.Location = new System.Drawing.Point(12, 253);
+            this.btnReturn.Name = "btnReturn";
+            this.btnReturn.Size = new System.Drawing.Size(109, 50);
+            this.btnReturn.TabIndex = 8;
+            this.btnReturn.Text = "Return To Main";
+            this.btnReturn.UseVisualStyleBackColor = true;
+            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
             // btnSign
             // 
             this.btnSign.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSign.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSign.Location = new System.Drawing.Point(12, 253);
+            this.btnSign.Location = new System.Drawing.Point(374, 253);
             this.btnSign.Name = "btnSign";
             this.btnSign.Size = new System.Drawing.Size(109, 50);
             this.btnSign.TabIndex = 5;
@@ -151,7 +151,7 @@ namespace SU21_Final_Project
             this.Controls.Add(this.lblPass);
             this.Controls.Add(this.lblUserName);
             this.Controls.Add(this.btnRegister);
-            this.Controls.Add(this.btnGuest);
+            this.Controls.Add(this.btnReturn);
             this.Controls.Add(this.btnSign);
             this.DoubleBuffered = true;
             this.Name = "frmSignIn";
@@ -170,7 +170,7 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label lblPass;
         private System.Windows.Forms.Label lblUserName;
         private System.Windows.Forms.Button btnRegister;
-        private System.Windows.Forms.Button btnGuest;
+        private System.Windows.Forms.Button btnReturn;
         private System.Windows.Forms.Button btnSign;
         private System.Windows.Forms.Button btnForgot;
     }

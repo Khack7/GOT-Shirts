@@ -234,7 +234,9 @@
     <Content Include="Shirts\Red.PNG" />
     <Content Include="Shirts\White.PNG" />
     <Content Include="Shirts\Yellow.PNG" />
-    <Content Include="Templates\Receipt.html" />
+    <Content Include="Templates\Receipt.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

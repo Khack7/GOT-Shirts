@@ -32,13 +32,9 @@ namespace SU21_Final_Project
 
         public static string strCustomerType { get; set; }
 
-        private void btnGuest_Click(object sender, EventArgs e)
+        private void btnReturn_Click(object sender, EventArgs e)
         {
-            strCustomerType = "Guest";
-            frmShop shop = new frmShop();
-            this.Hide();
             this.Close();
-            shop.ShowDialog();
         }
 
         private void btnRegister_Click(object sender, EventArgs e)

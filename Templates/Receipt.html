@@ -10,8 +10,16 @@
 </head>
 <body>
     <h1>Order #{OrderNum}</h1>
-    <div>{OrderDate}</div>
-    <div>{Payment}</div>
+    <div style="float:left">
+        <div>{OrderDate}</div>
+        <div>{Payment}</div>
+    </div>
+    <div style="float:right">
+        <div>{AddressName}</div>
+        <div>{AddressStreet}</div>
+        <div>{AddressCity}, {AddressState} {AddressZip}</div>
+    </div>
+    <div style="clear:both"></div>
     <table style="width:100%" border="1" cellpadding="3" cellspacing="0">
         <tr>
             <th align="left" style="background-color: #ddd">Item</th>
@@ -22,7 +30,7 @@
         {Items}
         <tr>
             <td colspan="3" align="right">Subtotal:</td>
-            <td>{Subtotal}</td>
+            <td>{SubTotal}</td>
         </tr>
         <tr>
             <td colspan="3" align="right">Tax:</td>

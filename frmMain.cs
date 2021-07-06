@@ -40,9 +40,10 @@ namespace SU21_Final_Project
         //    }
         //}USE THIS TO DISABLE 'X' BUTTON
 
-        private void btnManage_Click(object sender, EventArgs e)
+        private void btnExit_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(DateTime.Now.ToString("yyyy-MM-dd"));
+            //MessageBox.Show(DateTime.Now.ToString("yyyy-MM-dd"));
+            this.Close();
         }
 
         private void BtnShop_Click(object sender, EventArgs e)
@@ -51,6 +52,11 @@ namespace SU21_Final_Project
             this.Hide();
             signIn.ShowDialog();
             this.Show();
+        }
+
+        private void manageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

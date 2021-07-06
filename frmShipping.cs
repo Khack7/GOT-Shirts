@@ -142,16 +142,6 @@ namespace SU21_Final_Project
                     MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else
-            {
-                txtFirst.ReadOnly = false;
-                txtLast.ReadOnly = false;
-                txtAddress1.ReadOnly = false;
-                txtAddress2.ReadOnly = false;
-                txtAddress3.ReadOnly = false;
-                txtCity.ReadOnly = false;
-                cboStates.Enabled = true;
-            }
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)

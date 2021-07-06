@@ -189,8 +189,6 @@ namespace SU21_Final_Project
 
                         List<DataOrderItem> orderItems = new List<DataOrderItem>();
 
-                        //DataProduct products = null;
-
                         for (int i = 0; i < lstCart.Items.Count; i++)
                         {
                             CartItem objItem = (CartItem)lstCart.Items[i];
@@ -203,9 +201,6 @@ namespace SU21_Final_Project
                                 Product = objItem.Product
                             });
 
-                            //products.ProductID = objItem.Product.ProductID;
-                            
-
                             DataProduct.ReduceProductQuantity(con, objItem.Product.ProductID, objItem.intQuantity, objTrans);
                         }
 
@@ -216,7 +211,6 @@ namespace SU21_Final_Project
 
                         PrintReceipt(order, orderItems);
 
-                        //MessageBox.Show("Order successfully placed!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
                     {
@@ -226,12 +220,6 @@ namespace SU21_Final_Project
 
                     con.Close();
                 }
-                
-
-
-               
-
-
             }
             catch (Exception ex)
             {
@@ -242,35 +230,92 @@ namespace SU21_Final_Project
 
         private void PrintReceipt(DataOrder order, List<DataOrderItem> items)
         {
-            string receipt = Receipt.LoadTemplate();
-            receipt.Replace("{OrderNum}", order.OrderNum.ToString());
-            receipt.Replace("{OrderDate}", order.OrderDate.ToString("MM-dd-yyyy"));
-            receipt.Replace("{Payment}", $"{order.CardType} xxxx{order.CardNumber.Substring(order.CardNumber.Length - 4)}");
-            StringBuilder itemHTML = new StringBuilder();
-            
-            for(int i = 0; i < items.Count; i++)
-            {
-
-                itemHTML.AppendFormat("<tr>");
-                itemHTML.AppendFormat("    <td>{0} {1}</td>", items[i].Product.Color, items[i].Product.Size);
-                itemHTML.AppendFormat("    <td>{0}</td>", items[i].intQuantity);
-                itemHTML.AppendFormat("    <td>{0:C2}</td>", items[i].Product.Price);
-                itemHTML.AppendFormat("    <td>{0:C2}</td>", items[i].Product.Price * items[i].intQuantity);
-                itemHTML.AppendFormat("</tr>");
-            }
-            receipt.Replace("{Items}", itemHTML.ToString());
-            receipt.Replace("{SubTotal}", dblSubCost.ToString("C2"));
-            receipt.Replace("{TaxTotal}", dblTaxCost.ToString("C2"));
-            
-            receipt.Replace("{TotalCost}", dblTotalCost.ToString("C2"));
-            //TODO WRITE TO FILE AND DISPLAY
-            string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
             try
             {
-                
+                string receipt = Receipt.LoadTemplate();
+                receipt = receipt.Replace("{OrderNum}", order.OrderNum.ToString());
+                receipt = receipt.Replace("{OrderDate}", order.OrderDate.ToString("MM-dd-yyyy"));
+                receipt = receipt.Replace("{Payment}", $"{order.CardType} xxxx{order.CardNumber.Substring(order.CardNumber.Length - 4)}");
+                var person = DataPerson.GetPerson(order.PersonID);
+                receipt = receipt.Replace("{AddressName}", $"{person.NameFirst} {person.NameLast}");
+                List<string> streetLines = new List<string>();
+                streetLines.Add(person.Address1);
+                if(!string.IsNullOrEmpty(person.Address2))
+                {
+                    streetLines.Add(person.Address2);
+                }
+                if (!string.IsNullOrEmpty(person.Address3))
+                {
+                    streetLines.Add(person.Address3);
+                }
+                receipt = receipt.Replace("{AddressStreet}", string.Join("<br/>", streetLines));
+                receipt = receipt.Replace("{AddressCity}", person.City);
+                receipt = receipt.Replace("{AddressState}", person.State);
+                receipt = receipt.Replace("{AddressZip}", person.Zipcode);
 
-                //PUT CREATED FILE NAME HERE
-                System.Diagnostics.Process.Start($"{path}\\HelpFiles\\Checkout_Help.html");
+
+                StringBuilder itemHTML = new StringBuilder();
+
+                for (int i = 0; i < items.Count; i++)
+                {
+
+                    itemHTML.AppendFormat("<tr>");
+                    itemHTML.AppendFormat("    <td>{0} {1}</td>", items[i].Product.Color, items[i].Product.Size);
+                    itemHTML.AppendFormat("    <td>{0}</td>", items[i].intQuantity);
+                    itemHTML.AppendFormat("    <td>{0:C2}</td>", items[i].Product.Price);
+                    itemHTML.AppendFormat("    <td>{0:C2}</td>", items[i].Product.Price * items[i].intQuantity);
+                    itemHTML.AppendFormat("</tr>");
+                }
+                receipt = receipt.Replace("{Items}", itemHTML.ToString());
+                receipt = receipt.Replace("{SubTotal}", dblSubCost.ToString("C2"));
+                receipt = receipt.Replace("{TaxTotal}", dblTaxCost.ToString("C2"));
+                receipt = receipt.Replace("{ShippingTotal}", dblShippingCost.ToString("C2"));
+                receipt = receipt.Replace("{OrderTotal}", dblTotalCost.ToString("C2"));
+                //TODO WRITE TO FILE AND DISPLAY
+                //GET USERS SELECTED PATH
+                string path = "";
+                bool bolPathSelected = false;
+
+                DialogResult wantReceipt = MessageBox.Show("Would you like a receipt?", "Almost Done", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (wantReceipt == DialogResult.Yes)
+                {
+                    while (bolPathSelected == false)
+                    {
+                        SaveFileDialog fd = new SaveFileDialog();
+                        fd.Title = "Select save location";
+                        fd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                        fd.FileName = $"GOT Shirts-Receipt-{order.OrderNum}.html";
+
+                        if (fd.ShowDialog() == DialogResult.OK)
+                        {
+                            path = fd.FileName;
+                            bolPathSelected = true;
+                            break;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Please select a folder to save your receipt", "Please choose a folder", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            bolPathSelected = false;
+                        }
+
+                    }
+
+                    using (FileStream fs = new FileStream(path, FileMode.Create))
+                    {
+                        using (StreamWriter w = new StreamWriter(fs, Encoding.UTF8))
+                        {
+                            w.Write(receipt);
+                        }
+                    }
+                    System.Diagnostics.Process.Start(path);
+                    this.Close();
+                    bolCloseShop = true;
+                }
+                else
+                {
+                    this.Close();
+                    bolCloseShop = true;
+                }
             }
             catch (Exception ex)
             {

@@ -47,40 +47,69 @@ namespace SU21_Final_Project.Data
                     cmd.Connection = con;
                     using (SqlDataReader sdr = cmd.ExecuteReader())
                     {
-                        if (sdr.Read())
-                        {
-                            int.TryParse(sdr["PersonID"].ToString(), out int p);
-
-                            result = new DataPerson
-                            {
-                                PersonID = p,
-                                NameFirst = sdr["NameFirst"].ToString(),
-                                NameLast = sdr["NameLast"].ToString(),
-                                Address1 = sdr["Address1"].ToString(),
-                                Address2 = sdr["Address2"].ToString(),
-                                Address3 = sdr["Address3"].ToString(),
-                                City = sdr["City"].ToString(),
-                                Zipcode = sdr["Zipcode"].ToString(),
-                                State = sdr["State"].ToString(),
-                                Email = sdr["Email"].ToString(),
-                                PhonePrimary = sdr["PhonePrimary"].ToString(),
-                                PhoneSecondary = sdr["PhoneSecondary"].ToString(),
-                                UserName = sdr["UserName"].ToString(),
-                                Password = sdr["Password"].ToString(),
-                                AccountType = sdr["AccountType"].ToString(),
-                                SecurityQuestion1 = sdr["SecurityQuestion1"].ToString(),
-                                SecurityAnswer1 = sdr["SecurityAnswer1"].ToString(),
-                                SecurityQuestion2 = sdr["SecurityQuestion2"].ToString(),
-                                SecurityAnswer2 = sdr["SecurityAnswer2"].ToString(),
-                                SecurityQuestion3 = sdr["SecurityQuestion3"].ToString(),
-                                SecurityAnswer3 = sdr["SecurityAnswer3"].ToString(),
-                            };
-                        }
+                        result = LoadPerson(sdr);
                     }
                 }
                 con.Close();
             }
 
+            return result;
+        }
+
+        public static DataPerson GetPerson(int PersonID)
+        {
+            DataPerson result = null;
+
+            using (SqlConnection con = DataCommon.StartConnection())
+            {
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM HackK21Su2332.Person WHERE PersonID = @PersonID"))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@PersonID", PersonID);
+                    cmd.Connection = con;
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        result = LoadPerson(sdr);
+                    }
+                }
+                con.Close();
+            }
+
+            return result;
+        }
+
+        private static DataPerson LoadPerson(SqlDataReader sdr)
+        {
+            DataPerson result = null;
+            if (sdr.Read())
+            {
+                int.TryParse(sdr["PersonID"].ToString(), out int p);
+
+                result = new DataPerson
+                {
+                    PersonID = p,
+                    NameFirst = sdr["NameFirst"].ToString(),
+                    NameLast = sdr["NameLast"].ToString(),
+                    Address1 = sdr["Address1"].ToString(),
+                    Address2 = sdr["Address2"].ToString(),
+                    Address3 = sdr["Address3"].ToString(),
+                    City = sdr["City"].ToString(),
+                    Zipcode = sdr["Zipcode"].ToString(),
+                    State = sdr["State"].ToString(),
+                    Email = sdr["Email"].ToString(),
+                    PhonePrimary = sdr["PhonePrimary"].ToString(),
+                    PhoneSecondary = sdr["PhoneSecondary"].ToString(),
+                    UserName = sdr["UserName"].ToString(),
+                    Password = sdr["Password"].ToString(),
+                    AccountType = sdr["AccountType"].ToString(),
+                    SecurityQuestion1 = sdr["SecurityQuestion1"].ToString(),
+                    SecurityAnswer1 = sdr["SecurityAnswer1"].ToString(),
+                    SecurityQuestion2 = sdr["SecurityQuestion2"].ToString(),
+                    SecurityAnswer2 = sdr["SecurityAnswer2"].ToString(),
+                    SecurityQuestion3 = sdr["SecurityQuestion3"].ToString(),
+                    SecurityAnswer3 = sdr["SecurityAnswer3"].ToString(),
+                };
+            }
             return result;
         }
 
