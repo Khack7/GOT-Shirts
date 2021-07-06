@@ -99,8 +99,15 @@ namespace SU21_Final_Project
 
         private void btnHelp_Click(object sender, EventArgs e)
         {
-            //string helpPath = "D:\tstc\Take 2\HTML files\Sign_In_Help.html";
-            //Help.ShowHelp(this, helpPath);
+            string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            try
+            {
+                System.Diagnostics.Process.Start($"{path}\\HelpFiles\\Sign_In_Help.html");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

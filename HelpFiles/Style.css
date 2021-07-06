@@ -1,0 +1,10 @@
+body{
+  font-family: tahoma;
+  margin: 20px;
+}
+.right{
+  float: right;
+}
+.clear{
+  clear: both;
+}

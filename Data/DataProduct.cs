@@ -11,17 +11,17 @@ namespace SU21_Final_Project.Data
 {
     public class DataProduct
     {
-        public int ProductID {get; set;}
-        public string Color {get; set;}
-        public string Size {get; set;}
-        public int QuantityOnHand {get; set;}
-        public double Cost {get; set;}
+        public int ProductID { get; set; }
+        public string Color { get; set; }
+        public string Size { get; set; }
+        public int QuantityOnHand { get; set; }
+        public double Cost { get; set; }
         public double Price { get; set; }
 
         public static DataProduct GetProduct(string color, string size)
         {
             DataProduct product = null;
-           
+
 
             using (SqlConnection con = DataCommon.StartConnection())
             {
@@ -41,26 +41,25 @@ namespace SU21_Final_Project.Data
             return product;
         }
 
-        public static DataProduct GetProduct(int productID)
+        //DataProduct
+        public static void ReduceProductQuantity(SqlConnection con, int productID, int qtyToReduce, SqlTransaction transaction)
         {
-            DataProduct product = null;
-          
-            using (SqlConnection con = DataCommon.StartConnection())
+            //SELECT * FROM HackK21Su2332.Products WHERE ProductID = @ProductID
+            string sql = "UPDATE HackK21Su2332.Products SET QuantityOnHand = QuantityOnHand - @QuantityToReduce " +
+                                                   "WHERE ProductID = @ProductID";
+
+            using (SqlCommand cmd = DataCommon.StartTextCommand(con, sql, transaction))
             {
-                using (SqlCommand cmd = new SqlCommand("SELECT * FROM HackK21Su2332.Products WHERE ProductID = @ProductID"))
-                {
-                    cmd.CommandType = CommandType.Text;
-                    cmd.Parameters.AddWithValue("@ProductID", productID);
-                    cmd.Connection = con;
-                    using (SqlDataReader sdr = cmd.ExecuteReader())
-                    {
-                        LoadFromReader(ref product, sdr);
-                    }
-                    con.Close();
-                }
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("@ProductID", productID);
+                cmd.Parameters.AddWithValue("@QuantityToReduce", qtyToReduce);
+                cmd.Connection = con;
+                cmd.ExecuteNonQuery();
             }
-            return product;
+
+            //return product;
         }
+
         private static void LoadFromReader(ref DataProduct product, SqlDataReader sdr)
         {
             if (sdr.Read())

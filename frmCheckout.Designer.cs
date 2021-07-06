@@ -257,6 +257,7 @@ namespace SU21_Final_Project
             // 
             // cboMonth
             // 
+            this.cboMonth.BackColor = System.Drawing.Color.White;
             this.cboMonth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMonth.FormattingEnabled = true;
             this.cboMonth.Location = new System.Drawing.Point(84, 251);
@@ -320,6 +321,7 @@ namespace SU21_Final_Project
             this.btnHelp.TabIndex = 53;
             this.btnHelp.Text = "Help";
             this.btnHelp.UseVisualStyleBackColor = true;
+            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
             // frmCheckout
             // 

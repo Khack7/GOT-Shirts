@@ -29,6 +29,7 @@ namespace SU21_Final_Project
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmShipping));
             this.btnConfirm = new System.Windows.Forms.Button();
             this.btnReturn = new System.Windows.Forms.Button();
             this.txtAddress3 = new System.Windows.Forms.TextBox();
@@ -49,6 +50,7 @@ namespace SU21_Final_Project
             this.lblAddress = new System.Windows.Forms.Label();
             this.lblLName = new System.Windows.Forms.Label();
             this.lblFName = new System.Windows.Forms.Label();
+            this.btnHelp = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnConfirm
@@ -230,11 +232,23 @@ namespace SU21_Final_Project
             this.lblFName.TabIndex = 28;
             this.lblFName.Text = "First Name*";
             // 
+            // btnHelp
+            // 
+            this.btnHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHelp.Location = new System.Drawing.Point(358, 232);
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Size = new System.Drawing.Size(147, 44);
+            this.btnHelp.TabIndex = 48;
+            this.btnHelp.Text = "Help";
+            this.btnHelp.UseVisualStyleBackColor = true;
+            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
+            // 
             // frmShipping
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(866, 301);
+            this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.txtAddress3);
             this.Controls.Add(this.lblAddress3);
             this.Controls.Add(this.txtAddress2);
@@ -255,6 +269,7 @@ namespace SU21_Final_Project
             this.Controls.Add(this.lblFName);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.btnReturn);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmShipping";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Shipping";
@@ -286,5 +301,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label lblAddress;
         private System.Windows.Forms.Label lblLName;
         private System.Windows.Forms.Label lblFName;
+        private System.Windows.Forms.Button btnHelp;
     }
 }

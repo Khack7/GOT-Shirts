@@ -1,0 +1,41 @@
+﻿<html>
+<head>
+    <title>Order #{OrderNum}</title>
+    <style>
+        body {
+            font-family: tahoma;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Order #{OrderNum}</h1>
+    <div>{OrderDate}</div>
+    <div>{Payment}</div>
+    <table style="width:100%" border="1" cellpadding="3" cellspacing="0">
+        <tr>
+            <th align="left" style="background-color: #ddd">Item</th>
+            <th align="left" style="background-color: #ddd">Qty</th>
+            <th align="left" style="background-color: #ddd">Price</th>
+            <th align="left" style="background-color: #ddd">Ext. Price</th>
+        </tr>
+        {Items}
+        <tr>
+            <td colspan="3" align="right">Subtotal:</td>
+            <td>{Subtotal}</td>
+        </tr>
+        <tr>
+            <td colspan="3" align="right">Tax:</td>
+            <td>{TaxTotal}</td>
+        </tr>
+        <tr>
+            <td colspan="3" align="right">Shipping:</td>
+            <td>{ShippingTotal}</td>
+        </tr>
+        <tr>
+            <td colspan="3" align="right">Total:</td>
+            <td>{OrderTotal}</td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -8,12 +8,14 @@
 // and the payment options.
 //*******************************************
 //*******************************************using System;
+using SU21_Final_Project.Classes;
 using SU21_Final_Project.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -187,6 +189,8 @@ namespace SU21_Final_Project
 
                         List<DataOrderItem> orderItems = new List<DataOrderItem>();
 
+                        //DataProduct products = null;
+
                         for (int i = 0; i < lstCart.Items.Count; i++)
                         {
                             CartItem objItem = (CartItem)lstCart.Items[i];
@@ -195,24 +199,34 @@ namespace SU21_Final_Project
                             {
                                 intOrderNum = order.OrderNum,
                                 intProductID = objItem.Product.ProductID,
-                                intQuantity = objItem.intQuantity
+                                intQuantity = objItem.intQuantity,
+                                Product = objItem.Product
                             });
+
+                            //products.ProductID = objItem.Product.ProductID;
+                            
+
+                            DataProduct.ReduceProductQuantity(con, objItem.Product.ProductID, objItem.intQuantity, objTrans);
                         }
 
                         DataOrderItem.SaveItems(con, orderItems, objTrans);
 
+
                         objTrans.Commit();
-                        MessageBox.Show("Order successfully placed!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        PrintReceipt(order, orderItems);
+
+                        //MessageBox.Show("Order successfully placed!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
                     {
                         objTrans.Rollback();
-                        MessageBox.Show(ex.Message);
+                        MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error); ;
                     }
 
                     con.Close();
                 }
-
+                
 
 
                
@@ -224,6 +238,44 @@ namespace SU21_Final_Project
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        private void PrintReceipt(DataOrder order, List<DataOrderItem> items)
+        {
+            string receipt = Receipt.LoadTemplate();
+            receipt.Replace("{OrderNum}", order.OrderNum.ToString());
+            receipt.Replace("{OrderDate}", order.OrderDate.ToString("MM-dd-yyyy"));
+            receipt.Replace("{Payment}", $"{order.CardType} xxxx{order.CardNumber.Substring(order.CardNumber.Length - 4)}");
+            StringBuilder itemHTML = new StringBuilder();
+            
+            for(int i = 0; i < items.Count; i++)
+            {
+
+                itemHTML.AppendFormat("<tr>");
+                itemHTML.AppendFormat("    <td>{0} {1}</td>", items[i].Product.Color, items[i].Product.Size);
+                itemHTML.AppendFormat("    <td>{0}</td>", items[i].intQuantity);
+                itemHTML.AppendFormat("    <td>{0:C2}</td>", items[i].Product.Price);
+                itemHTML.AppendFormat("    <td>{0:C2}</td>", items[i].Product.Price * items[i].intQuantity);
+                itemHTML.AppendFormat("</tr>");
+            }
+            receipt.Replace("{Items}", itemHTML.ToString());
+            receipt.Replace("{SubTotal}", dblSubCost.ToString("C2"));
+            receipt.Replace("{TaxTotal}", dblTaxCost.ToString("C2"));
+            
+            receipt.Replace("{TotalCost}", dblTotalCost.ToString("C2"));
+            //TODO WRITE TO FILE AND DISPLAY
+            string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            try
+            {
+                
+
+                //PUT CREATED FILE NAME HERE
+                System.Diagnostics.Process.Start($"{path}\\HelpFiles\\Checkout_Help.html");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void txtCard_KeyPress(object sender, KeyPressEventArgs e)
@@ -287,6 +339,19 @@ namespace SU21_Final_Project
             dblTotalCost = dblSubCost + dblTaxCost + dblShippingCost;
 
             lblTotal.Text = (dblTotalCost).ToString("C2");
+        }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            try
+            {
+                System.Diagnostics.Process.Start($"{path}\\HelpFiles\\Checkout_Help.html");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void rdoNextDay_CheckedChanged(object sender, EventArgs e)

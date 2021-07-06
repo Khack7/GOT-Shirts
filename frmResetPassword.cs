@@ -36,8 +36,8 @@ namespace SU21_Final_Project
 
                 if (btnEnter.Text == "Load")
                 {
-                    
-                    if(person != null)
+
+                    if (person != null)
                     {
                         txtSecurity1.Enabled = true;
                         txtSecurity2.Enabled = true;
@@ -68,7 +68,7 @@ namespace SU21_Final_Project
                 }
                 else if (btnEnter.Text == "Enter")
                 {
-                    if(txtAnswer1.Text == person.SecurityAnswer1 && txtAnswer2.Text == person.SecurityAnswer2 &&
+                    if (txtAnswer1.Text == person.SecurityAnswer1 && txtAnswer2.Text == person.SecurityAnswer2 &&
                         txtAnswer3.Text == person.SecurityAnswer3)
                     {
                         btnEnter.Text = "Confirm Change";
@@ -126,7 +126,7 @@ namespace SU21_Final_Project
                     }
 
 
-                    
+
                 }
             }
             catch (Exception ex)
@@ -135,7 +135,7 @@ namespace SU21_Final_Project
             }
             finally
             {
-                if(bolAcceptedUsername == true)
+                if (bolAcceptedUsername == true)
                 {
                     this.Close();
                 }
@@ -144,7 +144,15 @@ namespace SU21_Final_Project
 
         private void btnHelp_Click(object sender, EventArgs e)
         {
-            //TODO
+            string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            try
+            {
+                System.Diagnostics.Process.Start($"{path}\\HelpFiles\\Password_Reset_Help.html");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

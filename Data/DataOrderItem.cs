@@ -20,6 +20,8 @@ namespace SU21_Final_Project.Data
 
         public int intQuantity { get; set; }
 
+        public DataProduct Product { get; set; }
+
         public static void SaveItems(SqlConnection con, List<DataOrderItem> items, SqlTransaction transaction)
         {
 
