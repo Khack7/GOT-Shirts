@@ -258,54 +258,180 @@ namespace SU21_Final_Project
         {
             strCurrentColor = btnOrange.BackColor.Name;
             getShirt(strCurrentColor);
+            string strSize;
+            if (rdoSmall.Checked == true)
+            {
+                strSize = "Small";
+            }
+            else if (rdoMedium.Checked == true)
+            {
+                strSize = "Medium";
+            }
+            else
+            {
+                strSize = "Large";
+            }
+            getItemPrice(strCurrentColor, strSize);
         }
 
         private void btnBlack_Click(object sender, EventArgs e)
         {
             strCurrentColor = btnBlack.BackColor.Name;
             getShirt(strCurrentColor);
+            string strSize;
+            if (rdoSmall.Checked == true)
+            {
+                strSize = "Small";
+            }
+            else if (rdoMedium.Checked == true)
+            {
+                strSize = "Medium";
+            }
+            else
+            {
+                strSize = "Large";
+            }
+            getItemPrice(strCurrentColor, strSize);
         }
 
         private void btnBlue_Click(object sender, EventArgs e)
         {
             strCurrentColor = btnBlue.BackColor.Name;
             getShirt(strCurrentColor);
+            string strSize;
+            if (rdoSmall.Checked == true)
+            {
+                strSize = "Small";
+            }
+            else if (rdoMedium.Checked == true)
+            {
+                strSize = "Medium";
+            }
+            else
+            {
+                strSize = "Large";
+            }
+            getItemPrice(strCurrentColor, strSize);
         }
 
         private void btnGreen_Click(object sender, EventArgs e)
         {
             strCurrentColor = btnGreen.BackColor.Name;
             getShirt(strCurrentColor);
+            string strSize;
+            if (rdoSmall.Checked == true)
+            {
+                strSize = "Small";
+            }
+            else if (rdoMedium.Checked == true)
+            {
+                strSize = "Medium";
+            }
+            else
+            {
+                strSize = "Large";
+            }
+            getItemPrice(strCurrentColor, strSize);
         }
 
         private void btnPink_Click(object sender, EventArgs e)
         {
             strCurrentColor = btnPink.BackColor.Name;
             getShirt(strCurrentColor);
+            string strSize;
+            if (rdoSmall.Checked == true)
+            {
+                strSize = "Small";
+            }
+            else if (rdoMedium.Checked == true)
+            {
+                strSize = "Medium";
+            }
+            else
+            {
+                strSize = "Large";
+            }
+            getItemPrice(strCurrentColor, strSize);
         }
 
         private void btnPurple_Click(object sender, EventArgs e)
         {
             strCurrentColor = btnPurple.BackColor.Name;
             getShirt(strCurrentColor);
+            string strSize;
+            if (rdoSmall.Checked == true)
+            {
+                strSize = "Small";
+            }
+            else if (rdoMedium.Checked == true)
+            {
+                strSize = "Medium";
+            }
+            else
+            {
+                strSize = "Large";
+            }
+            getItemPrice(strCurrentColor, strSize);
         }
 
         private void btnRed_Click(object sender, EventArgs e)
         {
             strCurrentColor = btnRed.BackColor.Name;
             getShirt(strCurrentColor);
+            string strSize;
+            if (rdoSmall.Checked == true)
+            {
+                strSize = "Small";
+            }
+            else if (rdoMedium.Checked == true)
+            {
+                strSize = "Medium";
+            }
+            else
+            {
+                strSize = "Large";
+            }
+            getItemPrice(strCurrentColor, strSize);
         }
 
         private void btnWhite_Click(object sender, EventArgs e)
         {
             strCurrentColor = btnWhite.BackColor.Name;
             getShirt(strCurrentColor);
+            string strSize;
+            if (rdoSmall.Checked == true)
+            {
+                strSize = "Small";
+            }
+            else if (rdoMedium.Checked == true)
+            {
+                strSize = "Medium";
+            }
+            else
+            {
+                strSize = "Large";
+            }
+            getItemPrice(strCurrentColor, strSize);
         }
 
         private void btnYellow_Click(object sender, EventArgs e)
         {
             strCurrentColor = btnYellow.BackColor.Name;
             getShirt(strCurrentColor);
+            string strSize;
+            if (rdoSmall.Checked == true)
+            {
+                strSize = "Small";
+            }
+            else if (rdoMedium.Checked == true)
+            {
+                strSize = "Medium";
+            }
+            else
+            {
+                strSize = "Large";
+            }
+            getItemPrice(strCurrentColor, strSize);
         }
 
         public static List<CartItem> lstCartItems = new List<CartItem>();
@@ -359,6 +485,36 @@ namespace SU21_Final_Project
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void getItemPrice(string color, string size)
+        {
+            DataProduct productPrice = DataProduct.GetProduct(color, size);
+            lblItemPrice.Text = productPrice.Price.ToString("C2");
+        }
+
+        private void rdoSmall_CheckedChanged(object sender, EventArgs e)
+        {
+            if(strCurrentColor != null)
+            {
+                getItemPrice(strCurrentColor, "Small");
+            }
+        }
+
+        private void rdoMedium_CheckedChanged(object sender, EventArgs e)
+        {
+            if (strCurrentColor != null)
+            {
+                getItemPrice(strCurrentColor, "Medium");
+            }
+        }
+
+        private void rdoLarge_CheckedChanged(object sender, EventArgs e)
+        {
+            if (strCurrentColor != null)
+            {
+                getItemPrice(strCurrentColor, "Large");
             }
         }
     }

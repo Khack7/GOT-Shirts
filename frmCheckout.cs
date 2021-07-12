@@ -30,6 +30,18 @@ namespace SU21_Final_Project
             InitializeComponent();
         }
 
+        //USE THIS TO DISABLE 'X' BUTTON
+        private const int CP_DISABLE_CLOSE_BUTTON = 0x200;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle = cp.ClassStyle | CP_DISABLE_CLOSE_BUTTON;
+                return cp;
+            }
+        }
+
         private void getShipping(string method)
         {
             try

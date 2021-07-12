@@ -33,7 +33,7 @@ namespace SU21_Final_Project
             this.btnShop = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.manageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuManage = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,19 +64,19 @@ namespace SU21_Final_Project
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.manageToolStripMenuItem});
+            this.mnuManage});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(554, 24);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // manageToolStripMenuItem
+            // mnuManage
             // 
-            this.manageToolStripMenuItem.Name = "manageToolStripMenuItem";
-            this.manageToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
-            this.manageToolStripMenuItem.Text = "Manage";
-            this.manageToolStripMenuItem.Click += new System.EventHandler(this.manageToolStripMenuItem_Click);
+            this.mnuManage.Name = "mnuManage";
+            this.mnuManage.Size = new System.Drawing.Size(62, 20);
+            this.mnuManage.Text = "Manage";
+            this.mnuManage.Click += new System.EventHandler(this.mnuManage_Click);
             // 
             // frmMain
             // 
@@ -107,7 +107,7 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Button btnShop;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem manageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuManage;
     }
 }
 

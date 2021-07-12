@@ -59,5 +59,15 @@ namespace SU21_Final_Project.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logo_no_dots_FIT {
+            get {
+                object obj = ResourceManager.GetObject("logo(no_dots)FIT", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

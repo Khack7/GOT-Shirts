@@ -67,7 +67,7 @@ namespace SU21_Final_Project
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '•';
             this.txtPassword.Size = new System.Drawing.Size(306, 20);
-            this.txtPassword.TabIndex = 16;
+            this.txtPassword.TabIndex = 15;
             // 
             // lblPass
             // 
@@ -77,7 +77,7 @@ namespace SU21_Final_Project
             this.lblPass.Location = new System.Drawing.Point(16, 378);
             this.lblPass.Name = "lblPass";
             this.lblPass.Size = new System.Drawing.Size(89, 15);
-            this.lblPass.TabIndex = 15;
+            this.lblPass.TabIndex = 14;
             this.lblPass.Text = "New Password";
             // 
             // lblUserName
@@ -97,7 +97,7 @@ namespace SU21_Final_Project
             this.txtConfirmPass.Name = "txtConfirmPass";
             this.txtConfirmPass.PasswordChar = '•';
             this.txtConfirmPass.Size = new System.Drawing.Size(306, 20);
-            this.txtConfirmPass.TabIndex = 18;
+            this.txtConfirmPass.TabIndex = 17;
             // 
             // lblConfirm
             // 
@@ -107,7 +107,7 @@ namespace SU21_Final_Project
             this.lblConfirm.Location = new System.Drawing.Point(12, 430);
             this.lblConfirm.Name = "lblConfirm";
             this.lblConfirm.Size = new System.Drawing.Size(107, 15);
-            this.lblConfirm.TabIndex = 17;
+            this.lblConfirm.TabIndex = 16;
             this.lblConfirm.Text = "Confirm Password";
             // 
             // btnCancel
@@ -215,7 +215,7 @@ namespace SU21_Final_Project
             this.btnEnter.Location = new System.Drawing.Point(357, 487);
             this.btnEnter.Name = "btnEnter";
             this.btnEnter.Size = new System.Drawing.Size(104, 36);
-            this.btnEnter.TabIndex = 14;
+            this.btnEnter.TabIndex = 18;
             this.btnEnter.Text = "Load";
             this.btnEnter.UseVisualStyleBackColor = true;
             this.btnEnter.Click += new System.EventHandler(this.btnEnter_Click);
@@ -227,7 +227,7 @@ namespace SU21_Final_Project
             this.txtSecurity3.Name = "txtSecurity3";
             this.txtSecurity3.ReadOnly = true;
             this.txtSecurity3.Size = new System.Drawing.Size(306, 20);
-            this.txtSecurity3.TabIndex = 21;
+            this.txtSecurity3.TabIndex = 11;
             // 
             // txtSecurity2
             // 
@@ -236,7 +236,7 @@ namespace SU21_Final_Project
             this.txtSecurity2.Name = "txtSecurity2";
             this.txtSecurity2.ReadOnly = true;
             this.txtSecurity2.Size = new System.Drawing.Size(306, 20);
-            this.txtSecurity2.TabIndex = 22;
+            this.txtSecurity2.TabIndex = 7;
             // 
             // txtSecurity1
             // 
@@ -245,14 +245,14 @@ namespace SU21_Final_Project
             this.txtSecurity1.Name = "txtSecurity1";
             this.txtSecurity1.ReadOnly = true;
             this.txtSecurity1.Size = new System.Drawing.Size(306, 20);
-            this.txtSecurity1.TabIndex = 23;
+            this.txtSecurity1.TabIndex = 3;
             // 
             // btnHelp
             // 
             this.btnHelp.Location = new System.Drawing.Point(188, 487);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(104, 36);
-            this.btnHelp.TabIndex = 24;
+            this.btnHelp.TabIndex = 19;
             this.btnHelp.Text = "Help";
             this.btnHelp.UseVisualStyleBackColor = true;
             this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);

@@ -36,7 +36,6 @@ namespace SU21_Final_Project
             this.lblAddress3 = new System.Windows.Forms.Label();
             this.txtAddress2 = new System.Windows.Forms.TextBox();
             this.lblAddress2 = new System.Windows.Forms.Label();
-            this.cboStates = new System.Windows.Forms.ComboBox();
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.lblPhone = new System.Windows.Forms.Label();
             this.txtZip = new System.Windows.Forms.TextBox();
@@ -51,6 +50,7 @@ namespace SU21_Final_Project
             this.lblLName = new System.Windows.Forms.Label();
             this.lblFName = new System.Windows.Forms.Label();
             this.btnHelp = new System.Windows.Forms.Button();
+            this.txtState = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnConfirm
@@ -108,17 +108,6 @@ namespace SU21_Final_Project
             this.lblAddress2.Size = new System.Drawing.Size(68, 17);
             this.lblAddress2.TabIndex = 34;
             this.lblAddress2.Text = "Address2";
-            // 
-            // cboStates
-            // 
-            this.cboStates.DropDownHeight = 75;
-            this.cboStates.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboStates.FormattingEnabled = true;
-            this.cboStates.IntegralHeight = false;
-            this.cboStates.Location = new System.Drawing.Point(406, 155);
-            this.cboStates.Name = "cboStates";
-            this.cboStates.Size = new System.Drawing.Size(155, 21);
-            this.cboStates.TabIndex = 41;
             // 
             // txtPhone
             // 
@@ -243,17 +232,24 @@ namespace SU21_Final_Project
             this.btnHelp.UseVisualStyleBackColor = true;
             this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
+            // txtState
+            // 
+            this.txtState.Location = new System.Drawing.Point(406, 156);
+            this.txtState.Name = "txtState";
+            this.txtState.Size = new System.Drawing.Size(155, 20);
+            this.txtState.TabIndex = 49;
+            // 
             // frmShipping
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(866, 301);
+            this.Controls.Add(this.txtState);
             this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.txtAddress3);
             this.Controls.Add(this.lblAddress3);
             this.Controls.Add(this.txtAddress2);
             this.Controls.Add(this.lblAddress2);
-            this.Controls.Add(this.cboStates);
             this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.lblPhone);
             this.Controls.Add(this.txtZip);
@@ -287,7 +283,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label lblAddress3;
         private System.Windows.Forms.TextBox txtAddress2;
         private System.Windows.Forms.Label lblAddress2;
-        private System.Windows.Forms.ComboBox cboStates;
         private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.Label lblPhone;
         private System.Windows.Forms.TextBox txtZip;
@@ -302,5 +297,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label lblLName;
         private System.Windows.Forms.Label lblFName;
         private System.Windows.Forms.Button btnHelp;
+        private System.Windows.Forms.TextBox txtState;
     }
 }

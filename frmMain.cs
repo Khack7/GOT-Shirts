@@ -29,20 +29,8 @@ namespace SU21_Final_Project
             InitializeComponent();
         }
 
-        //private const int CP_DISABLE_CLOSE_BUTTON = 0x200;
-        //protected override CreateParams CreateParams
-        //{
-        //    get
-        //    {
-        //        CreateParams cp = base.CreateParams;
-        //        cp.ClassStyle = cp.ClassStyle | CP_DISABLE_CLOSE_BUTTON;
-        //        return cp;
-        //    }
-        //}USE THIS TO DISABLE 'X' BUTTON
-
         private void btnExit_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show(DateTime.Now.ToString("yyyy-MM-dd"));
             this.Close();
         }
 
@@ -54,9 +42,12 @@ namespace SU21_Final_Project
             this.Show();
         }
 
-        private void manageToolStripMenuItem_Click(object sender, EventArgs e)
+        private void mnuManage_Click(object sender, EventArgs e)
         {
-            
+            frmManageSignIn manager = new frmManageSignIn();
+            this.Hide();
+            manager.ShowDialog();
+            this.Show();
         }
     }
 }

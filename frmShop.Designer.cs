@@ -55,6 +55,8 @@ namespace SU21_Final_Project
             this.btnBlack = new System.Windows.Forms.Button();
             this.btnBlue = new System.Windows.Forms.Button();
             this.picbxShirt = new System.Windows.Forms.PictureBox();
+            this.lblItemPricePointer = new System.Windows.Forms.Label();
+            this.lblItemPrice = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numUDQuantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picbxShirt)).BeginInit();
             this.SuspendLayout();
@@ -192,6 +194,7 @@ namespace SU21_Final_Project
             this.rdoLarge.TabIndex = 40;
             this.rdoLarge.Text = "Large";
             this.rdoLarge.UseVisualStyleBackColor = true;
+            this.rdoLarge.CheckedChanged += new System.EventHandler(this.rdoLarge_CheckedChanged);
             // 
             // rdoMedium
             // 
@@ -204,6 +207,7 @@ namespace SU21_Final_Project
             this.rdoMedium.TabIndex = 39;
             this.rdoMedium.Text = "Medium";
             this.rdoMedium.UseVisualStyleBackColor = true;
+            this.rdoMedium.CheckedChanged += new System.EventHandler(this.rdoMedium_CheckedChanged);
             // 
             // rdoSmall
             // 
@@ -218,6 +222,7 @@ namespace SU21_Final_Project
             this.rdoSmall.TabStop = true;
             this.rdoSmall.Text = "Small";
             this.rdoSmall.UseVisualStyleBackColor = true;
+            this.rdoSmall.CheckedChanged += new System.EventHandler(this.rdoSmall_CheckedChanged);
             // 
             // lstCart
             // 
@@ -328,11 +333,33 @@ namespace SU21_Final_Project
             this.picbxShirt.TabIndex = 27;
             this.picbxShirt.TabStop = false;
             // 
+            // lblItemPricePointer
+            // 
+            this.lblItemPricePointer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblItemPricePointer.Location = new System.Drawing.Point(12, 213);
+            this.lblItemPricePointer.Name = "lblItemPricePointer";
+            this.lblItemPricePointer.Size = new System.Drawing.Size(76, 17);
+            this.lblItemPricePointer.TabIndex = 52;
+            this.lblItemPricePointer.Text = "Item Price: ";
+            // 
+            // lblItemPrice
+            // 
+            this.lblItemPrice.AutoSize = true;
+            this.lblItemPrice.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblItemPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblItemPrice.Location = new System.Drawing.Point(95, 213);
+            this.lblItemPrice.Name = "lblItemPrice";
+            this.lblItemPrice.Size = new System.Drawing.Size(46, 19);
+            this.lblItemPrice.TabIndex = 53;
+            this.lblItemPrice.Text = "$0.00";
+            // 
             // frmShop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(651, 284);
+            this.Controls.Add(this.lblItemPrice);
+            this.Controls.Add(this.lblItemPricePointer);
             this.Controls.Add(this.btnAccount);
             this.Controls.Add(this.numUDQuantity);
             this.Controls.Add(this.label1);
@@ -397,5 +424,7 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Button btnBlue;
         private System.Windows.Forms.PictureBox picbxShirt;
         public System.Windows.Forms.ListBox lstCart;
+        private System.Windows.Forms.Label lblItemPricePointer;
+        private System.Windows.Forms.Label lblItemPrice;
     }
 }
