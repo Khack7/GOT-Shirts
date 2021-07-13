@@ -40,7 +40,7 @@ namespace SU21_Final_Project
             this.btnEnter.Location = new System.Drawing.Point(12, 86);
             this.btnEnter.Name = "btnEnter";
             this.btnEnter.Size = new System.Drawing.Size(75, 23);
-            this.btnEnter.TabIndex = 0;
+            this.btnEnter.TabIndex = 1;
             this.btnEnter.Text = "Enter";
             this.btnEnter.UseVisualStyleBackColor = true;
             this.btnEnter.Click += new System.EventHandler(this.btnEnter_Click);
@@ -51,7 +51,7 @@ namespace SU21_Final_Project
             this.txtCode.Location = new System.Drawing.Point(12, 44);
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(213, 21);
-            this.txtCode.TabIndex = 1;
+            this.txtCode.TabIndex = 0;
             // 
             // btnCancel
             // 

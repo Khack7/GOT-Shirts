@@ -57,6 +57,7 @@ namespace SU21_Final_Project
             this.btnCodes.TabIndex = 9;
             this.btnCodes.Text = "Manage Shop Codes";
             this.btnCodes.UseVisualStyleBackColor = true;
+            this.btnCodes.Click += new System.EventHandler(this.btnCodes_Click);
             // 
             // btnReturn
             // 
@@ -114,7 +115,7 @@ namespace SU21_Final_Project
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmManagerMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmManagerMain";
+            this.Text = "Manager Hub";
             this.ResumeLayout(false);
 
         }

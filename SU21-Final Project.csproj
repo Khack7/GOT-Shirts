@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Receipt.cs" />
+    <Compile Include="Data\DataCodes.cs" />
     <Compile Include="Data\DataCommon.cs" />
     <Compile Include="Data\DataOrderItem.cs" />
     <Compile Include="Data\DataMoney.cs" />
@@ -89,6 +90,12 @@
     </Compile>
     <Compile Include="frmCouponInput.Designer.cs">
       <DependentUpon>frmCouponInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDiscountCodes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDiscountCodes.Designer.cs">
+      <DependentUpon>frmDiscountCodes.cs</DependentUpon>
     </Compile>
     <Compile Include="frmEmpMain.cs">
       <SubType>Form</SubType>
@@ -160,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmCouponInput.resx">
       <DependentUpon>frmCouponInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDiscountCodes.resx">
+      <DependentUpon>frmDiscountCodes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEmpMain.resx">
       <DependentUpon>frmEmpMain.cs</DependentUpon>

@@ -25,12 +25,14 @@ namespace SU21_Final_Project
         }
 
         public static string CouponCode;
-        public static int percentOff;
+        public static double percentOff;
         public static bool CodeUsed = false;
 
         private void btnEnter_Click(object sender, EventArgs e)
         {
             string code = txtCode.Text;
+
+            bool bolCodeFound = false;
 
             string constr = ConfigurationManager.ConnectionStrings["SU21_Final_Project.Properties.Settings.ConnectionString"].ConnectionString;
 
@@ -47,31 +49,40 @@ namespace SU21_Final_Project
                         {
                             if (sdr.Read())
                             {
-                                //code == sdr["DiscountCode"].ToString() <- previous iteration
-                                if (code.Equals(sdr["DiscountCode"].ToString(), StringComparison.InvariantCultureIgnoreCase))
+                                while (sdr.Read() && bolCodeFound == false)
                                 {
-                                    int.TryParse(sdr["Active"].ToString(), out int check);
-
-                                    if(check == 1)
+                                    if (code.Equals(sdr["DiscountCode"].ToString(), StringComparison.InvariantCultureIgnoreCase))
                                     {
-                                        CouponCode = txtCode.Text;
-                                        MessageBox.Show("Code accepted! Your discount will be applied at checkout", "Accepted!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        bool.TryParse(sdr["Active"].ToString(), out bool check);
 
-                                        int.TryParse(sdr["PercentOff"].ToString(), out int p);
-                                        percentOff = p;
-                                        CodeUsed = true;
-                                        
-                                        this.Close();
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("This code is currently inactive", "Code unavailable for use", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        bolCodeFound = true;
+
+                                        if (check == true)
+                                        {
+                                            CouponCode = sdr["DiscountCode"].ToString();
+                                            MessageBox.Show("Code accepted! Your discount will be applied at checkout", "Accepted!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                            if (double.TryParse(sdr["PercentOff"].ToString(), out double p))
+                                            {
+                                                percentOff = p;
+                                            }
+                                            CodeUsed = true;
+
+                                            this.Close();
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("This code is inactive", "Code unavailable for use", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            break;
+                                        }
                                     }
                                 }
-                                else
+                                if(bolCodeFound == false)
                                 {
                                     MessageBox.Show("This code doesn't exist", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
+
                             }
                             else
                             {

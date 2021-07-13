@@ -490,13 +490,20 @@ namespace SU21_Final_Project
 
         private void getItemPrice(string color, string size)
         {
-            DataProduct productPrice = DataProduct.GetProduct(color, size);
-            lblItemPrice.Text = productPrice.Price.ToString("C2");
+            try
+            {
+                DataProduct productPrice = DataProduct.GetProduct(color, size);
+                lblItemPrice.Text = productPrice.Price.ToString("C2");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void rdoSmall_CheckedChanged(object sender, EventArgs e)
         {
-            if(strCurrentColor != null)
+            if (strCurrentColor != null)
             {
                 getItemPrice(strCurrentColor, "Small");
             }

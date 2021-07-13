@@ -23,7 +23,18 @@ namespace SU21_Final_Project
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (bolChangesMade == true)
+            {
+                DialogResult dr = MessageBox.Show("Any and all changes made will be discarded", "Are you sure?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (dr == DialogResult.OK)
+                {
+                    this.Close();
+                }
+            }
+            else
+            {
+                this.Close();
+            }
         }
 
         private void frmInventory_Load(object sender, EventArgs e)
@@ -33,7 +44,7 @@ namespace SU21_Final_Project
                 List<string> colors = _products.Select(p => p.Color).Distinct().OrderBy(c => c).ToList();
                 List<string> sizes = _products.Select(p => p.Size).Distinct().OrderBy(s => s).ToList();
 
-                for(int i = 0; i < colors.Count; i++)
+                for (int i = 0; i < colors.Count; i++)
                 {
                     cboColor.Items.Add(colors[i]);
                 }
@@ -42,24 +53,27 @@ namespace SU21_Final_Project
                     cboSize.Items.Add(sizes[i]);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
+        bool bolChangesMade = false;
+
         private void cboColor_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cboColor.SelectedItem != null)
+            if (cboColor.SelectedItem != null)
             {
                 cboSize.Enabled = true;
+                bolChangesMade = true;
             }
             else
             {
                 cboSize.Enabled = false;
             }
 
-            if(cboColor.SelectedItem != null && cboSize.SelectedItem != null)
+            if (cboColor.SelectedItem != null && cboSize.SelectedItem != null)
             {
                 string strSelectedColor = (string)cboColor.SelectedItem;
                 string strSelectedSize = (string)cboSize.SelectedItem;
@@ -72,11 +86,12 @@ namespace SU21_Final_Project
 
         private void cboSize_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cboSize.SelectedItem != null)
+            if (cboSize.SelectedItem != null)
             {
                 txtAmount.ReadOnly = false;
                 txtPrice.ReadOnly = false;
                 txtCost.ReadOnly = false;
+                bolChangesMade = true;
 
                 string strSelectedColor = (string)cboColor.SelectedItem;
                 string strSelectedSize = (string)cboSize.SelectedItem;
@@ -84,10 +99,8 @@ namespace SU21_Final_Project
                 txtAmount.Text = product.QuantityOnHand.ToString();
                 txtPrice.Text = product.Price.ToString();
                 txtCost.Text = product.Cost.ToString();
-                //product.Price = newPrice;
-                //DataProduct.SaveProduct(product);
             }
-            else if(cboSize.SelectedItem == null || cboSize.Enabled == false)
+            else if (cboSize.SelectedItem == null || cboSize.Enabled == false)
             {
                 txtAmount.ReadOnly = false;
                 txtAmount.Clear();
@@ -96,6 +109,96 @@ namespace SU21_Final_Project
                 txtCost.ReadOnly = false;
                 txtCost.Clear();
             }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (txtAmount.Text == "" || txtPrice.Text == "" || txtCost.Text == "")
+            {
+                MessageBox.Show("Please fill out all fields", "Missing info", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                List<TextBox> lstTextBoxes = new List<TextBox>();
+                lstTextBoxes.Add(txtCost);
+                lstTextBoxes.Add(txtAmount);
+                lstTextBoxes.Add(txtPrice);
+
+                foreach (TextBox t in lstTextBoxes)
+                {
+                    if (t.Text == "")
+                    {
+                        t.Focus();
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                try
+                {
+                    DataProduct product = DataProduct.GetProduct(cboColor.SelectedItem.ToString(), cboSize.SelectedItem.ToString()); ;
+                    if (int.TryParse(txtAmount.Text, out int A))
+                    {
+                        product.QuantityOnHand = A;
+                    }
+                    if (double.TryParse(txtPrice.Text, out double P))
+                    {
+                        product.Price = Math.Round(P, 2);
+                    }
+                    if (double.TryParse(txtCost.Text, out double C))
+                    {
+                        product.Cost = Math.Round(C, 2);
+                    }
+
+                    DataProduct.SaveProduct(product);
+
+                    MessageBox.Show("Updates saved!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    bolChangesMade = false;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void txtAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            bolChangesMade = true;
+        }
+
+        private void txtPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+               (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+            bolChangesMade = true;
+        }
+
+        private void txtCost_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+               (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+            bolChangesMade = true;
         }
     }
 }

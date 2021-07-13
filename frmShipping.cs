@@ -93,7 +93,7 @@ namespace SU21_Final_Project
                                     txtAddress2.ReadOnly = false;
                                     txtAddress3.ReadOnly = false;
                                     txtCity.ReadOnly = false;
-                                    cboStates.Enabled = true;
+                                    txtState.ReadOnly = false;
                                 }
                             }
                             con.Close();

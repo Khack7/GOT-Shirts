@@ -78,8 +78,8 @@ namespace SU21_Final_Project
                 {
                     double.TryParse(frmShop.strSubtotal, out double sub);
 
-                    int intDiscount = frmCouponInput.percentOff;
-                    dblSubCost = (sub - (sub * intDiscount));
+                    double intDiscount = frmCouponInput.percentOff;
+                    dblSubCost = (sub - (sub * (intDiscount/100)));
 
 
 

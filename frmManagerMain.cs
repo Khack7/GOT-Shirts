@@ -29,5 +29,13 @@ namespace SU21_Final_Project
             inventory.ShowDialog();
             this.Show();
         }
+
+        private void btnCodes_Click(object sender, EventArgs e)
+        {
+            frmDiscountCodes codes = new frmDiscountCodes();
+            this.Hide();
+            codes.ShowDialog();
+            this.Show();
+        }
     }
 }

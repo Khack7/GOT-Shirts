@@ -65,6 +65,7 @@ namespace SU21_Final_Project
             this.btnUpdate.TabIndex = 14;
             this.btnUpdate.Text = "&Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // lblPrice
             // 
@@ -83,6 +84,7 @@ namespace SU21_Final_Project
             this.txtPrice.ReadOnly = true;
             this.txtPrice.Size = new System.Drawing.Size(186, 20);
             this.txtPrice.TabIndex = 13;
+            this.txtPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrice_KeyPress);
             // 
             // lblAmount
             // 
@@ -111,6 +113,7 @@ namespace SU21_Final_Project
             this.txtAmount.ReadOnly = true;
             this.txtAmount.Size = new System.Drawing.Size(186, 20);
             this.txtAmount.TabIndex = 11;
+            this.txtAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAmount_KeyPress);
             // 
             // cboColor
             // 
@@ -139,6 +142,7 @@ namespace SU21_Final_Project
             this.txtCost.ReadOnly = true;
             this.txtCost.Size = new System.Drawing.Size(186, 20);
             this.txtCost.TabIndex = 17;
+            this.txtCost.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCost_KeyPress);
             // 
             // lblSize
             // 
@@ -192,7 +196,7 @@ namespace SU21_Final_Project
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmInventory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmInventory";
+            this.Text = "Inventory Adjustment";
             this.Load += new System.EventHandler(this.frmInventory_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

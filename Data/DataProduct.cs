@@ -102,8 +102,6 @@ namespace SU21_Final_Project.Data
                 Cost = cost,
                 Price = price
             };
-
-
         }
 
         public static void SaveProduct(DataProduct product)
@@ -112,69 +110,23 @@ namespace SU21_Final_Project.Data
             using (SqlConnection con = DataCommon.StartConnection())
             {
                 string sql;
-                if (product.PersonID == 0)
-                {
-                    sql = "INSERT INTO HackK21Su2332.Person(NameFirst, NameLast, Address1, Address2, Address3," +
-                            " City, State, Zipcode, Email, PhonePrimary, UserName, Password, AccountType," +
-                            " SecurityQuestion1, SecurityAnswer1, SecurityQuestion2, SecurityAnswer2," +
-                            " SecurityQuestion3, SecurityAnswer3)" +
-                            " VALUES(@NameFirst, @NameLast, @Address1, @Address2, @Address3," +
-                            " @City, @State, @Zipcode, @Email, @PhonePrimary, @UserName, @Password, @AccountType," +
-                            " @SecurityQuestion1, @SecurityAnswer1, @SecurityQuestion2, @SecurityAnswer2, @SecurityQuestion3, @SecurityAnswer3);" +
-                            "SELECT PersonID = SCOPE_IDENTITY()";
-                }
-                else
-                {
-                    sql = "UPDATE HackK21Su2332.Person SET NameFirst = @NameFirst, NameLast = @NameLast, Address1 = @Address1, " +
-                          "Address2 = @Address2, Address3 = @Address3, City = @City, State = @State, " +
-                          "Zipcode = @Zipcode, Email = @Email, PhonePrimary = @PhonePrimary, UserName = @UserName, " +
-                          "Password = @Password, AccountType = @AccountType, SecurityQuestion1 = @SecurityQuestion1, SecurityAnswer1 = @SecurityAnswer1, " +
-                          "SecurityQuestion2 = @SecurityQuestion2, SecurityAnswer2 = @SecurityAnswer2, SecurityQuestion3 = @SecurityQuestion3, SecurityAnswer3 = @SecurityAnswer3 " +
-                          "WHERE PersonID = @PersonID";
-                }
+
+                sql = "UPDATE HackK21Su2332.Products SET QuantityOnHand = @QuantityOnHand, " +
+                      "Cost = @Cost, Price = @Price WHERE Color = @Color AND Size = @Size";
+
                 using (SqlCommand cmd = new SqlCommand(sql))
                 {
                     cmd.CommandType = CommandType.Text;
                     cmd.Connection = con;
-                    if (product.PersonID != 0)
-                    {
-                        cmd.Parameters.AddWithValue("@PersonID", person.PersonID);
-                    }
-                    cmd.Parameters.AddWithValue("@NameFirst", person.NameFirst);
-                    cmd.Parameters.AddWithValue("@NameLast", person.NameLast);
-                    cmd.Parameters.AddWithValue("@Address1", person.Address1);
-                    cmd.Parameters.AddWithValue("@Address2", person.Address2);
-                    cmd.Parameters.AddWithValue("@Address3", person.Address3);
-                    cmd.Parameters.AddWithValue("@City", person.City);
-                    cmd.Parameters.AddWithValue("@State", person.State);
-                    cmd.Parameters.AddWithValue("@Zipcode", person.Zipcode);
-                    cmd.Parameters.AddWithValue("@Email", person.Email);
-                    cmd.Parameters.AddWithValue("@PhonePrimary", person.PhonePrimary);
-                    cmd.Parameters.AddWithValue("@UserName", person.UserName);
-                    cmd.Parameters.AddWithValue("@Password", person.Password);
-                    cmd.Parameters.AddWithValue("@AccountType", "Customer");
-                    cmd.Parameters.AddWithValue("@SecurityQuestion1", person.SecurityQuestion1);
-                    cmd.Parameters.AddWithValue("@SecurityAnswer1", person.SecurityAnswer1);
-                    cmd.Parameters.AddWithValue("@SecurityQuestion2", person.SecurityQuestion2);
-                    cmd.Parameters.AddWithValue("@SecurityAnswer2", person.SecurityAnswer2);
-                    cmd.Parameters.AddWithValue("@SecurityQuestion3", person.SecurityQuestion3);
-                    cmd.Parameters.AddWithValue("@SecurityAnswer3", person.SecurityAnswer3);
 
-                    if (product.PersonID > 0)
-                    {
-                        cmd.ExecuteNonQuery();
-                    }
-                    else
-                    {
-                        using (SqlDataReader sdr = cmd.ExecuteReader())
-                        {
-                            if (sdr.Read())
-                            {
-                                int.TryParse(sdr["PersonID"].ToString(), out int ID);
-                                product.PersonID = ID;
-                            }
-                        }
-                    }
+                    cmd.Parameters.AddWithValue("@Color", product.Color);
+                    cmd.Parameters.AddWithValue("@Size", product.Size);
+                    cmd.Parameters.AddWithValue("@QuantityOnHand", product.QuantityOnHand);
+                    cmd.Parameters.AddWithValue("@Cost", product.Cost);
+                    cmd.Parameters.AddWithValue("@Price", product.Price);
+
+                    cmd.ExecuteNonQuery();
+
                     con.Close();
                 }
             }
