@@ -61,7 +61,7 @@ namespace SU21_Final_Project
             this.cboCodes.MaxDropDownItems = 7;
             this.cboCodes.Name = "cboCodes";
             this.cboCodes.Size = new System.Drawing.Size(121, 24);
-            this.cboCodes.TabIndex = 0;
+            this.cboCodes.TabIndex = 1;
             this.cboCodes.SelectedIndexChanged += new System.EventHandler(this.cboCodes_SelectedIndexChanged);
             // 
             // lblCode
@@ -70,7 +70,7 @@ namespace SU21_Final_Project
             this.lblCode.Location = new System.Drawing.Point(12, 12);
             this.lblCode.Name = "lblCode";
             this.lblCode.Size = new System.Drawing.Size(121, 23);
-            this.lblCode.TabIndex = 1;
+            this.lblCode.TabIndex = 0;
             this.lblCode.Text = "Code";
             this.lblCode.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -80,7 +80,7 @@ namespace SU21_Final_Project
             this.lblStatusPointer.Location = new System.Drawing.Point(164, 12);
             this.lblStatusPointer.Name = "lblStatusPointer";
             this.lblStatusPointer.Size = new System.Drawing.Size(121, 23);
-            this.lblStatusPointer.TabIndex = 3;
+            this.lblStatusPointer.TabIndex = 2;
             this.lblStatusPointer.Text = "Status";
             this.lblStatusPointer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -91,7 +91,7 @@ namespace SU21_Final_Project
             this.lblStatus.Location = new System.Drawing.Point(164, 61);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(121, 23);
-            this.lblStatus.TabIndex = 4;
+            this.lblStatus.TabIndex = 3;
             this.lblStatus.Text = "Status Here";
             this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -100,7 +100,7 @@ namespace SU21_Final_Project
             this.btnActivate.Location = new System.Drawing.Point(167, 103);
             this.btnActivate.Name = "btnActivate";
             this.btnActivate.Size = new System.Drawing.Size(121, 33);
-            this.btnActivate.TabIndex = 5;
+            this.btnActivate.TabIndex = 6;
             this.btnActivate.Text = "Activate";
             this.btnActivate.UseVisualStyleBackColor = true;
             this.btnActivate.Click += new System.EventHandler(this.btnActivate_Click);
@@ -110,7 +110,7 @@ namespace SU21_Final_Project
             this.btnDeactivate.Location = new System.Drawing.Point(316, 103);
             this.btnDeactivate.Name = "btnDeactivate";
             this.btnDeactivate.Size = new System.Drawing.Size(121, 33);
-            this.btnDeactivate.TabIndex = 6;
+            this.btnDeactivate.TabIndex = 7;
             this.btnDeactivate.Text = "Deactivate";
             this.btnDeactivate.UseVisualStyleBackColor = true;
             this.btnDeactivate.Click += new System.EventHandler(this.btnDeactivate_Click);
@@ -120,7 +120,7 @@ namespace SU21_Final_Project
             this.btnStartCreation.Location = new System.Drawing.Point(12, 225);
             this.btnStartCreation.Name = "btnStartCreation";
             this.btnStartCreation.Size = new System.Drawing.Size(121, 33);
-            this.btnStartCreation.TabIndex = 7;
+            this.btnStartCreation.TabIndex = 8;
             this.btnStartCreation.Text = "Create New Code";
             this.btnStartCreation.UseVisualStyleBackColor = true;
             this.btnStartCreation.Click += new System.EventHandler(this.btnStartCreation_Click);
@@ -137,7 +137,7 @@ namespace SU21_Final_Project
             this.grpBxCodes.Location = new System.Drawing.Point(12, 264);
             this.grpBxCodes.Name = "grpBxCodes";
             this.grpBxCodes.Size = new System.Drawing.Size(417, 136);
-            this.grpBxCodes.TabIndex = 8;
+            this.grpBxCodes.TabIndex = 9;
             this.grpBxCodes.TabStop = false;
             // 
             // btnCancel
@@ -145,7 +145,7 @@ namespace SU21_Final_Project
             this.btnCancel.Location = new System.Drawing.Point(290, 85);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(121, 33);
-            this.btnCancel.TabIndex = 9;
+            this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -155,7 +155,7 @@ namespace SU21_Final_Project
             this.btnCreate.Location = new System.Drawing.Point(290, 22);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(121, 33);
-            this.btnCreate.TabIndex = 8;
+            this.btnCreate.TabIndex = 4;
             this.btnCreate.Text = "Create";
             this.btnCreate.UseVisualStyleBackColor = true;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
@@ -167,7 +167,7 @@ namespace SU21_Final_Project
             this.lblPercentOff.Location = new System.Drawing.Point(6, 93);
             this.lblPercentOff.Name = "lblPercentOff";
             this.lblPercentOff.Size = new System.Drawing.Size(84, 17);
-            this.lblPercentOff.TabIndex = 3;
+            this.lblPercentOff.TabIndex = 2;
             this.lblPercentOff.Text = "Percent Off:";
             this.lblPercentOff.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -176,7 +176,7 @@ namespace SU21_Final_Project
             this.txtPercent.Location = new System.Drawing.Point(96, 92);
             this.txtPercent.Name = "txtPercent";
             this.txtPercent.Size = new System.Drawing.Size(100, 20);
-            this.txtPercent.TabIndex = 2;
+            this.txtPercent.TabIndex = 3;
             this.txtPercent.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPercent_KeyPress);
             // 
             // lblNewCode
@@ -186,7 +186,7 @@ namespace SU21_Final_Project
             this.lblNewCode.Location = new System.Drawing.Point(6, 22);
             this.lblNewCode.Name = "lblNewCode";
             this.lblNewCode.Size = new System.Drawing.Size(45, 17);
-            this.lblNewCode.TabIndex = 1;
+            this.lblNewCode.TabIndex = 0;
             this.lblNewCode.Text = "Code:";
             this.lblNewCode.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -195,7 +195,7 @@ namespace SU21_Final_Project
             this.txtCode.Location = new System.Drawing.Point(96, 22);
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(100, 20);
-            this.txtCode.TabIndex = 0;
+            this.txtCode.TabIndex = 1;
             this.txtCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCode_KeyPress);
             // 
             // lblPercentDisplay
@@ -205,7 +205,7 @@ namespace SU21_Final_Project
             this.lblPercentDisplay.Location = new System.Drawing.Point(316, 61);
             this.lblPercentDisplay.Name = "lblPercentDisplay";
             this.lblPercentDisplay.Size = new System.Drawing.Size(121, 23);
-            this.lblPercentDisplay.TabIndex = 10;
+            this.lblPercentDisplay.TabIndex = 5;
             this.lblPercentDisplay.Text = "Percent off Here";
             this.lblPercentDisplay.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -215,7 +215,7 @@ namespace SU21_Final_Project
             this.lblPercentPointer.Location = new System.Drawing.Point(316, 12);
             this.lblPercentPointer.Name = "lblPercentPointer";
             this.lblPercentPointer.Size = new System.Drawing.Size(121, 23);
-            this.lblPercentPointer.TabIndex = 9;
+            this.lblPercentPointer.TabIndex = 4;
             this.lblPercentPointer.Text = "Percent off";
             this.lblPercentPointer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -224,7 +224,7 @@ namespace SU21_Final_Project
             this.button1.Location = new System.Drawing.Point(164, 225);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(121, 33);
-            this.button1.TabIndex = 11;
+            this.button1.TabIndex = 10;
             this.button1.Text = "Help";
             this.button1.UseVisualStyleBackColor = true;
             // 
@@ -233,7 +233,7 @@ namespace SU21_Final_Project
             this.btnReturn.Location = new System.Drawing.Point(319, 225);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(121, 33);
-            this.btnReturn.TabIndex = 12;
+            this.btnReturn.TabIndex = 11;
             this.btnReturn.Text = "Return";
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);

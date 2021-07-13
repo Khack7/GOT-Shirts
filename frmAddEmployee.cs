@@ -1,19 +1,8 @@
-﻿//*******************************************
-//*******************************************
-// Programmer: Kevin Hack
-// Course: INEW 2332.7Z1 (Final Project)
-// Program Description: A t-shirts selling application used to sell and ship shirts across the U.S.
-//*******************************************
-// Form Purpose: This is the form where new customers will create an account for quicker purchases
-//*******************************************
-//*******************************************
-using SU21_Final_Project.Data;
+﻿using SU21_Final_Project.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Configuration;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -23,87 +12,14 @@ using System.Windows.Forms;
 
 namespace SU21_Final_Project
 {
-    public partial class frmRegister : Form
+    public partial class frmAddEmployee : Form
     {
-        public frmRegister()
+        public frmAddEmployee()
         {
             InitializeComponent();
         }
 
         bool bolChangesMade = false;
-
-        private void frmRegister_Load(object sender, EventArgs e)
-        {
-            cboStates.Items.Add("AL");
-            cboStates.Items.Add("AK");
-            cboStates.Items.Add("AZ");
-            cboStates.Items.Add("AR");
-            cboStates.Items.Add("CA");
-            cboStates.Items.Add("CO");
-            cboStates.Items.Add("CT");
-            cboStates.Items.Add("DE");
-            cboStates.Items.Add("FL");
-            cboStates.Items.Add("GA");
-            cboStates.Items.Add("HI");
-            cboStates.Items.Add("ID");
-            cboStates.Items.Add("IL");
-            cboStates.Items.Add("IN");
-            cboStates.Items.Add("IA");
-            cboStates.Items.Add("KS");
-            cboStates.Items.Add("KY");
-            cboStates.Items.Add("LA");
-            cboStates.Items.Add("ME");
-            cboStates.Items.Add("MD");
-            cboStates.Items.Add("MA");
-            cboStates.Items.Add("MI");
-            cboStates.Items.Add("MN");
-            cboStates.Items.Add("MS");
-            cboStates.Items.Add("MO");
-            cboStates.Items.Add("MT");
-            cboStates.Items.Add("NE");
-            cboStates.Items.Add("NV");
-            cboStates.Items.Add("NH");
-            cboStates.Items.Add("NJ");
-            cboStates.Items.Add("NM");
-            cboStates.Items.Add("NY");
-            cboStates.Items.Add("NC");
-            cboStates.Items.Add("ND");
-            cboStates.Items.Add("OH");
-            cboStates.Items.Add("OK");
-            cboStates.Items.Add("OR");
-            cboStates.Items.Add("PA");
-            cboStates.Items.Add("RI");
-            cboStates.Items.Add("SC");
-            cboStates.Items.Add("SD");
-            cboStates.Items.Add("TN");
-            cboStates.Items.Add("TX");
-            cboStates.Items.Add("UT");
-            cboStates.Items.Add("VT");
-            cboStates.Items.Add("VA");
-            cboStates.Items.Add("WA");
-            cboStates.Items.Add("WV");
-            cboStates.Items.Add("WI");
-            cboStates.Items.Add("WY");
-
-
-            cmboSecurity1.Items.Add("What was your childhood nickname?");
-            cmboSecurity1.Items.Add("What is the name of your favorite childhood friend?");
-            cmboSecurity1.Items.Add("What was the last name of your third grade teacher?");
-            cmboSecurity1.Items.Add("What is your spouse's mother's maiden name?");
-            cmboSecurity1.Items.Add("In what year was your father born?");
-
-            cmboSecurity2.Items.Add("In what city or town was your first job?");
-            cmboSecurity2.Items.Add("What is the name of a college you applied to but didn't attend?");
-            cmboSecurity2.Items.Add("What was your dream job as a child?");
-            cmboSecurity2.Items.Add("What was your favorite sport in high school?");
-            cmboSecurity2.Items.Add("What year did you graduate from high School?");
-
-            cmboSecurity3.Items.Add("What is your mother's middle name?");
-            cmboSecurity3.Items.Add("What is your preferred musical genre?");
-            cmboSecurity3.Items.Add("What was your high school mascot?");
-            cmboSecurity3.Items.Add("What is your pet's name?");
-            cmboSecurity3.Items.Add("What is the name of your favorite childhood teacher?");
-        }
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
@@ -207,6 +123,19 @@ namespace SU21_Final_Project
                         }
                         else
                         {
+                            string strAccountType = "";
+                            if(rdoEmployee.Checked == true)
+                            {
+                                strAccountType = "Employee";
+                            }
+                            else if(rdoManager.Checked == true)
+                            {
+                                strAccountType = "Manager";
+                            }
+                            else
+                            {
+                                strAccountType = "Employee";
+                            }
                             person = new DataPerson
                             {
                                 NameFirst = txtFirst.Text,
@@ -221,7 +150,7 @@ namespace SU21_Final_Project
                                 PhonePrimary = String.Format("{0:(###)-###-####}", Convert.ToInt64(txtPhone.Text)),
                                 UserName = txtUsername.Text,
                                 Password = txtPassword.Text,
-                                AccountType = "Customer",
+                                AccountType = strAccountType,
                                 SecurityQuestion1 = cmboSecurity1.SelectedItem.ToString(),
                                 SecurityAnswer1 = txtAnswer1.Text,
                                 SecurityQuestion2 = cmboSecurity2.SelectedItem.ToString(),
@@ -232,17 +161,87 @@ namespace SU21_Final_Project
                             DataPerson.SavePerson(person);
                             MessageBox.Show("Account Succesfully Created!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             this.Close();
-
                         }
-
                     }
-
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void frmAddEmployee_Load(object sender, EventArgs e)
+        {
+            cboStates.Items.Add("AL");
+            cboStates.Items.Add("AK");
+            cboStates.Items.Add("AZ");
+            cboStates.Items.Add("AR");
+            cboStates.Items.Add("CA");
+            cboStates.Items.Add("CO");
+            cboStates.Items.Add("CT");
+            cboStates.Items.Add("DE");
+            cboStates.Items.Add("FL");
+            cboStates.Items.Add("GA");
+            cboStates.Items.Add("HI");
+            cboStates.Items.Add("ID");
+            cboStates.Items.Add("IL");
+            cboStates.Items.Add("IN");
+            cboStates.Items.Add("IA");
+            cboStates.Items.Add("KS");
+            cboStates.Items.Add("KY");
+            cboStates.Items.Add("LA");
+            cboStates.Items.Add("ME");
+            cboStates.Items.Add("MD");
+            cboStates.Items.Add("MA");
+            cboStates.Items.Add("MI");
+            cboStates.Items.Add("MN");
+            cboStates.Items.Add("MS");
+            cboStates.Items.Add("MO");
+            cboStates.Items.Add("MT");
+            cboStates.Items.Add("NE");
+            cboStates.Items.Add("NV");
+            cboStates.Items.Add("NH");
+            cboStates.Items.Add("NJ");
+            cboStates.Items.Add("NM");
+            cboStates.Items.Add("NY");
+            cboStates.Items.Add("NC");
+            cboStates.Items.Add("ND");
+            cboStates.Items.Add("OH");
+            cboStates.Items.Add("OK");
+            cboStates.Items.Add("OR");
+            cboStates.Items.Add("PA");
+            cboStates.Items.Add("RI");
+            cboStates.Items.Add("SC");
+            cboStates.Items.Add("SD");
+            cboStates.Items.Add("TN");
+            cboStates.Items.Add("TX");
+            cboStates.Items.Add("UT");
+            cboStates.Items.Add("VT");
+            cboStates.Items.Add("VA");
+            cboStates.Items.Add("WA");
+            cboStates.Items.Add("WV");
+            cboStates.Items.Add("WI");
+            cboStates.Items.Add("WY");
+
+
+            cmboSecurity1.Items.Add("What was your childhood nickname?");
+            cmboSecurity1.Items.Add("What is the name of your favorite childhood friend?");
+            cmboSecurity1.Items.Add("What was the last name of your third grade teacher?");
+            cmboSecurity1.Items.Add("What is your spouse's mother's maiden name?");
+            cmboSecurity1.Items.Add("In what year was your father born?");
+
+            cmboSecurity2.Items.Add("In what city or town was your first job?");
+            cmboSecurity2.Items.Add("What is the name of a college you applied to but didn't attend?");
+            cmboSecurity2.Items.Add("What was your dream job as a child?");
+            cmboSecurity2.Items.Add("What was your favorite sport in high school?");
+            cmboSecurity2.Items.Add("What year did you graduate from high School?");
+
+            cmboSecurity3.Items.Add("What is your mother's middle name?");
+            cmboSecurity3.Items.Add("What is your preferred musical genre?");
+            cmboSecurity3.Items.Add("What was your high school mascot?");
+            cmboSecurity3.Items.Add("What is your pet's name?");
+            cmboSecurity3.Items.Add("What is the name of your favorite childhood teacher?");
         }
 
         private void txtFirst_KeyPress(object sender, KeyPressEventArgs e)
@@ -316,7 +315,8 @@ namespace SU21_Final_Project
 
         private void txtUsername_KeyPress(object sender, KeyPressEventArgs e)
         {
-            txtUsername.MaxLength = 30;
+            txtPassword.MaxLength = 10;
+            bolChangesMade = true;
             var regex = new Regex(@"[^a-zA-Z0-9\s]");
             if (regex.IsMatch(e.KeyChar.ToString()) || e.KeyChar == (char)Keys.Space)
             {
@@ -330,6 +330,8 @@ namespace SU21_Final_Project
 
         private void txtAnswer1_KeyPress(object sender, KeyPressEventArgs e)
         {
+            txtPassword.MaxLength = 10;
+            bolChangesMade = true;
             var regex = new Regex(@"[^a-zA-Z0-9\s]");
             if (regex.IsMatch(e.KeyChar.ToString()) || e.KeyChar == (char)Keys.Space)
             {
@@ -343,6 +345,8 @@ namespace SU21_Final_Project
 
         private void txtAnswer2_KeyPress(object sender, KeyPressEventArgs e)
         {
+            txtPassword.MaxLength = 10;
+            bolChangesMade = true;
             var regex = new Regex(@"[^a-zA-Z0-9\s]");
             if (regex.IsMatch(e.KeyChar.ToString()) || e.KeyChar == (char)Keys.Space)
             {
@@ -356,6 +360,8 @@ namespace SU21_Final_Project
 
         private void txtAnswer3_KeyPress(object sender, KeyPressEventArgs e)
         {
+            txtPassword.MaxLength = 10;
+            bolChangesMade = true;
             var regex = new Regex(@"[^a-zA-Z0-9\s]");
             if (regex.IsMatch(e.KeyChar.ToString()) || e.KeyChar == (char)Keys.Space)
             {

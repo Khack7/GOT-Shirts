@@ -1,7 +1,7 @@
 ﻿
 namespace SU21_Final_Project
 {
-    partial class frmRegister
+    partial class frmAddEmployee
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,24 @@ namespace SU21_Final_Project
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRegister));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddEmployee));
+            this.txtAnswer3 = new System.Windows.Forms.TextBox();
+            this.txtAnswer2 = new System.Windows.Forms.TextBox();
+            this.txtAnswer1 = new System.Windows.Forms.TextBox();
+            this.cmboSecurity3 = new System.Windows.Forms.ComboBox();
+            this.lblAnswer3 = new System.Windows.Forms.Label();
+            this.lblSecurity3 = new System.Windows.Forms.Label();
+            this.cmboSecurity2 = new System.Windows.Forms.ComboBox();
+            this.lblAnswer2 = new System.Windows.Forms.Label();
+            this.lblSecurity2 = new System.Windows.Forms.Label();
+            this.cmboSecurity1 = new System.Windows.Forms.ComboBox();
+            this.lblAnswer1 = new System.Windows.Forms.Label();
+            this.lblSecurity1 = new System.Windows.Forms.Label();
+            this.txtAddress3 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtAddress2 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.cboStates = new System.Windows.Forms.ComboBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -52,24 +69,168 @@ namespace SU21_Final_Project
             this.lblAddress = new System.Windows.Forms.Label();
             this.lblLName = new System.Windows.Forms.Label();
             this.lblFName = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtAddress2 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtAddress3 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.lblAnswer1 = new System.Windows.Forms.Label();
-            this.lblSecurity1 = new System.Windows.Forms.Label();
-            this.cmboSecurity1 = new System.Windows.Forms.ComboBox();
-            this.cmboSecurity2 = new System.Windows.Forms.ComboBox();
-            this.lblAnswer2 = new System.Windows.Forms.Label();
-            this.lblSecurity2 = new System.Windows.Forms.Label();
-            this.cmboSecurity3 = new System.Windows.Forms.ComboBox();
-            this.lblAnswer3 = new System.Windows.Forms.Label();
-            this.lblSecurity3 = new System.Windows.Forms.Label();
-            this.txtAnswer1 = new System.Windows.Forms.TextBox();
-            this.txtAnswer2 = new System.Windows.Forms.TextBox();
-            this.txtAnswer3 = new System.Windows.Forms.TextBox();
+            this.rdoEmployee = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rdoManager = new System.Windows.Forms.RadioButton();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // txtAnswer3
+            // 
+            this.txtAnswer3.Location = new System.Drawing.Point(591, 423);
+            this.txtAnswer3.Name = "txtAnswer3";
+            this.txtAnswer3.Size = new System.Drawing.Size(251, 20);
+            this.txtAnswer3.TabIndex = 36;
+            this.txtAnswer3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAnswer3_KeyPress);
+            // 
+            // txtAnswer2
+            // 
+            this.txtAnswer2.Location = new System.Drawing.Point(591, 382);
+            this.txtAnswer2.Name = "txtAnswer2";
+            this.txtAnswer2.Size = new System.Drawing.Size(251, 20);
+            this.txtAnswer2.TabIndex = 32;
+            this.txtAnswer2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAnswer2_KeyPress);
+            // 
+            // txtAnswer1
+            // 
+            this.txtAnswer1.Location = new System.Drawing.Point(591, 341);
+            this.txtAnswer1.Name = "txtAnswer1";
+            this.txtAnswer1.Size = new System.Drawing.Size(251, 20);
+            this.txtAnswer1.TabIndex = 28;
+            this.txtAnswer1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAnswer1_KeyPress);
+            // 
+            // cmboSecurity3
+            // 
+            this.cmboSecurity3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmboSecurity3.FormattingEnabled = true;
+            this.cmboSecurity3.Location = new System.Drawing.Point(150, 423);
+            this.cmboSecurity3.Name = "cmboSecurity3";
+            this.cmboSecurity3.Size = new System.Drawing.Size(306, 21);
+            this.cmboSecurity3.TabIndex = 34;
+            // 
+            // lblAnswer3
+            // 
+            this.lblAnswer3.AutoSize = true;
+            this.lblAnswer3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAnswer3.Location = new System.Drawing.Point(478, 428);
+            this.lblAnswer3.Name = "lblAnswer3";
+            this.lblAnswer3.Size = new System.Drawing.Size(67, 17);
+            this.lblAnswer3.TabIndex = 35;
+            this.lblAnswer3.Text = "Answer3*";
+            // 
+            // lblSecurity3
+            // 
+            this.lblSecurity3.AutoSize = true;
+            this.lblSecurity3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSecurity3.Location = new System.Drawing.Point(12, 424);
+            this.lblSecurity3.Name = "lblSecurity3";
+            this.lblSecurity3.Size = new System.Drawing.Size(137, 17);
+            this.lblSecurity3.TabIndex = 33;
+            this.lblSecurity3.Text = "Security Question 3*";
+            // 
+            // cmboSecurity2
+            // 
+            this.cmboSecurity2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmboSecurity2.FormattingEnabled = true;
+            this.cmboSecurity2.Location = new System.Drawing.Point(150, 379);
+            this.cmboSecurity2.Name = "cmboSecurity2";
+            this.cmboSecurity2.Size = new System.Drawing.Size(306, 21);
+            this.cmboSecurity2.TabIndex = 30;
+            // 
+            // lblAnswer2
+            // 
+            this.lblAnswer2.AutoSize = true;
+            this.lblAnswer2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAnswer2.Location = new System.Drawing.Point(478, 383);
+            this.lblAnswer2.Name = "lblAnswer2";
+            this.lblAnswer2.Size = new System.Drawing.Size(67, 17);
+            this.lblAnswer2.TabIndex = 31;
+            this.lblAnswer2.Text = "Answer2*";
+            // 
+            // lblSecurity2
+            // 
+            this.lblSecurity2.AutoSize = true;
+            this.lblSecurity2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSecurity2.Location = new System.Drawing.Point(12, 383);
+            this.lblSecurity2.Name = "lblSecurity2";
+            this.lblSecurity2.Size = new System.Drawing.Size(137, 17);
+            this.lblSecurity2.TabIndex = 29;
+            this.lblSecurity2.Text = "Security Question 2*";
+            // 
+            // cmboSecurity1
+            // 
+            this.cmboSecurity1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmboSecurity1.FormattingEnabled = true;
+            this.cmboSecurity1.Location = new System.Drawing.Point(150, 338);
+            this.cmboSecurity1.Name = "cmboSecurity1";
+            this.cmboSecurity1.Size = new System.Drawing.Size(306, 21);
+            this.cmboSecurity1.TabIndex = 26;
+            // 
+            // lblAnswer1
+            // 
+            this.lblAnswer1.AutoSize = true;
+            this.lblAnswer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAnswer1.Location = new System.Drawing.Point(478, 339);
+            this.lblAnswer1.Name = "lblAnswer1";
+            this.lblAnswer1.Size = new System.Drawing.Size(67, 17);
+            this.lblAnswer1.TabIndex = 27;
+            this.lblAnswer1.Text = "Answer1*";
+            // 
+            // lblSecurity1
+            // 
+            this.lblSecurity1.AutoSize = true;
+            this.lblSecurity1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSecurity1.Location = new System.Drawing.Point(12, 342);
+            this.lblSecurity1.Name = "lblSecurity1";
+            this.lblSecurity1.Size = new System.Drawing.Size(137, 17);
+            this.lblSecurity1.TabIndex = 25;
+            this.lblSecurity1.Text = "Security Question 1*";
+            // 
+            // txtAddress3
+            // 
+            this.txtAddress3.Location = new System.Drawing.Point(687, 125);
+            this.txtAddress3.Name = "txtAddress3";
+            this.txtAddress3.Size = new System.Drawing.Size(155, 20);
+            this.txtAddress3.TabIndex = 12;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(588, 128);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(68, 17);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Address3";
+            // 
+            // txtAddress2
+            // 
+            this.txtAddress2.Location = new System.Drawing.Point(403, 125);
+            this.txtAddress2.Name = "txtAddress2";
+            this.txtAddress2.Size = new System.Drawing.Size(155, 20);
+            this.txtAddress2.TabIndex = 10;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(300, 128);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(68, 17);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Address2";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(12, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(830, 17);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Please fill out all that apply. The fields with \" * \" are required";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // cboStates
             // 
@@ -126,7 +287,7 @@ namespace SU21_Final_Project
             this.btnCancel.Location = new System.Drawing.Point(15, 504);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(147, 44);
-            this.btnCancel.TabIndex = 38;
+            this.btnCancel.TabIndex = 39;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -135,10 +296,10 @@ namespace SU21_Final_Project
             // 
             this.btnRegister.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegister.Location = new System.Drawing.Point(716, 504);
+            this.btnRegister.Location = new System.Drawing.Point(695, 504);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(147, 44);
-            this.btnRegister.TabIndex = 37;
+            this.btnRegister.TabIndex = 38;
             this.btnRegister.Text = "Register";
             this.btnRegister.UseVisualStyleBackColor = true;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
@@ -157,9 +318,9 @@ namespace SU21_Final_Project
             this.lblPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPhone.Location = new System.Drawing.Point(12, 266);
             this.lblPhone.Name = "lblPhone";
-            this.lblPhone.Size = new System.Drawing.Size(49, 17);
+            this.lblPhone.Size = new System.Drawing.Size(54, 17);
             this.lblPhone.TabIndex = 19;
-            this.lblPhone.Text = "Phone";
+            this.lblPhone.Text = "Phone*";
             // 
             // txtEmail
             // 
@@ -174,9 +335,9 @@ namespace SU21_Final_Project
             this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmail.Location = new System.Drawing.Point(588, 57);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(42, 17);
+            this.lblEmail.Size = new System.Drawing.Size(47, 17);
             this.lblEmail.TabIndex = 5;
-            this.lblEmail.Text = "Email";
+            this.lblEmail.Text = "Email*";
             // 
             // txtZip
             // 
@@ -277,168 +438,47 @@ namespace SU21_Final_Project
             this.lblFName.TabIndex = 1;
             this.lblFName.Text = "First Name*";
             // 
-            // label3
+            // rdoEmployee
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 9);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(851, 17);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Please fill out all that apply. The fields with \" * \" are required";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rdoEmployee.AutoSize = true;
+            this.rdoEmployee.Checked = true;
+            this.rdoEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdoEmployee.Location = new System.Drawing.Point(6, 21);
+            this.rdoEmployee.Name = "rdoEmployee";
+            this.rdoEmployee.Size = new System.Drawing.Size(88, 21);
+            this.rdoEmployee.TabIndex = 0;
+            this.rdoEmployee.TabStop = true;
+            this.rdoEmployee.Text = "Employee";
+            this.rdoEmployee.UseVisualStyleBackColor = true;
             // 
-            // txtAddress2
+            // groupBox1
             // 
-            this.txtAddress2.Location = new System.Drawing.Point(403, 125);
-            this.txtAddress2.Name = "txtAddress2";
-            this.txtAddress2.Size = new System.Drawing.Size(155, 20);
-            this.txtAddress2.TabIndex = 10;
+            this.groupBox1.Controls.Add(this.rdoManager);
+            this.groupBox1.Controls.Add(this.rdoEmployee);
+            this.groupBox1.Location = new System.Drawing.Point(268, 495);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(256, 53);
+            this.groupBox1.TabIndex = 37;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Worker Type*";
             // 
-            // label5
+            // rdoManager
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(300, 128);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(68, 17);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Address2";
+            this.rdoManager.AutoSize = true;
+            this.rdoManager.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdoManager.Location = new System.Drawing.Point(162, 21);
+            this.rdoManager.Name = "rdoManager";
+            this.rdoManager.Size = new System.Drawing.Size(82, 21);
+            this.rdoManager.TabIndex = 1;
+            this.rdoManager.Text = "Manager";
+            this.rdoManager.UseVisualStyleBackColor = true;
             // 
-            // txtAddress3
-            // 
-            this.txtAddress3.Location = new System.Drawing.Point(687, 125);
-            this.txtAddress3.Name = "txtAddress3";
-            this.txtAddress3.Size = new System.Drawing.Size(155, 20);
-            this.txtAddress3.TabIndex = 12;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(588, 128);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(68, 17);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "Address3";
-            // 
-            // lblAnswer1
-            // 
-            this.lblAnswer1.AutoSize = true;
-            this.lblAnswer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAnswer1.Location = new System.Drawing.Point(478, 339);
-            this.lblAnswer1.Name = "lblAnswer1";
-            this.lblAnswer1.Size = new System.Drawing.Size(67, 17);
-            this.lblAnswer1.TabIndex = 27;
-            this.lblAnswer1.Text = "Answer1*";
-            // 
-            // lblSecurity1
-            // 
-            this.lblSecurity1.AutoSize = true;
-            this.lblSecurity1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSecurity1.Location = new System.Drawing.Point(12, 342);
-            this.lblSecurity1.Name = "lblSecurity1";
-            this.lblSecurity1.Size = new System.Drawing.Size(137, 17);
-            this.lblSecurity1.TabIndex = 25;
-            this.lblSecurity1.Text = "Security Question 1*";
-            // 
-            // cmboSecurity1
-            // 
-            this.cmboSecurity1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmboSecurity1.FormattingEnabled = true;
-            this.cmboSecurity1.Location = new System.Drawing.Point(150, 338);
-            this.cmboSecurity1.Name = "cmboSecurity1";
-            this.cmboSecurity1.Size = new System.Drawing.Size(306, 21);
-            this.cmboSecurity1.TabIndex = 26;
-            // 
-            // cmboSecurity2
-            // 
-            this.cmboSecurity2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmboSecurity2.FormattingEnabled = true;
-            this.cmboSecurity2.Location = new System.Drawing.Point(150, 379);
-            this.cmboSecurity2.Name = "cmboSecurity2";
-            this.cmboSecurity2.Size = new System.Drawing.Size(306, 21);
-            this.cmboSecurity2.TabIndex = 30;
-            // 
-            // lblAnswer2
-            // 
-            this.lblAnswer2.AutoSize = true;
-            this.lblAnswer2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAnswer2.Location = new System.Drawing.Point(478, 383);
-            this.lblAnswer2.Name = "lblAnswer2";
-            this.lblAnswer2.Size = new System.Drawing.Size(67, 17);
-            this.lblAnswer2.TabIndex = 31;
-            this.lblAnswer2.Text = "Answer2*";
-            // 
-            // lblSecurity2
-            // 
-            this.lblSecurity2.AutoSize = true;
-            this.lblSecurity2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSecurity2.Location = new System.Drawing.Point(12, 383);
-            this.lblSecurity2.Name = "lblSecurity2";
-            this.lblSecurity2.Size = new System.Drawing.Size(137, 17);
-            this.lblSecurity2.TabIndex = 29;
-            this.lblSecurity2.Text = "Security Question 2*";
-            // 
-            // cmboSecurity3
-            // 
-            this.cmboSecurity3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmboSecurity3.FormattingEnabled = true;
-            this.cmboSecurity3.Location = new System.Drawing.Point(150, 423);
-            this.cmboSecurity3.Name = "cmboSecurity3";
-            this.cmboSecurity3.Size = new System.Drawing.Size(306, 21);
-            this.cmboSecurity3.TabIndex = 34;
-            // 
-            // lblAnswer3
-            // 
-            this.lblAnswer3.AutoSize = true;
-            this.lblAnswer3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAnswer3.Location = new System.Drawing.Point(478, 428);
-            this.lblAnswer3.Name = "lblAnswer3";
-            this.lblAnswer3.Size = new System.Drawing.Size(67, 17);
-            this.lblAnswer3.TabIndex = 35;
-            this.lblAnswer3.Text = "Answer3*";
-            // 
-            // lblSecurity3
-            // 
-            this.lblSecurity3.AutoSize = true;
-            this.lblSecurity3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSecurity3.Location = new System.Drawing.Point(12, 424);
-            this.lblSecurity3.Name = "lblSecurity3";
-            this.lblSecurity3.Size = new System.Drawing.Size(137, 17);
-            this.lblSecurity3.TabIndex = 33;
-            this.lblSecurity3.Text = "Security Question 3*";
-            // 
-            // txtAnswer1
-            // 
-            this.txtAnswer1.Location = new System.Drawing.Point(591, 341);
-            this.txtAnswer1.Name = "txtAnswer1";
-            this.txtAnswer1.Size = new System.Drawing.Size(251, 20);
-            this.txtAnswer1.TabIndex = 28;
-            this.txtAnswer1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAnswer1_KeyPress);
-            // 
-            // txtAnswer2
-            // 
-            this.txtAnswer2.Location = new System.Drawing.Point(591, 382);
-            this.txtAnswer2.Name = "txtAnswer2";
-            this.txtAnswer2.Size = new System.Drawing.Size(251, 20);
-            this.txtAnswer2.TabIndex = 32;
-            this.txtAnswer2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAnswer2_KeyPress);
-            // 
-            // txtAnswer3
-            // 
-            this.txtAnswer3.Location = new System.Drawing.Point(591, 423);
-            this.txtAnswer3.Name = "txtAnswer3";
-            this.txtAnswer3.Size = new System.Drawing.Size(251, 20);
-            this.txtAnswer3.TabIndex = 36;
-            this.txtAnswer3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAnswer3_KeyPress);
-            // 
-            // frmRegister
+            // frmAddEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(875, 556);
+            this.ClientSize = new System.Drawing.Size(858, 557);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtAnswer3);
             this.Controls.Add(this.txtAnswer2);
             this.Controls.Add(this.txtAnswer1);
@@ -479,10 +519,12 @@ namespace SU21_Final_Project
             this.Controls.Add(this.lblLName);
             this.Controls.Add(this.lblFName);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "frmRegister";
+            this.Name = "frmAddEmployee";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Registration";
-            this.Load += new System.EventHandler(this.frmRegister_Load);
+            this.Text = "Add Employee";
+            this.Load += new System.EventHandler(this.frmAddEmployee_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -490,6 +532,23 @@ namespace SU21_Final_Project
 
         #endregion
 
+        private System.Windows.Forms.TextBox txtAnswer3;
+        private System.Windows.Forms.TextBox txtAnswer2;
+        private System.Windows.Forms.TextBox txtAnswer1;
+        private System.Windows.Forms.ComboBox cmboSecurity3;
+        private System.Windows.Forms.Label lblAnswer3;
+        private System.Windows.Forms.Label lblSecurity3;
+        private System.Windows.Forms.ComboBox cmboSecurity2;
+        private System.Windows.Forms.Label lblAnswer2;
+        private System.Windows.Forms.Label lblSecurity2;
+        private System.Windows.Forms.ComboBox cmboSecurity1;
+        private System.Windows.Forms.Label lblAnswer1;
+        private System.Windows.Forms.Label lblSecurity1;
+        private System.Windows.Forms.TextBox txtAddress3;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtAddress2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cboStates;
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.Label label2;
@@ -512,22 +571,8 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label lblAddress;
         private System.Windows.Forms.Label lblLName;
         private System.Windows.Forms.Label lblFName;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtAddress2;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtAddress3;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label lblAnswer1;
-        private System.Windows.Forms.Label lblSecurity1;
-        private System.Windows.Forms.ComboBox cmboSecurity1;
-        private System.Windows.Forms.ComboBox cmboSecurity2;
-        private System.Windows.Forms.Label lblAnswer2;
-        private System.Windows.Forms.Label lblSecurity2;
-        private System.Windows.Forms.ComboBox cmboSecurity3;
-        private System.Windows.Forms.Label lblAnswer3;
-        private System.Windows.Forms.Label lblSecurity3;
-        private System.Windows.Forms.TextBox txtAnswer1;
-        private System.Windows.Forms.TextBox txtAnswer2;
-        private System.Windows.Forms.TextBox txtAnswer3;
+        private System.Windows.Forms.RadioButton rdoEmployee;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton rdoManager;
     }
 }

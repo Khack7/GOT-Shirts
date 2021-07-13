@@ -159,7 +159,7 @@ namespace SU21_Final_Project.Data
                     cmd.Parameters.AddWithValue("@PhonePrimary", person.PhonePrimary);
                     cmd.Parameters.AddWithValue("@UserName", person.UserName);
                     cmd.Parameters.AddWithValue("@Password", person.Password);
-                    cmd.Parameters.AddWithValue("@AccountType", "Customer");
+                    cmd.Parameters.AddWithValue("@AccountType", person.AccountType);
                     cmd.Parameters.AddWithValue("@SecurityQuestion1", person.SecurityQuestion1);
                     cmd.Parameters.AddWithValue("@SecurityAnswer1", person.SecurityAnswer1);
                     cmd.Parameters.AddWithValue("@SecurityQuestion2", person.SecurityQuestion2);
@@ -185,6 +185,45 @@ namespace SU21_Final_Project.Data
                     con.Close();
                 }
             }
+        }
+
+        public static List<DataPerson> ListEmployees()
+        {
+            List<DataPerson> people = new List<DataPerson>();
+
+            using(SqlConnection con = DataCommon.StartConnection())
+            {
+                using(SqlCommand cmd = new SqlCommand("SELECT * FROM HackK21Su2332.Person WHERE AccountType = @AccountType"))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@AccountType", "Employee");
+                    cmd.Connection = con;
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            DataPerson person = null;
+                            LoadFromReader(ref person, sdr);
+                            people.Add(person);
+                        }
+                    }
+                    con.Close();
+                }
+            }
+            return people;
+        }
+        private static void LoadFromReader(ref DataPerson person, SqlDataReader sdr)
+        {
+            int.TryParse(sdr["PersonID"].ToString(), out int ID);
+            string strnameFirst = sdr["NameFirst"].ToString();
+            string strnameLast = sdr["NameLast"].ToString();
+
+            person = new DataPerson
+            {
+                NameFirst = strnameFirst,
+                NameLast = strnameLast,
+                PersonID = ID
+            };
         }
     }
 }
