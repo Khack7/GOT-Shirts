@@ -82,6 +82,7 @@ namespace SU21_Final_Project
             this.txtPrice.Location = new System.Drawing.Point(115, 187);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.ReadOnly = true;
+            this.txtPrice.ShortcutsEnabled = false;
             this.txtPrice.Size = new System.Drawing.Size(186, 20);
             this.txtPrice.TabIndex = 13;
             this.txtPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrice_KeyPress);
@@ -111,6 +112,7 @@ namespace SU21_Final_Project
             this.txtAmount.Location = new System.Drawing.Point(115, 128);
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.ReadOnly = true;
+            this.txtAmount.ShortcutsEnabled = false;
             this.txtAmount.Size = new System.Drawing.Size(186, 20);
             this.txtAmount.TabIndex = 11;
             this.txtAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAmount_KeyPress);
@@ -140,6 +142,7 @@ namespace SU21_Final_Project
             this.txtCost.Location = new System.Drawing.Point(115, 246);
             this.txtCost.Name = "txtCost";
             this.txtCost.ReadOnly = true;
+            this.txtCost.ShortcutsEnabled = false;
             this.txtCost.Size = new System.Drawing.Size(186, 20);
             this.txtCost.TabIndex = 17;
             this.txtCost.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCost_KeyPress);
@@ -193,6 +196,7 @@ namespace SU21_Final_Project
             this.Controls.Add(this.lblColor);
             this.Controls.Add(this.txtAmount);
             this.Controls.Add(this.cboColor);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmInventory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

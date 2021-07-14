@@ -385,10 +385,12 @@ namespace SU21_Final_Project
             this.Controls.Add(this.btnBlack);
             this.Controls.Add(this.btnBlue);
             this.Controls.Add(this.picbxShirt);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmShop";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Shop";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmShop_FormClosing);
             this.Load += new System.EventHandler(this.frmShop_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numUDQuantity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picbxShirt)).EndInit();

@@ -38,14 +38,6 @@ namespace SU21_Final_Project
             this.Show();
         }
 
-        private void btnSchedules_Click(object sender, EventArgs e)
-        {
-            frmManageSchedule schedule = new frmManageSchedule();
-            this.Hide();
-            schedule.ShowDialog();
-            this.Show();
-        }
-
         private void btnCreateEmployee_Click(object sender, EventArgs e)
         {
             frmAddEmployee addEmployee = new frmAddEmployee();

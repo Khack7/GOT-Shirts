@@ -327,6 +327,7 @@ namespace SU21_Final_Project
             this.Controls.Add(this.lblAddress);
             this.Controls.Add(this.lblLName);
             this.Controls.Add(this.lblFName);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAccountInfo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

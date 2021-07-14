@@ -366,5 +366,17 @@ namespace SU21_Final_Project
                 e.Handled = false;
             }
         }
+
+        private void frmRegister_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (bolChangesMade == true)
+            {
+                DialogResult dr = MessageBox.Show("All changes will be discarded. Are you sure you want to cancel?", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dr == DialogResult.No)
+                {
+                    e.Cancel = true;
+                }
+            }
+        }
     }
 }

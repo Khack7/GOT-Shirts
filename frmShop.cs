@@ -31,7 +31,6 @@ namespace SU21_Final_Project
         {
             InitializeComponent();
             _appPath = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
-            //MessageBox.Show($"{_appPath}\\Shirts");
         }
 
         private Image resizeImage(Image src, int width, int height)
@@ -120,9 +119,9 @@ namespace SU21_Final_Project
                         {
                             existingItem.intQuantity += intNumOfShirts;
 
-                            for (int i = 0; i < lstCart.Items.Count; i++)
+                            for (int intI = 0; intI < lstCart.Items.Count; intI++)
                             {
-                                lstCart.Items[i] = lstCart.Items[i];
+                                lstCart.Items[intI] = lstCart.Items[intI];
                             }
 
                             dblCurrentTotal += (product.Price * intNumOfShirts);
@@ -157,9 +156,9 @@ namespace SU21_Final_Project
         {
             CartItem result = null;
 
-            for (int i = 0; i < lstCart.Items.Count; i++)
+            for (int intI = 0; intI < lstCart.Items.Count; intI++)
             {
-                CartItem item = (CartItem)lstCart.Items[i];
+                CartItem item = (CartItem)lstCart.Items[intI];
                 if (item.Product.ProductID == product.ProductID)
                 {
                     result = item;
@@ -172,12 +171,12 @@ namespace SU21_Final_Project
 
         private void getShirt(string color)
         {
-            string shirt = color;
+            string strString = color;
             string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
 
             try
             {
-                using (Image image = Image.FromFile($"{path}\\Shirts\\{shirt}.PNG"))
+                using (Image image = Image.FromFile($"{path}\\Shirts\\{strString}.PNG"))
                 {
                     picbxShirt.Image = resizeImage(image, picbxShirt.Width, picbxShirt.Height);
                 }
@@ -477,10 +476,10 @@ namespace SU21_Final_Project
 
         private void btnHelp_Click(object sender, EventArgs e)
         {
-            string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            string strPath = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
             try
             {
-                System.Diagnostics.Process.Start($"{path}\\HelpFiles\\Shop_Help.html");
+                System.Diagnostics.Process.Start($"{strPath}\\HelpFiles\\Shop_Help.html");
             }
             catch (Exception ex)
             {
@@ -522,6 +521,20 @@ namespace SU21_Final_Project
             if (strCurrentColor != null)
             {
                 getItemPrice(strCurrentColor, "Large");
+            }
+        }
+
+        private void frmShop_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure want to quit? Your order will be canceled and you will be signed out", "Alert!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes)
+            {
+                frmSignIn.intID = 0;
+            }
+            else
+            {
+                e.Cancel = true;
             }
         }
     }

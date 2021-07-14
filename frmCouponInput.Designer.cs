@@ -71,6 +71,7 @@ namespace SU21_Final_Project
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.txtCode);
             this.Controls.Add(this.btnEnter);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmCouponInput";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

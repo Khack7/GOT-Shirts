@@ -350,11 +350,13 @@ namespace SU21_Final_Project
             this.Controls.Add(this.lblTaxPointer);
             this.Controls.Add(this.lblSubTotalPointer);
             this.Controls.Add(this.lstCart);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmCheckout";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Checkout";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCheckout_FormClosing);
             this.Load += new System.EventHandler(this.frmCheckout_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

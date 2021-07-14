@@ -41,16 +41,16 @@ namespace SU21_Final_Project
         {
             try
             {
-                List<string> colors = _products.Select(p => p.Color).Distinct().OrderBy(c => c).ToList();
-                List<string> sizes = _products.Select(p => p.Size).Distinct().OrderBy(s => s).ToList();
+                List<string> lstColors = _products.Select(p => p.Color).Distinct().OrderBy(c => c).ToList();
+                List<string> lstSizes = _products.Select(p => p.Size).Distinct().OrderBy(s => s).ToList();
 
-                for (int i = 0; i < colors.Count; i++)
+                for (int intI = 0; intI < lstColors.Count; intI++)
                 {
-                    cboColor.Items.Add(colors[i]);
+                    cboColor.Items.Add(lstColors[intI]);
                 }
-                for (int i = 0; i < sizes.Count; i++)
+                for (int intI = 0; intI < lstSizes.Count; intI++)
                 {
-                    cboSize.Items.Add(sizes[i]);
+                    cboSize.Items.Add(lstSizes[intI]);
                 }
             }
             catch (Exception ex)

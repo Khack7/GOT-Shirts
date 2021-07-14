@@ -265,6 +265,7 @@ namespace SU21_Final_Project
             this.Controls.Add(this.lblFName);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.btnReturn);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmShipping";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

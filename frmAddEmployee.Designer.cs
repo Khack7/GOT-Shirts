@@ -308,6 +308,7 @@ namespace SU21_Final_Project
             // 
             this.txtPhone.Location = new System.Drawing.Point(119, 261);
             this.txtPhone.Name = "txtPhone";
+            this.txtPhone.ShortcutsEnabled = false;
             this.txtPhone.Size = new System.Drawing.Size(155, 20);
             this.txtPhone.TabIndex = 20;
             this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
@@ -343,6 +344,7 @@ namespace SU21_Final_Project
             // 
             this.txtZip.Location = new System.Drawing.Point(687, 201);
             this.txtZip.Name = "txtZip";
+            this.txtZip.ShortcutsEnabled = false;
             this.txtZip.Size = new System.Drawing.Size(155, 20);
             this.txtZip.TabIndex = 18;
             this.txtZip.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtZip_KeyPress);
@@ -518,6 +520,7 @@ namespace SU21_Final_Project
             this.Controls.Add(this.lblAddress);
             this.Controls.Add(this.lblLName);
             this.Controls.Add(this.lblFName);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAddEmployee";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

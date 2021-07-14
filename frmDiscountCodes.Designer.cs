@@ -255,6 +255,7 @@ namespace SU21_Final_Project
             this.Controls.Add(this.lblStatusPointer);
             this.Controls.Add(this.lblCode);
             this.Controls.Add(this.cboCodes);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmDiscountCodes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

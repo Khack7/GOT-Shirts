@@ -28,20 +28,7 @@ namespace SU21_Final_Project
         public frmShipping()
         {
             InitializeComponent();
-        }
-
-        //USE THIS TO DISABLE 'X' BUTTON
-        private const int CP_DISABLE_CLOSE_BUTTON = 0x200;
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                cp.ClassStyle = cp.ClassStyle | CP_DISABLE_CLOSE_BUTTON;
-                return cp;
-            }
-        }
-        
+        }       
 
         private void frmShipping_Load(object sender, EventArgs e)
         {
@@ -122,10 +109,10 @@ namespace SU21_Final_Project
 
         private void btnHelp_Click(object sender, EventArgs e)
         {
-            string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            string strPath = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
             try
             {
-                System.Diagnostics.Process.Start($"{path}\\HelpFiles\\Shipping_Help.html");
+                System.Diagnostics.Process.Start($"{strPath}\\HelpFiles\\Shipping_Help.html");
             }
             catch (Exception ex)
             {

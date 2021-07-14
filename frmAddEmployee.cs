@@ -78,7 +78,7 @@ namespace SU21_Final_Project
 
                     if (txtFirst.Text == "" || txtLast.Text == "" || txtAddress1.Text == "" ||
                        txtCity.Text == "" || cboStates.SelectedItem == null ||
-                       txtZip.Text == "" || txtZip.Text.Length < 5 || txtUsername.Text == "" || txtPassword.Text == "" ||
+                       txtZip.Text == "" || txtUsername.Text == "" || txtPassword.Text == "" ||
                        cmboSecurity1.SelectedItem == null || cmboSecurity2.SelectedItem == null ||
                        cmboSecurity3.SelectedItem == null || txtAnswer1.Text == "" || txtAnswer2.Text == ""
                        || txtAnswer3.Text == "")
@@ -89,6 +89,10 @@ namespace SU21_Final_Project
                         {
                             txtZip.Focus();
                             MessageBox.Show("Zipcode must be a valid 5 digit number", "Invalid Zipcode", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                        else if(txtPhone.Text.Length < 10 || txtEmail.Text == "")
+                        {
+                            MessageBox.Show("Employees are required to have at least one method of contact", "Please fill out a contact field", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
                         else
                         {
