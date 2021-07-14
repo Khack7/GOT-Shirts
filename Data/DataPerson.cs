@@ -33,6 +33,7 @@ namespace SU21_Final_Project.Data
         public string SecurityAnswer2 { get; set; }
         public string SecurityQuestion3 { get; set; }
         public string SecurityAnswer3 { get; set; }
+        public bool Deleted { get; set; }
 
         public static DataPerson GetPerson(string UserName)
         {
@@ -83,11 +84,18 @@ namespace SU21_Final_Project.Data
             DataPerson result = null;
             if (sdr.Read())
             {
-                int.TryParse(sdr["PersonID"].ToString(), out int p);
+                if(!int.TryParse(sdr["PersonID"].ToString(), out int intPersonID))
+                {
+                    throw new Exception("Error getting PersonID");
+                }
+                if (!bool.TryParse(sdr["Deleted"].ToString(), out bool bolDeleted))
+                {
+                    throw new Exception("Error getting Account Status");
+                }
 
                 result = new DataPerson
                 {
-                    PersonID = p,
+                    PersonID = intPersonID,
                     NameFirst = sdr["NameFirst"].ToString(),
                     NameLast = sdr["NameLast"].ToString(),
                     Address1 = sdr["Address1"].ToString(),
@@ -108,6 +116,7 @@ namespace SU21_Final_Project.Data
                     SecurityAnswer2 = sdr["SecurityAnswer2"].ToString(),
                     SecurityQuestion3 = sdr["SecurityQuestion3"].ToString(),
                     SecurityAnswer3 = sdr["SecurityAnswer3"].ToString(),
+                    Deleted = bolDeleted
                 };
             }
             return result;
@@ -124,10 +133,10 @@ namespace SU21_Final_Project.Data
                     sql = "INSERT INTO HackK21Su2332.Person(NameFirst, NameLast, Address1, Address2, Address3," +
                             " City, State, Zipcode, Email, PhonePrimary, UserName, Password, AccountType," +
                             " SecurityQuestion1, SecurityAnswer1, SecurityQuestion2, SecurityAnswer2," +
-                            " SecurityQuestion3, SecurityAnswer3)" +
+                            " SecurityQuestion3, SecurityAnswer3, Deleted)" +
                             " VALUES(@NameFirst, @NameLast, @Address1, @Address2, @Address3," +
                             " @City, @State, @Zipcode, @Email, @PhonePrimary, @UserName, @Password, @AccountType," +
-                            " @SecurityQuestion1, @SecurityAnswer1, @SecurityQuestion2, @SecurityAnswer2, @SecurityQuestion3, @SecurityAnswer3);" +
+                            " @SecurityQuestion1, @SecurityAnswer1, @SecurityQuestion2, @SecurityAnswer2, @SecurityQuestion3, @SecurityAnswer3, @Deleted);" +
                             "SELECT PersonID = SCOPE_IDENTITY()";
                 }
                 else
@@ -136,7 +145,7 @@ namespace SU21_Final_Project.Data
                           "Address2 = @Address2, Address3 = @Address3, City = @City, State = @State, " +
                           "Zipcode = @Zipcode, Email = @Email, PhonePrimary = @PhonePrimary, UserName = @UserName, " +
                           "Password = @Password, AccountType = @AccountType, SecurityQuestion1 = @SecurityQuestion1, SecurityAnswer1 = @SecurityAnswer1, " +
-                          "SecurityQuestion2 = @SecurityQuestion2, SecurityAnswer2 = @SecurityAnswer2, SecurityQuestion3 = @SecurityQuestion3, SecurityAnswer3 = @SecurityAnswer3 " +
+                          "SecurityQuestion2 = @SecurityQuestion2, SecurityAnswer2 = @SecurityAnswer2, SecurityQuestion3 = @SecurityQuestion3, SecurityAnswer3 = @SecurityAnswer3, Deleted = @Deleted " +
                           "WHERE PersonID = @PersonID";
                 }
                 using (SqlCommand cmd = new SqlCommand(sql))
@@ -166,6 +175,7 @@ namespace SU21_Final_Project.Data
                     cmd.Parameters.AddWithValue("@SecurityAnswer2", person.SecurityAnswer2);
                     cmd.Parameters.AddWithValue("@SecurityQuestion3", person.SecurityQuestion3);
                     cmd.Parameters.AddWithValue("@SecurityAnswer3", person.SecurityAnswer3);
+                    cmd.Parameters.AddWithValue("@Deleted", person.Deleted);
 
                     if (person.PersonID > 0)
                     {
@@ -185,45 +195,6 @@ namespace SU21_Final_Project.Data
                     con.Close();
                 }
             }
-        }
-
-        public static List<DataPerson> ListEmployees()
-        {
-            List<DataPerson> people = new List<DataPerson>();
-
-            using(SqlConnection con = DataCommon.StartConnection())
-            {
-                using(SqlCommand cmd = new SqlCommand("SELECT * FROM HackK21Su2332.Person WHERE AccountType = @AccountType"))
-                {
-                    cmd.CommandType = CommandType.Text;
-                    cmd.Parameters.AddWithValue("@AccountType", "Employee");
-                    cmd.Connection = con;
-                    using (SqlDataReader sdr = cmd.ExecuteReader())
-                    {
-                        while (sdr.Read())
-                        {
-                            DataPerson person = null;
-                            LoadFromReader(ref person, sdr);
-                            people.Add(person);
-                        }
-                    }
-                    con.Close();
-                }
-            }
-            return people;
-        }
-        private static void LoadFromReader(ref DataPerson person, SqlDataReader sdr)
-        {
-            int.TryParse(sdr["PersonID"].ToString(), out int ID);
-            string strnameFirst = sdr["NameFirst"].ToString();
-            string strnameLast = sdr["NameLast"].ToString();
-
-            person = new DataPerson
-            {
-                NameFirst = strnameFirst,
-                NameLast = strnameLast,
-                PersonID = ID
-            };
         }
     }
 }

@@ -144,10 +144,10 @@ namespace SU21_Final_Project
 
         private void btnHelp_Click(object sender, EventArgs e)
         {
-            string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            string strPath = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
             try
             {
-                System.Diagnostics.Process.Start($"{path}\\HelpFiles\\Password_Reset_Help.html");
+                System.Diagnostics.Process.Start($"{strPath}\\HelpFiles\\Password_Reset_Help.html");
             }
             catch (Exception ex)
             {

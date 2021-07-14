@@ -31,6 +31,7 @@ namespace SU21_Final_Project
         }
 
         bool bolChangesMade = false;
+        bool bolComplete = false;
 
         private void frmRegister_Load(object sender, EventArgs e)
         {
@@ -111,25 +112,34 @@ namespace SU21_Final_Project
 
             string strAttemptedPassword = txtPassword.Text;
 
-            if (!strAttemptedPassword.Any(char.IsLower))
+            int intPasswordRequirements = 0;
+            var regex = new Regex(@"[^a-zA-Z0-9\s]");
+
+            if (strAttemptedPassword.Any(char.IsLower))
             {
-                MessageBox.Show("Password must contain a lower case letter", "Missing password requirement", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
-                bolAcceptedPassword = false;
+                intPasswordRequirements++;
             }
-            else if (!strAttemptedPassword.Any(char.IsUpper))
+            if (strAttemptedPassword.Any(char.IsUpper))
             {
-                MessageBox.Show("Password must contain an upper case letter", "Missing password requirement", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
-                bolAcceptedPassword = false;
+                intPasswordRequirements++;
             }
-            else if (!strAttemptedPassword.Any(char.IsDigit))
+            if (strAttemptedPassword.Any(char.IsDigit))
             {
-                MessageBox.Show("Password must contain a number", "Missing password requirement", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
-                bolAcceptedPassword = false;
+                intPasswordRequirements++;
             }
-            else if (strAttemptedPassword.Length < 8 || strAttemptedPassword.Length > 10)
+            if (regex.IsMatch(strAttemptedPassword))
             {
-                MessageBox.Show("Password must be between 8 and 10 charactors", "Invalid length", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
+                intPasswordRequirements++;
+            }
+            if (strAttemptedPassword.Length < 8 || strAttemptedPassword.Length > 10)
+            {
                 bolAcceptedPassword = false;
+                intPasswordRequirements = 0;
+            }
+
+            if (intPasswordRequirements < 3)
+            {
+                MessageBox.Show("Password must be at least 8 charactors long and contain at least 3 of the following: lower case letter, upper case letter, number, or special charactor(ex: !, @, #, $)", "Missing password requirement", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
             }
             else
             {
@@ -167,15 +177,19 @@ namespace SU21_Final_Project
                        cmboSecurity3.SelectedItem == null || txtAnswer1.Text == "" || txtAnswer2.Text == ""
                        || txtAnswer3.Text == "")
                     {
-                        MessageBox.Show("Feilds with ' * ' are required", "Please fill out all required fields", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
                         if (txtZip.Text.Length < 5)
                         {
                             txtZip.Focus();
                             MessageBox.Show("Zipcode must be a valid 5 digit number", "Invalid Zipcode", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
+                        else if(txtCity.Text.Length < 3)
+                        {
+                            txtCity.Focus();
+                            MessageBox.Show("There are no city names with less than 3 charactors", "Invalid City", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
                         else
                         {
+                            MessageBox.Show("Feilds with ' * ' are required", "Please fill out all required fields", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             foreach (TextBox t in lstTextBoxes)
                             {
                                 if (t.Text == null || t.Text == "")
@@ -227,10 +241,12 @@ namespace SU21_Final_Project
                                 SecurityQuestion2 = cmboSecurity2.SelectedItem.ToString(),
                                 SecurityAnswer2 = txtAnswer2.Text,
                                 SecurityQuestion3 = cmboSecurity3.SelectedItem.ToString(),
-                                SecurityAnswer3 = txtAnswer3.Text
+                                SecurityAnswer3 = txtAnswer3.Text,
+                                Deleted = false
                             };
                             DataPerson.SavePerson(person);
                             MessageBox.Show("Account Succesfully Created!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            bolComplete = true;
                             this.Close();
 
                         }
@@ -303,8 +319,7 @@ namespace SU21_Final_Project
         {
             txtPassword.MaxLength = 10;
             bolChangesMade = true;
-            var regex = new Regex(@"[^a-zA-Z0-9\s]");
-            if (regex.IsMatch(e.KeyChar.ToString()) || e.KeyChar == (char)Keys.Space)
+            if (e.KeyChar == (char)Keys.Space)
             {
                 e.Handled = true;
             }
@@ -369,13 +384,21 @@ namespace SU21_Final_Project
 
         private void frmRegister_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (bolChangesMade == true)
+            if (bolChangesMade == true && bolComplete == false)
             {
                 DialogResult dr = MessageBox.Show("All changes will be discarded. Are you sure you want to cancel?", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dr == DialogResult.No)
                 {
                     e.Cancel = true;
                 }
+            }
+        }
+
+        private void txtEmail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Space)
+            {
+                e.Handled = true;
             }
         }
     }

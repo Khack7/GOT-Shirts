@@ -66,6 +66,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Receipt.cs" />
+    <Compile Include="DataSetPerson.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetPerson.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Data\DataCodes.cs" />
     <Compile Include="Data\DataCommon.cs" />
     <Compile Include="Data\DataOrderItem.cs" />
@@ -133,6 +138,12 @@
     <Compile Include="frmManageSignIn.Designer.cs">
       <DependentUpon>frmManageSignIn.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmManageUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmManageUsers.Designer.cs">
+      <DependentUpon>frmManageUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmRegister.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -195,6 +206,9 @@
     <EmbeddedResource Include="frmManageSignIn.resx">
       <DependentUpon>frmManageSignIn.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmManageUsers.resx">
+      <DependentUpon>frmManageUsers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmRegister.resx">
       <DependentUpon>frmRegister.cs</DependentUpon>
     </EmbeddedResource>
@@ -223,6 +237,17 @@
     <None Include="Course Design Guides\Design Guide - Classroom Program Requirements and Naming Standards%28Final Project%29%282021-03-26%29.pdf" />
     <None Include="Course Design Guides\Notes" />
     <None Include="Course Design Guides\Prefixes%282021-03-26%29.pdf" />
+    <None Include="DataSetPerson.xsc">
+      <DependentUpon>DataSetPerson.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetPerson.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetPerson.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSetPerson.xss">
+      <DependentUpon>DataSetPerson.xsd</DependentUpon>
+    </None>
     <None Include="HelpFiles\Readme.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

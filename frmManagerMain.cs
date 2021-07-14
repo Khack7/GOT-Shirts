@@ -45,5 +45,13 @@ namespace SU21_Final_Project
             addEmployee.ShowDialog();
             this.Show();
         }
+
+        private void btnManageUsers_Click(object sender, EventArgs e)
+        {
+            frmManageUsers manageUsers = new frmManageUsers();
+            this.Hide();
+            manageUsers.ShowDialog();
+            this.Show();
+        }
     }
 }

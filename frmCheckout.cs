@@ -38,8 +38,14 @@ namespace SU21_Final_Project
 
                 shipping = DataMoney.GetValues(method);
 
-                double.TryParse(shipping.SettingValue, out double dblShipping);
-                dblShippingCost = dblShipping;
+                if(double.TryParse(shipping.SettingValue, out double dblShipping))
+                {
+                    dblShippingCost = dblShipping;
+                }
+                else
+                {
+                    throw new Exception("Error Getting Shipping Data");
+                }
 
                 lblShipping.Text = dblShippingCost.ToString("C2");
             }
@@ -64,10 +70,13 @@ namespace SU21_Final_Project
 
                 if (frmCouponInput.CodeUsed == true)
                 {
-                    double.TryParse(frmShop.strSubtotal, out double dblSub);
+                    if(!double.TryParse(frmShop.strSubtotal, out double dblSub))
+                    {
+                        throw new Exception("Error getting SubTotal");
+                    }
 
-                    double intDiscount = frmCouponInput.percentOff;
-                    dblSubCost = (dblSub - (dblSub * (intDiscount/100)));
+                    double dblDiscount = frmCouponInput.percentOff;
+                    dblSubCost = (dblSub - (dblSub * (dblDiscount/100)));
 
 
 
@@ -75,7 +84,10 @@ namespace SU21_Final_Project
                 }
                 else
                 {
-                    double.TryParse(frmShop.strSubtotal, out double dblSub);
+                    if (!double.TryParse(frmShop.strSubtotal, out double dblSub))
+                    {
+                        throw new Exception("Error getting SubTotal");
+                    }
                     dblSubCost = dblSub;
                     lblSubtotal.Text = dblSubCost.ToString("C2");
                 }
@@ -86,11 +98,12 @@ namespace SU21_Final_Project
 
                 tax = DataMoney.GetValues("TaxRate");
 
-                double.TryParse(tax.SettingValue, out double dblTax);
+                if(!double.TryParse(tax.SettingValue, out double dblTax))
+                {
+                    throw new Exception("Error getting TaxRate");
+                }
 
-                double dblTaxes = dblTax;
-
-                dblTaxCost = dblTaxes * dblSubCost;
+                dblTaxCost = dblTax * dblSubCost;
 
                 lblTax.Text = (dblTaxCost).ToString("C2");
 
@@ -120,6 +133,10 @@ namespace SU21_Final_Project
                     {
                         arrYears[i] = (intYear + i).ToString();
                     }
+                    else
+                    {
+                        throw new Exception("Error Loading years");
+                    }
                 }
                 for (int y = 0; y < arrYears.Length; y++)
                 {
@@ -140,7 +157,10 @@ namespace SU21_Final_Project
             {
                 DataOrder order = null;
 
-                DateTime.TryParse(DateTime.Now.ToString("yyyy-MM-dd"), out DateTime todaysDate);
+                if(!DateTime.TryParse(DateTime.Now.ToString("yyyy-MM-dd"), out DateTime todaysDate))
+                {
+                    throw new Exception("Error Getting Today's Date");
+                }
 
                 string strCode;
 

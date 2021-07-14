@@ -243,7 +243,7 @@ namespace SU21_Final_Project
 
         private void frmShop_Load(object sender, EventArgs e)
         {
-            if (frmSignIn.strCustomerType == "Guest")
+            if (frmSignIn.strCustomerType == "Employee")
             {
                 btnAccount.Visible = false;
             }
