@@ -81,6 +81,7 @@ namespace SU21_Final_Project
             this.btnReport.TabIndex = 2;
             this.btnReport.Text = "&Print  Report";
             this.btnReport.UseVisualStyleBackColor = true;
+            this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
             // 
             // btnUpdate
             // 

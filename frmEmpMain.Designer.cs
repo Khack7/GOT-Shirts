@@ -35,7 +35,7 @@ namespace SU21_Final_Project
             this.btnReturn = new System.Windows.Forms.Button();
             this.btnReport = new System.Windows.Forms.Button();
             this.btnSchedules = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnInfo = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnHelp
@@ -55,7 +55,7 @@ namespace SU21_Final_Project
             this.btnSpecials.Name = "btnSpecials";
             this.btnSpecials.Size = new System.Drawing.Size(94, 48);
             this.btnSpecials.TabIndex = 9;
-            this.btnSpecials.Text = "Set S&pecials";
+            this.btnSpecials.Text = "View Inventory";
             this.btnSpecials.UseVisualStyleBackColor = true;
             // 
             // btnReturn
@@ -76,7 +76,7 @@ namespace SU21_Final_Project
             this.btnReport.Name = "btnReport";
             this.btnReport.Size = new System.Drawing.Size(94, 48);
             this.btnReport.TabIndex = 8;
-            this.btnReport.Text = "&Print  Report";
+            this.btnReport.Text = "Customer Purchase";
             this.btnReport.UseVisualStyleBackColor = true;
             // 
             // btnSchedules
@@ -86,18 +86,19 @@ namespace SU21_Final_Project
             this.btnSchedules.Name = "btnSchedules";
             this.btnSchedules.Size = new System.Drawing.Size(94, 48);
             this.btnSchedules.TabIndex = 7;
-            this.btnSchedules.Text = "Set &Schedules";
+            this.btnSchedules.Text = "View Active Codes";
             this.btnSchedules.UseVisualStyleBackColor = true;
             // 
-            // btnUpdate
+            // btnInfo
             // 
-            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(12, 12);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(94, 48);
-            this.btnUpdate.TabIndex = 6;
-            this.btnUpdate.Text = "&Update Inventory";
-            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInfo.Location = new System.Drawing.Point(12, 12);
+            this.btnInfo.Name = "btnInfo";
+            this.btnInfo.Size = new System.Drawing.Size(94, 48);
+            this.btnInfo.TabIndex = 6;
+            this.btnInfo.Text = "View Emp info";
+            this.btnInfo.UseVisualStyleBackColor = true;
+            this.btnInfo.Click += new System.EventHandler(this.btnInfo_Click);
             // 
             // frmEmpMain
             // 
@@ -109,11 +110,11 @@ namespace SU21_Final_Project
             this.Controls.Add(this.btnReturn);
             this.Controls.Add(this.btnReport);
             this.Controls.Add(this.btnSchedules);
-            this.Controls.Add(this.btnUpdate);
+            this.Controls.Add(this.btnInfo);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmEmpMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmEmpMain";
+            this.Text = "Employee Hub";
             this.ResumeLayout(false);
 
         }
@@ -125,6 +126,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Button btnReturn;
         private System.Windows.Forms.Button btnReport;
         private System.Windows.Forms.Button btnSchedules;
-        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnInfo;
     }
 }

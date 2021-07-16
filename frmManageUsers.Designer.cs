@@ -31,8 +31,6 @@ namespace SU21_Final_Project
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManageUsers));
-            this.btnCustomers = new System.Windows.Forms.Button();
-            this.btnEmployees = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -54,30 +52,12 @@ namespace SU21_Final_Project
             this.stateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phonePrimaryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEmployees = new System.Windows.Forms.Button();
+            this.btnCustomers = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetPerson)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.personBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnCustomers
-            // 
-            this.btnCustomers.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCustomers.Location = new System.Drawing.Point(12, 424);
-            this.btnCustomers.Name = "btnCustomers";
-            this.btnCustomers.Size = new System.Drawing.Size(125, 40);
-            this.btnCustomers.TabIndex = 1;
-            this.btnCustomers.Text = "Show Customers";
-            this.btnCustomers.UseVisualStyleBackColor = true;
-            // 
-            // btnEmployees
-            // 
-            this.btnEmployees.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEmployees.Location = new System.Drawing.Point(144, 424);
-            this.btnEmployees.Name = "btnEmployees";
-            this.btnEmployees.Size = new System.Drawing.Size(125, 40);
-            this.btnEmployees.TabIndex = 2;
-            this.btnEmployees.Text = "Show Employees";
-            this.btnEmployees.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
@@ -164,6 +144,7 @@ namespace SU21_Final_Project
             this.personIDDataGridViewTextBoxColumn.DataPropertyName = "PersonID";
             this.personIDDataGridViewTextBoxColumn.HeaderText = "PersonID";
             this.personIDDataGridViewTextBoxColumn.Name = "personIDDataGridViewTextBoxColumn";
+            this.personIDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // userNameDataGridViewTextBoxColumn
             // 
@@ -237,6 +218,26 @@ namespace SU21_Final_Project
             this.phonePrimaryDataGridViewTextBoxColumn.HeaderText = "PhonePrimary";
             this.phonePrimaryDataGridViewTextBoxColumn.Name = "phonePrimaryDataGridViewTextBoxColumn";
             // 
+            // btnEmployees
+            // 
+            this.btnEmployees.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEmployees.Location = new System.Drawing.Point(144, 424);
+            this.btnEmployees.Name = "btnEmployees";
+            this.btnEmployees.Size = new System.Drawing.Size(125, 40);
+            this.btnEmployees.TabIndex = 2;
+            this.btnEmployees.Text = "Employees only";
+            this.btnEmployees.UseVisualStyleBackColor = true;
+            // 
+            // btnCustomers
+            // 
+            this.btnCustomers.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCustomers.Location = new System.Drawing.Point(12, 424);
+            this.btnCustomers.Name = "btnCustomers";
+            this.btnCustomers.Size = new System.Drawing.Size(125, 40);
+            this.btnCustomers.TabIndex = 1;
+            this.btnCustomers.Text = "Customers only";
+            this.btnCustomers.UseVisualStyleBackColor = true;
+            // 
             // frmManageUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -264,9 +265,6 @@ namespace SU21_Final_Project
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnCustomers;
-        private System.Windows.Forms.Button btnEmployees;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
@@ -288,5 +286,7 @@ namespace SU21_Final_Project
         private System.Windows.Forms.DataGridViewTextBoxColumn stateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn phonePrimaryDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button btnEmployees;
+        private System.Windows.Forms.Button btnCustomers;
     }
 }

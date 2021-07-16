@@ -11,14 +11,69 @@ using System.Windows.Forms;
 
 namespace SU21_Final_Project
 {
-    public partial class frmAccountInfo : Form
+    public partial class frmEmpInfo : Form
     {
-        public frmAccountInfo()
+        public frmEmpInfo()
         {
             InitializeComponent();
         }
 
-        private void frmAccountInfo_Load(object sender, EventArgs e)
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            txtAddress1.ReadOnly = false;
+            txtAddress2.ReadOnly = false;
+            txtAddress3.ReadOnly = false;
+            txtCity.ReadOnly = false;
+            txtZip.ReadOnly = false;
+            txtPhone.ReadOnly = false;
+            txtEmail.ReadOnly = false;
+            cboStates.Enabled = true;
+
+            btnUpdate.Enabled = true;
+            btnEdit.Enabled = false;
+
+            lblInfo.Visible = true;
+
+            txtAddress1.Focus();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtAddress1.Text == "" || txtCity.Text == "" ||
+                    txtZip.Text == "" || cboStates.SelectedItem == null)
+                {
+                    MessageBox.Show("Make sure all required files are filled out", "Missing information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    DataPerson person = DataPerson.GetPerson(frmManageSignIn.strUserName);
+
+                    person.NameFirst = txtFirst.Text;
+                    person.NameLast = txtLast.Text;
+                    person.Address1 = txtAddress1.Text;
+                    person.Address2 = txtAddress2.Text;
+                    person.Address3 = txtAddress3.Text;
+                    person.City = txtCity.Text;
+                    person.State = cboStates.SelectedItem.ToString();
+                    person.Zipcode = txtZip.Text;
+                    person.PhonePrimary = txtPhone.Text;
+                    person.Email = txtEmail.Text;
+
+                    DataPerson.SavePerson(person);
+
+                    MessageBox.Show("Changes Saved!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void frmEmpInfo_Load(object sender, EventArgs e)
         {
             cboStates.Items.Add("AL");
             cboStates.Items.Add("AK");
@@ -73,7 +128,7 @@ namespace SU21_Final_Project
 
             DataPerson person = null;
 
-            person = DataPerson.GetPerson(frmSignIn.strUserName);
+            person = DataPerson.GetPerson(frmManageSignIn.strUserName);
 
             txtFirst.Text = person.NameFirst;
             txtLast.Text = person.NameLast;
@@ -88,73 +143,22 @@ namespace SU21_Final_Project
             changesMade = false;
         }
 
-        private void btnEdit_Click(object sender, EventArgs e)
+        bool changesMade = false;
+
+        private void btnCancel_Click(object sender, EventArgs e)
         {
-            txtFirst.ReadOnly = false;
-            txtLast.ReadOnly = false;
-            txtAddress1.ReadOnly = false;
-            txtAddress2.ReadOnly = false;
-            txtAddress3.ReadOnly = false;
-            txtCity.ReadOnly = false;
-            txtZip.ReadOnly = false;
-            txtPhone.ReadOnly = false;
-            txtEmail.ReadOnly = false;
-            cboStates.Enabled = true;
-
-            btnUpdate.Enabled = true;
-            btnEdit.Enabled = false;
-
-            lblInfo.Visible = true;
-
-            txtFirst.Focus();
-        }
-
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-            try
+            if (changesMade == true)
             {
-                if (txtFirst.Text == "" || txtLast.Text == "" || txtAddress1.Text == "" || txtCity.Text == "" ||
-                    txtZip.Text == "" || cboStates.SelectedItem == null)
+                DialogResult dr = MessageBox.Show("You have unsaved changes. Are you sure you want to cancel?", "Unsaved Changes!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                if (dr == DialogResult.Yes)
                 {
-                    MessageBox.Show("Make sure all required files are filled out", "Missing information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    DataPerson person = DataPerson.GetPerson(frmSignIn.strUserName);
-
-                    person.NameFirst = txtFirst.Text;
-                    person.NameLast = txtLast.Text;
-                    person.Address1 = txtAddress1.Text;
-                    person.Address2 = txtAddress2.Text;
-                    person.Address3 = txtAddress3.Text;
-                    person.City = txtCity.Text;
-                    person.State = cboStates.SelectedItem.ToString();
-                    person.Zipcode = txtZip.Text;
-                    person.PhonePrimary = txtPhone.Text;
-                    person.Email = txtEmail.Text;
-
-                    DataPerson.SavePerson(person);
-
-                    MessageBox.Show("Changes Saved!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
             }
-        }
-
-        bool changesMade = false;
-
-        private void txtFirst_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            changesMade = true;
-        }
-
-        private void txtLast_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            changesMade = true;
         }
 
         private void txtAddress1_KeyPress(object sender, KeyPressEventArgs e)
@@ -180,13 +184,11 @@ namespace SU21_Final_Project
         private void txtZip_KeyPress(object sender, KeyPressEventArgs e)
         {
             changesMade = true;
-            txtZip.MaxLength = 5;
         }
 
         private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
         {
             changesMade = true;
-            txtPhone.MaxLength = 10;
         }
 
         private void txtEmail_KeyPress(object sender, KeyPressEventArgs e)
@@ -194,28 +196,7 @@ namespace SU21_Final_Project
             changesMade = true;
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            if (changesMade == true)
-            {
-                DialogResult dr = MessageBox.Show("You have unsaved changes. Are you sure you want to cancel?", "Unsaved Changes!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-                if (dr == DialogResult.Yes)
-                {
-                    this.Close();
-                }
-            }
-            else
-            {
-                this.Close();
-            }
-        }
-
         private void cboStates_SelectedValueChanged(object sender, EventArgs e)
-        {
-            changesMade = true;
-        }
-
-        private void txtFirst_TextChanged(object sender, EventArgs e)
         {
             changesMade = true;
         }

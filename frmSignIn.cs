@@ -54,23 +54,31 @@ namespace SU21_Final_Project
                 DataPerson person = DataPerson.GetPerson(txtUsername.Text);
                 if (person != null)
                 {
-
-                    if (txtPassword.Text == person.Password)
+                    if (person.Deleted == true)
                     {
-                        strCustomerType = person.AccountType;
-
-                        intID = person.PersonID;
-                        strUserName = txtUsername.Text;
-
-                        frmShop shop = new frmShop();
-                        this.Hide();
-                        shop.ShowDialog();
-                        this.Close();
+                        MessageBox.Show("This account has been suspended. If you'd like to reactivate this account, please click on the help file and contact the supervisor via their email", "Account Suspended", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MessageBox.Show("Your password is incorrect", "Invalid Password", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        txtPassword.Focus();
+
+
+                        if (txtPassword.Text == person.Password)
+                        {
+                            strCustomerType = person.AccountType;
+
+                            intID = person.PersonID;
+                            strUserName = txtUsername.Text;
+
+                            frmShop shop = new frmShop();
+                            this.Hide();
+                            shop.ShowDialog();
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Your password is incorrect", "Invalid Password", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            txtPassword.Focus();
+                        }
                     }
 
                 }

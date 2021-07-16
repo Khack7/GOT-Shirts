@@ -28,7 +28,7 @@ namespace SU21_Final_Project
 
         public static int intID { get; set; }
         public static string strUserName { get; set; }
-        public static string strCustomerType { get; set; }
+        public static string strEmployeeType { get; set; }
 
         private void btnSign_Click(object sender, EventArgs e)
         {
@@ -37,38 +37,44 @@ namespace SU21_Final_Project
                 DataPerson person = DataPerson.GetPerson(txtUsername.Text);
                 if (person != null)
                 {
-
-                    if (txtPassword.Text == person.Password)
+                    if (person.Deleted == true)
                     {
-                        strCustomerType = person.AccountType;
-
-                        intID = person.PersonID;
-                        strUserName = txtUsername.Text;
-
-                        if(strCustomerType == "Employee")
-                        {
-                            frmEmpMain empMain = new frmEmpMain();
-                            this.Hide();
-                            this.Close();
-                            empMain.ShowDialog();
-                        }
-                        else if(strCustomerType == "Manager")
-                        {
-                            frmManagerMain manager = new frmManagerMain();
-                            this.Hide();
-                            this.Close();
-                            manager.ShowDialog();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Invalid Login", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        }
-                        
+                        MessageBox.Show("This account has been suspended. If you'd like to reactivate this account, please click on the help file and contact the supervisor via their email", "Account Suspended", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MessageBox.Show("Your password is incorrect", "Invalid Password", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        txtPassword.Focus();
+                        if (txtPassword.Text == person.Password)
+                        {
+                            strEmployeeType = person.AccountType;
+
+                            intID = person.PersonID;
+                            strUserName = txtUsername.Text;
+
+                            if (strEmployeeType == "Employee")
+                            {
+                                frmEmpMain empMain = new frmEmpMain();
+                                this.Hide();
+                                this.Close();
+                                empMain.ShowDialog();
+                            }
+                            else if (strEmployeeType == "Manager")
+                            {
+                                frmManagerMain manager = new frmManagerMain();
+                                this.Hide();
+                                this.Close();
+                                manager.ShowDialog();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Invalid Login", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            }
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Your password is incorrect", "Invalid Password", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            txtPassword.Focus();
+                        }
                     }
 
                 }
@@ -88,6 +94,20 @@ namespace SU21_Final_Project
         private void btnReturn_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            try
+            {
+                //WILL BE CREATING HELP FILES FOR MANAGERS AND EMPLOYEES. THIS IS A PLACEHOLDER
+                System.Diagnostics.Process.Start($"{path}\\HelpFiles\\Sign_In_Help.html");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

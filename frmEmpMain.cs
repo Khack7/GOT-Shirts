@@ -21,5 +21,13 @@ namespace SU21_Final_Project
         {
             this.Close();
         }
+
+        private void btnInfo_Click(object sender, EventArgs e)
+        {
+            frmEmpInfo empInfo = new frmEmpInfo();
+            this.Hide();
+            empInfo.ShowDialog();
+            this.Show();
+        }
     }
 }

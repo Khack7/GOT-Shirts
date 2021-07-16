@@ -53,5 +53,10 @@ namespace SU21_Final_Project
             manageUsers.ShowDialog();
             this.Show();
         }
+
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

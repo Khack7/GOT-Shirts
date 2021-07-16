@@ -108,6 +108,12 @@
     <Compile Include="frmDiscountCodes.Designer.cs">
       <DependentUpon>frmDiscountCodes.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmEmpInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEmpInfo.Designer.cs">
+      <DependentUpon>frmEmpInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmEmpMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,6 +156,12 @@
     <Compile Include="frmRegister.Designer.cs">
       <DependentUpon>frmRegister.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReports.Designer.cs">
+      <DependentUpon>frmReports.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmResetPassword.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -191,6 +203,9 @@
     <EmbeddedResource Include="frmDiscountCodes.resx">
       <DependentUpon>frmDiscountCodes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmEmpInfo.resx">
+      <DependentUpon>frmEmpInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmEmpMain.resx">
       <DependentUpon>frmEmpMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -211,6 +226,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmRegister.resx">
       <DependentUpon>frmRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReports.resx">
+      <DependentUpon>frmReports.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmResetPassword.resx">
       <DependentUpon>frmResetPassword.cs</DependentUpon>
