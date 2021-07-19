@@ -36,6 +36,7 @@ namespace SU21_Final_Project
             cboCodes.Enabled = false;
             btnActivate.Enabled = false;
             btnDeactivate.Enabled = false;
+            txtCode.Focus();
         }
 
         private void txtCode_KeyPress(object sender, KeyPressEventArgs e)
@@ -47,7 +48,7 @@ namespace SU21_Final_Project
         {
             try
             {
-                DataCodes code = DataCodes.GetCode(txtCode.Text);
+                DataCodes code = DataCodes.GetCode(txtCode.Text.ToUpper());
 
                 if (code != null)
                 {
@@ -60,6 +61,10 @@ namespace SU21_Final_Project
                     {
                         intPercent = P;
                     }
+                    else
+                    {
+                        throw new Exception("Incorrect input in Percent off!");
+                    }
 
                     if(intPercent > 90)
                     {
@@ -71,7 +76,7 @@ namespace SU21_Final_Project
                         {
                             Active = true,
                             PercentOff = intPercent,
-                            DiscountCode = txtCode.Text
+                            DiscountCode = txtCode.Text.ToUpper()
                         };
                         DataCodes.saveCode(code);
                         MessageBox.Show("Code Created", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -106,6 +111,8 @@ namespace SU21_Final_Project
         private void btnCancel_Click(object sender, EventArgs e)
         {
             grpBxCodes.Enabled = false;
+            txtCode.Clear();
+            txtPercent.Clear();
             cboCodes.Enabled = true;
             btnActivate.Enabled = true;
             btnDeactivate.Enabled = true;

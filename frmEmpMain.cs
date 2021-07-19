@@ -29,5 +29,43 @@ namespace SU21_Final_Project
             empInfo.ShowDialog();
             this.Show();
         }
+
+        private void btnCodes_Click(object sender, EventArgs e)
+        {
+            frmEmpCodes empCodes = new frmEmpCodes();
+            this.Hide();
+            empCodes.ShowDialog();
+            this.Show();
+        }
+
+        private void btnInventory_Click(object sender, EventArgs e)
+        {
+            frmEmpInventory empInventory = new frmEmpInventory();
+            this.Hide();
+            empInventory.ShowDialog();
+            this.Show();
+
+        }
+
+        private void btnPurchase_Click(object sender, EventArgs e)
+        {
+            frmEmpPOS pos = new frmEmpPOS();
+            this.Hide();
+            pos.ShowDialog();
+            this.Show();
+        }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            try
+            {
+                System.Diagnostics.Process.Start($"{path}\\HelpFiles\\Employee_Main_Help.html");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

@@ -108,17 +108,35 @@
     <Compile Include="frmDiscountCodes.Designer.cs">
       <DependentUpon>frmDiscountCodes.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmEmpCodes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEmpCodes.Designer.cs">
+      <DependentUpon>frmEmpCodes.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmEmpInfo.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmEmpInfo.Designer.cs">
       <DependentUpon>frmEmpInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmEmpInventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEmpInventory.Designer.cs">
+      <DependentUpon>frmEmpInventory.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmEmpMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmEmpMain.Designer.cs">
       <DependentUpon>frmEmpMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEmpPOS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEmpPOS.Designer.cs">
+      <DependentUpon>frmEmpPOS.cs</DependentUpon>
     </Compile>
     <Compile Include="frmInventory.cs">
       <SubType>Form</SubType>
@@ -203,11 +221,20 @@
     <EmbeddedResource Include="frmDiscountCodes.resx">
       <DependentUpon>frmDiscountCodes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmEmpCodes.resx">
+      <DependentUpon>frmEmpCodes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmEmpInfo.resx">
       <DependentUpon>frmEmpInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmEmpInventory.resx">
+      <DependentUpon>frmEmpInventory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmEmpMain.resx">
       <DependentUpon>frmEmpMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEmpPOS.resx">
+      <DependentUpon>frmEmpPOS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmInventory.resx">
       <DependentUpon>frmInventory.cs</DependentUpon>
@@ -299,6 +326,15 @@
     <Content Include="HelpFiles\Checkout_Help.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="HelpFiles\Employee_Inventory_Help.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HelpFiles\Employee_Main_Help.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HelpFiles\Employee_POS_Help.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="HelpFiles\Notes.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -318,6 +354,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="HelpFiles\TOC.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HelpFiles\TOC_Employee.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="logo_no_dots_fit_AHE_icon.ico" />

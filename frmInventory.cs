@@ -200,5 +200,10 @@ namespace SU21_Final_Project
             }
             bolChangesMade = true;
         }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

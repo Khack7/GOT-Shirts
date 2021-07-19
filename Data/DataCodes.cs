@@ -111,6 +111,58 @@ namespace SU21_Final_Project.Data
             return codes;
         }
 
+        public static List<DataCodes> ListActiveOnlyCodes()
+        {
+            List<DataCodes> codes = new List<DataCodes>();
+
+            using (SqlConnection con = DataCommon.StartConnection())
+            {
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM HackK21Su2332.Discounts WHERE Active = @Active"))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@Active", true);
+                    cmd.Connection = con;
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            DataCodes code = null;
+                            LoadFromReader(ref code, sdr);
+                            codes.Add(code);
+                        }
+                    }
+                    con.Close();
+                }
+            }
+            return codes;
+        }
+
+        public static List<DataCodes> ListInactiveCodes()
+        {
+            List<DataCodes> codes = new List<DataCodes>();
+
+            using (SqlConnection con = DataCommon.StartConnection())
+            {
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM HackK21Su2332.Discounts WHERE Active = @Active"))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@Active", false);
+                    cmd.Connection = con;
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            DataCodes code = null;
+                            LoadFromReader(ref code, sdr);
+                            codes.Add(code);
+                        }
+                    }
+                    con.Close();
+                }
+            }
+            return codes;
+        }
+
         private static void LoadFromReader(ref DataCodes code, SqlDataReader sdr)
         {
             int.TryParse(sdr["PercentOff"].ToString(), out int p);

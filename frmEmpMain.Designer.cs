@@ -31,10 +31,10 @@ namespace SU21_Final_Project
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEmpMain));
             this.btnHelp = new System.Windows.Forms.Button();
-            this.btnSpecials = new System.Windows.Forms.Button();
+            this.btnInventory = new System.Windows.Forms.Button();
             this.btnReturn = new System.Windows.Forms.Button();
-            this.btnReport = new System.Windows.Forms.Button();
-            this.btnSchedules = new System.Windows.Forms.Button();
+            this.btnPurchase = new System.Windows.Forms.Button();
+            this.btnCodes = new System.Windows.Forms.Button();
             this.btnInfo = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -47,16 +47,18 @@ namespace SU21_Final_Project
             this.btnHelp.TabIndex = 10;
             this.btnHelp.Text = "&Help";
             this.btnHelp.UseVisualStyleBackColor = true;
+            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
-            // btnSpecials
+            // btnInventory
             // 
-            this.btnSpecials.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSpecials.Location = new System.Drawing.Point(12, 66);
-            this.btnSpecials.Name = "btnSpecials";
-            this.btnSpecials.Size = new System.Drawing.Size(94, 48);
-            this.btnSpecials.TabIndex = 9;
-            this.btnSpecials.Text = "View Inventory";
-            this.btnSpecials.UseVisualStyleBackColor = true;
+            this.btnInventory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInventory.Location = new System.Drawing.Point(12, 66);
+            this.btnInventory.Name = "btnInventory";
+            this.btnInventory.Size = new System.Drawing.Size(94, 48);
+            this.btnInventory.TabIndex = 9;
+            this.btnInventory.Text = "View Inventory";
+            this.btnInventory.UseVisualStyleBackColor = true;
+            this.btnInventory.Click += new System.EventHandler(this.btnInventory_Click);
             // 
             // btnReturn
             // 
@@ -69,25 +71,27 @@ namespace SU21_Final_Project
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
-            // btnReport
+            // btnPurchase
             // 
-            this.btnReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReport.Location = new System.Drawing.Point(212, 12);
-            this.btnReport.Name = "btnReport";
-            this.btnReport.Size = new System.Drawing.Size(94, 48);
-            this.btnReport.TabIndex = 8;
-            this.btnReport.Text = "Customer Purchase";
-            this.btnReport.UseVisualStyleBackColor = true;
+            this.btnPurchase.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPurchase.Location = new System.Drawing.Point(212, 12);
+            this.btnPurchase.Name = "btnPurchase";
+            this.btnPurchase.Size = new System.Drawing.Size(94, 48);
+            this.btnPurchase.TabIndex = 8;
+            this.btnPurchase.Text = "Customer Purchase";
+            this.btnPurchase.UseVisualStyleBackColor = true;
+            this.btnPurchase.Click += new System.EventHandler(this.btnPurchase_Click);
             // 
-            // btnSchedules
+            // btnCodes
             // 
-            this.btnSchedules.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSchedules.Location = new System.Drawing.Point(112, 12);
-            this.btnSchedules.Name = "btnSchedules";
-            this.btnSchedules.Size = new System.Drawing.Size(94, 48);
-            this.btnSchedules.TabIndex = 7;
-            this.btnSchedules.Text = "View Active Codes";
-            this.btnSchedules.UseVisualStyleBackColor = true;
+            this.btnCodes.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCodes.Location = new System.Drawing.Point(112, 12);
+            this.btnCodes.Name = "btnCodes";
+            this.btnCodes.Size = new System.Drawing.Size(94, 48);
+            this.btnCodes.TabIndex = 7;
+            this.btnCodes.Text = "View Active Codes";
+            this.btnCodes.UseVisualStyleBackColor = true;
+            this.btnCodes.Click += new System.EventHandler(this.btnCodes_Click);
             // 
             // btnInfo
             // 
@@ -106,10 +110,10 @@ namespace SU21_Final_Project
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(316, 121);
             this.Controls.Add(this.btnHelp);
-            this.Controls.Add(this.btnSpecials);
+            this.Controls.Add(this.btnInventory);
             this.Controls.Add(this.btnReturn);
-            this.Controls.Add(this.btnReport);
-            this.Controls.Add(this.btnSchedules);
+            this.Controls.Add(this.btnPurchase);
+            this.Controls.Add(this.btnCodes);
             this.Controls.Add(this.btnInfo);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmEmpMain";
@@ -122,10 +126,10 @@ namespace SU21_Final_Project
         #endregion
 
         private System.Windows.Forms.Button btnHelp;
-        private System.Windows.Forms.Button btnSpecials;
+        private System.Windows.Forms.Button btnInventory;
         private System.Windows.Forms.Button btnReturn;
-        private System.Windows.Forms.Button btnReport;
-        private System.Windows.Forms.Button btnSchedules;
+        private System.Windows.Forms.Button btnPurchase;
+        private System.Windows.Forms.Button btnCodes;
         private System.Windows.Forms.Button btnInfo;
     }
 }

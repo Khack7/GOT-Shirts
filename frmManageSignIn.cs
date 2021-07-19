@@ -74,6 +74,7 @@ namespace SU21_Final_Project
                         {
                             MessageBox.Show("Your password is incorrect", "Invalid Password", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             txtPassword.Focus();
+                            txtPassword.SelectAll();
                         }
                     }
 
@@ -82,6 +83,7 @@ namespace SU21_Final_Project
                 {
                     MessageBox.Show("This account doesn't exist", "Invalid Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtUsername.Focus();
+                    txtUsername.SelectAll();
                 }
 
             }
