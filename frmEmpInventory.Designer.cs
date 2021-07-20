@@ -42,6 +42,8 @@ namespace SU21_Final_Project
             this.cboColor = new System.Windows.Forms.ComboBox();
             this.btnReturn = new System.Windows.Forms.Button();
             this.btnHelp = new System.Windows.Forms.Button();
+            this.picbxShirt = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.picbxShirt)).BeginInit();
             this.SuspendLayout();
             // 
             // lblSize
@@ -109,9 +111,9 @@ namespace SU21_Final_Project
             this.lblAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAmount.Location = new System.Drawing.Point(9, 133);
             this.lblAmount.Name = "lblAmount";
-            this.lblAmount.Size = new System.Drawing.Size(56, 17);
+            this.lblAmount.Size = new System.Drawing.Size(61, 17);
             this.lblAmount.TabIndex = 22;
-            this.lblAmount.Text = "Amount";
+            this.lblAmount.Text = "Quantity";
             // 
             // lblColor
             // 
@@ -156,7 +158,7 @@ namespace SU21_Final_Project
             // btnHelp
             // 
             this.btnHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHelp.Location = new System.Drawing.Point(170, 295);
+            this.btnHelp.Location = new System.Drawing.Point(468, 295);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(128, 43);
             this.btnHelp.TabIndex = 31;
@@ -164,11 +166,22 @@ namespace SU21_Final_Project
             this.btnHelp.UseVisualStyleBackColor = true;
             this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
+            // picbxShirt
+            // 
+            this.picbxShirt.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.picbxShirt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picbxShirt.Location = new System.Drawing.Point(304, 13);
+            this.picbxShirt.Name = "picbxShirt";
+            this.picbxShirt.Size = new System.Drawing.Size(292, 257);
+            this.picbxShirt.TabIndex = 32;
+            this.picbxShirt.TabStop = false;
+            // 
             // frmEmpInventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(319, 350);
+            this.ClientSize = new System.Drawing.Size(611, 350);
+            this.Controls.Add(this.picbxShirt);
             this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.btnReturn);
             this.Controls.Add(this.lblSize);
@@ -188,6 +201,7 @@ namespace SU21_Final_Project
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inventory";
             this.Load += new System.EventHandler(this.frmEmpInventory_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.picbxShirt)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -207,5 +221,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.ComboBox cboColor;
         private System.Windows.Forms.Button btnReturn;
         private System.Windows.Forms.Button btnHelp;
+        private System.Windows.Forms.PictureBox picbxShirt;
     }
 }

@@ -169,23 +169,23 @@ namespace SU21_Final_Project
             return result;
         }
 
-        private void getShirt(string color)
-        {
-            string strString = color;
-            string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+        //private void getShirt(string color)
+        //{
+        //    string strString = color;
+        //    string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
 
-            try
-            {
-                using (Image image = Image.FromFile($"{path}\\Shirts\\{strString}.PNG"))
-                {
-                    picbxShirt.Image = resizeImage(image, picbxShirt.Width, picbxShirt.Height);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+        //    try
+        //    {
+        //        using (Image image = Image.FromFile($"{path}\\Shirts\\{strString}.PNG"))
+        //        {
+        //            picbxShirt.Image = resizeImage(image, picbxShirt.Width, picbxShirt.Height);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //}
 
         string strCurrentColor;
 
@@ -256,7 +256,7 @@ namespace SU21_Final_Project
         private void btnOrange_Click(object sender, EventArgs e)
         {
             strCurrentColor = btnOrange.BackColor.Name;
-            getShirt(strCurrentColor);
+            //getShirt(strCurrentColor);
             string strSize;
             if (rdoSmall.Checked == true)
             {
@@ -270,13 +270,23 @@ namespace SU21_Final_Project
             {
                 strSize = "Large";
             }
-            getItemPrice(strCurrentColor, strSize);
+
+            try
+            {
+                DataProduct product = DataProduct.GetProduct(strCurrentColor, strSize);
+                picbxShirt.Image = product.ProductImage;
+                getItemPrice(strCurrentColor, strSize);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnBlack_Click(object sender, EventArgs e)
         {
             strCurrentColor = btnBlack.BackColor.Name;
-            getShirt(strCurrentColor);
+            //getShirt(strCurrentColor); 
             string strSize;
             if (rdoSmall.Checked == true)
             {
@@ -290,13 +300,23 @@ namespace SU21_Final_Project
             {
                 strSize = "Large";
             }
-            getItemPrice(strCurrentColor, strSize);
+
+            try
+            {
+                DataProduct product = DataProduct.GetProduct(strCurrentColor, strSize);
+                picbxShirt.Image = product.ProductImage;
+                getItemPrice(strCurrentColor, strSize);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnBlue_Click(object sender, EventArgs e)
         {
             strCurrentColor = btnBlue.BackColor.Name;
-            getShirt(strCurrentColor);
+            //getShirt(strCurrentColor);
             string strSize;
             if (rdoSmall.Checked == true)
             {
@@ -310,13 +330,23 @@ namespace SU21_Final_Project
             {
                 strSize = "Large";
             }
-            getItemPrice(strCurrentColor, strSize);
+
+            try
+            {
+                DataProduct product = DataProduct.GetProduct(strCurrentColor, strSize);
+                picbxShirt.Image = product.ProductImage;
+                getItemPrice(strCurrentColor, strSize);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnGreen_Click(object sender, EventArgs e)
         {
             strCurrentColor = btnGreen.BackColor.Name;
-            getShirt(strCurrentColor);
+            //getShirt(strCurrentColor);
             string strSize;
             if (rdoSmall.Checked == true)
             {
@@ -330,13 +360,23 @@ namespace SU21_Final_Project
             {
                 strSize = "Large";
             }
-            getItemPrice(strCurrentColor, strSize);
+
+            try
+            {
+                DataProduct product = DataProduct.GetProduct(strCurrentColor, strSize);
+                picbxShirt.Image = product.ProductImage;
+                getItemPrice(strCurrentColor, strSize);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnPink_Click(object sender, EventArgs e)
         {
             strCurrentColor = btnPink.BackColor.Name;
-            getShirt(strCurrentColor);
+            //getShirt(strCurrentColor);
             string strSize;
             if (rdoSmall.Checked == true)
             {
@@ -350,13 +390,23 @@ namespace SU21_Final_Project
             {
                 strSize = "Large";
             }
-            getItemPrice(strCurrentColor, strSize);
+
+            try
+            {
+                DataProduct product = DataProduct.GetProduct(strCurrentColor, strSize);
+                picbxShirt.Image = product.ProductImage;
+                getItemPrice(strCurrentColor, strSize);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnPurple_Click(object sender, EventArgs e)
         {
             strCurrentColor = btnPurple.BackColor.Name;
-            getShirt(strCurrentColor);
+            //getShirt(strCurrentColor);
             string strSize;
             if (rdoSmall.Checked == true)
             {
@@ -370,13 +420,23 @@ namespace SU21_Final_Project
             {
                 strSize = "Large";
             }
-            getItemPrice(strCurrentColor, strSize);
+
+            try
+            {
+                DataProduct product = DataProduct.GetProduct(strCurrentColor, strSize);
+                picbxShirt.Image = product.ProductImage;
+                getItemPrice(strCurrentColor, strSize);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnRed_Click(object sender, EventArgs e)
         {
             strCurrentColor = btnRed.BackColor.Name;
-            getShirt(strCurrentColor);
+            //getShirt(strCurrentColor);
             string strSize;
             if (rdoSmall.Checked == true)
             {
@@ -390,13 +450,23 @@ namespace SU21_Final_Project
             {
                 strSize = "Large";
             }
-            getItemPrice(strCurrentColor, strSize);
+
+            try
+            {
+                DataProduct product = DataProduct.GetProduct(strCurrentColor, strSize);
+                picbxShirt.Image = product.ProductImage;
+                getItemPrice(strCurrentColor, strSize);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnWhite_Click(object sender, EventArgs e)
         {
             strCurrentColor = btnWhite.BackColor.Name;
-            getShirt(strCurrentColor);
+            //getShirt(strCurrentColor);
             string strSize;
             if (rdoSmall.Checked == true)
             {
@@ -410,13 +480,23 @@ namespace SU21_Final_Project
             {
                 strSize = "Large";
             }
-            getItemPrice(strCurrentColor, strSize);
+
+            try
+            {
+                DataProduct product = DataProduct.GetProduct(strCurrentColor, strSize);
+                picbxShirt.Image = product.ProductImage;
+                getItemPrice(strCurrentColor, strSize);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnYellow_Click(object sender, EventArgs e)
         {
             strCurrentColor = btnYellow.BackColor.Name;
-            getShirt(strCurrentColor);
+            //getShirt(strCurrentColor);
             string strSize;
             if (rdoSmall.Checked == true)
             {
@@ -430,7 +510,17 @@ namespace SU21_Final_Project
             {
                 strSize = "Large";
             }
-            getItemPrice(strCurrentColor, strSize);
+
+            try
+            {
+                DataProduct product = DataProduct.GetProduct(strCurrentColor, strSize);
+                picbxShirt.Image = product.ProductImage;
+                getItemPrice(strCurrentColor, strSize);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public static List<CartItem> lstCartItems = new List<CartItem>();
@@ -535,6 +625,19 @@ namespace SU21_Final_Project
             else
             {
                 e.Cancel = true;
+            }
+        }
+
+        private void btnUpload_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataProduct.SaveImage(picbxShirt.Image, strCurrentColor);
+                
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

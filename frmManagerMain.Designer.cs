@@ -37,7 +37,7 @@ namespace SU21_Final_Project
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnManageUsers = new System.Windows.Forms.Button();
             this.btnCreateEmployee = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSettings = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnHelp
@@ -117,22 +117,23 @@ namespace SU21_Final_Project
             this.btnCreateEmployee.UseVisualStyleBackColor = true;
             this.btnCreateEmployee.Click += new System.EventHandler(this.btnCreateEmployee_Click);
             // 
-            // button1
+            // btnSettings
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(302, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 48);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Price Settings";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSettings.Location = new System.Drawing.Point(302, 12);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(94, 48);
+            this.btnSettings.TabIndex = 3;
+            this.btnSettings.Text = "Price Settings";
+            this.btnSettings.UseVisualStyleBackColor = true;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // frmManagerMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(408, 122);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnSettings);
             this.Controls.Add(this.btnManageUsers);
             this.Controls.Add(this.btnCreateEmployee);
             this.Controls.Add(this.btnHelp);
@@ -159,6 +160,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnManageUsers;
         private System.Windows.Forms.Button btnCreateEmployee;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSettings;
     }
 }

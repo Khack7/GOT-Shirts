@@ -13,12 +13,12 @@ namespace SU21_Final_Project
 {
     public partial class frmEmpCodes : Form
     {
-        private List<DataCodes> _activeCodes, _inactiveCodes;
+        private List<DataCodes> _lstActiveCodes, _lstInactiveCodes;
         public frmEmpCodes()
         {
             InitializeComponent();
-            _activeCodes = DataCodes.ListActiveOnlyCodes();
-            _inactiveCodes = DataCodes.ListInactiveCodes();
+            _lstActiveCodes = DataCodes.ListActiveOnlyCodes();
+            _lstInactiveCodes = DataCodes.ListInactiveCodes();
         }
 
         private void btnReturn_Click(object sender, EventArgs e)
@@ -28,16 +28,16 @@ namespace SU21_Final_Project
 
         private void frmEmpCodes_Load(object sender, EventArgs e)
         {
-            List<string> ActiveCodes = _activeCodes.Select(c => c.DiscountCode).OrderBy(c => c).ToList();
-            List<string> InactiveCodes = _inactiveCodes.Select(c => c.DiscountCode).OrderBy(c => c).ToList();
+            List<string> lstActiveCodes = _lstActiveCodes.Select(c => c.DiscountCode).OrderBy(c => c).ToList();
+            List<string> lstInactiveCodes = _lstInactiveCodes.Select(c => c.DiscountCode).OrderBy(c => c).ToList();
 
-            for (int i = 0; i < ActiveCodes.Count; i++)
+            for (int intI = 0; intI < lstActiveCodes.Count; intI++)
             {
-                lstActive.Items.Add(ActiveCodes[i]);
+                lstActive.Items.Add(lstActiveCodes[intI]);
             }
-            for (int i = 0; i < InactiveCodes.Count; i++)
+            for (int intI = 0; intI < lstInactiveCodes.Count; intI++)
             {
-                lstInactive.Items.Add(InactiveCodes[i]);
+                lstInactive.Items.Add(lstInactiveCodes[intI]);
             }
         }
     }

@@ -71,5 +71,13 @@ namespace SU21_Final_Project
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            frmManagerSettings settings = new frmManagerSettings();
+            this.Hide();
+            settings.ShowDialog();
+            this.Show();
+        }
     }
 }

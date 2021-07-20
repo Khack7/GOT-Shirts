@@ -43,12 +43,14 @@ namespace SU21_Final_Project
             this.lblSize = new System.Windows.Forms.Label();
             this.cboSize = new System.Windows.Forms.ComboBox();
             this.btnHelp = new System.Windows.Forms.Button();
+            this.picbxShirt = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.picbxShirt)).BeginInit();
             this.SuspendLayout();
             // 
             // btnReturn
             // 
             this.btnReturn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReturn.Location = new System.Drawing.Point(207, 310);
+            this.btnReturn.Location = new System.Drawing.Point(531, 310);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(94, 36);
             this.btnReturn.TabIndex = 15;
@@ -93,9 +95,9 @@ namespace SU21_Final_Project
             this.lblAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAmount.Location = new System.Drawing.Point(12, 129);
             this.lblAmount.Name = "lblAmount";
-            this.lblAmount.Size = new System.Drawing.Size(56, 17);
+            this.lblAmount.Size = new System.Drawing.Size(61, 17);
             this.lblAmount.TabIndex = 10;
-            this.lblAmount.Text = "Amount";
+            this.lblAmount.Text = "Quantity";
             // 
             // lblColor
             // 
@@ -171,7 +173,7 @@ namespace SU21_Final_Project
             // btnHelp
             // 
             this.btnHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHelp.Location = new System.Drawing.Point(111, 310);
+            this.btnHelp.Location = new System.Drawing.Point(273, 310);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(94, 36);
             this.btnHelp.TabIndex = 20;
@@ -179,11 +181,22 @@ namespace SU21_Final_Project
             this.btnHelp.UseVisualStyleBackColor = true;
             this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
+            // picbxShirt
+            // 
+            this.picbxShirt.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.picbxShirt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.picbxShirt.Location = new System.Drawing.Point(317, 8);
+            this.picbxShirt.Name = "picbxShirt";
+            this.picbxShirt.Size = new System.Drawing.Size(309, 258);
+            this.picbxShirt.TabIndex = 28;
+            this.picbxShirt.TabStop = false;
+            // 
             // frmInventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(314, 363);
+            this.ClientSize = new System.Drawing.Size(637, 363);
+            this.Controls.Add(this.picbxShirt);
             this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.lblSize);
             this.Controls.Add(this.cboSize);
@@ -204,6 +217,7 @@ namespace SU21_Final_Project
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inventory Adjustment";
             this.Load += new System.EventHandler(this.frmInventory_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.picbxShirt)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -224,5 +238,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label lblSize;
         private System.Windows.Forms.ComboBox cboSize;
         private System.Windows.Forms.Button btnHelp;
+        private System.Windows.Forms.PictureBox picbxShirt;
     }
 }

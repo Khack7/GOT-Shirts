@@ -78,6 +78,7 @@
     <Compile Include="Data\DataOrder.cs" />
     <Compile Include="Data\DataPerson.cs" />
     <Compile Include="Data\DataProduct.cs" />
+    <Compile Include="Data\DataSettings.cs" />
     <Compile Include="frmAccountInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +156,12 @@
     </Compile>
     <Compile Include="frmManagerMain.Designer.cs">
       <DependentUpon>frmManagerMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmManagerSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmManagerSettings.Designer.cs">
+      <DependentUpon>frmManagerSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="frmManageSignIn.cs">
       <SubType>Form</SubType>
@@ -244,6 +251,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmManagerMain.resx">
       <DependentUpon>frmManagerMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmManagerSettings.resx">
+      <DependentUpon>frmManagerSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmManageSignIn.resx">
       <DependentUpon>frmManageSignIn.cs</DependentUpon>

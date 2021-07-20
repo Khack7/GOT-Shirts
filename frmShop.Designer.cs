@@ -57,6 +57,7 @@ namespace SU21_Final_Project
             this.picbxShirt = new System.Windows.Forms.PictureBox();
             this.lblItemPricePointer = new System.Windows.Forms.Label();
             this.lblItemPrice = new System.Windows.Forms.Label();
+            this.btnUpload = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numUDQuantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picbxShirt)).BeginInit();
             this.SuspendLayout();
@@ -353,11 +354,23 @@ namespace SU21_Final_Project
             this.lblItemPrice.TabIndex = 53;
             this.lblItemPrice.Text = "$0.00";
             // 
+            // btnUpload
+            // 
+            this.btnUpload.Location = new System.Drawing.Point(526, 188);
+            this.btnUpload.Name = "btnUpload";
+            this.btnUpload.Size = new System.Drawing.Size(75, 23);
+            this.btnUpload.TabIndex = 54;
+            this.btnUpload.Text = "upload";
+            this.btnUpload.UseVisualStyleBackColor = true;
+            this.btnUpload.Visible = false;
+            this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
+            // 
             // frmShop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(651, 284);
+            this.Controls.Add(this.btnUpload);
             this.Controls.Add(this.lblItemPrice);
             this.Controls.Add(this.lblItemPricePointer);
             this.Controls.Add(this.btnAccount);
@@ -429,5 +442,6 @@ namespace SU21_Final_Project
         public System.Windows.Forms.ListBox lstCart;
         private System.Windows.Forms.Label lblItemPricePointer;
         private System.Windows.Forms.Label lblItemPrice;
+        private System.Windows.Forms.Button btnUpload;
     }
 }

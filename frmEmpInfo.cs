@@ -140,14 +140,14 @@ namespace SU21_Final_Project
             txtPhone.Text = person.PhonePrimary;
             txtEmail.Text = person.Email;
             cboStates.SelectedItem = person.State;
-            changesMade = false;
+            bolChangesMade = false;
         }
 
-        bool changesMade = false;
+        bool bolChangesMade = false;
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            if (changesMade == true)
+            if (bolChangesMade == true)
             {
                 DialogResult dr = MessageBox.Show("You have unsaved changes. Are you sure you want to cancel?", "Unsaved Changes!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                 if (dr == DialogResult.Yes)
@@ -163,42 +163,42 @@ namespace SU21_Final_Project
 
         private void txtAddress1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            changesMade = true;
+            bolChangesMade = true;
         }
 
         private void txtAddress2_KeyPress(object sender, KeyPressEventArgs e)
         {
-            changesMade = true;
+            bolChangesMade = true;
         }
 
         private void txtAddress3_KeyPress(object sender, KeyPressEventArgs e)
         {
-            changesMade = true;
+            bolChangesMade = true;
         }
 
         private void txtCity_KeyPress(object sender, KeyPressEventArgs e)
         {
-            changesMade = true;
+            bolChangesMade = true;
         }
 
         private void txtZip_KeyPress(object sender, KeyPressEventArgs e)
         {
-            changesMade = true;
+            bolChangesMade = true;
         }
 
         private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
         {
-            changesMade = true;
+            bolChangesMade = true;
         }
 
         private void txtEmail_KeyPress(object sender, KeyPressEventArgs e)
         {
-            changesMade = true;
+            bolChangesMade = true;
         }
 
         private void cboStates_SelectedValueChanged(object sender, EventArgs e)
         {
-            changesMade = true;
+            bolChangesMade = true;
         }
     }
 }

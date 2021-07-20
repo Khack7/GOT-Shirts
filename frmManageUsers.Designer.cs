@@ -32,13 +32,15 @@ namespace SU21_Final_Project
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManageUsers));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.personBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSetPerson = new SU21_Final_Project.DataSetPerson();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.btnReturn = new System.Windows.Forms.Button();
-            this.dataSetPerson = new SU21_Final_Project.DataSetPerson();
-            this.personBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.personTableAdapter = new SU21_Final_Project.DataSetPersonTableAdapters.PersonTableAdapter();
+            this.btnEmployees = new System.Windows.Forms.Button();
+            this.btnCustomers = new System.Windows.Forms.Button();
             this.personIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameFirstDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,11 +54,9 @@ namespace SU21_Final_Project
             this.stateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phonePrimaryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnEmployees = new System.Windows.Forms.Button();
-            this.btnCustomers = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetPerson)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.personBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSetPerson)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -83,6 +83,16 @@ namespace SU21_Final_Project
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(811, 417);
             this.dataGridView1.TabIndex = 3;
+            // 
+            // personBindingSource
+            // 
+            this.personBindingSource.DataMember = "Person";
+            this.personBindingSource.DataSource = this.dataSetPerson;
+            // 
+            // dataSetPerson
+            // 
+            this.dataSetPerson.DataSetName = "DataSetPerson";
+            this.dataSetPerson.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // button1
             // 
@@ -125,24 +135,34 @@ namespace SU21_Final_Project
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
-            // dataSetPerson
-            // 
-            this.dataSetPerson.DataSetName = "DataSetPerson";
-            this.dataSetPerson.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // personBindingSource
-            // 
-            this.personBindingSource.DataMember = "Person";
-            this.personBindingSource.DataSource = this.dataSetPerson;
-            // 
             // personTableAdapter
             // 
             this.personTableAdapter.ClearBeforeFill = true;
             // 
+            // btnEmployees
+            // 
+            this.btnEmployees.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEmployees.Location = new System.Drawing.Point(144, 424);
+            this.btnEmployees.Name = "btnEmployees";
+            this.btnEmployees.Size = new System.Drawing.Size(125, 40);
+            this.btnEmployees.TabIndex = 2;
+            this.btnEmployees.Text = "Employees only";
+            this.btnEmployees.UseVisualStyleBackColor = true;
+            // 
+            // btnCustomers
+            // 
+            this.btnCustomers.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCustomers.Location = new System.Drawing.Point(12, 424);
+            this.btnCustomers.Name = "btnCustomers";
+            this.btnCustomers.Size = new System.Drawing.Size(125, 40);
+            this.btnCustomers.TabIndex = 1;
+            this.btnCustomers.Text = "Customers only";
+            this.btnCustomers.UseVisualStyleBackColor = true;
+            // 
             // personIDDataGridViewTextBoxColumn
             // 
             this.personIDDataGridViewTextBoxColumn.DataPropertyName = "PersonID";
-            this.personIDDataGridViewTextBoxColumn.HeaderText = "PersonID";
+            this.personIDDataGridViewTextBoxColumn.HeaderText = "Person ID";
             this.personIDDataGridViewTextBoxColumn.Name = "personIDDataGridViewTextBoxColumn";
             this.personIDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -218,26 +238,6 @@ namespace SU21_Final_Project
             this.phonePrimaryDataGridViewTextBoxColumn.HeaderText = "PhonePrimary";
             this.phonePrimaryDataGridViewTextBoxColumn.Name = "phonePrimaryDataGridViewTextBoxColumn";
             // 
-            // btnEmployees
-            // 
-            this.btnEmployees.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEmployees.Location = new System.Drawing.Point(144, 424);
-            this.btnEmployees.Name = "btnEmployees";
-            this.btnEmployees.Size = new System.Drawing.Size(125, 40);
-            this.btnEmployees.TabIndex = 2;
-            this.btnEmployees.Text = "Employees only";
-            this.btnEmployees.UseVisualStyleBackColor = true;
-            // 
-            // btnCustomers
-            // 
-            this.btnCustomers.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCustomers.Location = new System.Drawing.Point(12, 424);
-            this.btnCustomers.Name = "btnCustomers";
-            this.btnCustomers.Size = new System.Drawing.Size(125, 40);
-            this.btnCustomers.TabIndex = 1;
-            this.btnCustomers.Text = "Customers only";
-            this.btnCustomers.UseVisualStyleBackColor = true;
-            // 
             // frmManageUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -258,8 +258,8 @@ namespace SU21_Final_Project
             this.Text = "Manage Users";
             this.Load += new System.EventHandler(this.frmManageUsers_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetPerson)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.personBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSetPerson)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -273,6 +273,8 @@ namespace SU21_Final_Project
         private DataSetPerson dataSetPerson;
         private System.Windows.Forms.BindingSource personBindingSource;
         private DataSetPersonTableAdapters.PersonTableAdapter personTableAdapter;
+        private System.Windows.Forms.Button btnEmployees;
+        private System.Windows.Forms.Button btnCustomers;
         private System.Windows.Forms.DataGridViewTextBoxColumn personIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn userNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameFirstDataGridViewTextBoxColumn;
@@ -286,7 +288,5 @@ namespace SU21_Final_Project
         private System.Windows.Forms.DataGridViewTextBoxColumn stateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn phonePrimaryDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button btnEmployees;
-        private System.Windows.Forms.Button btnCustomers;
     }
 }

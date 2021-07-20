@@ -13,19 +13,19 @@ namespace SU21_Final_Project
 {
     public partial class frmEmpInventory : Form
     {
-        private List<DataProduct> _products;
+        private List<DataProduct> _lstProducts;
         public frmEmpInventory()
         {
             InitializeComponent();
-            _products = DataProduct.ListProducts();
+            _lstProducts = DataProduct.ListProducts();
         }
 
         private void frmEmpInventory_Load(object sender, EventArgs e)
         {
             try
             {
-                List<string> lstColors = _products.Select(p => p.Color).Distinct().OrderBy(c => c).ToList();
-                List<string> lstSizes = _products.Select(p => p.Size).Distinct().OrderBy(s => s).ToList();
+                List<string> lstColors = _lstProducts.Select(p => p.Color).Distinct().OrderBy(c => c).ToList();
+                List<string> lstSizes = _lstProducts.Select(p => p.Size).Distinct().OrderBy(s => s).ToList();
 
                 for (int intI = 0; intI < lstColors.Count; intI++)
                 {
@@ -57,10 +57,19 @@ namespace SU21_Final_Project
             {
                 string strSelectedColor = (string)cboColor.SelectedItem;
                 string strSelectedSize = (string)cboSize.SelectedItem;
-                var product = _products.Where(p => p.Color == strSelectedColor && p.Size == strSelectedSize).SingleOrDefault();
+                var product = _lstProducts.Where(p => p.Color == strSelectedColor && p.Size == strSelectedSize).SingleOrDefault();
                 txtAmount.Text = product.QuantityOnHand.ToString();
                 txtPrice.Text = product.Price.ToString();
                 txtCost.Text = product.Cost.ToString();
+                try
+                {
+                    DataProduct productImage = DataProduct.GetProduct(strSelectedColor, strSelectedSize);
+                    picbxShirt.Image = productImage.ProductImage;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -70,10 +79,19 @@ namespace SU21_Final_Project
             {
                 string strSelectedColor = (string)cboColor.SelectedItem;
                 string strSelectedSize = (string)cboSize.SelectedItem;
-                var product = _products.Where(p => p.Color == strSelectedColor && p.Size == strSelectedSize).SingleOrDefault();
+                var product = _lstProducts.Where(p => p.Color == strSelectedColor && p.Size == strSelectedSize).SingleOrDefault();
                 txtAmount.Text = product.QuantityOnHand.ToString();
                 txtPrice.Text = product.Price.ToString();
                 txtCost.Text = product.Cost.ToString();
+                try
+                {
+                    DataProduct productImage = DataProduct.GetProduct(strSelectedColor, strSelectedSize);
+                    picbxShirt.Image = productImage.ProductImage;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else if (cboSize.SelectedItem == null || cboSize.Enabled == false)
             {

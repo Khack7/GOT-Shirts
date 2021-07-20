@@ -81,6 +81,15 @@ namespace SU21_Final_Project
                 txtAmount.Text = product.QuantityOnHand.ToString();
                 txtPrice.Text = product.Price.ToString();
                 txtCost.Text = product.Cost.ToString();
+                try
+                {
+                    DataProduct productImage = DataProduct.GetProduct(strSelectedColor, strSelectedSize);
+                    picbxShirt.Image = productImage.ProductImage;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -99,6 +108,15 @@ namespace SU21_Final_Project
                 txtAmount.Text = product.QuantityOnHand.ToString();
                 txtPrice.Text = product.Price.ToString();
                 txtCost.Text = product.Cost.ToString();
+                try
+                {
+                    DataProduct productImage = DataProduct.GetProduct(strSelectedColor, strSelectedSize);
+                    picbxShirt.Image = productImage.ProductImage;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else if (cboSize.SelectedItem == null || cboSize.Enabled == false)
             {

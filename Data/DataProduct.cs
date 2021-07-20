@@ -6,6 +6,9 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
+using System.IO;
+using System.Drawing.Imaging;
 
 namespace SU21_Final_Project.Data
 {
@@ -17,11 +20,11 @@ namespace SU21_Final_Project.Data
         public int QuantityOnHand { get; set; }
         public double Cost { get; set; }
         public double Price { get; set; }
+        public Image ProductImage { get; set; }
 
         public static DataProduct GetProduct(string color, string size)
         {
             DataProduct product = null;
-
 
             using (SqlConnection con = DataCommon.StartConnection())
             {
@@ -92,7 +95,13 @@ namespace SU21_Final_Project.Data
             int.TryParse(sdr["QuantityOnHand"].ToString(), out int q);
             double.TryParse(sdr["Cost"].ToString(), out double cost);
             double.TryParse(sdr["Price"].ToString(), out double price);
-
+            object img = sdr["ProductImage"];
+            Image image = null;
+            if(img != DBNull.Value)
+            {
+                byte[] imgData = (byte[])img;
+                image = GetImageFromData(imgData);
+            }
             product = new DataProduct
             {
                 ProductID = p,
@@ -100,7 +109,8 @@ namespace SU21_Final_Project.Data
                 Color = sdr["Color"].ToString(),
                 Size = sdr["Size"].ToString(),
                 Cost = cost,
-                Price = price
+                Price = price,
+                ProductImage = image
             };
         }
 
@@ -129,6 +139,48 @@ namespace SU21_Final_Project.Data
 
                     con.Close();
                 }
+            }
+        }
+        //USED ONCE DURING DEVELOPMENT. NOT USED NORMAL USE
+        //HOWEVER WITH ALTERATION TO THE PROGRAM CAN BE USED TO IMPLEMENT NEW PRODUCTS
+        public static void SaveImage(Image image, string color)
+        {
+            string sql;
+
+            sql = "UPDATE HackK21Su2332.Products SET ProductImage = @ProductImage " +
+                  "WHERE Color = @Color";
+
+            using (SqlConnection con = DataCommon.StartConnection())
+            {
+                using (SqlCommand cmd = new SqlCommand(sql))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Connection = con;
+                    byte[] imgData = DataProduct.GetImageData(image);
+                    cmd.Parameters.Add("@ProductImage", SqlDbType.Image, imgData.Length).Value = imgData;
+                    cmd.Parameters.AddWithValue("@Color", color);
+
+                    cmd.ExecuteNonQuery();
+
+                    con.Close();
+                }
+            }
+        }
+
+        public static byte[] GetImageData(Image img)
+        {
+            using (MemoryStream mStream = new MemoryStream())
+            {
+                img.Save(mStream, ImageFormat.Png);
+                return mStream.ToArray();
+            }
+        }
+
+        public static Image GetImageFromData(byte[] imgData)
+        {
+            using (MemoryStream mStream = new MemoryStream(imgData))
+            {
+                return Image.FromStream(mStream);
             }
         }
     }

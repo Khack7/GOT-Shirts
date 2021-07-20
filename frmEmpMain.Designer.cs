@@ -116,6 +116,7 @@ namespace SU21_Final_Project
             this.Controls.Add(this.btnCodes);
             this.Controls.Add(this.btnInfo);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "frmEmpMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Employee Hub";
