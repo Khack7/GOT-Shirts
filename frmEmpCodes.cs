@@ -31,13 +31,13 @@ namespace SU21_Final_Project
             List<string> lstActiveCodes = _lstActiveCodes.Select(c => c.DiscountCode).OrderBy(c => c).ToList();
             List<string> lstInactiveCodes = _lstInactiveCodes.Select(c => c.DiscountCode).OrderBy(c => c).ToList();
 
-            for (int intI = 0; intI < lstActiveCodes.Count; intI++)
+            for (int intIndex = 0; intIndex < lstActiveCodes.Count; intIndex++)
             {
-                lstActive.Items.Add(lstActiveCodes[intI]);
+                lstActive.Items.Add(lstActiveCodes[intIndex]);
             }
-            for (int intI = 0; intI < lstInactiveCodes.Count; intI++)
+            for (int intIndex = 0; intIndex < lstInactiveCodes.Count; intIndex++)
             {
-                lstInactive.Items.Add(lstInactiveCodes[intI]);
+                lstInactive.Items.Add(lstInactiveCodes[intIndex]);
             }
         }
     }

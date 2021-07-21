@@ -54,12 +54,12 @@ namespace SU21_Final_Project
             this.btnGreen = new System.Windows.Forms.Button();
             this.btnBlack = new System.Windows.Forms.Button();
             this.btnBlue = new System.Windows.Forms.Button();
-            this.picbxShirt = new System.Windows.Forms.PictureBox();
+            this.pbxShirt = new System.Windows.Forms.PictureBox();
             this.lblItemPricePointer = new System.Windows.Forms.Label();
             this.lblItemPrice = new System.Windows.Forms.Label();
             this.btnUpload = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numUDQuantity)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picbxShirt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxShirt)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAccount
@@ -324,15 +324,15 @@ namespace SU21_Final_Project
             this.btnBlue.UseVisualStyleBackColor = false;
             this.btnBlue.Click += new System.EventHandler(this.btnBlue_Click);
             // 
-            // picbxShirt
+            // pbxShirt
             // 
-            this.picbxShirt.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.picbxShirt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.picbxShirt.Location = new System.Drawing.Point(12, 12);
-            this.picbxShirt.Name = "picbxShirt";
-            this.picbxShirt.Size = new System.Drawing.Size(267, 198);
-            this.picbxShirt.TabIndex = 27;
-            this.picbxShirt.TabStop = false;
+            this.pbxShirt.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.pbxShirt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbxShirt.Location = new System.Drawing.Point(12, 12);
+            this.pbxShirt.Name = "pbxShirt";
+            this.pbxShirt.Size = new System.Drawing.Size(267, 198);
+            this.pbxShirt.TabIndex = 27;
+            this.pbxShirt.TabStop = false;
             // 
             // lblItemPricePointer
             // 
@@ -397,7 +397,7 @@ namespace SU21_Final_Project
             this.Controls.Add(this.btnGreen);
             this.Controls.Add(this.btnBlack);
             this.Controls.Add(this.btnBlue);
-            this.Controls.Add(this.picbxShirt);
+            this.Controls.Add(this.pbxShirt);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -407,7 +407,7 @@ namespace SU21_Final_Project
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmShop_FormClosing);
             this.Load += new System.EventHandler(this.frmShop_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numUDQuantity)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picbxShirt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxShirt)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -438,7 +438,7 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Button btnGreen;
         private System.Windows.Forms.Button btnBlack;
         private System.Windows.Forms.Button btnBlue;
-        private System.Windows.Forms.PictureBox picbxShirt;
+        private System.Windows.Forms.PictureBox pbxShirt;
         public System.Windows.Forms.ListBox lstCart;
         private System.Windows.Forms.Label lblItemPricePointer;
         private System.Windows.Forms.Label lblItemPrice;

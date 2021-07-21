@@ -84,7 +84,7 @@ namespace SU21_Final_Project
                 try
                 {
                     DataProduct productImage = DataProduct.GetProduct(strSelectedColor, strSelectedSize);
-                    picbxShirt.Image = productImage.ProductImage;
+                    pbxShirt.Image = productImage.ProductImage;
                 }
                 catch (Exception ex)
                 {
@@ -111,7 +111,7 @@ namespace SU21_Final_Project
                 try
                 {
                     DataProduct productImage = DataProduct.GetProduct(strSelectedColor, strSelectedSize);
-                    picbxShirt.Image = productImage.ProductImage;
+                    pbxShirt.Image = productImage.ProductImage;
                 }
                 catch (Exception ex)
                 {
@@ -120,11 +120,11 @@ namespace SU21_Final_Project
             }
             else if (cboSize.SelectedItem == null || cboSize.Enabled == false)
             {
-                txtAmount.ReadOnly = false;
+                txtAmount.ReadOnly = true;
                 txtAmount.Clear();
-                txtPrice.ReadOnly = false;
+                txtPrice.ReadOnly = true;
                 txtPrice.Clear();
-                txtCost.ReadOnly = false;
+                txtCost.ReadOnly = true;
                 txtCost.Clear();
             }
         }
@@ -170,6 +170,30 @@ namespace SU21_Final_Project
 
                     MessageBox.Show("Updates saved!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     bolChangesMade = false;
+                    txtAmount.Clear();
+                    txtCost.Clear();
+                    txtPrice.Clear();
+                    txtAmount.ReadOnly = true;
+                    txtCost.ReadOnly = true;
+                    txtPrice.ReadOnly = true;
+                    cboColor.SelectedIndex = -1;
+                    cboSize.SelectedIndex = -1;
+                    pbxShirt.Image = null;
+
+                    List<string> lstColors = _products.Select(p => p.Color).Distinct().OrderBy(c => c).ToList();
+                    List<string> lstSizes = _products.Select(p => p.Size).Distinct().OrderBy(s => s).ToList();
+
+                    cboSize.Items.Clear();
+                    cboColor.Items.Clear();
+
+                    for (int intI = 0; intI < lstColors.Count; intI++)
+                    {
+                        cboColor.Items.Add(lstColors[intI]);
+                    }
+                    for (int intI = 0; intI < lstSizes.Count; intI++)
+                    {
+                        cboSize.Items.Add(lstSizes[intI]);
+                    }
                 }
                 catch (Exception ex)
                 {

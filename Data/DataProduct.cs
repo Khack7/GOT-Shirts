@@ -66,7 +66,6 @@ namespace SU21_Final_Project.Data
         {
             List<DataProduct> products = new List<DataProduct>();
 
-
             using (SqlConnection con = DataCommon.StartConnection())
             {
                 using (SqlCommand cmd = new SqlCommand("SELECT * FROM HackK21Su2332.Products"))
@@ -91,25 +90,25 @@ namespace SU21_Final_Project.Data
         private static void LoadFromReader(ref DataProduct product, SqlDataReader sdr)
         {
 
-            int.TryParse(sdr["ProductID"].ToString(), out int p);
-            int.TryParse(sdr["QuantityOnHand"].ToString(), out int q);
-            double.TryParse(sdr["Cost"].ToString(), out double cost);
-            double.TryParse(sdr["Price"].ToString(), out double price);
-            object img = sdr["ProductImage"];
+            int.TryParse(sdr["ProductID"].ToString(), out int intProduct);
+            int.TryParse(sdr["QuantityOnHand"].ToString(), out int intQuantity);
+            double.TryParse(sdr["Cost"].ToString(), out double dblCost);
+            double.TryParse(sdr["Price"].ToString(), out double dblPrice);
+            object objImage = sdr["ProductImage"];
             Image image = null;
-            if(img != DBNull.Value)
+            if(objImage != DBNull.Value)
             {
-                byte[] imgData = (byte[])img;
-                image = GetImageFromData(imgData);
+                byte[] bytImgData = (byte[])objImage;
+                image = GetImageFromData(bytImgData);
             }
             product = new DataProduct
             {
-                ProductID = p,
-                QuantityOnHand = q,
+                ProductID = intProduct,
+                QuantityOnHand = intQuantity,
                 Color = sdr["Color"].ToString(),
                 Size = sdr["Size"].ToString(),
-                Cost = cost,
-                Price = price,
+                Cost = dblCost,
+                Price = dblPrice,
                 ProductImage = image
             };
         }
@@ -141,24 +140,24 @@ namespace SU21_Final_Project.Data
                 }
             }
         }
-        //USED ONCE DURING DEVELOPMENT. NOT USED NORMAL USE
+        //USED ONCE DURING DEVELOPMENT. NOT USED IN NORMAL USE
         //HOWEVER WITH ALTERATION TO THE PROGRAM CAN BE USED TO IMPLEMENT NEW PRODUCTS
-        public static void SaveImage(Image image, string color)
+        public static void SaveImage(Image image, string strColor)
         {
-            string sql;
+            string strSQL;
 
-            sql = "UPDATE HackK21Su2332.Products SET ProductImage = @ProductImage " +
+            strSQL = "UPDATE HackK21Su2332.Products SET ProductImage = @ProductImage " +
                   "WHERE Color = @Color";
 
             using (SqlConnection con = DataCommon.StartConnection())
             {
-                using (SqlCommand cmd = new SqlCommand(sql))
+                using (SqlCommand cmd = new SqlCommand(strSQL))
                 {
                     cmd.CommandType = CommandType.Text;
                     cmd.Connection = con;
                     byte[] imgData = DataProduct.GetImageData(image);
                     cmd.Parameters.Add("@ProductImage", SqlDbType.Image, imgData.Length).Value = imgData;
-                    cmd.Parameters.AddWithValue("@Color", color);
+                    cmd.Parameters.AddWithValue("@Color", strColor);
 
                     cmd.ExecuteNonQuery();
 

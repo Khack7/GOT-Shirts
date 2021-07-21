@@ -17,7 +17,14 @@ namespace SU21_Final_Project
         public frmManagerSettings()
         {
             InitializeComponent();
-            _lstSettings = DataSettings.ListSettings();
+            try
+            {
+                _lstSettings = DataSettings.ListSettings();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void txtValue_KeyPress(object sender, KeyPressEventArgs e)
@@ -46,9 +53,9 @@ namespace SU21_Final_Project
             {
                 List<string> lstNames = _lstSettings.Select(n => n.SettingName).Distinct().OrderBy(n => n).ToList();
                 
-                for(int i = 0; i < lstNames.Count; i++)
+                for(int intIndex = 0; intIndex < lstNames.Count; intIndex++)
                 {
-                    cboSettingNames.Items.Add(lstNames[i]);
+                    cboSettingNames.Items.Add(lstNames[intIndex]);
                 }
             }
             catch(Exception ex)
@@ -65,8 +72,8 @@ namespace SU21_Final_Project
                 txtValue.ReadOnly = true;
                 btnApply.Enabled = false;
 
-                string selectedSetting = cboSettingNames.SelectedItem.ToString();
-                var setting = _lstSettings.Where(s => s.SettingName == selectedSetting).SingleOrDefault();
+                string strSelectedSetting = cboSettingNames.SelectedItem.ToString();
+                var setting = _lstSettings.Where(s => s.SettingName == strSelectedSetting).SingleOrDefault();
                 txtValue.Text = setting.SettingValue;
             }
             else
@@ -117,9 +124,9 @@ namespace SU21_Final_Project
                     _lstSettings = DataSettings.ListSettings();
                     List<string> lstNames = _lstSettings.Select(n => n.SettingName).Distinct().OrderBy(n => n).ToList();
 
-                    for (int i = 0; i < lstNames.Count; i++)
+                    for (int intIndex = 0; intIndex < lstNames.Count; intIndex++)
                     {
-                        cboSettingNames.Items.Add(lstNames[i]);
+                        cboSettingNames.Items.Add(lstNames[intIndex]);
                     }
                 }
                 catch (Exception ex)

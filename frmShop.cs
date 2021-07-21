@@ -274,7 +274,7 @@ namespace SU21_Final_Project
             try
             {
                 DataProduct product = DataProduct.GetProduct(strCurrentColor, strSize);
-                picbxShirt.Image = product.ProductImage;
+                pbxShirt.Image = product.ProductImage;
                 getItemPrice(strCurrentColor, strSize);
             }
             catch (Exception ex)
@@ -304,7 +304,7 @@ namespace SU21_Final_Project
             try
             {
                 DataProduct product = DataProduct.GetProduct(strCurrentColor, strSize);
-                picbxShirt.Image = product.ProductImage;
+                pbxShirt.Image = product.ProductImage;
                 getItemPrice(strCurrentColor, strSize);
             }
             catch (Exception ex)
@@ -334,7 +334,7 @@ namespace SU21_Final_Project
             try
             {
                 DataProduct product = DataProduct.GetProduct(strCurrentColor, strSize);
-                picbxShirt.Image = product.ProductImage;
+                pbxShirt.Image = product.ProductImage;
                 getItemPrice(strCurrentColor, strSize);
             }
             catch (Exception ex)
@@ -364,7 +364,7 @@ namespace SU21_Final_Project
             try
             {
                 DataProduct product = DataProduct.GetProduct(strCurrentColor, strSize);
-                picbxShirt.Image = product.ProductImage;
+                pbxShirt.Image = product.ProductImage;
                 getItemPrice(strCurrentColor, strSize);
             }
             catch (Exception ex)
@@ -394,7 +394,7 @@ namespace SU21_Final_Project
             try
             {
                 DataProduct product = DataProduct.GetProduct(strCurrentColor, strSize);
-                picbxShirt.Image = product.ProductImage;
+                pbxShirt.Image = product.ProductImage;
                 getItemPrice(strCurrentColor, strSize);
             }
             catch (Exception ex)
@@ -424,7 +424,7 @@ namespace SU21_Final_Project
             try
             {
                 DataProduct product = DataProduct.GetProduct(strCurrentColor, strSize);
-                picbxShirt.Image = product.ProductImage;
+                pbxShirt.Image = product.ProductImage;
                 getItemPrice(strCurrentColor, strSize);
             }
             catch (Exception ex)
@@ -454,7 +454,7 @@ namespace SU21_Final_Project
             try
             {
                 DataProduct product = DataProduct.GetProduct(strCurrentColor, strSize);
-                picbxShirt.Image = product.ProductImage;
+                pbxShirt.Image = product.ProductImage;
                 getItemPrice(strCurrentColor, strSize);
             }
             catch (Exception ex)
@@ -484,7 +484,7 @@ namespace SU21_Final_Project
             try
             {
                 DataProduct product = DataProduct.GetProduct(strCurrentColor, strSize);
-                picbxShirt.Image = product.ProductImage;
+                pbxShirt.Image = product.ProductImage;
                 getItemPrice(strCurrentColor, strSize);
             }
             catch (Exception ex)
@@ -514,7 +514,7 @@ namespace SU21_Final_Project
             try
             {
                 DataProduct product = DataProduct.GetProduct(strCurrentColor, strSize);
-                picbxShirt.Image = product.ProductImage;
+                pbxShirt.Image = product.ProductImage;
                 getItemPrice(strCurrentColor, strSize);
             }
             catch(Exception ex)
@@ -632,7 +632,7 @@ namespace SU21_Final_Project
         {
             try
             {
-                DataProduct.SaveImage(picbxShirt.Image, strCurrentColor);
+                DataProduct.SaveImage(pbxShirt.Image, strCurrentColor);
                 
             }
             catch(Exception ex)

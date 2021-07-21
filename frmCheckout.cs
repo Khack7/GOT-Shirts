@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -28,7 +29,7 @@ namespace SU21_Final_Project
         public frmCheckout()
         {
             InitializeComponent();
-        } 
+        }
 
         private void getShipping(string method)
         {
@@ -38,7 +39,7 @@ namespace SU21_Final_Project
 
                 shipping = DataMoney.GetValues(method);
 
-                if(double.TryParse(shipping.SettingValue, out double dblShipping))
+                if (double.TryParse(shipping.SettingValue, out double dblShipping))
                 {
                     dblShippingCost = dblShipping;
                 }
@@ -70,13 +71,13 @@ namespace SU21_Final_Project
 
                 if (frmCouponInput.CodeUsed == true)
                 {
-                    if(!double.TryParse(frmShop.strSubtotal, out double dblSub))
+                    if (!double.TryParse(frmShop.strSubtotal, out double dblSub))
                     {
                         throw new Exception("Error getting SubTotal");
                     }
 
                     double dblDiscount = frmCouponInput.percentOff;
-                    dblSubCost = (dblSub - (dblSub * (dblDiscount/100)));
+                    dblSubCost = (dblSub - (dblSub * (dblDiscount / 100)));
 
 
 
@@ -98,7 +99,7 @@ namespace SU21_Final_Project
 
                 tax = DataMoney.GetValues("TaxRate");
 
-                if(!double.TryParse(tax.SettingValue, out double dblTax))
+                if (!double.TryParse(tax.SettingValue, out double dblTax))
                 {
                     throw new Exception("Error getting TaxRate");
                 }
@@ -153,99 +154,126 @@ namespace SU21_Final_Project
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
+            //REFERENCE: https://docs.microsoft.com/en-us/dotnet/standard/base-types/parsing-datetime
+            var parsedDate = DateTime.Now;
             try
             {
-                DataOrder order = null;
-
-                if(!DateTime.TryParse(DateTime.Now.ToString("yyyy-MM-dd"), out DateTime todaysDate))
+                if (!int.TryParse(cboMonth.SelectedItem.ToString(), out int month))
                 {
-                    throw new Exception("Error Getting Today's Date");
+                    month = 0;
                 }
+                string strMonthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(month);
+                string strYear = cboYear.SelectedItem.ToString();
+                string strSelectedDate = strMonthName + " 1, " + strYear;
 
-                string strCode;
-
-                if (frmCouponInput.CouponCode == null)
+                parsedDate = DateTime.Parse(strSelectedDate);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (parsedDate < DateTime.Today.Date)
                 {
-                    strCode = null;
-                }
-                else
-                {
-                    strCode = frmCouponInput.CouponCode;
-                }
-
-                string strCardType;
-
-                if (rdoDiscover.Checked == true)
-                {
-                    strCardType = "Discover";
-                }
-                else if (rdoVisa.Checked == true)
-                {
-                    strCardType = "Visa";
+                    MessageBox.Show("This card is expired", "Date is expired", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    strCardType = "MasterCard";
-                }
-
-                order = new DataOrder
-                {
-                    PersonID = frmSignIn.intID,
-                    OrderDate = todaysDate,
-                    DiscountCode = strCode,
-                    Shipping = dblShippingCost,
-                    CardType = strCardType,
-                    CardNumber = txtCard.Text,
-                    CardExperation = cboMonth.SelectedItem + "/" + cboYear.SelectedItem
-                };
-
-
-                using (var con = DataCommon.StartConnection())
-                {
-                    var objTrans = con.BeginTransaction();
                     try
                     {
-                        DataOrder.SaveOrder(con, order, objTrans);
+                        DataOrder order = null;
 
-                        List<DataOrderItem> orderItems = new List<DataOrderItem>();
-
-                        for (int i = 0; i < lstCart.Items.Count; i++)
+                        if (!DateTime.TryParse(DateTime.Now.ToString("yyyy-MM-dd"), out DateTime todaysDate))
                         {
-                            CartItem objItem = (CartItem)lstCart.Items[i];
-
-                            orderItems.Add(new DataOrderItem
-                            {
-                                intOrderNum = order.OrderNum,
-                                intProductID = objItem.Product.ProductID,
-                                intQuantity = objItem.intQuantity,
-                                Product = objItem.Product
-                            });
-
-                            DataProduct.ReduceProductQuantity(con, objItem.Product.ProductID, objItem.intQuantity, objTrans);
+                            throw new Exception("Error Getting Today's Date");
                         }
 
-                        DataOrderItem.SaveItems(con, orderItems, objTrans);
+                        string strCode;
+
+                        if (frmCouponInput.CouponCode == null)
+                        {
+                            strCode = null;
+                        }
+                        else
+                        {
+                            strCode = frmCouponInput.CouponCode;
+                        }
+
+                        string strCardType;
+
+                        if (rdoDiscover.Checked == true)
+                        {
+                            strCardType = "Discover";
+                        }
+                        else if (rdoVisa.Checked == true)
+                        {
+                            strCardType = "Visa";
+                        }
+                        else
+                        {
+                            strCardType = "MasterCard";
+                        }
+
+                        order = new DataOrder
+                        {
+                            PersonID = frmSignIn.intID,
+                            OrderDate = todaysDate,
+                            DiscountCode = strCode,
+                            Shipping = dblShippingCost,
+                            CardType = strCardType,
+                            CardNumber = txtCard.Text,
+                            CardExperation = cboMonth.SelectedItem + "/" + cboYear.SelectedItem
+                        };
 
 
-                        objTrans.Commit();
+                        using (var con = DataCommon.StartConnection())
+                        {
+                            var objTrans = con.BeginTransaction();
+                            try
+                            {
+                                DataOrder.SaveOrder(con, order, objTrans);
 
-                        PrintReceipt(order, orderItems);
+                                List<DataOrderItem> orderItems = new List<DataOrderItem>();
 
+                                for (int i = 0; i < lstCart.Items.Count; i++)
+                                {
+                                    CartItem objItem = (CartItem)lstCart.Items[i];
+
+                                    orderItems.Add(new DataOrderItem
+                                    {
+                                        intOrderNum = order.OrderNum,
+                                        intProductID = objItem.Product.ProductID,
+                                        intQuantity = objItem.intQuantity,
+                                        Product = objItem.Product
+                                    });
+
+                                    DataProduct.ReduceProductQuantity(con, objItem.Product.ProductID, objItem.intQuantity, objTrans);
+                                }
+
+                                DataOrderItem.SaveItems(con, orderItems, objTrans);
+
+
+                                objTrans.Commit();
+
+                                PrintReceipt(order, orderItems);
+
+                            }
+                            catch (Exception ex)
+                            {
+                                objTrans.Rollback();
+                                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error); ;
+                            }
+
+                            con.Close();
+                        }
                     }
                     catch (Exception ex)
                     {
-                        objTrans.Rollback();
-                        MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error); ;
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-
-                    con.Close();
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
+            } 
         }
 
         private void PrintReceipt(DataOrder order, List<DataOrderItem> items)
@@ -260,7 +288,7 @@ namespace SU21_Final_Project
                 strReceipt = strReceipt.Replace("{AddressName}", $"{person.NameFirst} {person.NameLast}");
                 List<string> streetLines = new List<string>();
                 streetLines.Add(person.Address1);
-                if(!string.IsNullOrEmpty(person.Address2))
+                if (!string.IsNullOrEmpty(person.Address2))
                 {
                     streetLines.Add(person.Address2);
                 }

@@ -42,8 +42,8 @@ namespace SU21_Final_Project
             this.cboColor = new System.Windows.Forms.ComboBox();
             this.btnReturn = new System.Windows.Forms.Button();
             this.btnHelp = new System.Windows.Forms.Button();
-            this.picbxShirt = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.picbxShirt)).BeginInit();
+            this.pbxShirt = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxShirt)).BeginInit();
             this.SuspendLayout();
             // 
             // lblSize
@@ -166,22 +166,22 @@ namespace SU21_Final_Project
             this.btnHelp.UseVisualStyleBackColor = true;
             this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
-            // picbxShirt
+            // pbxShirt
             // 
-            this.picbxShirt.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.picbxShirt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picbxShirt.Location = new System.Drawing.Point(304, 13);
-            this.picbxShirt.Name = "picbxShirt";
-            this.picbxShirt.Size = new System.Drawing.Size(292, 257);
-            this.picbxShirt.TabIndex = 32;
-            this.picbxShirt.TabStop = false;
+            this.pbxShirt.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.pbxShirt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbxShirt.Location = new System.Drawing.Point(304, 13);
+            this.pbxShirt.Name = "pbxShirt";
+            this.pbxShirt.Size = new System.Drawing.Size(292, 257);
+            this.pbxShirt.TabIndex = 32;
+            this.pbxShirt.TabStop = false;
             // 
             // frmEmpInventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(611, 350);
-            this.Controls.Add(this.picbxShirt);
+            this.Controls.Add(this.pbxShirt);
             this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.btnReturn);
             this.Controls.Add(this.lblSize);
@@ -201,7 +201,7 @@ namespace SU21_Final_Project
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inventory";
             this.Load += new System.EventHandler(this.frmEmpInventory_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.picbxShirt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxShirt)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -221,6 +221,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.ComboBox cboColor;
         private System.Windows.Forms.Button btnReturn;
         private System.Windows.Forms.Button btnHelp;
-        private System.Windows.Forms.PictureBox picbxShirt;
+        private System.Windows.Forms.PictureBox pbxShirt;
     }
 }

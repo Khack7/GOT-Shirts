@@ -196,5 +196,57 @@ namespace SU21_Final_Project.Data
                 }
             }
         }
+        //USED IF DataGridView DOESN'T WORK OUT
+        //                  |
+        //                  V
+        public List<DataPerson> GetPeople()
+        {
+            List<DataPerson> people = new List<DataPerson>();
+
+            using (SqlConnection con = DataCommon.StartConnection())
+            {
+                using(SqlCommand cmd = new SqlCommand("SELECT * FROM HackK21Su2332.Person"))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Connection = con;
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            DataPerson person = null;
+                            LoadFromReader(ref person, sdr);
+                            people.Add(person);
+                        }
+                    }
+                    con.Close();
+                }
+            }
+            return people;
+        }
+
+        private static void LoadFromReader(ref DataPerson person, SqlDataReader sdr)
+        {
+            LoadPerson(sdr);
+            if(!int.TryParse(sdr["PersonID"].ToString(), out int ID))
+            {
+                ID = 0;
+            }
+            if(!bool.TryParse(sdr["Deleted"].ToString(), out bool bolStatus))
+            {
+                bolStatus = false;
+            }
+
+            person = new DataPerson
+            {
+                PersonID = ID,
+                NameFirst = sdr["NameFirst"].ToString(),
+                NameLast = sdr["NameLast"].ToString(),
+                UserName = sdr["UserName"].ToString(),
+                AccountType = sdr["AccountType"].ToString(),
+                Email = sdr["Email"].ToString(),
+                PhonePrimary = sdr["PhonePrimary"].ToString(),
+                Deleted = bolStatus
+            };
+        }
     }
 }

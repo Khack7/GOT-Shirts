@@ -66,10 +66,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Receipt.cs" />
-    <Compile Include="DataSetPerson.Designer.cs">
+    <Compile Include="DataSet11.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DataSetPerson.xsd</DependentUpon>
+      <DependentUpon>DataSet11.xsd</DependentUpon>
     </Compile>
     <Compile Include="Data\DataCodes.cs" />
     <Compile Include="Data\DataCommon.cs" />
@@ -292,16 +292,16 @@
     <None Include="Course Design Guides\Design Guide - Classroom Program Requirements and Naming Standards%28Final Project%29%282021-03-26%29.pdf" />
     <None Include="Course Design Guides\Notes" />
     <None Include="Course Design Guides\Prefixes%282021-03-26%29.pdf" />
-    <None Include="DataSetPerson.xsc">
-      <DependentUpon>DataSetPerson.xsd</DependentUpon>
+    <None Include="DataSet11.xsc">
+      <DependentUpon>DataSet11.xsd</DependentUpon>
     </None>
-    <None Include="DataSetPerson.xsd">
+    <None Include="DataSet11.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSetPerson.Designer.cs</LastGenOutput>
+      <LastGenOutput>DataSet11.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="DataSetPerson.xss">
-      <DependentUpon>DataSetPerson.xsd</DependentUpon>
+    <None Include="DataSet11.xss">
+      <DependentUpon>DataSet11.xsd</DependentUpon>
     </None>
     <None Include="HelpFiles\Readme.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

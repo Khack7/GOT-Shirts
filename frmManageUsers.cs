@@ -17,15 +17,11 @@ namespace SU21_Final_Project
             InitializeComponent();
         }
 
-        private void btnReturn_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void frmManageUsers_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'dataSetPerson.Person' table. You can move, or remove it, as needed.
-            this.personTableAdapter.Fill(this.dataSetPerson.Person);
+            // TODO: This line of code loads data into the 'dataSet1.Person' table. You can move, or remove it, as needed.
+            this.personTableAdapter.Fill(this.dataSet1.Person);
+
         }
     }
 }

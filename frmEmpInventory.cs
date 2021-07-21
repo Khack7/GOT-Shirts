@@ -64,7 +64,7 @@ namespace SU21_Final_Project
                 try
                 {
                     DataProduct productImage = DataProduct.GetProduct(strSelectedColor, strSelectedSize);
-                    picbxShirt.Image = productImage.ProductImage;
+                    pbxShirt.Image = productImage.ProductImage;
                 }
                 catch (Exception ex)
                 {
@@ -86,7 +86,7 @@ namespace SU21_Final_Project
                 try
                 {
                     DataProduct productImage = DataProduct.GetProduct(strSelectedColor, strSelectedSize);
-                    picbxShirt.Image = productImage.ProductImage;
+                    pbxShirt.Image = productImage.ProductImage;
                 }
                 catch (Exception ex)
                 {

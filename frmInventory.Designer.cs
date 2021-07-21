@@ -43,8 +43,8 @@ namespace SU21_Final_Project
             this.lblSize = new System.Windows.Forms.Label();
             this.cboSize = new System.Windows.Forms.ComboBox();
             this.btnHelp = new System.Windows.Forms.Button();
-            this.picbxShirt = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.picbxShirt)).BeginInit();
+            this.pbxShirt = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxShirt)).BeginInit();
             this.SuspendLayout();
             // 
             // btnReturn
@@ -181,22 +181,22 @@ namespace SU21_Final_Project
             this.btnHelp.UseVisualStyleBackColor = true;
             this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
-            // picbxShirt
+            // pbxShirt
             // 
-            this.picbxShirt.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.picbxShirt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.picbxShirt.Location = new System.Drawing.Point(317, 8);
-            this.picbxShirt.Name = "picbxShirt";
-            this.picbxShirt.Size = new System.Drawing.Size(309, 258);
-            this.picbxShirt.TabIndex = 28;
-            this.picbxShirt.TabStop = false;
+            this.pbxShirt.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.pbxShirt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbxShirt.Location = new System.Drawing.Point(317, 8);
+            this.pbxShirt.Name = "pbxShirt";
+            this.pbxShirt.Size = new System.Drawing.Size(309, 258);
+            this.pbxShirt.TabIndex = 28;
+            this.pbxShirt.TabStop = false;
             // 
             // frmInventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(637, 363);
-            this.Controls.Add(this.picbxShirt);
+            this.Controls.Add(this.pbxShirt);
             this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.lblSize);
             this.Controls.Add(this.cboSize);
@@ -217,7 +217,7 @@ namespace SU21_Final_Project
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inventory Adjustment";
             this.Load += new System.EventHandler(this.frmInventory_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.picbxShirt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxShirt)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -238,6 +238,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label lblSize;
         private System.Windows.Forms.ComboBox cboSize;
         private System.Windows.Forms.Button btnHelp;
-        private System.Windows.Forms.PictureBox picbxShirt;
+        private System.Windows.Forms.PictureBox pbxShirt;
     }
 }
