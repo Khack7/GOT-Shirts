@@ -22,7 +22,7 @@ namespace SU21_Final_Project.Data
 
         public DataProduct Product { get; set; }
 
-        public static void SaveItems(SqlConnection con, List<DataOrderItem> items, SqlTransaction transaction)
+        public static void SaveItems(SqlConnection con, List<DataOrderItem> lstItems, SqlTransaction transaction)
         {
 
             string sql = "INSERT INTO HackK21Su2332.OrderItem(OrderNum, ProductID, Quantity)" +
@@ -36,18 +36,21 @@ namespace SU21_Final_Project.Data
                 cmd.Parameters.Add("@ProductID", SqlDbType.Int);
                 cmd.Parameters.Add("@Quantity", SqlDbType.Int);
 
-                for (int i = 0; i < items.Count; i++)
+                for (int intIndex = 0; intIndex < lstItems.Count; intIndex++)
                 {
-                    cmd.Parameters["@OrderNum"].Value = items[i].intOrderNum;
-                    cmd.Parameters["@Quantity"].Value = items[i].intQuantity;
-                    cmd.Parameters["@ProductID"].Value = items[i].intProductID;
+                    cmd.Parameters["@OrderNum"].Value = lstItems[intIndex].intOrderNum;
+                    cmd.Parameters["@Quantity"].Value = lstItems[intIndex].intQuantity;
+                    cmd.Parameters["@ProductID"].Value = lstItems[intIndex].intProductID;
 
                     using (SqlDataReader sdr = cmd.ExecuteReader())
                     {
                         if (sdr.Read())
                         {
-                            int.TryParse(sdr["OrderItemID"].ToString(), out int num);
-                            items[i].intOrderItemID = num;
+                            if(!int.TryParse(sdr["OrderItemID"].ToString(), out int intItemID))
+                            {
+
+                            }
+                            lstItems[intIndex].intOrderItemID = intItemID;
                         }
                     }
                 }

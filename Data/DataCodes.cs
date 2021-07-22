@@ -50,9 +50,18 @@ namespace SU21_Final_Project.Data
                 {
                     bolActive = A;
                 }
+                else
+                {
+                    bolActive = false;
+                }
+
                 if (int.TryParse(sdr["PercentOff"].ToString(), out int P))
                 {
                     intPercent = P;
+                }
+                else
+                {
+                    intPercent = 0;
                 }
                 result = new DataCodes
                 {
@@ -165,13 +174,19 @@ namespace SU21_Final_Project.Data
 
         private static void LoadFromReader(ref DataCodes code, SqlDataReader sdr)
         {
-            int.TryParse(sdr["PercentOff"].ToString(), out int p);
-            bool.TryParse(sdr["Active"].ToString(), out bool b);
+            if(!int.TryParse(sdr["PercentOff"].ToString(), out int intPercent))
+            {
+                intPercent = 0;
+            }
+            if(!bool.TryParse(sdr["Active"].ToString(), out bool bolStatus))
+            {
+                bolStatus = false;
+            }
 
             code = new DataCodes
             {
-                PercentOff = p,
-                Active = b,
+                PercentOff = intPercent,
+                Active = bolStatus,
                 DiscountCode = sdr["DiscountCode"].ToString(),
             };
         }

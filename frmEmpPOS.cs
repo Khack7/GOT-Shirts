@@ -46,7 +46,6 @@ namespace SU21_Final_Project
                         shop.ShowDialog();
                         this.Close();
                     }
-
                 }
                 else
                 {
@@ -54,7 +53,6 @@ namespace SU21_Final_Project
                     txtUsername.Focus();
                     txtUsername.SelectAll();
                 }
-
             }
             catch (Exception ex)
             {
@@ -64,10 +62,10 @@ namespace SU21_Final_Project
 
         private void btnHelp_Click(object sender, EventArgs e)
         {
-            string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            string strPath = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
             try
             {
-                System.Diagnostics.Process.Start($"{path}\\HelpFiles\\Employee_POS_Help.html");
+                System.Diagnostics.Process.Start($"{strPath}\\HelpFiles\\Employee_POS_Help.html");
             }
             catch (Exception ex)
             {

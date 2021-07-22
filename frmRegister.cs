@@ -248,11 +248,8 @@ namespace SU21_Final_Project
                             MessageBox.Show("Account Succesfully Created!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             bolComplete = true;
                             this.Close();
-
                         }
-
                     }
-
                 }
                 catch (Exception ex)
                 {

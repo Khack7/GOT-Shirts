@@ -31,13 +31,13 @@ namespace SU21_Final_Project
             InitializeComponent();
         }
 
-        private void getShipping(string method)
+        private void getShipping(string strMethod)
         {
             try
             {
                 DataMoney shipping = null;
 
-                shipping = DataMoney.GetValues(method);
+                shipping = DataMoney.GetValues(strMethod);
 
                 if (double.TryParse(shipping.SettingValue, out double dblShipping))
                 {
@@ -45,7 +45,7 @@ namespace SU21_Final_Project
                 }
                 else
                 {
-                    throw new Exception("Error Getting Shipping Data");
+                    dblShippingCost = 0;
                 }
 
                 lblShipping.Text = dblShippingCost.ToString("C2");
@@ -63,9 +63,9 @@ namespace SU21_Final_Project
             try
             {
                 CartItem objCurrentItem;
-                for (int i = 0; i < frmShop.lstCartItems.Count; i++)
+                for (int intIndex = 0; intIndex < frmShop.lstCartItems.Count; intIndex++)
                 {
-                    objCurrentItem = frmShop.lstCartItems[i];
+                    objCurrentItem = frmShop.lstCartItems[intIndex];
                     lstCart.Items.Add(objCurrentItem);
                 }
 
@@ -73,13 +73,11 @@ namespace SU21_Final_Project
                 {
                     if (!double.TryParse(frmShop.strSubtotal, out double dblSub))
                     {
-                        throw new Exception("Error getting SubTotal");
+                        dblSub = 0;
                     }
 
                     double dblDiscount = frmCouponInput.percentOff;
                     dblSubCost = (dblSub - (dblSub * (dblDiscount / 100)));
-
-
 
                     lblSubtotal.Text = dblSubCost.ToString("C2");
                 }
@@ -87,7 +85,7 @@ namespace SU21_Final_Project
                 {
                     if (!double.TryParse(frmShop.strSubtotal, out double dblSub))
                     {
-                        throw new Exception("Error getting SubTotal");
+                        dblSub = 0;
                     }
                     dblSubCost = dblSub;
                     lblSubtotal.Text = dblSubCost.ToString("C2");
@@ -101,7 +99,7 @@ namespace SU21_Final_Project
 
                 if (!double.TryParse(tax.SettingValue, out double dblTax))
                 {
-                    throw new Exception("Error getting TaxRate");
+                    dblTax = 0;
                 }
 
                 dblTaxCost = dblTax * dblSubCost;
@@ -111,7 +109,6 @@ namespace SU21_Final_Project
                 dblTotalCost = dblSubCost + dblTaxCost + dblShippingCost;
 
                 lblTotal.Text = (dblTotalCost).ToString("C2");
-
 
                 string[] arrYears = new string[12];
 
@@ -128,20 +125,20 @@ namespace SU21_Final_Project
                 cboMonth.Items.Add("11");
                 cboMonth.Items.Add("12");
 
-                for (int i = 0; i < 12; i++)
+                for (int intIndex = 0; intIndex < 12; intIndex++)
                 {
                     if (int.TryParse(DateTime.Now.Year.ToString(), out int intYear))
                     {
-                        arrYears[i] = (intYear + i).ToString();
+                        arrYears[intIndex] = (intYear + intIndex).ToString();
                     }
                     else
                     {
                         throw new Exception("Error Loading years");
                     }
                 }
-                for (int y = 0; y < arrYears.Length; y++)
+                for (int intNumOfYears = 0; intNumOfYears < arrYears.Length; intNumOfYears++)
                 {
-                    cboYear.Items.Add(arrYears[y]);
+                    cboYear.Items.Add(arrYears[intNumOfYears]);
                 }
             }
             catch (Exception ex)
@@ -158,11 +155,11 @@ namespace SU21_Final_Project
             var parsedDate = DateTime.Now;
             try
             {
-                if (!int.TryParse(cboMonth.SelectedItem.ToString(), out int month))
+                if (!int.TryParse(cboMonth.SelectedItem.ToString(), out int intMonth))
                 {
-                    month = 0;
+                    intMonth = 0;
                 }
-                string strMonthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(month);
+                string strMonthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(intMonth);
                 string strYear = cboYear.SelectedItem.ToString();
                 string strSelectedDate = strMonthName + " 1, " + strYear;
 
@@ -226,7 +223,6 @@ namespace SU21_Final_Project
                             CardExperation = cboMonth.SelectedItem + "/" + cboYear.SelectedItem
                         };
 
-
                         using (var con = DataCommon.StartConnection())
                         {
                             var objTrans = con.BeginTransaction();
@@ -236,9 +232,9 @@ namespace SU21_Final_Project
 
                                 List<DataOrderItem> orderItems = new List<DataOrderItem>();
 
-                                for (int i = 0; i < lstCart.Items.Count; i++)
+                                for (int intIndex = 0; intIndex < lstCart.Items.Count; intIndex++)
                                 {
-                                    CartItem objItem = (CartItem)lstCart.Items[i];
+                                    CartItem objItem = (CartItem)lstCart.Items[intIndex];
 
                                     orderItems.Add(new DataOrderItem
                                     {
@@ -253,18 +249,15 @@ namespace SU21_Final_Project
 
                                 DataOrderItem.SaveItems(con, orderItems, objTrans);
 
-
                                 objTrans.Commit();
 
                                 PrintReceipt(order, orderItems);
-
                             }
                             catch (Exception ex)
                             {
                                 objTrans.Rollback();
                                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error); ;
                             }
-
                             con.Close();
                         }
                     }
@@ -276,7 +269,7 @@ namespace SU21_Final_Project
             } 
         }
 
-        private void PrintReceipt(DataOrder order, List<DataOrderItem> items)
+        private void PrintReceipt(DataOrder order, List<DataOrderItem> lstItems)
         {
             try
             {
@@ -301,17 +294,16 @@ namespace SU21_Final_Project
                 strReceipt = strReceipt.Replace("{AddressState}", person.State);
                 strReceipt = strReceipt.Replace("{AddressZip}", person.Zipcode);
 
-
                 StringBuilder itemHTML = new StringBuilder();
 
-                for (int intI = 0; intI < items.Count; intI++)
+                for (int intIndex = 0; intIndex < lstItems.Count; intIndex++)
                 {
 
                     itemHTML.AppendFormat("<tr>");
-                    itemHTML.AppendFormat("    <td>{0} {1}</td>", items[intI].Product.Color, items[intI].Product.Size);
-                    itemHTML.AppendFormat("    <td>{0}</td>", items[intI].intQuantity);
-                    itemHTML.AppendFormat("    <td>{0:C2}</td>", items[intI].Product.Price);
-                    itemHTML.AppendFormat("    <td>{0:C2}</td>", items[intI].Product.Price * items[intI].intQuantity);
+                    itemHTML.AppendFormat("    <td>{0} {1}</td>", lstItems[intIndex].Product.Color, lstItems[intIndex].Product.Size);
+                    itemHTML.AppendFormat("    <td>{0}</td>", lstItems[intIndex].intQuantity);
+                    itemHTML.AppendFormat("    <td>{0:C2}</td>", lstItems[intIndex].Product.Price);
+                    itemHTML.AppendFormat("    <td>{0:C2}</td>", lstItems[intIndex].Product.Price * lstItems[intIndex].intQuantity);
                     itemHTML.AppendFormat("</tr>");
                 }
                 strReceipt = strReceipt.Replace("{Items}", itemHTML.ToString());
@@ -319,7 +311,7 @@ namespace SU21_Final_Project
                 strReceipt = strReceipt.Replace("{TaxTotal}", dblTaxCost.ToString("C2"));
                 strReceipt = strReceipt.Replace("{ShippingTotal}", dblShippingCost.ToString("C2"));
                 strReceipt = strReceipt.Replace("{OrderTotal}", dblTotalCost.ToString("C2"));
-                //TODO WRITE TO FILE AND DISPLAY
+
                 //GET USERS SELECTED PATH
                 string strPath = "";
                 bool bolPathSelected = false;

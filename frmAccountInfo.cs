@@ -174,24 +174,38 @@ namespace SU21_Final_Project
 
         private void txtCity_KeyPress(object sender, KeyPressEventArgs e)
         {
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Space || e.KeyChar == (char)Keys.OemPeriod);
             changesMade = true;
         }
 
         private void txtZip_KeyPress(object sender, KeyPressEventArgs e)
         {
             changesMade = true;
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
             txtZip.MaxLength = 5;
         }
 
         private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
         {
             changesMade = true;
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            txtPhone.MaxLength = 10;
             txtPhone.MaxLength = 10;
         }
 
         private void txtEmail_KeyPress(object sender, KeyPressEventArgs e)
         {
             changesMade = true;
+            if (e.KeyChar == (char)Keys.Space)
+            {
+                e.Handled = true;
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

@@ -26,29 +26,9 @@ namespace SU21_Final_Project
 {
     public partial class frmShop : Form
     {
-        private string _appPath;
         public frmShop()
         {
             InitializeComponent();
-            _appPath = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
-        }
-
-        private Image resizeImage(Image src, int width, int height)
-        {
-            Image bmpNewImage = new Bitmap(width, height);
-            using (Graphics gfxNewImage = Graphics.FromImage(bmpNewImage))
-            {
-                gfxNewImage.DrawImage(
-                    src,
-                    new Rectangle(0, 0, bmpNewImage.Width, bmpNewImage.Height),
-                    0,
-                    0,
-                    src.Width,
-                    src.Height,
-                    GraphicsUnit.Pixel
-                );
-            }
-            return bmpNewImage;
         }
 
         double dblCurrentTotal = 0.00;
@@ -169,24 +149,6 @@ namespace SU21_Final_Project
             return result;
         }
 
-        //private void getShirt(string color)
-        //{
-        //    string strString = color;
-        //    string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
-
-        //    try
-        //    {
-        //        using (Image image = Image.FromFile($"{path}\\Shirts\\{strString}.PNG"))
-        //        {
-        //            picbxShirt.Image = resizeImage(image, picbxShirt.Width, picbxShirt.Height);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //}
-
         string strCurrentColor;
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -212,7 +174,6 @@ namespace SU21_Final_Project
                 {
                     lstCart.Items.RemoveAt(lstCart.SelectedIndex);
 
-
                     dblCurrentTotal = 0;
                     for (int i = 0; i < lstCart.Items.Count; i++)
                     {
@@ -225,7 +186,7 @@ namespace SU21_Final_Project
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
@@ -256,7 +217,6 @@ namespace SU21_Final_Project
         private void btnOrange_Click(object sender, EventArgs e)
         {
             strCurrentColor = btnOrange.BackColor.Name;
-            //getShirt(strCurrentColor);
             string strSize;
             if (rdoSmall.Checked == true)
             {
@@ -286,7 +246,6 @@ namespace SU21_Final_Project
         private void btnBlack_Click(object sender, EventArgs e)
         {
             strCurrentColor = btnBlack.BackColor.Name;
-            //getShirt(strCurrentColor); 
             string strSize;
             if (rdoSmall.Checked == true)
             {
@@ -316,7 +275,6 @@ namespace SU21_Final_Project
         private void btnBlue_Click(object sender, EventArgs e)
         {
             strCurrentColor = btnBlue.BackColor.Name;
-            //getShirt(strCurrentColor);
             string strSize;
             if (rdoSmall.Checked == true)
             {
@@ -346,7 +304,6 @@ namespace SU21_Final_Project
         private void btnGreen_Click(object sender, EventArgs e)
         {
             strCurrentColor = btnGreen.BackColor.Name;
-            //getShirt(strCurrentColor);
             string strSize;
             if (rdoSmall.Checked == true)
             {
@@ -376,7 +333,6 @@ namespace SU21_Final_Project
         private void btnPink_Click(object sender, EventArgs e)
         {
             strCurrentColor = btnPink.BackColor.Name;
-            //getShirt(strCurrentColor);
             string strSize;
             if (rdoSmall.Checked == true)
             {
@@ -406,7 +362,6 @@ namespace SU21_Final_Project
         private void btnPurple_Click(object sender, EventArgs e)
         {
             strCurrentColor = btnPurple.BackColor.Name;
-            //getShirt(strCurrentColor);
             string strSize;
             if (rdoSmall.Checked == true)
             {
@@ -436,7 +391,6 @@ namespace SU21_Final_Project
         private void btnRed_Click(object sender, EventArgs e)
         {
             strCurrentColor = btnRed.BackColor.Name;
-            //getShirt(strCurrentColor);
             string strSize;
             if (rdoSmall.Checked == true)
             {
@@ -466,7 +420,6 @@ namespace SU21_Final_Project
         private void btnWhite_Click(object sender, EventArgs e)
         {
             strCurrentColor = btnWhite.BackColor.Name;
-            //getShirt(strCurrentColor);
             string strSize;
             if (rdoSmall.Checked == true)
             {
@@ -496,7 +449,6 @@ namespace SU21_Final_Project
         private void btnYellow_Click(object sender, EventArgs e)
         {
             strCurrentColor = btnYellow.BackColor.Name;
-            //getShirt(strCurrentColor);
             string strSize;
             if (rdoSmall.Checked == true)
             {
@@ -531,9 +483,9 @@ namespace SU21_Final_Project
             strSubtotal = dblCurrentTotal.ToString();
             lstCartItems.Clear();
 
-            for (int i = 0; i < lstCart.Items.Count; i++)
+            for (int intIndex = 0; intIndex < lstCart.Items.Count; intIndex++)
             {
-                lstCartItems.Add((CartItem)lstCart.Items[i]);
+                lstCartItems.Add((CartItem)lstCart.Items[intIndex]);
             }
             frmShipping ship = new frmShipping();
             this.Hide();
@@ -577,11 +529,11 @@ namespace SU21_Final_Project
             }
         }
 
-        private void getItemPrice(string color, string size)
+        private void getItemPrice(string strColor, string strSize)
         {
             try
             {
-                DataProduct productPrice = DataProduct.GetProduct(color, size);
+                DataProduct productPrice = DataProduct.GetProduct(strColor, strSize);
                 lblItemPrice.Text = productPrice.Price.ToString("C2");
             }
             catch (Exception ex)
@@ -633,7 +585,6 @@ namespace SU21_Final_Project
             try
             {
                 DataProduct.SaveImage(pbxShirt.Image, strCurrentColor);
-                
             }
             catch(Exception ex)
             {

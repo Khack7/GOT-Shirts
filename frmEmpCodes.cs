@@ -17,8 +17,17 @@ namespace SU21_Final_Project
         public frmEmpCodes()
         {
             InitializeComponent();
-            _lstActiveCodes = DataCodes.ListActiveOnlyCodes();
-            _lstInactiveCodes = DataCodes.ListInactiveCodes();
+            try
+            {
+                _lstActiveCodes = DataCodes.ListActiveOnlyCodes();
+                _lstInactiveCodes = DataCodes.ListInactiveCodes();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+            }
+           
         }
 
         private void btnReturn_Click(object sender, EventArgs e)

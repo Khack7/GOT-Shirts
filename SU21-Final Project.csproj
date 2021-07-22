@@ -51,6 +51,7 @@
     <ApplicationIcon>logo_no_dots_fit_AHE_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -109,6 +110,12 @@
     <Compile Include="frmDiscountCodes.Designer.cs">
       <DependentUpon>frmDiscountCodes.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmEditManagerPopUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEditManagerPopUp.Designer.cs">
+      <DependentUpon>frmEditManagerPopUp.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmEmpCodes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,6 +157,12 @@
     </Compile>
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmManagerEditUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmManagerEditUser.Designer.cs">
+      <DependentUpon>frmManagerEditUser.cs</DependentUpon>
     </Compile>
     <Compile Include="frmManagerMain.cs">
       <SubType>Form</SubType>
@@ -228,6 +241,9 @@
     <EmbeddedResource Include="frmDiscountCodes.resx">
       <DependentUpon>frmDiscountCodes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmEditManagerPopUp.resx">
+      <DependentUpon>frmEditManagerPopUp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmEmpCodes.resx">
       <DependentUpon>frmEmpCodes.cs</DependentUpon>
     </EmbeddedResource>
@@ -248,6 +264,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmManagerEditUser.resx">
+      <DependentUpon>frmManagerEditUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmManagerMain.resx">
       <DependentUpon>frmManagerMain.cs</DependentUpon>

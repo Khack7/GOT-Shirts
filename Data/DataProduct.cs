@@ -90,10 +90,22 @@ namespace SU21_Final_Project.Data
         private static void LoadFromReader(ref DataProduct product, SqlDataReader sdr)
         {
 
-            int.TryParse(sdr["ProductID"].ToString(), out int intProduct);
-            int.TryParse(sdr["QuantityOnHand"].ToString(), out int intQuantity);
-            double.TryParse(sdr["Cost"].ToString(), out double dblCost);
-            double.TryParse(sdr["Price"].ToString(), out double dblPrice);
+            if(!int.TryParse(sdr["ProductID"].ToString(), out int intProduct))
+            {
+                intProduct = 0;
+            }
+            if(!int.TryParse(sdr["QuantityOnHand"].ToString(), out int intQuantity))
+            {
+                intQuantity = 0;
+            }
+            if(!double.TryParse(sdr["Cost"].ToString(), out double dblCost))
+            {
+                dblCost = 0;
+            }
+            if(!double.TryParse(sdr["Price"].ToString(), out double dblPrice))
+            {
+                dblPrice = 0;
+            }
             object objImage = sdr["ProductImage"];
             Image image = null;
             if(objImage != DBNull.Value)

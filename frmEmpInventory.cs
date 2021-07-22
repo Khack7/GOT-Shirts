@@ -17,7 +17,15 @@ namespace SU21_Final_Project
         public frmEmpInventory()
         {
             InitializeComponent();
-            _lstProducts = DataProduct.ListProducts();
+            try
+            {
+                _lstProducts = DataProduct.ListProducts();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+            }
         }
 
         private void frmEmpInventory_Load(object sender, EventArgs e)
@@ -27,13 +35,13 @@ namespace SU21_Final_Project
                 List<string> lstColors = _lstProducts.Select(p => p.Color).Distinct().OrderBy(c => c).ToList();
                 List<string> lstSizes = _lstProducts.Select(p => p.Size).Distinct().OrderBy(s => s).ToList();
 
-                for (int intI = 0; intI < lstColors.Count; intI++)
+                for (int intIndex = 0; intIndex < lstColors.Count; intIndex++)
                 {
-                    cboColor.Items.Add(lstColors[intI]);
+                    cboColor.Items.Add(lstColors[intIndex]);
                 }
-                for (int intI = 0; intI < lstSizes.Count; intI++)
+                for (int intIndex = 0; intIndex < lstSizes.Count; intIndex++)
                 {
-                    cboSize.Items.Add(lstSizes[intI]);
+                    cboSize.Items.Add(lstSizes[intIndex]);
                 }
             }
             catch (Exception ex)
@@ -55,14 +63,15 @@ namespace SU21_Final_Project
 
             if (cboColor.SelectedItem != null && cboSize.SelectedItem != null)
             {
-                string strSelectedColor = (string)cboColor.SelectedItem;
-                string strSelectedSize = (string)cboSize.SelectedItem;
-                var product = _lstProducts.Where(p => p.Color == strSelectedColor && p.Size == strSelectedSize).SingleOrDefault();
-                txtAmount.Text = product.QuantityOnHand.ToString();
-                txtPrice.Text = product.Price.ToString();
-                txtCost.Text = product.Cost.ToString();
                 try
                 {
+                    string strSelectedColor = (string)cboColor.SelectedItem;
+                    string strSelectedSize = (string)cboSize.SelectedItem;
+                    var product = _lstProducts.Where(p => p.Color == strSelectedColor && p.Size == strSelectedSize).SingleOrDefault();
+                    txtAmount.Text = product.QuantityOnHand.ToString();
+                    txtPrice.Text = product.Price.ToString();
+                    txtCost.Text = product.Cost.ToString();
+
                     DataProduct productImage = DataProduct.GetProduct(strSelectedColor, strSelectedSize);
                     pbxShirt.Image = productImage.ProductImage;
                 }
@@ -77,14 +86,14 @@ namespace SU21_Final_Project
         {
             if (cboSize.SelectedItem != null)
             {
-                string strSelectedColor = (string)cboColor.SelectedItem;
-                string strSelectedSize = (string)cboSize.SelectedItem;
-                var product = _lstProducts.Where(p => p.Color == strSelectedColor && p.Size == strSelectedSize).SingleOrDefault();
-                txtAmount.Text = product.QuantityOnHand.ToString();
-                txtPrice.Text = product.Price.ToString();
-                txtCost.Text = product.Cost.ToString();
                 try
                 {
+                    string strSelectedColor = (string)cboColor.SelectedItem;
+                    string strSelectedSize = (string)cboSize.SelectedItem;
+                    var product = _lstProducts.Where(p => p.Color == strSelectedColor && p.Size == strSelectedSize).SingleOrDefault();
+                    txtAmount.Text = product.QuantityOnHand.ToString();
+                    txtPrice.Text = product.Price.ToString();
+                    txtCost.Text = product.Cost.ToString();
                     DataProduct productImage = DataProduct.GetProduct(strSelectedColor, strSelectedSize);
                     pbxShirt.Image = productImage.ProductImage;
                 }

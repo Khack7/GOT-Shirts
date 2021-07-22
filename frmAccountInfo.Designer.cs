@@ -112,6 +112,7 @@ namespace SU21_Final_Project
             this.txtPhone.Location = new System.Drawing.Point(119, 354);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.ReadOnly = true;
+            this.txtPhone.ShortcutsEnabled = false;
             this.txtPhone.Size = new System.Drawing.Size(155, 20);
             this.txtPhone.TabIndex = 19;
             this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
@@ -150,6 +151,7 @@ namespace SU21_Final_Project
             this.txtZip.Location = new System.Drawing.Point(403, 275);
             this.txtZip.Name = "txtZip";
             this.txtZip.ReadOnly = true;
+            this.txtZip.ShortcutsEnabled = false;
             this.txtZip.Size = new System.Drawing.Size(155, 20);
             this.txtZip.TabIndex = 17;
             this.txtZip.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtZip_KeyPress);

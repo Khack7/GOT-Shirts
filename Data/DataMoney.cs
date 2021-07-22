@@ -20,7 +20,6 @@ namespace SU21_Final_Project.Data
         {
             DataMoney result = null;
 
-
             using (SqlConnection con = DataCommon.StartConnection())
             {
                 using (SqlCommand cmd = new SqlCommand("SELECT * FROM HackK21Su2332.Settings WHERE SettingName = @SettingName"))
@@ -32,12 +31,15 @@ namespace SU21_Final_Project.Data
                     {
                         if (sdr.Read())
                         {
-                            double.TryParse(sdr["SettingValue"].ToString(), out double amount);
+                            if(!double.TryParse(sdr["SettingValue"].ToString(), out double dblAmount))
+                            {
+                                dblAmount = 0;
+                            }
 
                             result = new DataMoney
                             {
                                 SettingName = name,
-                                SettingValue = amount.ToString()
+                                SettingValue = dblAmount.ToString()
                             };
                         }
                     }
@@ -46,6 +48,5 @@ namespace SU21_Final_Project.Data
             }
             return result;
         }
-        //TODO: CREATE METHOD TO BE USED BY MANAGER TO ADJUST SETTINGS
     }
 }
