@@ -58,9 +58,9 @@ namespace SU21_Final_Project
                     DataPerson.SavePerson(person);
                     MessageBox.Show("Changes Saved Successfully!", "Changes Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     bolEditsSaved = true;
-                    frmManageUsers manage = new frmManageUsers();
+                    frmManageUsers frmManage = new frmManageUsers();
                     this.Close();
-                    manage.ShowDialog();
+                    frmManage.ShowDialog();
                 }
                 catch(Exception ex)
                 {
@@ -71,9 +71,9 @@ namespace SU21_Final_Project
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
-            frmManageUsers manage = new frmManageUsers();
+            frmManageUsers frmManage = new frmManageUsers();
             this.Close();
-            manage.ShowDialog();
+            frmManage.ShowDialog();
         }
 
         private void txtUsername_KeyPress(object sender, KeyPressEventArgs e)
@@ -124,10 +124,10 @@ namespace SU21_Final_Project
                 DialogResult dr = MessageBox.Show("Are you sure you want to exit? Any and all changes made will be discarded!", "Unsaved Changes!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if(dr == DialogResult.Yes)
                 {
-                    frmManageUsers manage = new frmManageUsers();
+                    frmManageUsers frmManage = new frmManageUsers();
                     bolEditsSaved = true;
                     this.Close();
-                    manage.ShowDialog();
+                    frmManage.ShowDialog();
                 }
                 else
                 {

@@ -48,7 +48,7 @@ namespace SU21_Final_Project.Data
                         {
                             if(!int.TryParse(sdr["OrderItemID"].ToString(), out int intItemID))
                             {
-
+                                intItemID = 0;
                             }
                             lstItems[intIndex].intOrderItemID = intItemID;
                         }

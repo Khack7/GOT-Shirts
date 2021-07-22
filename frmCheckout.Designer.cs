@@ -65,7 +65,7 @@ namespace SU21_Final_Project
             this.lblShippingPointer.Location = new System.Drawing.Point(201, 103);
             this.lblShippingPointer.Name = "lblShippingPointer";
             this.lblShippingPointer.Size = new System.Drawing.Size(67, 17);
-            this.lblShippingPointer.TabIndex = 40;
+            this.lblShippingPointer.TabIndex = 5;
             this.lblShippingPointer.Text = "Shipping:";
             // 
             // btnConfirm
@@ -75,8 +75,8 @@ namespace SU21_Final_Project
             this.btnConfirm.Location = new System.Drawing.Point(256, 377);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(102, 47);
-            this.btnConfirm.TabIndex = 39;
-            this.btnConfirm.Text = "Confirm";
+            this.btnConfirm.TabIndex = 19;
+            this.btnConfirm.Text = "&Confirm";
             this.btnConfirm.UseVisualStyleBackColor = true;
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
@@ -86,8 +86,8 @@ namespace SU21_Final_Project
             this.btnCancel.Location = new System.Drawing.Point(12, 377);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(102, 47);
-            this.btnCancel.TabIndex = 38;
-            this.btnCancel.Text = "Cancel Order";
+            this.btnCancel.TabIndex = 20;
+            this.btnCancel.Text = "Cancel &Order";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -97,7 +97,7 @@ namespace SU21_Final_Project
             this.txtCard.Name = "txtCard";
             this.txtCard.PasswordChar = '•';
             this.txtCard.Size = new System.Drawing.Size(266, 20);
-            this.txtCard.TabIndex = 37;
+            this.txtCard.TabIndex = 13;
             this.txtCard.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCard_KeyPress);
             // 
             // lblCard
@@ -107,8 +107,8 @@ namespace SU21_Final_Project
             this.lblCard.Location = new System.Drawing.Point(9, 222);
             this.lblCard.Name = "lblCard";
             this.lblCard.Size = new System.Drawing.Size(50, 17);
-            this.lblCard.TabIndex = 36;
-            this.lblCard.Text = "Card #";
+            this.lblCard.TabIndex = 12;
+            this.lblCard.Text = "C&ard #";
             // 
             // rdoDiscover
             // 
@@ -117,8 +117,8 @@ namespace SU21_Final_Project
             this.rdoDiscover.Location = new System.Drawing.Point(250, 187);
             this.rdoDiscover.Name = "rdoDiscover";
             this.rdoDiscover.Size = new System.Drawing.Size(81, 21);
-            this.rdoDiscover.TabIndex = 35;
-            this.rdoDiscover.Text = "Discover";
+            this.rdoDiscover.TabIndex = 11;
+            this.rdoDiscover.Text = "&Discover";
             this.rdoDiscover.UseVisualStyleBackColor = true;
             // 
             // rdoMasterCard
@@ -128,8 +128,8 @@ namespace SU21_Final_Project
             this.rdoMasterCard.Location = new System.Drawing.Point(108, 187);
             this.rdoMasterCard.Name = "rdoMasterCard";
             this.rdoMasterCard.Size = new System.Drawing.Size(99, 21);
-            this.rdoMasterCard.TabIndex = 34;
-            this.rdoMasterCard.Text = "MasterCard";
+            this.rdoMasterCard.TabIndex = 10;
+            this.rdoMasterCard.Text = "&MasterCard";
             this.rdoMasterCard.UseVisualStyleBackColor = true;
             // 
             // rdoVisa
@@ -140,9 +140,9 @@ namespace SU21_Final_Project
             this.rdoVisa.Location = new System.Drawing.Point(12, 187);
             this.rdoVisa.Name = "rdoVisa";
             this.rdoVisa.Size = new System.Drawing.Size(53, 21);
-            this.rdoVisa.TabIndex = 33;
+            this.rdoVisa.TabIndex = 9;
             this.rdoVisa.TabStop = true;
-            this.rdoVisa.Text = "Visa";
+            this.rdoVisa.Text = "&Visa";
             this.rdoVisa.UseVisualStyleBackColor = true;
             // 
             // lblTotalPointer
@@ -152,7 +152,7 @@ namespace SU21_Final_Project
             this.lblTotalPointer.Location = new System.Drawing.Point(201, 143);
             this.lblTotalPointer.Name = "lblTotalPointer";
             this.lblTotalPointer.Size = new System.Drawing.Size(44, 17);
-            this.lblTotalPointer.TabIndex = 32;
+            this.lblTotalPointer.TabIndex = 7;
             this.lblTotalPointer.Text = "Total:";
             // 
             // lblTaxPointer
@@ -162,7 +162,7 @@ namespace SU21_Final_Project
             this.lblTaxPointer.Location = new System.Drawing.Point(201, 53);
             this.lblTaxPointer.Name = "lblTaxPointer";
             this.lblTaxPointer.Size = new System.Drawing.Size(35, 17);
-            this.lblTaxPointer.TabIndex = 31;
+            this.lblTaxPointer.TabIndex = 3;
             this.lblTaxPointer.Text = "Tax:";
             // 
             // lblSubTotalPointer
@@ -172,7 +172,7 @@ namespace SU21_Final_Project
             this.lblSubTotalPointer.Location = new System.Drawing.Point(201, 8);
             this.lblSubTotalPointer.Name = "lblSubTotalPointer";
             this.lblSubTotalPointer.Size = new System.Drawing.Size(69, 17);
-            this.lblSubTotalPointer.TabIndex = 30;
+            this.lblSubTotalPointer.TabIndex = 1;
             this.lblSubTotalPointer.Text = "SubTotal:";
             // 
             // lstCart
@@ -184,7 +184,7 @@ namespace SU21_Final_Project
             this.lstCart.Name = "lstCart";
             this.lstCart.ScrollAlwaysVisible = true;
             this.lstCart.Size = new System.Drawing.Size(183, 148);
-            this.lstCart.TabIndex = 29;
+            this.lstCart.TabIndex = 0;
             // 
             // rdoSecondDay
             // 
@@ -193,8 +193,8 @@ namespace SU21_Final_Project
             this.rdoSecondDay.Location = new System.Drawing.Point(252, 19);
             this.rdoSecondDay.Name = "rdoSecondDay";
             this.rdoSecondDay.Size = new System.Drawing.Size(100, 21);
-            this.rdoSecondDay.TabIndex = 43;
-            this.rdoSecondDay.Text = "2nd Day Air";
+            this.rdoSecondDay.TabIndex = 2;
+            this.rdoSecondDay.Text = "&2nd Day Air";
             this.rdoSecondDay.UseVisualStyleBackColor = true;
             this.rdoSecondDay.CheckedChanged += new System.EventHandler(this.rdoSecondDay_CheckedChanged);
             // 
@@ -205,8 +205,8 @@ namespace SU21_Final_Project
             this.rdoNextDay.Location = new System.Drawing.Point(123, 19);
             this.rdoNextDay.Name = "rdoNextDay";
             this.rdoNextDay.Size = new System.Drawing.Size(104, 21);
-            this.rdoNextDay.TabIndex = 42;
-            this.rdoNextDay.Text = "Next Day Air";
+            this.rdoNextDay.TabIndex = 1;
+            this.rdoNextDay.Text = "&Next Day Air";
             this.rdoNextDay.UseVisualStyleBackColor = true;
             this.rdoNextDay.CheckedChanged += new System.EventHandler(this.rdoNextDay_CheckedChanged);
             // 
@@ -218,9 +218,9 @@ namespace SU21_Final_Project
             this.rdoStandard.Location = new System.Drawing.Point(14, 19);
             this.rdoStandard.Name = "rdoStandard";
             this.rdoStandard.Size = new System.Drawing.Size(84, 21);
-            this.rdoStandard.TabIndex = 41;
+            this.rdoStandard.TabIndex = 0;
             this.rdoStandard.TabStop = true;
-            this.rdoStandard.Text = "Standard";
+            this.rdoStandard.Text = "&Standard";
             this.rdoStandard.UseVisualStyleBackColor = true;
             this.rdoStandard.CheckedChanged += new System.EventHandler(this.rdoStandard_CheckedChanged);
             // 
@@ -230,7 +230,7 @@ namespace SU21_Final_Project
             this.lblShippingMethod.Location = new System.Drawing.Point(13, 298);
             this.lblShippingMethod.Name = "lblShippingMethod";
             this.lblShippingMethod.Size = new System.Drawing.Size(318, 23);
-            this.lblShippingMethod.TabIndex = 44;
+            this.lblShippingMethod.TabIndex = 17;
             this.lblShippingMethod.Text = "Select Shipping Method";
             this.lblShippingMethod.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -242,7 +242,7 @@ namespace SU21_Final_Project
             this.groupBox1.Location = new System.Drawing.Point(0, 317);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(370, 54);
-            this.groupBox1.TabIndex = 45;
+            this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             // 
             // lblExpiration
@@ -252,7 +252,7 @@ namespace SU21_Final_Project
             this.lblExpiration.Location = new System.Drawing.Point(9, 255);
             this.lblExpiration.Name = "lblExpiration";
             this.lblExpiration.Size = new System.Drawing.Size(69, 17);
-            this.lblExpiration.TabIndex = 46;
+            this.lblExpiration.TabIndex = 14;
             this.lblExpiration.Text = "Exp. Date";
             // 
             // cboMonth
@@ -263,7 +263,7 @@ namespace SU21_Final_Project
             this.cboMonth.Location = new System.Drawing.Point(84, 251);
             this.cboMonth.Name = "cboMonth";
             this.cboMonth.Size = new System.Drawing.Size(49, 21);
-            this.cboMonth.TabIndex = 47;
+            this.cboMonth.TabIndex = 15;
             this.cboMonth.SelectedIndexChanged += new System.EventHandler(this.cboMonth_SelectedIndexChanged);
             // 
             // cboYear
@@ -273,7 +273,7 @@ namespace SU21_Final_Project
             this.cboYear.Location = new System.Drawing.Point(146, 251);
             this.cboYear.Name = "cboYear";
             this.cboYear.Size = new System.Drawing.Size(49, 21);
-            this.cboYear.TabIndex = 48;
+            this.cboYear.TabIndex = 16;
             this.cboYear.SelectedIndexChanged += new System.EventHandler(this.cboYear_SelectedIndexChanged);
             // 
             // lblSubtotal
@@ -282,7 +282,7 @@ namespace SU21_Final_Project
             this.lblSubtotal.Location = new System.Drawing.Point(276, 8);
             this.lblSubtotal.Name = "lblSubtotal";
             this.lblSubtotal.Size = new System.Drawing.Size(55, 17);
-            this.lblSubtotal.TabIndex = 49;
+            this.lblSubtotal.TabIndex = 2;
             this.lblSubtotal.Text = "$0.00";
             // 
             // lblTax
@@ -291,7 +291,7 @@ namespace SU21_Final_Project
             this.lblTax.Location = new System.Drawing.Point(276, 53);
             this.lblTax.Name = "lblTax";
             this.lblTax.Size = new System.Drawing.Size(55, 17);
-            this.lblTax.TabIndex = 50;
+            this.lblTax.TabIndex = 4;
             this.lblTax.Text = "$0.00";
             // 
             // lblShipping
@@ -300,7 +300,7 @@ namespace SU21_Final_Project
             this.lblShipping.Location = new System.Drawing.Point(276, 103);
             this.lblShipping.Name = "lblShipping";
             this.lblShipping.Size = new System.Drawing.Size(55, 17);
-            this.lblShipping.TabIndex = 51;
+            this.lblShipping.TabIndex = 6;
             this.lblShipping.Text = "$0.00";
             // 
             // lblTotal
@@ -309,7 +309,7 @@ namespace SU21_Final_Project
             this.lblTotal.Location = new System.Drawing.Point(276, 143);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(55, 17);
-            this.lblTotal.TabIndex = 52;
+            this.lblTotal.TabIndex = 8;
             this.lblTotal.Text = "$0.00";
             // 
             // btnHelp
@@ -318,8 +318,8 @@ namespace SU21_Final_Project
             this.btnHelp.Location = new System.Drawing.Point(134, 377);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(102, 47);
-            this.btnHelp.TabIndex = 53;
-            this.btnHelp.Text = "Help";
+            this.btnHelp.TabIndex = 21;
+            this.btnHelp.Text = "&Help";
             this.btnHelp.UseVisualStyleBackColor = true;
             this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 

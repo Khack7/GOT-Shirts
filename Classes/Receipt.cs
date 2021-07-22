@@ -19,5 +19,15 @@ namespace SU21_Final_Project.Classes
                 return reader.ReadToEnd();
             }
         }
+
+        public static string LoadInventoryTemplate()
+        {
+            string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            string filePath = $"{path}\\Templates\\Inventory-Update.html";
+            using (StreamReader reader = new StreamReader(filePath))
+            {
+                return reader.ReadToEnd();
+            }
+        }
     }
 }

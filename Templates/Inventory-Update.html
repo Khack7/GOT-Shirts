@@ -1,0 +1,39 @@
+﻿<html>
+<head>
+    <title>Adjustment Date {Date}</title>
+    <style>
+        body {
+            font-family: tahoma;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Adjustment Date {Date}</h1>
+    <div style="float:left">
+        <div>{AdjustmentDate}</div>
+    </div>
+    <div style="clear:both"></div>
+    <table style="width:100%" border="1" cellpadding="3" cellspacing="0">
+        <tr>
+            <th align="left" style="background-color: #ddd">Item</th>
+            <th align="left" style="background-color: #ddd">Qty</th>
+            <th align="left" style="background-color: #ddd">Cost</th>
+            <th align="left" style="background-color: #ddd">Ext. Cost</th>
+        </tr>
+        {Items}
+        <tr>
+            <td colspan="3" align="right">Subtotal:</td>
+            <td>{SubTotal}</td>
+        </tr>
+        <tr>
+            <td colspan="3" align="right">Tax:</td>
+            <td>{TaxTotal}</td>
+        </tr>
+        <tr>
+            <td colspan="3" align="right">Total:</td>
+            <td>{OrderTotal}</td>
+        </tr>
+    </table>
+</body>
+</html>

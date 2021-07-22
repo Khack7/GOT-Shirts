@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SU21_Final_Project.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -30,67 +31,28 @@ namespace SU21_Final_Project
 
         private void btnEnter_Click(object sender, EventArgs e)
         {
-            string code = txtCode.Text;
-
-            bool bolCodeFound = false;
-
-            string constr = ConfigurationManager.ConnectionStrings["SU21_Final_Project.Properties.Settings.ConnectionString"].ConnectionString;
-
             try
             {
-                using (SqlConnection con = new SqlConnection(constr))
+                DataCodes code = DataCodes.GetCode(txtCode.Text.ToUpper());
+
+                if (code != null)
                 {
-                    using (SqlCommand cmd = new SqlCommand("SELECT * FROM HackK21Su2332.Discounts"))
+                    if(code.Active == true)
                     {
-                        con.Open();
-                        cmd.CommandType = CommandType.Text;
-                        cmd.Connection = con;
-                        using (SqlDataReader sdr = cmd.ExecuteReader())
-                        {
-                            if (sdr.Read())
-                            {
-                                while (sdr.Read() && bolCodeFound == false)
-                                {
-                                    if (code.Equals(sdr["DiscountCode"].ToString(), StringComparison.InvariantCultureIgnoreCase))
-                                    {
-                                        bool.TryParse(sdr["Active"].ToString(), out bool check);
+                        MessageBox.Show("Code accepted! Your discount will be applied at checkout", "Accepted!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                                        bolCodeFound = true;
-
-                                        if (check == true)
-                                        {
-                                            CouponCode = sdr["DiscountCode"].ToString();
-                                            MessageBox.Show("Code accepted! Your discount will be applied at checkout", "Accepted!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                                            if (double.TryParse(sdr["PercentOff"].ToString(), out double p))
-                                            {
-                                                percentOff = p;
-                                            }
-                                            CodeUsed = true;
-
-                                            this.Close();
-                                            break;
-                                        }
-                                        else
-                                        {
-                                            MessageBox.Show("This code is inactive", "Code unavailable for use", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                            break;
-                                        }
-                                    }
-                                }
-                                if(bolCodeFound == false)
-                                {
-                                    MessageBox.Show("This code doesn't exist", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                }
-
-                            }
-                            else
-                            {
-                                MessageBox.Show("There are currently no coupons created", "Alert!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-                        con.Close();
+                        CodeUsed = true;
+                        CouponCode = code.DiscountCode;
+                        percentOff = code.PercentOff;
                     }
+                    else
+                    {
+                        MessageBox.Show("This code is inactive", "Code unavailable for use", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                   MessageBox.Show("This code doesn't exist", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)

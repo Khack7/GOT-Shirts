@@ -49,7 +49,7 @@ namespace SU21_Final_Project
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(90, 24);
             this.btnHelp.TabIndex = 7;
-            this.btnHelp.Text = "Help";
+            this.btnHelp.Text = "&Help";
             this.btnHelp.UseVisualStyleBackColor = true;
             this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
@@ -79,7 +79,7 @@ namespace SU21_Final_Project
             this.lblPass.Name = "lblPass";
             this.lblPass.Size = new System.Drawing.Size(61, 15);
             this.lblPass.TabIndex = 2;
-            this.lblPass.Text = "Password";
+            this.lblPass.Text = "&Password";
             // 
             // lblUserName
             // 
@@ -90,7 +90,7 @@ namespace SU21_Final_Project
             this.lblUserName.Name = "lblUserName";
             this.lblUserName.Size = new System.Drawing.Size(67, 15);
             this.lblUserName.TabIndex = 0;
-            this.lblUserName.Text = "UserName";
+            this.lblUserName.Text = "&UserName";
             // 
             // btnRegister
             // 
@@ -99,7 +99,7 @@ namespace SU21_Final_Project
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(90, 24);
             this.btnRegister.TabIndex = 6;
-            this.btnRegister.Text = "Register";
+            this.btnRegister.Text = "&Register";
             this.btnRegister.UseVisualStyleBackColor = true;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
@@ -111,7 +111,7 @@ namespace SU21_Final_Project
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(109, 50);
             this.btnReturn.TabIndex = 8;
-            this.btnReturn.Text = "Return To Main";
+            this.btnReturn.Text = "Return To &Main";
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
@@ -123,7 +123,7 @@ namespace SU21_Final_Project
             this.btnSign.Name = "btnSign";
             this.btnSign.Size = new System.Drawing.Size(109, 50);
             this.btnSign.TabIndex = 5;
-            this.btnSign.Text = "Sign In";
+            this.btnSign.Text = "&Sign In";
             this.btnSign.UseVisualStyleBackColor = true;
             this.btnSign.Click += new System.EventHandler(this.btnSign_Click);
             // 
@@ -135,7 +135,7 @@ namespace SU21_Final_Project
             this.btnForgot.Name = "btnForgot";
             this.btnForgot.Size = new System.Drawing.Size(152, 24);
             this.btnForgot.TabIndex = 4;
-            this.btnForgot.Text = "Forgot Password?";
+            this.btnForgot.Text = "&Forgot Password?";
             this.btnForgot.UseVisualStyleBackColor = true;
             this.btnForgot.Click += new System.EventHandler(this.btnForgot_Click);
             // 

@@ -42,7 +42,7 @@ namespace SU21_Final_Project
             this.txtUsername.Location = new System.Drawing.Point(92, 28);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(183, 20);
-            this.txtUsername.TabIndex = 19;
+            this.txtUsername.TabIndex = 1;
             // 
             // lblUserName
             // 
@@ -51,8 +51,8 @@ namespace SU21_Final_Project
             this.lblUserName.Location = new System.Drawing.Point(11, 29);
             this.lblUserName.Name = "lblUserName";
             this.lblUserName.Size = new System.Drawing.Size(75, 17);
-            this.lblUserName.TabIndex = 18;
-            this.lblUserName.Text = "UserName";
+            this.lblUserName.TabIndex = 0;
+            this.lblUserName.Text = "&UserName";
             // 
             // btnReturn
             // 
@@ -60,8 +60,8 @@ namespace SU21_Final_Project
             this.btnReturn.Location = new System.Drawing.Point(14, 66);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(82, 48);
-            this.btnReturn.TabIndex = 25;
-            this.btnReturn.Text = "Return To Main";
+            this.btnReturn.TabIndex = 4;
+            this.btnReturn.Text = "&Return To Main";
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
@@ -71,8 +71,8 @@ namespace SU21_Final_Project
             this.btnSign.Location = new System.Drawing.Point(193, 66);
             this.btnSign.Name = "btnSign";
             this.btnSign.Size = new System.Drawing.Size(82, 48);
-            this.btnSign.TabIndex = 23;
-            this.btnSign.Text = "Sign In";
+            this.btnSign.TabIndex = 2;
+            this.btnSign.Text = "&Sign In";
             this.btnSign.UseVisualStyleBackColor = true;
             this.btnSign.Click += new System.EventHandler(this.btnSign_Click);
             // 
@@ -82,8 +82,8 @@ namespace SU21_Final_Project
             this.btnHelp.Location = new System.Drawing.Point(105, 66);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(82, 48);
-            this.btnHelp.TabIndex = 26;
-            this.btnHelp.Text = "Help";
+            this.btnHelp.TabIndex = 3;
+            this.btnHelp.Text = "&Help";
             this.btnHelp.UseVisualStyleBackColor = true;
             this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 

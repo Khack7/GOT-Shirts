@@ -17,16 +17,24 @@ namespace SU21_Final_Project
         public frmDiscountCodes()
         {
             InitializeComponent();
-            _codes = DataCodes.ListCodes();
+            try
+            {
+                _codes = DataCodes.ListCodes();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+            }
         }
 
         private void frmDiscountCodes_Load(object sender, EventArgs e)
         {
-            List<string> codes = _codes.Select(c => c.DiscountCode).OrderBy(c => c).ToList();
+            List<string> lstCodes = _codes.Select(c => c.DiscountCode).OrderBy(c => c).ToList();
 
-            for (int i = 0; i < codes.Count; i++)
+            for (int intIndex = 0; intIndex < lstCodes.Count; intIndex++)
             {
-                cboCodes.Items.Add(codes[i]);
+                cboCodes.Items.Add(lstCodes[intIndex]);
             }
         }
 
@@ -36,6 +44,7 @@ namespace SU21_Final_Project
             cboCodes.Enabled = false;
             btnActivate.Enabled = false;
             btnDeactivate.Enabled = false;
+            btnStartCreation.Enabled = false;
             txtCode.Focus();
         }
 
@@ -66,7 +75,7 @@ namespace SU21_Final_Project
                         throw new Exception("Incorrect input in Percent off!");
                     }
 
-                    if(intPercent > 90)
+                    if (intPercent > 90)
                     {
                         MessageBox.Show("Discounts cannot exceed 90% off", "Discount too large", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
@@ -86,6 +95,7 @@ namespace SU21_Final_Project
                         cboCodes.Enabled = true;
                         btnActivate.Enabled = true;
                         btnDeactivate.Enabled = true;
+                        btnStartCreation.Enabled = true;
                         cboCodes.Focus();
                         lblPercentOff.Text = "";
                         lblStatus.Text = "";
@@ -95,14 +105,14 @@ namespace SU21_Final_Project
 
                         cboCodes.Items.Clear();
 
-                        for (int i = 0; i < codes.Count; i++)
+                        for (int intIndex = 0; intIndex < codes.Count; intIndex++)
                         {
-                            cboCodes.Items.Add(codes[i]);
+                            cboCodes.Items.Add(codes[intIndex]);
                         }
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -132,10 +142,10 @@ namespace SU21_Final_Project
             var code = _codes.Where(c => c.DiscountCode == strSelectedCode).SingleOrDefault();
 
             lblPercentDisplay.Text = code.PercentOff.ToString();
-            
-            if(bool.TryParse(code.Active.ToString(), out bool A))
+
+            if (bool.TryParse(code.Active.ToString(), out bool bolActivity))
             {
-                if(A == true)
+                if (bolActivity == true)
                 {
                     strStatus = "Active";
                 }
@@ -160,7 +170,7 @@ namespace SU21_Final_Project
 
         private void btnActivate_Click(object sender, EventArgs e)
         {
-            if(cboCodes.SelectedItem == null)
+            if (cboCodes.SelectedItem == null)
             {
                 MessageBox.Show("Please select a code first", "No code selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -175,15 +185,15 @@ namespace SU21_Final_Project
                     bolStatus = true;
                     DataCodes.CodeActivity(cboCodes.SelectedItem.ToString(), bolStatus);
                     _codes = DataCodes.ListCodes();
-                    List<string> codes = _codes.Select(c => c.DiscountCode).OrderBy(c => c).ToList();
+                    List<string> lstCodes = _codes.Select(c => c.DiscountCode).OrderBy(c => c).ToList();
 
                     cboCodes.Items.Clear();
                     lblStatus.Text = "";
                     lblPercentDisplay.Text = "";
 
-                    for (int i = 0; i < codes.Count; i++)
+                    for (int intIndex = 0; intIndex < lstCodes.Count; intIndex++)
                     {
-                        cboCodes.Items.Add(codes[i]);
+                        cboCodes.Items.Add(lstCodes[intIndex]);
                     }
                 }
             }
@@ -212,11 +222,10 @@ namespace SU21_Final_Project
                     lblStatus.Text = "";
                     lblPercentDisplay.Text = "";
 
-                    for (int i = 0; i < codes.Count; i++)
+                    for (int intIndex = 0; intIndex < codes.Count; intIndex++)
                     {
-                        cboCodes.Items.Add(codes[i]);
+                        cboCodes.Items.Add(codes[intIndex]);
                     }
-
                 }
             }
         }

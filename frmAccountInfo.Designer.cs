@@ -73,7 +73,7 @@ namespace SU21_Final_Project
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(68, 17);
             this.label6.TabIndex = 10;
-            this.label6.Text = "Address3";
+            this.label6.Text = "Add&ress3";
             // 
             // txtAddress2
             // 
@@ -92,7 +92,7 @@ namespace SU21_Final_Project
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(68, 17);
             this.label5.TabIndex = 8;
-            this.label5.Text = "Address2";
+            this.label5.Text = "A&ddress2";
             // 
             // cboStates
             // 
@@ -125,7 +125,7 @@ namespace SU21_Final_Project
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Size = new System.Drawing.Size(49, 17);
             this.lblPhone.TabIndex = 18;
-            this.lblPhone.Text = "Phone";
+            this.lblPhone.Text = "&Phone";
             // 
             // txtEmail
             // 
@@ -144,7 +144,7 @@ namespace SU21_Final_Project
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(42, 17);
             this.lblEmail.TabIndex = 20;
-            this.lblEmail.Text = "Email";
+            this.lblEmail.Text = "E&mail";
             // 
             // txtZip
             // 
@@ -201,7 +201,7 @@ namespace SU21_Final_Project
             this.lblZip.Name = "lblZip";
             this.lblZip.Size = new System.Drawing.Size(64, 17);
             this.lblZip.TabIndex = 16;
-            this.lblZip.Text = "Zipcode*";
+            this.lblZip.Text = "&Zipcode*";
             // 
             // lblState
             // 
@@ -211,7 +211,7 @@ namespace SU21_Final_Project
             this.lblState.Name = "lblState";
             this.lblState.Size = new System.Drawing.Size(46, 17);
             this.lblState.TabIndex = 14;
-            this.lblState.Text = "State*";
+            this.lblState.Text = "&State*";
             // 
             // lblCity
             // 
@@ -221,7 +221,7 @@ namespace SU21_Final_Project
             this.lblCity.Name = "lblCity";
             this.lblCity.Size = new System.Drawing.Size(36, 17);
             this.lblCity.TabIndex = 12;
-            this.lblCity.Text = "City*";
+            this.lblCity.Text = "C&ity*";
             // 
             // lblAddress
             // 
@@ -231,7 +231,7 @@ namespace SU21_Final_Project
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(65, 17);
             this.lblAddress.TabIndex = 6;
-            this.lblAddress.Text = "Address*";
+            this.lblAddress.Text = "&Address*";
             // 
             // lblLName
             // 
@@ -241,7 +241,7 @@ namespace SU21_Final_Project
             this.lblLName.Name = "lblLName";
             this.lblLName.Size = new System.Drawing.Size(81, 17);
             this.lblLName.TabIndex = 4;
-            this.lblLName.Text = "Last Name*";
+            this.lblLName.Text = "&Last Name*";
             // 
             // lblFName
             // 
@@ -251,7 +251,7 @@ namespace SU21_Final_Project
             this.lblFName.Name = "lblFName";
             this.lblFName.Size = new System.Drawing.Size(81, 17);
             this.lblFName.TabIndex = 2;
-            this.lblFName.Text = "First Name*";
+            this.lblFName.Text = "&First Name*";
             // 
             // btnCancel
             // 
@@ -260,7 +260,7 @@ namespace SU21_Final_Project
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(106, 46);
             this.btnCancel.TabIndex = 23;
-            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -272,7 +272,7 @@ namespace SU21_Final_Project
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(106, 46);
             this.btnUpdate.TabIndex = 22;
-            this.btnUpdate.Text = "Update";
+            this.btnUpdate.Text = "&Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
@@ -283,7 +283,7 @@ namespace SU21_Final_Project
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(106, 46);
             this.btnEdit.TabIndex = 0;
-            this.btnEdit.Text = "Edit";
+            this.btnEdit.Text = "&Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 

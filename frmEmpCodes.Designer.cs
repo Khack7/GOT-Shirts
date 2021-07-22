@@ -82,7 +82,7 @@ namespace SU21_Final_Project
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(103, 30);
             this.btnReturn.TabIndex = 6;
-            this.btnReturn.Text = "Return";
+            this.btnReturn.Text = "&Return";
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 

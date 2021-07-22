@@ -75,7 +75,7 @@ namespace SU21_Final_Project
             // 
             this.mnuManage.Name = "mnuManage";
             this.mnuManage.Size = new System.Drawing.Size(62, 20);
-            this.mnuManage.Text = "Manage";
+            this.mnuManage.Text = "&Manage";
             this.mnuManage.Click += new System.EventHandler(this.mnuManage_Click);
             // 
             // frmMain

@@ -1,10 +1,12 @@
-﻿using SU21_Final_Project.Data;
+﻿using SU21_Final_Project.Classes;
+using SU21_Final_Project.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +20,15 @@ namespace SU21_Final_Project
         public frmInventory()
         {
             InitializeComponent();
-            _products = DataProduct.ListProducts();
+            try
+            {
+                _products = DataProduct.ListProducts();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+            }
         }
 
         private void btnReturn_Click(object sender, EventArgs e)
@@ -81,6 +91,11 @@ namespace SU21_Final_Project
                 txtAmount.Text = product.QuantityOnHand.ToString();
                 txtPrice.Text = product.Price.ToString();
                 txtCost.Text = product.Cost.ToString();
+                //TO BE USED FOR INVOICE
+                intOldQuantity = product.QuantityOnHand;
+                dblNewPrice = product.Price;
+                dblNewCost = product.Price;
+
                 try
                 {
                     DataProduct productImage = DataProduct.GetProduct(strSelectedColor, strSelectedSize);
@@ -93,6 +108,8 @@ namespace SU21_Final_Project
             }
         }
 
+        double dblNewPrice = 0.00, dblNewCost = 0.00;
+        int intOldQuantity = 0, intNewQuantity = 0;
         private void cboSize_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboSize.SelectedItem != null)
@@ -108,6 +125,11 @@ namespace SU21_Final_Project
                 txtAmount.Text = product.QuantityOnHand.ToString();
                 txtPrice.Text = product.Price.ToString();
                 txtCost.Text = product.Cost.ToString();
+                //TO BE USED FOR INVOICE
+                intOldQuantity = product.QuantityOnHand;
+                dblNewPrice = product.Price;
+                dblNewCost = product.Price;
+
                 try
                 {
                     DataProduct productImage = DataProduct.GetProduct(strSelectedColor, strSelectedSize);
@@ -153,22 +175,32 @@ namespace SU21_Final_Project
                 try
                 {
                     DataProduct product = DataProduct.GetProduct(cboColor.SelectedItem.ToString(), cboSize.SelectedItem.ToString()); ;
-                    if (int.TryParse(txtAmount.Text, out int A))
+                    if (int.TryParse(txtAmount.Text, out int intAmount))
                     {
-                        product.QuantityOnHand = A;
+                        product.QuantityOnHand = intAmount;
+                        intNewQuantity = intAmount;
                     }
-                    if (double.TryParse(txtPrice.Text, out double P))
+                    if (double.TryParse(txtPrice.Text, out double dblPrice))
                     {
-                        product.Price = Math.Round(P, 2);
+                        product.Price = Math.Round(dblPrice, 2);
+                        dblNewPrice = product.Price;
                     }
-                    if (double.TryParse(txtCost.Text, out double C))
+                    if (double.TryParse(txtCost.Text, out double dblCost))
                     {
-                        product.Cost = Math.Round(C, 2);
+                        product.Cost = Math.Round(dblCost, 2);
+                        dblNewCost = product.Cost;
                     }
 
-                    DataProduct.SaveProduct(product);
+                    DataProduct.SaveProduct(product);  
 
                     MessageBox.Show("Updates saved!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    if (intOldQuantity < intAmount)
+                    {
+                        //PRINT OUT REPORT HERE
+                        PrintReceipt(product);
+                    }
+
                     bolChangesMade = false;
                     txtAmount.Clear();
                     txtCost.Clear();
@@ -180,6 +212,7 @@ namespace SU21_Final_Project
                     cboSize.SelectedIndex = -1;
                     pbxShirt.Image = null;
 
+                    _products = DataProduct.ListProducts();
                     List<string> lstColors = _products.Select(p => p.Color).Distinct().OrderBy(c => c).ToList();
                     List<string> lstSizes = _products.Select(p => p.Size).Distinct().OrderBy(s => s).ToList();
 
@@ -247,5 +280,80 @@ namespace SU21_Final_Project
         {
 
         }
+
+        private void PrintReceipt(DataProduct product)
+        {
+            try
+            {
+                string strReceipt = Receipt.LoadInventoryTemplate();
+                strReceipt = strReceipt.Replace("{Date}", DateTime.Now.ToString("MM/dd/yyyy - hh:mm"));
+                strReceipt = strReceipt.Replace("{AdjustmentDate}", DateTime.Now.ToString("MM-dd-yyyy"));
+                var person = DataPerson.GetPerson(frmManageSignIn.intID);
+                strReceipt = strReceipt.Replace("{AddressName}", $"{person.NameFirst} {person.NameLast}");
+
+                StringBuilder itemHTML = new StringBuilder();
+
+                itemHTML.AppendFormat("<tr>");
+                itemHTML.AppendFormat("    <td>{0} {1}</td>", cboColor.SelectedItem.ToString(), cboSize.SelectedItem.ToString());
+                itemHTML.AppendFormat("    <td>{0}</td>", (intNewQuantity - intOldQuantity).ToString());
+                itemHTML.AppendFormat("    <td>{0:C2}</td>", txtCost.Text);
+                itemHTML.AppendFormat("    <td>{0:C2}</td>", dblNewCost * (intNewQuantity - intOldQuantity));
+                itemHTML.AppendFormat("</tr>");
+
+                DataMoney tax = DataMoney.GetValues("TaxRate");
+
+                if (!double.TryParse(tax.SettingValue, out double dblTax))
+                {
+                    dblTax = 0;
+                }
+                double dblSubtotal = dblNewCost * (intNewQuantity - intOldQuantity);
+                double dblTaxCost = dblTax * dblSubtotal;
+                double dblTotalCost = dblTaxCost + dblSubtotal;
+
+                strReceipt = strReceipt.Replace("{Items}", itemHTML.ToString());
+                strReceipt = strReceipt.Replace("{SubTotal}", dblSubtotal.ToString("C2"));
+                strReceipt = strReceipt.Replace("{TaxTotal}", dblTaxCost.ToString("C2"));
+                strReceipt = strReceipt.Replace("{OrderTotal}", dblTotalCost.ToString("C2"));
+
+                //GET USERS SELECTED PATH
+                string strPath = "";
+                bool bolPathSelected = false;
+
+                while (bolPathSelected == false)
+                {
+                    SaveFileDialog fd = new SaveFileDialog();
+                    fd.Title = "Select save location";
+                    fd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                    fd.FileName = $"GOT Shirts-Inv.Update-{DateTime.Now.ToString("MM-dd-yyyy--hh_mm")}.html";
+
+                    if (fd.ShowDialog() == DialogResult.OK)
+                    {
+                        strPath = fd.FileName;
+                        bolPathSelected = true;
+                        break;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please select a folder to save your receipt", "Please choose a folder", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        bolPathSelected = false;
+                    }
+
+                }
+
+                using (FileStream fs = new FileStream(strPath, FileMode.Create))
+                {
+                    using (StreamWriter w = new StreamWriter(fs, Encoding.UTF8))
+                    {
+                        w.Write(strReceipt);
+                    }
+                }
+                System.Diagnostics.Process.Start(strPath);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }

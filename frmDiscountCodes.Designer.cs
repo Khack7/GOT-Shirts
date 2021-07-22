@@ -71,7 +71,7 @@ namespace SU21_Final_Project
             this.lblCode.Name = "lblCode";
             this.lblCode.Size = new System.Drawing.Size(121, 23);
             this.lblCode.TabIndex = 0;
-            this.lblCode.Text = "Code";
+            this.lblCode.Text = "&Code";
             this.lblCode.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblStatusPointer
@@ -97,31 +97,34 @@ namespace SU21_Final_Project
             // 
             // btnActivate
             // 
+            this.btnActivate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnActivate.Location = new System.Drawing.Point(167, 103);
             this.btnActivate.Name = "btnActivate";
             this.btnActivate.Size = new System.Drawing.Size(121, 33);
             this.btnActivate.TabIndex = 6;
-            this.btnActivate.Text = "Activate";
+            this.btnActivate.Text = "&Activate";
             this.btnActivate.UseVisualStyleBackColor = true;
             this.btnActivate.Click += new System.EventHandler(this.btnActivate_Click);
             // 
             // btnDeactivate
             // 
+            this.btnDeactivate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeactivate.Location = new System.Drawing.Point(316, 103);
             this.btnDeactivate.Name = "btnDeactivate";
             this.btnDeactivate.Size = new System.Drawing.Size(121, 33);
             this.btnDeactivate.TabIndex = 7;
-            this.btnDeactivate.Text = "Deactivate";
+            this.btnDeactivate.Text = "&Deactivate";
             this.btnDeactivate.UseVisualStyleBackColor = true;
             this.btnDeactivate.Click += new System.EventHandler(this.btnDeactivate_Click);
             // 
             // btnStartCreation
             // 
+            this.btnStartCreation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStartCreation.Location = new System.Drawing.Point(12, 225);
             this.btnStartCreation.Name = "btnStartCreation";
             this.btnStartCreation.Size = new System.Drawing.Size(121, 33);
             this.btnStartCreation.TabIndex = 8;
-            this.btnStartCreation.Text = "Create New Code";
+            this.btnStartCreation.Text = "Create &New Code";
             this.btnStartCreation.UseVisualStyleBackColor = true;
             this.btnStartCreation.Click += new System.EventHandler(this.btnStartCreation_Click);
             // 
@@ -142,21 +145,23 @@ namespace SU21_Final_Project
             // 
             // btnCancel
             // 
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.Location = new System.Drawing.Point(290, 85);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(121, 33);
             this.btnCancel.TabIndex = 5;
-            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Text = "C&ancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnCreate
             // 
+            this.btnCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCreate.Location = new System.Drawing.Point(290, 22);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(121, 33);
             this.btnCreate.TabIndex = 4;
-            this.btnCreate.Text = "Create";
+            this.btnCreate.Text = "&Create";
             this.btnCreate.UseVisualStyleBackColor = true;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
@@ -168,7 +173,7 @@ namespace SU21_Final_Project
             this.lblPercentOff.Name = "lblPercentOff";
             this.lblPercentOff.Size = new System.Drawing.Size(84, 17);
             this.lblPercentOff.TabIndex = 2;
-            this.lblPercentOff.Text = "Percent Off:";
+            this.lblPercentOff.Text = "&Percent Off:";
             this.lblPercentOff.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtPercent
@@ -187,7 +192,7 @@ namespace SU21_Final_Project
             this.lblNewCode.Name = "lblNewCode";
             this.lblNewCode.Size = new System.Drawing.Size(45, 17);
             this.lblNewCode.TabIndex = 0;
-            this.lblNewCode.Text = "Code:";
+            this.lblNewCode.Text = "C&ode:";
             this.lblNewCode.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtCode
@@ -221,20 +226,22 @@ namespace SU21_Final_Project
             // 
             // button1
             // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(164, 225);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(121, 33);
             this.button1.TabIndex = 10;
-            this.button1.Text = "Help";
+            this.button1.Text = "&Help";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // btnReturn
             // 
+            this.btnReturn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReturn.Location = new System.Drawing.Point(319, 225);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(121, 33);
             this.btnReturn.TabIndex = 11;
-            this.btnReturn.Text = "Return";
+            this.btnReturn.Text = "&Return";
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
@@ -257,6 +264,7 @@ namespace SU21_Final_Project
             this.Controls.Add(this.cboCodes);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "frmDiscountCodes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Code management";

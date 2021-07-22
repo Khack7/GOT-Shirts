@@ -58,7 +58,7 @@ namespace SU21_Final_Project
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(93, 17);
             this.lblName.TabIndex = 0;
-            this.lblName.Text = "Setting Name";
+            this.lblName.Text = "Setting &Name";
             // 
             // txtValue
             // 
@@ -77,7 +77,7 @@ namespace SU21_Final_Project
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(92, 17);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Setting Value";
+            this.label1.Text = "Setting &Value";
             // 
             // btnReturn
             // 
@@ -86,7 +86,7 @@ namespace SU21_Final_Project
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(90, 39);
             this.btnReturn.TabIndex = 7;
-            this.btnReturn.Text = "Return";
+            this.btnReturn.Text = "&Return";
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
@@ -97,7 +97,7 @@ namespace SU21_Final_Project
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(90, 39);
             this.btnHelp.TabIndex = 6;
-            this.btnHelp.Text = "Help";
+            this.btnHelp.Text = "&Help";
             this.btnHelp.UseVisualStyleBackColor = true;
             // 
             // btnApply
@@ -108,7 +108,7 @@ namespace SU21_Final_Project
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(90, 39);
             this.btnApply.TabIndex = 5;
-            this.btnApply.Text = "Apply";
+            this.btnApply.Text = "&Apply";
             this.btnApply.UseVisualStyleBackColor = true;
             this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
@@ -120,7 +120,7 @@ namespace SU21_Final_Project
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(90, 39);
             this.btnEdit.TabIndex = 3;
-            this.btnEdit.Text = "Edit";
+            this.btnEdit.Text = "&Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 

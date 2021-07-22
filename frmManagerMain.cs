@@ -24,39 +24,42 @@ namespace SU21_Final_Project
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            frmInventory inventory = new frmInventory();
+            frmInventory frmInventory = new frmInventory();
             this.Hide();
-            inventory.ShowDialog();
+            frmInventory.ShowDialog();
             this.Show();
         }
 
         private void btnCodes_Click(object sender, EventArgs e)
         {
-            frmDiscountCodes codes = new frmDiscountCodes();
+            frmDiscountCodes frmCodes = new frmDiscountCodes();
             this.Hide();
-            codes.ShowDialog();
+            frmCodes.ShowDialog();
             this.Show();
         }
 
         private void btnCreateEmployee_Click(object sender, EventArgs e)
         {
-            frmAddEmployee addEmployee = new frmAddEmployee();
+            frmAddEmployee frmAddEmployee = new frmAddEmployee();
             this.Hide();
-            addEmployee.ShowDialog();
+            frmAddEmployee.ShowDialog();
             this.Show();
         }
 
         private void btnManageUsers_Click(object sender, EventArgs e)
         {
-            frmManageUsers manageUsers = new frmManageUsers();
+            frmManageUsers frmManageUsers = new frmManageUsers();
             this.Hide();
-            manageUsers.ShowDialog();
+            frmManageUsers.ShowDialog();
             this.Show();
         }
 
         private void btnReport_Click(object sender, EventArgs e)
         {
-
+            frmReports frmReports = new frmReports();
+            this.Hide();
+            frmReports.ShowDialog();
+            this.Show();
         }
 
         private void btnHelp_Click(object sender, EventArgs e)
@@ -74,9 +77,9 @@ namespace SU21_Final_Project
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
-            frmManagerSettings settings = new frmManagerSettings();
+            frmManagerSettings frmSettings = new frmManagerSettings();
             this.Hide();
-            settings.ShowDialog();
+            frmSettings.ShowDialog();
             this.Show();
         }
     }

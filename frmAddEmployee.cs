@@ -172,10 +172,10 @@ namespace SU21_Final_Project
                                 SecurityQuestion3 = cmboSecurity3.SelectedItem.ToString(),
                                 SecurityAnswer3 = txtAnswer3.Text,
                                 Deleted = false
-                                
                             };
                             DataPerson.SavePerson(person);
                             MessageBox.Show("Account Succesfully Created!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            bolComplete = true;
                             this.Close();
                         }
                     }

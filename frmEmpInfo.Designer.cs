@@ -77,7 +77,7 @@ namespace SU21_Final_Project
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(106, 46);
             this.btnEdit.TabIndex = 24;
-            this.btnEdit.Text = "Edit";
+            this.btnEdit.Text = "&Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
@@ -89,7 +89,7 @@ namespace SU21_Final_Project
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(106, 46);
             this.btnUpdate.TabIndex = 46;
-            this.btnUpdate.Text = "Update";
+            this.btnUpdate.Text = "&Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
@@ -100,7 +100,7 @@ namespace SU21_Final_Project
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(106, 46);
             this.btnCancel.TabIndex = 47;
-            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -121,7 +121,7 @@ namespace SU21_Final_Project
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(73, 17);
             this.label6.TabIndex = 34;
-            this.label6.Text = "Address3*";
+            this.label6.Text = "Add&ress3*";
             // 
             // txtAddress2
             // 
@@ -140,7 +140,7 @@ namespace SU21_Final_Project
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(73, 17);
             this.label5.TabIndex = 32;
-            this.label5.Text = "Address2*";
+            this.label5.Text = "A&ddress2*";
             // 
             // cboStates
             // 
@@ -172,7 +172,7 @@ namespace SU21_Final_Project
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Size = new System.Drawing.Size(54, 17);
             this.lblPhone.TabIndex = 42;
-            this.lblPhone.Text = "Phone*";
+            this.lblPhone.Text = "&Phone*";
             // 
             // txtEmail
             // 
@@ -191,7 +191,7 @@ namespace SU21_Final_Project
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(47, 17);
             this.lblEmail.TabIndex = 44;
-            this.lblEmail.Text = "Email*";
+            this.lblEmail.Text = "E&mail*";
             // 
             // txtZip
             // 
@@ -244,7 +244,7 @@ namespace SU21_Final_Project
             this.lblZip.Name = "lblZip";
             this.lblZip.Size = new System.Drawing.Size(64, 17);
             this.lblZip.TabIndex = 40;
-            this.lblZip.Text = "Zipcode*";
+            this.lblZip.Text = "&Zipcode*";
             // 
             // lblState
             // 
@@ -254,7 +254,7 @@ namespace SU21_Final_Project
             this.lblState.Name = "lblState";
             this.lblState.Size = new System.Drawing.Size(46, 17);
             this.lblState.TabIndex = 38;
-            this.lblState.Text = "State*";
+            this.lblState.Text = "&State*";
             // 
             // lblCity
             // 
@@ -264,7 +264,7 @@ namespace SU21_Final_Project
             this.lblCity.Name = "lblCity";
             this.lblCity.Size = new System.Drawing.Size(36, 17);
             this.lblCity.TabIndex = 36;
-            this.lblCity.Text = "City*";
+            this.lblCity.Text = "C&ity*";
             // 
             // lblAddress
             // 
@@ -274,7 +274,7 @@ namespace SU21_Final_Project
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(65, 17);
             this.lblAddress.TabIndex = 30;
-            this.lblAddress.Text = "Address*";
+            this.lblAddress.Text = "&Address*";
             // 
             // lblLName
             // 

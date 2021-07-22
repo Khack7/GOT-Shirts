@@ -58,7 +58,7 @@ namespace SU21_Final_Project
             this.btnCodes.Name = "btnCodes";
             this.btnCodes.Size = new System.Drawing.Size(94, 48);
             this.btnCodes.TabIndex = 4;
-            this.btnCodes.Text = "Manage Shop Codes";
+            this.btnCodes.Text = "Manage Shop &Codes";
             this.btnCodes.UseVisualStyleBackColor = true;
             this.btnCodes.Click += new System.EventHandler(this.btnCodes_Click);
             // 
@@ -69,7 +69,7 @@ namespace SU21_Final_Project
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(94, 48);
             this.btnReturn.TabIndex = 7;
-            this.btnReturn.Text = "Return";
+            this.btnReturn.Text = "&Return";
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
@@ -102,7 +102,7 @@ namespace SU21_Final_Project
             this.btnManageUsers.Name = "btnManageUsers";
             this.btnManageUsers.Size = new System.Drawing.Size(94, 48);
             this.btnManageUsers.TabIndex = 5;
-            this.btnManageUsers.Text = "Manage Users";
+            this.btnManageUsers.Text = "Manage &Users";
             this.btnManageUsers.UseVisualStyleBackColor = true;
             this.btnManageUsers.Click += new System.EventHandler(this.btnManageUsers_Click);
             // 
@@ -113,7 +113,7 @@ namespace SU21_Final_Project
             this.btnCreateEmployee.Name = "btnCreateEmployee";
             this.btnCreateEmployee.Size = new System.Drawing.Size(94, 48);
             this.btnCreateEmployee.TabIndex = 1;
-            this.btnCreateEmployee.Text = "Add Employee";
+            this.btnCreateEmployee.Text = "&Add Employee";
             this.btnCreateEmployee.UseVisualStyleBackColor = true;
             this.btnCreateEmployee.Click += new System.EventHandler(this.btnCreateEmployee_Click);
             // 
@@ -124,7 +124,7 @@ namespace SU21_Final_Project
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(94, 48);
             this.btnSettings.TabIndex = 3;
-            this.btnSettings.Text = "Price Settings";
+            this.btnSettings.Text = "Price &Settings";
             this.btnSettings.UseVisualStyleBackColor = true;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 

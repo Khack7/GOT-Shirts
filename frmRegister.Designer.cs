@@ -98,7 +98,7 @@ namespace SU21_Final_Project
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(80, 17);
             this.label2.TabIndex = 21;
-            this.label2.Text = "UserName*";
+            this.label2.Text = "&UserName*";
             // 
             // txtPassword
             // 
@@ -117,7 +117,7 @@ namespace SU21_Final_Project
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 17);
             this.label1.TabIndex = 23;
-            this.label1.Text = "Password*";
+            this.label1.Text = "Passw&ord*";
             // 
             // btnCancel
             // 
@@ -127,7 +127,7 @@ namespace SU21_Final_Project
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(147, 44);
             this.btnCancel.TabIndex = 38;
-            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -139,7 +139,7 @@ namespace SU21_Final_Project
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(147, 44);
             this.btnRegister.TabIndex = 37;
-            this.btnRegister.Text = "Register";
+            this.btnRegister.Text = "&Register";
             this.btnRegister.UseVisualStyleBackColor = true;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
@@ -160,7 +160,7 @@ namespace SU21_Final_Project
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Size = new System.Drawing.Size(49, 17);
             this.lblPhone.TabIndex = 19;
-            this.lblPhone.Text = "Phone";
+            this.lblPhone.Text = "P&hone";
             // 
             // txtEmail
             // 
@@ -178,7 +178,7 @@ namespace SU21_Final_Project
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(42, 17);
             this.lblEmail.TabIndex = 5;
-            this.lblEmail.Text = "Email";
+            this.lblEmail.Text = "&Email";
             // 
             // txtZip
             // 
@@ -228,7 +228,7 @@ namespace SU21_Final_Project
             this.lblZip.Name = "lblZip";
             this.lblZip.Size = new System.Drawing.Size(64, 17);
             this.lblZip.TabIndex = 17;
-            this.lblZip.Text = "Zipcode*";
+            this.lblZip.Text = "Zi&pcode*";
             // 
             // lblState
             // 
@@ -238,7 +238,7 @@ namespace SU21_Final_Project
             this.lblState.Name = "lblState";
             this.lblState.Size = new System.Drawing.Size(46, 17);
             this.lblState.TabIndex = 15;
-            this.lblState.Text = "State*";
+            this.lblState.Text = "S&tate*";
             // 
             // lblCity
             // 
@@ -248,7 +248,7 @@ namespace SU21_Final_Project
             this.lblCity.Name = "lblCity";
             this.lblCity.Size = new System.Drawing.Size(36, 17);
             this.lblCity.TabIndex = 13;
-            this.lblCity.Text = "City*";
+            this.lblCity.Text = "C&ity*";
             // 
             // lblAddress
             // 
@@ -258,7 +258,7 @@ namespace SU21_Final_Project
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(65, 17);
             this.lblAddress.TabIndex = 7;
-            this.lblAddress.Text = "Address*";
+            this.lblAddress.Text = "&Address*";
             // 
             // lblLName
             // 
@@ -268,7 +268,7 @@ namespace SU21_Final_Project
             this.lblLName.Name = "lblLName";
             this.lblLName.Size = new System.Drawing.Size(81, 17);
             this.lblLName.TabIndex = 3;
-            this.lblLName.Text = "Last Name*";
+            this.lblLName.Text = "&Last Name*";
             // 
             // lblFName
             // 
@@ -278,7 +278,7 @@ namespace SU21_Final_Project
             this.lblFName.Name = "lblFName";
             this.lblFName.Size = new System.Drawing.Size(81, 17);
             this.lblFName.TabIndex = 1;
-            this.lblFName.Text = "First Name*";
+            this.lblFName.Text = "&First Name*";
             // 
             // label3
             // 
@@ -307,7 +307,7 @@ namespace SU21_Final_Project
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(68, 17);
             this.label5.TabIndex = 9;
-            this.label5.Text = "Address2";
+            this.label5.Text = "A&ddress2";
             // 
             // txtAddress3
             // 
@@ -324,7 +324,7 @@ namespace SU21_Final_Project
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(68, 17);
             this.label6.TabIndex = 11;
-            this.label6.Text = "Address3";
+            this.label6.Text = "Add&ress3";
             // 
             // lblAnswer1
             // 
@@ -334,7 +334,7 @@ namespace SU21_Final_Project
             this.lblAnswer1.Name = "lblAnswer1";
             this.lblAnswer1.Size = new System.Drawing.Size(67, 17);
             this.lblAnswer1.TabIndex = 27;
-            this.lblAnswer1.Text = "Answer1*";
+            this.lblAnswer1.Text = "Ans&wer1*";
             // 
             // lblSecurity1
             // 
@@ -344,7 +344,7 @@ namespace SU21_Final_Project
             this.lblSecurity1.Name = "lblSecurity1";
             this.lblSecurity1.Size = new System.Drawing.Size(137, 17);
             this.lblSecurity1.TabIndex = 25;
-            this.lblSecurity1.Text = "Security Question 1*";
+            this.lblSecurity1.Text = "Secu&rity Question &1*";
             // 
             // cmboSecurity1
             // 
@@ -372,7 +372,7 @@ namespace SU21_Final_Project
             this.lblAnswer2.Name = "lblAnswer2";
             this.lblAnswer2.Size = new System.Drawing.Size(67, 17);
             this.lblAnswer2.TabIndex = 31;
-            this.lblAnswer2.Text = "Answer2*";
+            this.lblAnswer2.Text = "An&swer2*";
             // 
             // lblSecurity2
             // 
@@ -382,7 +382,7 @@ namespace SU21_Final_Project
             this.lblSecurity2.Name = "lblSecurity2";
             this.lblSecurity2.Size = new System.Drawing.Size(137, 17);
             this.lblSecurity2.TabIndex = 29;
-            this.lblSecurity2.Text = "Security Question 2*";
+            this.lblSecurity2.Text = "Security Question &2*";
             // 
             // cmboSecurity3
             // 
@@ -401,7 +401,7 @@ namespace SU21_Final_Project
             this.lblAnswer3.Name = "lblAnswer3";
             this.lblAnswer3.Size = new System.Drawing.Size(67, 17);
             this.lblAnswer3.TabIndex = 35;
-            this.lblAnswer3.Text = "Answer3*";
+            this.lblAnswer3.Text = "A&nswer3*";
             // 
             // lblSecurity3
             // 
@@ -411,7 +411,7 @@ namespace SU21_Final_Project
             this.lblSecurity3.Name = "lblSecurity3";
             this.lblSecurity3.Size = new System.Drawing.Size(137, 17);
             this.lblSecurity3.TabIndex = 33;
-            this.lblSecurity3.Text = "Security Question 3*";
+            this.lblSecurity3.Text = "Security Question &3*";
             // 
             // txtAnswer1
             // 

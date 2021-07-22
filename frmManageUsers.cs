@@ -64,15 +64,15 @@ namespace SU21_Final_Project
                 {
                     DataPerson person = DataPerson.GetPerson(strUserName);
 
-                    frmEditManagerPopUp popUp = new frmEditManagerPopUp();
-                    popUp.ShowDialog();
+                    frmEditManagerPopUp frmPopUp = new frmEditManagerPopUp();
+                    frmPopUp.ShowDialog();
 
                     if (frmEditManagerPopUp.strpasswordInput == person.Password)
                     {
-                        frmManagerEditUser editUser = new frmManagerEditUser();
+                        frmManagerEditUser frmEditUser = new frmManagerEditUser();
                         this.Hide();
                         this.Close();
-                        editUser.ShowDialog();
+                        frmEditUser.ShowDialog();
                     }
                     else
                     {
@@ -86,10 +86,10 @@ namespace SU21_Final_Project
             }
             else
             {
-                frmManagerEditUser editUser = new frmManagerEditUser();
+                frmManagerEditUser frmEditUser = new frmManagerEditUser();
                 this.Hide();
                 this.Close();
-                editUser.ShowDialog();
+                frmEditUser.ShowDialog();
             }
         }
 
@@ -103,8 +103,8 @@ namespace SU21_Final_Project
                 {
                     if (strAccountType == "Manager")
                     {
-                        frmEditManagerPopUp popUp = new frmEditManagerPopUp();
-                        popUp.ShowDialog();
+                        frmEditManagerPopUp frmPopUp = new frmEditManagerPopUp();
+                        frmPopUp.ShowDialog();
 
                         if (frmEditManagerPopUp.strpasswordInput == person.Password)
                         {

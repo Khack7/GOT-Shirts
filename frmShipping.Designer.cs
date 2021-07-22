@@ -60,7 +60,7 @@ namespace SU21_Final_Project
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(147, 44);
             this.btnConfirm.TabIndex = 27;
-            this.btnConfirm.Text = "Confirm";
+            this.btnConfirm.Text = "&Confirm";
             this.btnConfirm.UseVisualStyleBackColor = true;
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
@@ -71,7 +71,7 @@ namespace SU21_Final_Project
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(147, 44);
             this.btnReturn.TabIndex = 26;
-            this.btnReturn.Text = "Return to Shop";
+            this.btnReturn.Text = "Return to &Shop";
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
@@ -90,7 +90,7 @@ namespace SU21_Final_Project
             this.lblAddress3.Name = "lblAddress3";
             this.lblAddress3.Size = new System.Drawing.Size(68, 17);
             this.lblAddress3.TabIndex = 36;
-            this.lblAddress3.Text = "Address3";
+            this.lblAddress3.Text = "Add&ress3";
             // 
             // txtAddress2
             // 
@@ -107,7 +107,7 @@ namespace SU21_Final_Project
             this.lblAddress2.Name = "lblAddress2";
             this.lblAddress2.Size = new System.Drawing.Size(68, 17);
             this.lblAddress2.TabIndex = 34;
-            this.lblAddress2.Text = "Address2";
+            this.lblAddress2.Text = "A&ddress2";
             // 
             // txtPhone
             // 
@@ -124,7 +124,7 @@ namespace SU21_Final_Project
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Size = new System.Drawing.Size(49, 17);
             this.lblPhone.TabIndex = 46;
-            this.lblPhone.Text = "Phone";
+            this.lblPhone.Text = "&Phone";
             // 
             // txtZip
             // 
@@ -169,7 +169,7 @@ namespace SU21_Final_Project
             this.lblZip.Name = "lblZip";
             this.lblZip.Size = new System.Drawing.Size(64, 17);
             this.lblZip.TabIndex = 42;
-            this.lblZip.Text = "Zipcode*";
+            this.lblZip.Text = "&Zipcode*";
             // 
             // lblState
             // 
@@ -179,7 +179,7 @@ namespace SU21_Final_Project
             this.lblState.Name = "lblState";
             this.lblState.Size = new System.Drawing.Size(46, 17);
             this.lblState.TabIndex = 40;
-            this.lblState.Text = "State*";
+            this.lblState.Text = "&State*";
             // 
             // lblCity
             // 
@@ -189,7 +189,7 @@ namespace SU21_Final_Project
             this.lblCity.Name = "lblCity";
             this.lblCity.Size = new System.Drawing.Size(36, 17);
             this.lblCity.TabIndex = 38;
-            this.lblCity.Text = "City*";
+            this.lblCity.Text = "C&ity*";
             // 
             // lblAddress
             // 
@@ -199,7 +199,7 @@ namespace SU21_Final_Project
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(65, 17);
             this.lblAddress.TabIndex = 32;
-            this.lblAddress.Text = "Address*";
+            this.lblAddress.Text = "&Address*";
             // 
             // lblLName
             // 
@@ -209,7 +209,7 @@ namespace SU21_Final_Project
             this.lblLName.Name = "lblLName";
             this.lblLName.Size = new System.Drawing.Size(81, 17);
             this.lblLName.TabIndex = 30;
-            this.lblLName.Text = "Last Name*";
+            this.lblLName.Text = "&Last Name*";
             // 
             // lblFName
             // 
@@ -219,7 +219,7 @@ namespace SU21_Final_Project
             this.lblFName.Name = "lblFName";
             this.lblFName.Size = new System.Drawing.Size(81, 17);
             this.lblFName.TabIndex = 28;
-            this.lblFName.Text = "First Name*";
+            this.lblFName.Text = "&First Name*";
             // 
             // btnHelp
             // 
@@ -228,7 +228,7 @@ namespace SU21_Final_Project
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(147, 44);
             this.btnHelp.TabIndex = 48;
-            this.btnHelp.Text = "Help";
+            this.btnHelp.Text = "&Help";
             this.btnHelp.UseVisualStyleBackColor = true;
             this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 

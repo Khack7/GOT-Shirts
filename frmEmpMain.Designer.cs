@@ -56,7 +56,7 @@ namespace SU21_Final_Project
             this.btnInventory.Name = "btnInventory";
             this.btnInventory.Size = new System.Drawing.Size(94, 48);
             this.btnInventory.TabIndex = 9;
-            this.btnInventory.Text = "View Inventory";
+            this.btnInventory.Text = "View &Inventory";
             this.btnInventory.UseVisualStyleBackColor = true;
             this.btnInventory.Click += new System.EventHandler(this.btnInventory_Click);
             // 
@@ -67,7 +67,7 @@ namespace SU21_Final_Project
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(94, 48);
             this.btnReturn.TabIndex = 11;
-            this.btnReturn.Text = "Return";
+            this.btnReturn.Text = "&Return";
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
@@ -78,7 +78,7 @@ namespace SU21_Final_Project
             this.btnPurchase.Name = "btnPurchase";
             this.btnPurchase.Size = new System.Drawing.Size(94, 48);
             this.btnPurchase.TabIndex = 8;
-            this.btnPurchase.Text = "Customer Purchase";
+            this.btnPurchase.Text = "Customer &Purchase";
             this.btnPurchase.UseVisualStyleBackColor = true;
             this.btnPurchase.Click += new System.EventHandler(this.btnPurchase_Click);
             // 
@@ -89,7 +89,7 @@ namespace SU21_Final_Project
             this.btnCodes.Name = "btnCodes";
             this.btnCodes.Size = new System.Drawing.Size(94, 48);
             this.btnCodes.TabIndex = 7;
-            this.btnCodes.Text = "View Active Codes";
+            this.btnCodes.Text = "View &Active Codes";
             this.btnCodes.UseVisualStyleBackColor = true;
             this.btnCodes.Click += new System.EventHandler(this.btnCodes_Click);
             // 
@@ -100,7 +100,7 @@ namespace SU21_Final_Project
             this.btnInfo.Name = "btnInfo";
             this.btnInfo.Size = new System.Drawing.Size(94, 48);
             this.btnInfo.TabIndex = 6;
-            this.btnInfo.Text = "View Emp info";
+            this.btnInfo.Text = "View &Emp info";
             this.btnInfo.UseVisualStyleBackColor = true;
             this.btnInfo.Click += new System.EventHandler(this.btnInfo_Click);
             // 

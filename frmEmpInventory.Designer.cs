@@ -54,7 +54,7 @@ namespace SU21_Final_Project
             this.lblSize.Name = "lblSize";
             this.lblSize.Size = new System.Drawing.Size(88, 17);
             this.lblSize.TabIndex = 28;
-            this.lblSize.Text = "Select a size";
+            this.lblSize.Text = "Select a &size";
             // 
             // cboSize
             // 
@@ -123,7 +123,7 @@ namespace SU21_Final_Project
             this.lblColor.Name = "lblColor";
             this.lblColor.Size = new System.Drawing.Size(94, 17);
             this.lblColor.TabIndex = 20;
-            this.lblColor.Text = "Select a color";
+            this.lblColor.Text = "Select a &color";
             // 
             // txtAmount
             // 
@@ -151,7 +151,7 @@ namespace SU21_Final_Project
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(128, 43);
             this.btnReturn.TabIndex = 30;
-            this.btnReturn.Text = "Return";
+            this.btnReturn.Text = "&Return";
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
@@ -162,7 +162,7 @@ namespace SU21_Final_Project
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(128, 43);
             this.btnHelp.TabIndex = 31;
-            this.btnHelp.Text = "Help";
+            this.btnHelp.Text = "&Help";
             this.btnHelp.UseVisualStyleBackColor = true;
             this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 

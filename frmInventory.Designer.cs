@@ -54,7 +54,7 @@ namespace SU21_Final_Project
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(94, 36);
             this.btnReturn.TabIndex = 15;
-            this.btnReturn.Text = "Return";
+            this.btnReturn.Text = "&Return";
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
@@ -77,7 +77,7 @@ namespace SU21_Final_Project
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(40, 17);
             this.lblPrice.TabIndex = 12;
-            this.lblPrice.Text = "Price";
+            this.lblPrice.Text = "&Price";
             // 
             // txtPrice
             // 
@@ -97,7 +97,7 @@ namespace SU21_Final_Project
             this.lblAmount.Name = "lblAmount";
             this.lblAmount.Size = new System.Drawing.Size(61, 17);
             this.lblAmount.TabIndex = 10;
-            this.lblAmount.Text = "Quantity";
+            this.lblAmount.Text = "&Quantity";
             // 
             // lblColor
             // 
@@ -107,7 +107,7 @@ namespace SU21_Final_Project
             this.lblColor.Name = "lblColor";
             this.lblColor.Size = new System.Drawing.Size(94, 17);
             this.lblColor.TabIndex = 8;
-            this.lblColor.Text = "Select a color";
+            this.lblColor.Text = "Select a &color";
             // 
             // txtAmount
             // 
@@ -137,7 +137,7 @@ namespace SU21_Final_Project
             this.lblCost.Name = "lblCost";
             this.lblCost.Size = new System.Drawing.Size(36, 17);
             this.lblCost.TabIndex = 16;
-            this.lblCost.Text = "Cost";
+            this.lblCost.Text = "C&ost";
             // 
             // txtCost
             // 
@@ -157,7 +157,7 @@ namespace SU21_Final_Project
             this.lblSize.Name = "lblSize";
             this.lblSize.Size = new System.Drawing.Size(88, 17);
             this.lblSize.TabIndex = 18;
-            this.lblSize.Text = "Select a size";
+            this.lblSize.Text = "Select a &size";
             // 
             // cboSize
             // 
@@ -177,7 +177,7 @@ namespace SU21_Final_Project
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(94, 36);
             this.btnHelp.TabIndex = 20;
-            this.btnHelp.Text = "Help";
+            this.btnHelp.Text = "&Help";
             this.btnHelp.UseVisualStyleBackColor = true;
             this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 

@@ -57,7 +57,7 @@ namespace SU21_Final_Project
             this.lblFirstName.Name = "lblFirstName";
             this.lblFirstName.Size = new System.Drawing.Size(76, 17);
             this.lblFirstName.TabIndex = 0;
-            this.lblFirstName.Text = "First Name";
+            this.lblFirstName.Text = "&First Name";
             // 
             // label1
             // 
@@ -67,7 +67,7 @@ namespace SU21_Final_Project
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(76, 17);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Last Name";
+            this.label1.Text = "&Last Name";
             // 
             // label2
             // 
@@ -77,7 +77,7 @@ namespace SU21_Final_Project
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 17);
             this.label2.TabIndex = 2;
-            this.label2.Text = "UserName";
+            this.label2.Text = "&UserName";
             // 
             // lblEmail
             // 
@@ -87,7 +87,7 @@ namespace SU21_Final_Project
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(42, 17);
             this.lblEmail.TabIndex = 3;
-            this.lblEmail.Text = "Email";
+            this.lblEmail.Text = "&Email";
             // 
             // lblAccountType
             // 
@@ -97,7 +97,7 @@ namespace SU21_Final_Project
             this.lblAccountType.Name = "lblAccountType";
             this.lblAccountType.Size = new System.Drawing.Size(95, 17);
             this.lblAccountType.TabIndex = 4;
-            this.lblAccountType.Text = "Account Type";
+            this.lblAccountType.Text = "&Account Type";
             // 
             // label5
             // 
@@ -107,7 +107,7 @@ namespace SU21_Final_Project
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(49, 17);
             this.label5.TabIndex = 5;
-            this.label5.Text = "Phone";
+            this.label5.Text = "&Phone";
             // 
             // txtFirstName
             // 
@@ -177,7 +177,7 @@ namespace SU21_Final_Project
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(114, 47);
             this.btnApply.TabIndex = 14;
-            this.btnApply.Text = "Apply";
+            this.btnApply.Text = "A&pply";
             this.btnApply.UseVisualStyleBackColor = true;
             this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
@@ -188,7 +188,7 @@ namespace SU21_Final_Project
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(114, 47);
             this.btnHelp.TabIndex = 15;
-            this.btnHelp.Text = "Help";
+            this.btnHelp.Text = "&Help";
             this.btnHelp.UseVisualStyleBackColor = true;
             // 
             // btnReturn
@@ -198,7 +198,7 @@ namespace SU21_Final_Project
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(114, 47);
             this.btnReturn.TabIndex = 16;
-            this.btnReturn.Text = "Return to Previous";
+            this.btnReturn.Text = "&Return to Previous";
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 

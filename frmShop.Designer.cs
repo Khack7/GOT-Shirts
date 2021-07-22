@@ -67,8 +67,8 @@ namespace SU21_Final_Project
             this.btnAccount.Location = new System.Drawing.Point(568, 49);
             this.btnAccount.Name = "btnAccount";
             this.btnAccount.Size = new System.Drawing.Size(75, 23);
-            this.btnAccount.TabIndex = 51;
-            this.btnAccount.Text = "Account";
+            this.btnAccount.TabIndex = 21;
+            this.btnAccount.Text = "A&ccount";
             this.btnAccount.UseVisualStyleBackColor = true;
             this.btnAccount.Click += new System.EventHandler(this.btnAccount_Click);
             // 
@@ -82,7 +82,7 @@ namespace SU21_Final_Project
             0});
             this.numUDQuantity.Name = "numUDQuantity";
             this.numUDQuantity.Size = new System.Drawing.Size(52, 20);
-            this.numUDQuantity.TabIndex = 50;
+            this.numUDQuantity.TabIndex = 15;
             this.numUDQuantity.Value = new decimal(new int[] {
             1,
             0,
@@ -96,27 +96,28 @@ namespace SU21_Final_Project
             this.label1.Location = new System.Drawing.Point(290, 165);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 15);
-            this.label1.TabIndex = 49;
-            this.label1.Text = "Quantity";
+            this.label1.TabIndex = 14;
+            this.label1.Text = "&Quantity";
             // 
             // btnCode
             // 
             this.btnCode.Location = new System.Drawing.Point(293, 7);
             this.btnCode.Name = "btnCode";
             this.btnCode.Size = new System.Drawing.Size(106, 23);
-            this.btnCode.TabIndex = 48;
-            this.btnCode.Text = "Have a code?";
+            this.btnCode.TabIndex = 22;
+            this.btnCode.Text = "Have a &code?";
             this.btnCode.UseVisualStyleBackColor = true;
             this.btnCode.Click += new System.EventHandler(this.btnCode_Click);
             // 
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.Location = new System.Drawing.Point(331, 229);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(148, 41);
-            this.btnCancel.TabIndex = 47;
-            this.btnCancel.Text = "Cancel Order";
+            this.btnCancel.TabIndex = 24;
+            this.btnCancel.Text = "Cancel &Order";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -124,11 +125,12 @@ namespace SU21_Final_Project
             // 
             this.btnCheckout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCheckout.Enabled = false;
+            this.btnCheckout.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCheckout.Location = new System.Drawing.Point(495, 229);
             this.btnCheckout.Name = "btnCheckout";
             this.btnCheckout.Size = new System.Drawing.Size(148, 41);
-            this.btnCheckout.TabIndex = 46;
-            this.btnCheckout.Text = "Checkout";
+            this.btnCheckout.TabIndex = 23;
+            this.btnCheckout.Text = "&Checkout";
             this.btnCheckout.UseVisualStyleBackColor = true;
             this.btnCheckout.Click += new System.EventHandler(this.btnCheckout_Click);
             // 
@@ -137,8 +139,8 @@ namespace SU21_Final_Project
             this.btnAdd.Location = new System.Drawing.Point(293, 188);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(106, 23);
-            this.btnAdd.TabIndex = 45;
-            this.btnAdd.Text = "Add To Cart";
+            this.btnAdd.TabIndex = 16;
+            this.btnAdd.Text = "&Add To Cart";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -148,8 +150,8 @@ namespace SU21_Final_Project
             this.btnRemove.Location = new System.Drawing.Point(442, 121);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(120, 23);
-            this.btnRemove.TabIndex = 44;
-            this.btnRemove.Text = "Remove Selected Item";
+            this.btnRemove.TabIndex = 18;
+            this.btnRemove.Text = "&Remove Selected Item";
             this.btnRemove.UseVisualStyleBackColor = true;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
@@ -158,8 +160,8 @@ namespace SU21_Final_Project
             this.btnHelp.Location = new System.Drawing.Point(568, 7);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(75, 23);
-            this.btnHelp.TabIndex = 43;
-            this.btnHelp.Text = "Help";
+            this.btnHelp.TabIndex = 25;
+            this.btnHelp.Text = "&Help";
             this.btnHelp.UseVisualStyleBackColor = true;
             this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
@@ -171,7 +173,7 @@ namespace SU21_Final_Project
             this.lblAmount.Location = new System.Drawing.Point(514, 144);
             this.lblAmount.Name = "lblAmount";
             this.lblAmount.Size = new System.Drawing.Size(46, 19);
-            this.lblAmount.TabIndex = 42;
+            this.lblAmount.TabIndex = 20;
             this.lblAmount.Text = "$0.00";
             // 
             // lblTotalPointer
@@ -181,7 +183,7 @@ namespace SU21_Final_Project
             this.lblTotalPointer.Location = new System.Drawing.Point(439, 144);
             this.lblTotalPointer.Name = "lblTotalPointer";
             this.lblTotalPointer.Size = new System.Drawing.Size(69, 17);
-            this.lblTotalPointer.TabIndex = 41;
+            this.lblTotalPointer.TabIndex = 19;
             this.lblTotalPointer.Text = "SubTotal:";
             // 
             // rdoLarge
@@ -192,8 +194,8 @@ namespace SU21_Final_Project
             this.rdoLarge.Location = new System.Drawing.Point(195, 249);
             this.rdoLarge.Name = "rdoLarge";
             this.rdoLarge.Size = new System.Drawing.Size(63, 21);
-            this.rdoLarge.TabIndex = 40;
-            this.rdoLarge.Text = "Large";
+            this.rdoLarge.TabIndex = 13;
+            this.rdoLarge.Text = "&Large";
             this.rdoLarge.UseVisualStyleBackColor = true;
             this.rdoLarge.CheckedChanged += new System.EventHandler(this.rdoLarge_CheckedChanged);
             // 
@@ -205,8 +207,8 @@ namespace SU21_Final_Project
             this.rdoMedium.Location = new System.Drawing.Point(96, 249);
             this.rdoMedium.Name = "rdoMedium";
             this.rdoMedium.Size = new System.Drawing.Size(75, 21);
-            this.rdoMedium.TabIndex = 39;
-            this.rdoMedium.Text = "Medium";
+            this.rdoMedium.TabIndex = 12;
+            this.rdoMedium.Text = "&Medium";
             this.rdoMedium.UseVisualStyleBackColor = true;
             this.rdoMedium.CheckedChanged += new System.EventHandler(this.rdoMedium_CheckedChanged);
             // 
@@ -219,9 +221,9 @@ namespace SU21_Final_Project
             this.rdoSmall.Location = new System.Drawing.Point(12, 249);
             this.rdoSmall.Name = "rdoSmall";
             this.rdoSmall.Size = new System.Drawing.Size(60, 21);
-            this.rdoSmall.TabIndex = 38;
+            this.rdoSmall.TabIndex = 11;
             this.rdoSmall.TabStop = true;
-            this.rdoSmall.Text = "Small";
+            this.rdoSmall.Text = "&Small";
             this.rdoSmall.UseVisualStyleBackColor = true;
             this.rdoSmall.CheckedChanged += new System.EventHandler(this.rdoSmall_CheckedChanged);
             // 
@@ -231,7 +233,7 @@ namespace SU21_Final_Project
             this.lstCart.Location = new System.Drawing.Point(442, 7);
             this.lstCart.Name = "lstCart";
             this.lstCart.Size = new System.Drawing.Size(120, 108);
-            this.lstCart.TabIndex = 37;
+            this.lstCart.TabIndex = 17;
             // 
             // btnYellow
             // 
@@ -239,7 +241,7 @@ namespace SU21_Final_Project
             this.btnYellow.Location = new System.Drawing.Point(369, 124);
             this.btnYellow.Name = "btnYellow";
             this.btnYellow.Size = new System.Drawing.Size(30, 29);
-            this.btnYellow.TabIndex = 36;
+            this.btnYellow.TabIndex = 8;
             this.btnYellow.UseVisualStyleBackColor = false;
             this.btnYellow.Click += new System.EventHandler(this.btnYellow_Click);
             // 
@@ -249,7 +251,7 @@ namespace SU21_Final_Project
             this.btnWhite.Location = new System.Drawing.Point(331, 124);
             this.btnWhite.Name = "btnWhite";
             this.btnWhite.Size = new System.Drawing.Size(30, 29);
-            this.btnWhite.TabIndex = 35;
+            this.btnWhite.TabIndex = 7;
             this.btnWhite.UseVisualStyleBackColor = false;
             this.btnWhite.Click += new System.EventHandler(this.btnWhite_Click);
             // 
@@ -259,7 +261,7 @@ namespace SU21_Final_Project
             this.btnRed.Location = new System.Drawing.Point(293, 124);
             this.btnRed.Name = "btnRed";
             this.btnRed.Size = new System.Drawing.Size(30, 29);
-            this.btnRed.TabIndex = 34;
+            this.btnRed.TabIndex = 6;
             this.btnRed.UseVisualStyleBackColor = false;
             this.btnRed.Click += new System.EventHandler(this.btnRed_Click);
             // 
@@ -269,7 +271,7 @@ namespace SU21_Final_Project
             this.btnPurple.Location = new System.Drawing.Point(369, 85);
             this.btnPurple.Name = "btnPurple";
             this.btnPurple.Size = new System.Drawing.Size(30, 29);
-            this.btnPurple.TabIndex = 33;
+            this.btnPurple.TabIndex = 5;
             this.btnPurple.UseVisualStyleBackColor = false;
             this.btnPurple.Click += new System.EventHandler(this.btnPurple_Click);
             // 
@@ -279,7 +281,7 @@ namespace SU21_Final_Project
             this.btnPink.Location = new System.Drawing.Point(331, 85);
             this.btnPink.Name = "btnPink";
             this.btnPink.Size = new System.Drawing.Size(30, 29);
-            this.btnPink.TabIndex = 32;
+            this.btnPink.TabIndex = 4;
             this.btnPink.UseVisualStyleBackColor = false;
             this.btnPink.Click += new System.EventHandler(this.btnPink_Click);
             // 
@@ -289,7 +291,7 @@ namespace SU21_Final_Project
             this.btnOrange.Location = new System.Drawing.Point(293, 85);
             this.btnOrange.Name = "btnOrange";
             this.btnOrange.Size = new System.Drawing.Size(30, 29);
-            this.btnOrange.TabIndex = 31;
+            this.btnOrange.TabIndex = 3;
             this.btnOrange.UseVisualStyleBackColor = false;
             this.btnOrange.Click += new System.EventHandler(this.btnOrange_Click);
             // 
@@ -299,7 +301,7 @@ namespace SU21_Final_Project
             this.btnGreen.Location = new System.Drawing.Point(369, 46);
             this.btnGreen.Name = "btnGreen";
             this.btnGreen.Size = new System.Drawing.Size(30, 29);
-            this.btnGreen.TabIndex = 30;
+            this.btnGreen.TabIndex = 2;
             this.btnGreen.UseVisualStyleBackColor = false;
             this.btnGreen.Click += new System.EventHandler(this.btnGreen_Click);
             // 
@@ -310,7 +312,7 @@ namespace SU21_Final_Project
             this.btnBlack.Location = new System.Drawing.Point(293, 46);
             this.btnBlack.Name = "btnBlack";
             this.btnBlack.Size = new System.Drawing.Size(30, 29);
-            this.btnBlack.TabIndex = 29;
+            this.btnBlack.TabIndex = 0;
             this.btnBlack.UseVisualStyleBackColor = false;
             this.btnBlack.Click += new System.EventHandler(this.btnBlack_Click);
             // 
@@ -320,7 +322,7 @@ namespace SU21_Final_Project
             this.btnBlue.Location = new System.Drawing.Point(331, 46);
             this.btnBlue.Name = "btnBlue";
             this.btnBlue.Size = new System.Drawing.Size(30, 29);
-            this.btnBlue.TabIndex = 28;
+            this.btnBlue.TabIndex = 1;
             this.btnBlue.UseVisualStyleBackColor = false;
             this.btnBlue.Click += new System.EventHandler(this.btnBlue_Click);
             // 
@@ -340,7 +342,7 @@ namespace SU21_Final_Project
             this.lblItemPricePointer.Location = new System.Drawing.Point(12, 213);
             this.lblItemPricePointer.Name = "lblItemPricePointer";
             this.lblItemPricePointer.Size = new System.Drawing.Size(76, 17);
-            this.lblItemPricePointer.TabIndex = 52;
+            this.lblItemPricePointer.TabIndex = 9;
             this.lblItemPricePointer.Text = "Item Price: ";
             // 
             // lblItemPrice
@@ -351,7 +353,7 @@ namespace SU21_Final_Project
             this.lblItemPrice.Location = new System.Drawing.Point(95, 213);
             this.lblItemPrice.Name = "lblItemPrice";
             this.lblItemPrice.Size = new System.Drawing.Size(46, 19);
-            this.lblItemPrice.TabIndex = 53;
+            this.lblItemPrice.TabIndex = 10;
             this.lblItemPrice.Text = "$0.00";
             // 
             // btnUpload
@@ -359,7 +361,7 @@ namespace SU21_Final_Project
             this.btnUpload.Location = new System.Drawing.Point(526, 188);
             this.btnUpload.Name = "btnUpload";
             this.btnUpload.Size = new System.Drawing.Size(75, 23);
-            this.btnUpload.TabIndex = 54;
+            this.btnUpload.TabIndex = 26;
             this.btnUpload.Text = "upload";
             this.btnUpload.UseVisualStyleBackColor = true;
             this.btnUpload.Visible = false;

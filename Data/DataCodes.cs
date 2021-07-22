@@ -46,18 +46,18 @@ namespace SU21_Final_Project.Data
             DataCodes result = null;
             if (sdr.Read())
             {
-                if (bool.TryParse(sdr["Active"].ToString(), out bool A))
+                if (bool.TryParse(sdr["Active"].ToString(), out bool bolActivity))
                 {
-                    bolActive = A;
+                    bolActive = bolActivity;
                 }
                 else
                 {
                     bolActive = false;
                 }
 
-                if (int.TryParse(sdr["PercentOff"].ToString(), out int P))
+                if (int.TryParse(sdr["PercentOff"].ToString(), out int intPercentOff))
                 {
-                    intPercent = P;
+                    intPercent = intPercentOff;
                 }
                 else
                 {
