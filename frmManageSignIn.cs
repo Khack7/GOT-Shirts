@@ -103,8 +103,7 @@ namespace SU21_Final_Project
             string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
             try
             {
-                //WILL BE CREATING HELP FILES FOR MANAGERS AND EMPLOYEES. THIS IS A PLACEHOLDER
-                System.Diagnostics.Process.Start($"{path}\\HelpFiles\\Sign_In_Help.html");
+                System.Diagnostics.Process.Start($"{path}\\HelpFiles\\Manager_Employee_SignIn_Help.html");
             }
             catch (Exception ex)
             {

@@ -211,6 +211,7 @@ namespace SU21_Final_Project
             this.btnHelp.TabIndex = 5;
             this.btnHelp.Text = "Help";
             this.btnHelp.UseVisualStyleBackColor = true;
+            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
             // btnReturn
             // 

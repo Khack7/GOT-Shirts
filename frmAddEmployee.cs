@@ -445,5 +445,18 @@ namespace SU21_Final_Project
             }
             bolChangesMade = true;
         }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            try
+            {
+                System.Diagnostics.Process.Start($"{path}\\HelpFiles\\Manager_Employee_Creation_Help.html");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

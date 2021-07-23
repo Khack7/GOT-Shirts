@@ -46,7 +46,7 @@ namespace SU21_Final_Project
             this.txtCode = new System.Windows.Forms.TextBox();
             this.lblPercentDisplay = new System.Windows.Forms.Label();
             this.lblPercentPointer = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnHelp = new System.Windows.Forms.Button();
             this.btnReturn = new System.Windows.Forms.Button();
             this.grpBxCodes.SuspendLayout();
             this.SuspendLayout();
@@ -224,15 +224,16 @@ namespace SU21_Final_Project
             this.lblPercentPointer.Text = "Percent off";
             this.lblPercentPointer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button1
+            // btnHelp
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(164, 225);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(121, 33);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "&Help";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHelp.Location = new System.Drawing.Point(164, 225);
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Size = new System.Drawing.Size(121, 33);
+            this.btnHelp.TabIndex = 10;
+            this.btnHelp.Text = "&Help";
+            this.btnHelp.UseVisualStyleBackColor = true;
+            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
             // btnReturn
             // 
@@ -251,7 +252,7 @@ namespace SU21_Final_Project
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(449, 410);
             this.Controls.Add(this.btnReturn);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.lblPercentDisplay);
             this.Controls.Add(this.lblPercentPointer);
             this.Controls.Add(this.grpBxCodes);
@@ -292,7 +293,7 @@ namespace SU21_Final_Project
         private System.Windows.Forms.TextBox txtPercent;
         private System.Windows.Forms.Label lblPercentDisplay;
         private System.Windows.Forms.Label lblPercentPointer;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnHelp;
         private System.Windows.Forms.Button btnReturn;
         private System.Windows.Forms.Button btnCancel;
     }

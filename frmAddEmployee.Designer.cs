@@ -74,6 +74,7 @@ namespace SU21_Final_Project
             this.rdoManager = new System.Windows.Forms.RadioButton();
             this.txtPayRate = new System.Windows.Forms.TextBox();
             this.lblPayRate = new System.Windows.Forms.Label();
+            this.btnHelp = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -496,11 +497,22 @@ namespace SU21_Final_Project
             this.lblPayRate.TabIndex = 37;
             this.lblPayRate.Text = "PayRa&te*";
             // 
+            // btnHelp
+            // 
+            this.btnHelp.Location = new System.Drawing.Point(733, 12);
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Size = new System.Drawing.Size(109, 23);
+            this.btnHelp.TabIndex = 42;
+            this.btnHelp.Text = "&Help";
+            this.btnHelp.UseVisualStyleBackColor = true;
+            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
+            // 
             // frmAddEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(858, 557);
+            this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.txtPayRate);
             this.Controls.Add(this.lblPayRate);
             this.Controls.Add(this.groupBox1);
@@ -603,5 +615,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.RadioButton rdoManager;
         private System.Windows.Forms.TextBox txtPayRate;
         private System.Windows.Forms.Label lblPayRate;
+        private System.Windows.Forms.Button btnHelp;
     }
 }

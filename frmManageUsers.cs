@@ -139,6 +139,19 @@ namespace SU21_Final_Project
             this.Close();
         }
 
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            try
+            {
+                System.Diagnostics.Process.Start($"{path}\\HelpFiles\\Manager_Manage_Users_Help.html");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void btnEmployee_Click(object sender, EventArgs e)
         {
             DataView dv;
