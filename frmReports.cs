@@ -113,105 +113,252 @@ namespace SU21_Final_Project
                 DialogResult dr;
 
                 bool bolEmptyFolder = false;
-                string strPath = "";
+                string strPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
                 bool bolStopLoop = false;
 
                 SaveFileDialog sfdFile = new SaveFileDialog();
 
-                switch (view)
+                int intSelectedRows = 0;
+
+                foreach(DataGridViewRow row in dgvReports.SelectedRows)
                 {
-                    case currentView.ViewAll:
-                        dr = MessageBox.Show("You are about to print all sales reports. This can take quite a while and may cause system issues. Continue?", "Caution!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    intSelectedRows++;
+                }
 
-                        if (dr == DialogResult.Yes)
-                        {
-                            dgvReports.SelectAll();
+                if(intSelectedRows == 0)
+                {
+                    MessageBox.Show("Please select a row or select Daily, Weekly, or monthly report", "No row selected", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }               
+                else
+                {
+                    switch (view)
+                    {
+                        case currentView.ViewAll:
+                            dr = MessageBox.Show("You are about to print all sales reports. This can take quite a while and may cause system issues. Continue?", "Caution!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-                            foreach (DataGridViewRow row in dgvReports.SelectedRows)
+                            if (dr == DialogResult.Yes)
                             {
-                                sfdFile.FileName = $"GOT Shirts-Receipt-{row.Cells[0].Value.ToString()}.html";
+                                dgvReports.SelectAll();
 
-                                while (bolEmptyFolder == false)
+                                foreach (DataGridViewRow row in dgvReports.SelectedRows)
                                 {
-                                    sfdFile.Title = "Select save location. Empty Folder Required";
-                                    sfdFile.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                                    string strFileName = $"GOT Shirts-Receipt-{row.Cells[0].Value.ToString()}.html";
 
-                                    if (sfdFile.ShowDialog() == DialogResult.OK)
+                                    while (bolEmptyFolder == false)
                                     {
-                                        strPath = sfdFile.FileName;
-                                        string strTrimPath = strPath.Replace($@"\\GOT Shirts-Receipt-{row.Cells[0].Value.ToString()}.html", "");
-                                        
-                                        if (IsDirectoryEmpty(strTrimPath))
+                                        sfdFile.FileName = strFileName;
+                                        sfdFile.Title = "Select save location. Empty Folder Required";
+                                        sfdFile.InitialDirectory = strPath;
+
+                                        if (sfdFile.ShowDialog() == DialogResult.OK)
                                         {
-                                            MessageBox.Show("Please select an empty folder", "Empty Folder Needed", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                            bolEmptyFolder = false;
+                                            strPath = Path.GetDirectoryName(sfdFile.FileName);
+
+                                            bolEmptyFolder = IsDirectoryEmpty(strPath);
+                                            if (!bolEmptyFolder)
+                                            {
+                                                MessageBox.Show("Please select an empty folder", "Empty Folder Needed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                            }
                                         }
                                         else
                                         {
-                                            bolEmptyFolder = true;
+                                            bolStopLoop = true;
+                                            break;
                                         }
                                     }
-                                    else
+                                    if (bolStopLoop == true)
                                     {
-                                        bolStopLoop = true;
+                                        dgvReports.ClearSelection();
                                         break;
                                     }
-                                }
-                                if(bolStopLoop == true)
-                                {
-                                    dgvReports.ClearSelection();
-                                    break;
-                                }
-                                using (FileStream fs = new FileStream(strPath, FileMode.Create))
-                                {
-                                    using (StreamWriter w = new StreamWriter(fs, Encoding.UTF8))
+
+                                    strFileName = Path.Combine(strPath, strFileName);
+                                    using (FileStream fs = new FileStream(strFileName, FileMode.Create))
                                     {
-                                        if (row.Cells[8].Value != null)
+                                        using (StreamWriter w = new StreamWriter(fs, Encoding.UTF8))
                                         {
-                                            w.Write(row.Cells[8].Value.ToString());
+                                            if (row.Cells[8].Value != null)
+                                            {
+                                                w.Write(row.Cells[8].Value.ToString());
+                                            }
                                         }
                                     }
                                 }
                                 System.Diagnostics.Process.Start(strPath);
+                                dgvReports.ClearSelection();
                             }
-                            dgvReports.ClearSelection();
-                        }
-                        break;
-                    case currentView.ViewDay:
-                        dr = MessageBox.Show($"You are about to print all sales reports for today: {DateTime.Today}. Are you sure?.", "Caution!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                            break;
+                        case currentView.ViewDay:
+                            dr = MessageBox.Show("You are about to print Today's sales reports. This could take a while. Continue?", "Caution!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-                        if (dr == DialogResult.Yes)
-                        {
-                            dgvReports.SelectAll();
+                            if (dr == DialogResult.Yes)
+                            {
+                                dgvReports.SelectAll();
 
-                            //TODO
-                        }
-                        break;
-                    case currentView.ViewWeek:
-                        dr = MessageBox.Show("You are about to print all sales reports for this week. Are you sure?.", "Caution!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                                foreach (DataGridViewRow row in dgvReports.SelectedRows)
+                                {
+                                    string strFileName = $"GOT Shirts-Receipt-{row.Cells[0].Value.ToString()}.html";
 
-                        if (dr == DialogResult.Yes)
-                        {
-                            dgvReports.SelectAll();
+                                    while (bolEmptyFolder == false)
+                                    {
+                                        sfdFile.FileName = strFileName;
+                                        sfdFile.Title = "Select save location. Empty Folder Required";
+                                        sfdFile.InitialDirectory = strPath;
 
-                            //TODO
-                        }
-                        break;
-                    case currentView.ViewMonth:
-                        dr = MessageBox.Show("You are about to print all sales reports for this month. Are you sure?.", "Caution!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                                        if (sfdFile.ShowDialog() == DialogResult.OK)
+                                        {
+                                            strPath = Path.GetDirectoryName(sfdFile.FileName);
 
-                        if (dr == DialogResult.Yes)
-                        {
-                            dgvReports.SelectAll();
+                                            bolEmptyFolder = IsDirectoryEmpty(strPath);
+                                            if (!bolEmptyFolder)
+                                            {
+                                                MessageBox.Show("Please select an empty folder", "Empty Folder Needed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                            }
+                                        }
+                                        else
+                                        {
+                                            bolStopLoop = true;
+                                            break;
+                                        }
+                                    }
+                                    if (bolStopLoop == true)
+                                    {
+                                        dgvReports.ClearSelection();
+                                        break;
+                                    }
 
-                            //TODO
-                        }
-                        break;
-                    default:
-                        break;
-                }
+                                    strFileName = Path.Combine(strPath, strFileName);
+                                    using (FileStream fs = new FileStream(strFileName, FileMode.Create))
+                                    {
+                                        using (StreamWriter w = new StreamWriter(fs, Encoding.UTF8))
+                                        {
+                                            if (row.Cells[8].Value != null)
+                                            {
+                                                w.Write(row.Cells[8].Value.ToString());
+                                            }
+                                        }
+                                    }
+                                }
+                                System.Diagnostics.Process.Start(strPath);
+                                dgvReports.ClearSelection();
+                            }
+                            break;
+                        case currentView.ViewWeek:
+                            dr = MessageBox.Show("You are about to print this week's sales reports. This could take a while and may cause system issues. Continue?", "Caution!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                            if (dr == DialogResult.Yes)
+                            {
+                                dgvReports.SelectAll();
+
+                                foreach (DataGridViewRow row in dgvReports.SelectedRows)
+                                {
+                                    string strFileName = $"GOT Shirts-Receipt-{row.Cells[0].Value.ToString()}.html";
+
+                                    while (bolEmptyFolder == false)
+                                    {
+                                        sfdFile.FileName = strFileName;
+                                        sfdFile.Title = "Select save location. Empty Folder Required";
+                                        sfdFile.InitialDirectory = strPath;
+
+                                        if (sfdFile.ShowDialog() == DialogResult.OK)
+                                        {
+                                            strPath = Path.GetDirectoryName(sfdFile.FileName);
+
+                                            bolEmptyFolder = IsDirectoryEmpty(strPath);
+                                            if (!bolEmptyFolder)
+                                            {
+                                                MessageBox.Show("Please select an empty folder", "Empty Folder Needed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                            }
+                                        }
+                                        else
+                                        {
+                                            bolStopLoop = true;
+                                            break;
+                                        }
+                                    }
+                                    if (bolStopLoop == true)
+                                    {
+                                        dgvReports.ClearSelection();
+                                        break;
+                                    }
+
+                                    strFileName = Path.Combine(strPath, strFileName);
+                                    using (FileStream fs = new FileStream(strFileName, FileMode.Create))
+                                    {
+                                        using (StreamWriter w = new StreamWriter(fs, Encoding.UTF8))
+                                        {
+                                            if (row.Cells[8].Value != null)
+                                            {
+                                                w.Write(row.Cells[8].Value.ToString());
+                                            }
+                                        }
+                                    }
+                                }
+                                System.Diagnostics.Process.Start(strPath);
+                                dgvReports.ClearSelection();
+                            }
+                            break;
+                        case currentView.ViewMonth:
+                            dr = MessageBox.Show("You are about to print this month's sales reports. This could take quite a while and may cause system issues. Continue?", "Caution!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                            if (dr == DialogResult.Yes)
+                            {
+                                dgvReports.SelectAll();
+
+                                foreach (DataGridViewRow row in dgvReports.SelectedRows)
+                                {
+                                    string strFileName = $"GOT Shirts-Receipt-{row.Cells[0].Value.ToString()}.html";
+
+                                    while (bolEmptyFolder == false)
+                                    {
+                                        sfdFile.FileName = strFileName;
+                                        sfdFile.Title = "Select save location. Empty Folder Required";
+                                        sfdFile.InitialDirectory = strPath;
+
+                                        if (sfdFile.ShowDialog() == DialogResult.OK)
+                                        {
+                                            strPath = Path.GetDirectoryName(sfdFile.FileName);
+
+                                            bolEmptyFolder = IsDirectoryEmpty(strPath);
+                                            if (!bolEmptyFolder)
+                                            {
+                                                MessageBox.Show("Please select an empty folder", "Empty Folder Needed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                            }
+                                        }
+                                        else
+                                        {
+                                            bolStopLoop = true;
+                                            break;
+                                        }
+                                    }
+                                    if (bolStopLoop == true)
+                                    {
+                                        dgvReports.ClearSelection();
+                                        break;
+                                    }
+
+                                    strFileName = Path.Combine(strPath, strFileName);
+                                    using (FileStream fs = new FileStream(strFileName, FileMode.Create))
+                                    {
+                                        using (StreamWriter w = new StreamWriter(fs, Encoding.UTF8))
+                                        {
+                                            if (row.Cells[8].Value != null)
+                                            {
+                                                w.Write(row.Cells[8].Value.ToString());
+                                            }
+                                        }
+                                    }
+                                }
+                                System.Diagnostics.Process.Start(strPath);
+                                dgvReports.ClearSelection();
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                }               
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -239,11 +386,18 @@ namespace SU21_Final_Project
             }
             else
             {
-                frmInvoiceView frmInvoice = new frmInvoiceView();
-                frmInvoice.Text = $"Invoice #{strOrderNum}";
-                this.Hide();
-                frmInvoice.ShowDialog();
-                this.Show();
+                if (strHTML == null)
+                {
+                    MessageBox.Show("No Invoice Available", "No Invoice!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    frmInvoiceView frmInvoice = new frmInvoiceView();
+                    frmInvoice.Text = $"Invoice #{strOrderNum}";
+                    this.Hide();
+                    frmInvoice.ShowDialog();
+                    this.Show();
+                }
             }
         }
     }
