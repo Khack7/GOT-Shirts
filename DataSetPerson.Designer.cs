@@ -20,9 +20,9 @@ namespace SU21_Final_Project {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("DataSet1")]
+    [global::System.Xml.Serialization.XmlRootAttribute("DataSetPerson")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class DataSet1 : global::System.Data.DataSet {
+    public partial class DataSetPerson : global::System.Data.DataSet {
         
         private PersonDataTable tablePerson;
         
@@ -30,7 +30,7 @@ namespace SU21_Final_Project {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public DataSet1() {
+        public DataSetPerson() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace SU21_Final_Project {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        protected DataSet1(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected DataSetPerson(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -127,7 +127,7 @@ namespace SU21_Final_Project {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            DataSet1 cln = ((DataSet1)(base.Clone()));
+            DataSetPerson cln = ((DataSetPerson)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -199,9 +199,9 @@ namespace SU21_Final_Project {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "DataSet1";
+            this.DataSetName = "DataSetPerson";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/DataSet11.xsd";
+            this.Namespace = "http://tempuri.org/DataSetPerson.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tablePerson = new PersonDataTable();
@@ -225,7 +225,7 @@ namespace SU21_Final_Project {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            DataSet1 ds = new DataSet1();
+            DataSetPerson ds = new DataSetPerson();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -294,6 +294,8 @@ namespace SU21_Final_Project {
             private global::System.Data.DataColumn columnAccountType;
             
             private global::System.Data.DataColumn columnDeleted;
+            
+            private global::System.Data.DataColumn columnPayRate;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -394,6 +396,14 @@ namespace SU21_Final_Project {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn PayRateColumn {
+                get {
+                    return this.columnPayRate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -429,7 +439,7 @@ namespace SU21_Final_Project {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public PersonRow AddPersonRow(string NameFirst, string NameLast, string Email, string PhonePrimary, string UserName, string AccountType, bool Deleted) {
+            public PersonRow AddPersonRow(string NameFirst, string NameLast, string Email, string PhonePrimary, string UserName, string AccountType, bool Deleted, decimal PayRate) {
                 PersonRow rowPersonRow = ((PersonRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -439,7 +449,8 @@ namespace SU21_Final_Project {
                         PhonePrimary,
                         UserName,
                         AccountType,
-                        Deleted};
+                        Deleted,
+                        PayRate};
                 rowPersonRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPersonRow);
                 return rowPersonRow;
@@ -477,6 +488,7 @@ namespace SU21_Final_Project {
                 this.columnUserName = base.Columns["UserName"];
                 this.columnAccountType = base.Columns["AccountType"];
                 this.columnDeleted = base.Columns["Deleted"];
+                this.columnPayRate = base.Columns["PayRate"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -498,6 +510,8 @@ namespace SU21_Final_Project {
                 base.Columns.Add(this.columnAccountType);
                 this.columnDeleted = new global::System.Data.DataColumn("Deleted", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDeleted);
+                this.columnPayRate = new global::System.Data.DataColumn("PayRate", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPayRate);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnPersonID}, true));
                 this.columnPersonID.AutoIncrement = true;
@@ -582,7 +596,7 @@ namespace SU21_Final_Project {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSet1 ds = new DataSet1();
+                DataSetPerson ds = new DataSetPerson();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -765,6 +779,22 @@ namespace SU21_Final_Project {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal PayRate {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablePerson.PayRateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PayRate\' in table \'Person\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePerson.PayRateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsEmailNull() {
                 return this.IsNull(this.tablePerson.EmailColumn);
             }
@@ -810,6 +840,18 @@ namespace SU21_Final_Project {
             public void SetAccountTypeNull() {
                 this[this.tablePerson.AccountTypeColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsPayRateNull() {
+                return this.IsNull(this.tablePerson.PayRateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetPayRateNull() {
+                this[this.tablePerson.PayRateColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -847,7 +889,7 @@ namespace SU21_Final_Project {
         }
     }
 }
-namespace SU21_Final_Project.DataSet1TableAdapters {
+namespace SU21_Final_Project.DataSetPersonTableAdapters {
     
     
     /// <summary>
@@ -979,10 +1021,11 @@ namespace SU21_Final_Project.DataSet1TableAdapters {
             tableMapping.ColumnMappings.Add("UserName", "UserName");
             tableMapping.ColumnMappings.Add("AccountType", "AccountType");
             tableMapping.ColumnMappings.Add("Deleted", "Deleted");
+            tableMapping.ColumnMappings.Add("PayRate", "PayRate");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [HackK21Su2332].[Person] WHERE (([PersonID] = @Original_PersonID) AND ([NameFirst] = @Original_NameFirst) AND ([NameLast] = @Original_NameLast) AND ((@IsNull_Email = 1 AND [Email] IS NULL) OR ([Email] = @Original_Email)) AND ((@IsNull_PhonePrimary = 1 AND [PhonePrimary] IS NULL) OR ([PhonePrimary] = @Original_PhonePrimary)) AND ((@IsNull_UserName = 1 AND [UserName] IS NULL) OR ([UserName] = @Original_UserName)) AND ((@IsNull_AccountType = 1 AND [AccountType] IS NULL) OR ([AccountType] = @Original_AccountType)) AND ([Deleted] = @Original_Deleted))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [HackK21Su2332].[Person] WHERE (([PersonID] = @Original_PersonID) AND ([NameFirst] = @Original_NameFirst) AND ([NameLast] = @Original_NameLast) AND ((@IsNull_Email = 1 AND [Email] IS NULL) OR ([Email] = @Original_Email)) AND ((@IsNull_PhonePrimary = 1 AND [PhonePrimary] IS NULL) OR ([PhonePrimary] = @Original_PhonePrimary)) AND ((@IsNull_UserName = 1 AND [UserName] IS NULL) OR ([UserName] = @Original_UserName)) AND ((@IsNull_AccountType = 1 AND [AccountType] IS NULL) OR ([AccountType] = @Original_AccountType)) AND ([Deleted] = @Original_Deleted) AND ((@IsNull_PayRate = 1 AND [PayRate] IS NULL) OR ([PayRate] = @Original_PayRate)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PersonID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PersonID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NameFirst", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NameFirst", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -996,10 +1039,12 @@ namespace SU21_Final_Project.DataSet1TableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_AccountType", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AccountType", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AccountType", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AccountType", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Deleted", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Deleted", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PayRate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PayRate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PayRate", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PayRate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [HackK21Su2332].[Person] SET [NameFirst] = @NameFirst, [NameLast] = @NameLast, [Email] = @Email, [PhonePrimary] = @PhonePrimary, [UserName] = @UserName, [AccountType] = @AccountType, [Deleted] = @Deleted WHERE (([PersonID] = @Original_PersonID) AND ([NameFirst] = @Original_NameFirst) AND ([NameLast] = @Original_NameLast) AND ((@IsNull_Email = 1 AND [Email] IS NULL) OR ([Email] = @Original_Email)) AND ((@IsNull_PhonePrimary = 1 AND [PhonePrimary] IS NULL) OR ([PhonePrimary] = @Original_PhonePrimary)) AND ((@IsNull_UserName = 1 AND [UserName] IS NULL) OR ([UserName] = @Original_UserName)) AND ((@IsNull_AccountType = 1 AND [AccountType] IS NULL) OR ([AccountType] = @Original_AccountType)) AND ([Deleted] = @Original_Deleted));
-SELECT PersonID, NameFirst, NameLast, Email, PhonePrimary, UserName, AccountType, Deleted FROM HackK21Su2332.Person WHERE (PersonID = @PersonID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [HackK21Su2332].[Person] SET [NameFirst] = @NameFirst, [NameLast] = @NameLast, [Email] = @Email, [PhonePrimary] = @PhonePrimary, [UserName] = @UserName, [AccountType] = @AccountType, [Deleted] = @Deleted, [PayRate] = @PayRate WHERE (([PersonID] = @Original_PersonID) AND ([NameFirst] = @Original_NameFirst) AND ([NameLast] = @Original_NameLast) AND ((@IsNull_Email = 1 AND [Email] IS NULL) OR ([Email] = @Original_Email)) AND ((@IsNull_PhonePrimary = 1 AND [PhonePrimary] IS NULL) OR ([PhonePrimary] = @Original_PhonePrimary)) AND ((@IsNull_UserName = 1 AND [UserName] IS NULL) OR ([UserName] = @Original_UserName)) AND ((@IsNull_AccountType = 1 AND [AccountType] IS NULL) OR ([AccountType] = @Original_AccountType)) AND ([Deleted] = @Original_Deleted) AND ((@IsNull_PayRate = 1 AND [PayRate] IS NULL) OR ([PayRate] = @Original_PayRate)));
+SELECT PersonID, NameFirst, NameLast, Email, PhonePrimary, UserName, AccountType, Deleted, PayRate FROM HackK21Su2332.Person WHERE (PersonID = @PersonID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NameFirst", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NameFirst", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NameLast", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NameLast", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1008,6 +1053,7 @@ SELECT PersonID, NameFirst, NameLast, Email, PhonePrimary, UserName, AccountType
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AccountType", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AccountType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Deleted", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Deleted", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PayRate", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PayRate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PersonID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PersonID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NameFirst", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NameFirst", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NameLast", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NameLast", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -1020,6 +1066,8 @@ SELECT PersonID, NameFirst, NameLast, Email, PhonePrimary, UserName, AccountType
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_AccountType", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AccountType", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AccountType", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AccountType", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Deleted", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Deleted", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PayRate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PayRate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PayRate", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PayRate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PersonID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "PersonID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -1037,7 +1085,7 @@ SELECT PersonID, NameFirst, NameLast, Email, PhonePrimary, UserName, AccountType
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT PersonID, NameFirst, NameLast, Email, PhonePrimary, UserName, AccountType," +
-                " Deleted FROM HackK21Su2332.Person";
+                " Deleted, PayRate FROM HackK21Su2332.Person";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -1045,7 +1093,7 @@ SELECT PersonID, NameFirst, NameLast, Email, PhonePrimary, UserName, AccountType
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSet1.PersonDataTable dataTable) {
+        public virtual int Fill(DataSetPerson.PersonDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -1058,9 +1106,9 @@ SELECT PersonID, NameFirst, NameLast, Email, PhonePrimary, UserName, AccountType
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSet1.PersonDataTable GetData() {
+        public virtual DataSetPerson.PersonDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSet1.PersonDataTable dataTable = new DataSet1.PersonDataTable();
+            DataSetPerson.PersonDataTable dataTable = new DataSetPerson.PersonDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -1068,14 +1116,14 @@ SELECT PersonID, NameFirst, NameLast, Email, PhonePrimary, UserName, AccountType
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1.PersonDataTable dataTable) {
+        public virtual int Update(DataSetPerson.PersonDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1 dataSet) {
+        public virtual int Update(DataSetPerson dataSet) {
             return this.Adapter.Update(dataSet, "Person");
         }
         
@@ -1098,7 +1146,7 @@ SELECT PersonID, NameFirst, NameLast, Email, PhonePrimary, UserName, AccountType
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_PersonID, string Original_NameFirst, string Original_NameLast, string Original_Email, string Original_PhonePrimary, string Original_UserName, string Original_AccountType, bool Original_Deleted) {
+        public virtual int Delete(int Original_PersonID, string Original_NameFirst, string Original_NameLast, string Original_Email, string Original_PhonePrimary, string Original_UserName, string Original_AccountType, bool Original_Deleted, global::System.Nullable<decimal> Original_PayRate) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_PersonID));
             if ((Original_NameFirst == null)) {
                 throw new global::System.ArgumentNullException("Original_NameFirst");
@@ -1145,6 +1193,14 @@ SELECT PersonID, NameFirst, NameLast, Email, PhonePrimary, UserName, AccountType
                 this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Original_AccountType));
             }
             this.Adapter.DeleteCommand.Parameters[11].Value = ((bool)(Original_Deleted));
+            if ((Original_PayRate.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((decimal)(Original_PayRate.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1173,6 +1229,7 @@ SELECT PersonID, NameFirst, NameLast, Email, PhonePrimary, UserName, AccountType
                     string UserName, 
                     string AccountType, 
                     bool Deleted, 
+                    global::System.Nullable<decimal> PayRate, 
                     int Original_PersonID, 
                     string Original_NameFirst, 
                     string Original_NameLast, 
@@ -1181,6 +1238,7 @@ SELECT PersonID, NameFirst, NameLast, Email, PhonePrimary, UserName, AccountType
                     string Original_UserName, 
                     string Original_AccountType, 
                     bool Original_Deleted, 
+                    global::System.Nullable<decimal> Original_PayRate, 
                     int PersonID) {
             if ((NameFirst == null)) {
                 throw new global::System.ArgumentNullException("NameFirst");
@@ -1219,53 +1277,67 @@ SELECT PersonID, NameFirst, NameLast, Email, PhonePrimary, UserName, AccountType
                 this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(AccountType));
             }
             this.Adapter.UpdateCommand.Parameters[6].Value = ((bool)(Deleted));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_PersonID));
+            if ((PayRate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((decimal)(PayRate.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_PersonID));
             if ((Original_NameFirst == null)) {
                 throw new global::System.ArgumentNullException("Original_NameFirst");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_NameFirst));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_NameFirst));
             }
             if ((Original_NameLast == null)) {
                 throw new global::System.ArgumentNullException("Original_NameLast");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_NameLast));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_NameLast));
             }
             if ((Original_Email == null)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_Email));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_Email));
             }
             if ((Original_PhonePrimary == null)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_PhonePrimary));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_PhonePrimary));
             }
             if ((Original_UserName == null)) {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Original_UserName));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Original_UserName));
             }
             if ((Original_AccountType == null)) {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(Original_AccountType));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Original_AccountType));
             }
-            this.Adapter.UpdateCommand.Parameters[18].Value = ((bool)(Original_Deleted));
-            this.Adapter.UpdateCommand.Parameters[19].Value = ((int)(PersonID));
+            this.Adapter.UpdateCommand.Parameters[19].Value = ((bool)(Original_Deleted));
+            if ((Original_PayRate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((decimal)(Original_PayRate.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[22].Value = ((int)(PersonID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1286,8 +1358,25 @@ SELECT PersonID, NameFirst, NameLast, Email, PhonePrimary, UserName, AccountType
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string NameFirst, string NameLast, string Email, string PhonePrimary, string UserName, string AccountType, bool Deleted, int Original_PersonID, string Original_NameFirst, string Original_NameLast, string Original_Email, string Original_PhonePrimary, string Original_UserName, string Original_AccountType, bool Original_Deleted) {
-            return this.Update(NameFirst, NameLast, Email, PhonePrimary, UserName, AccountType, Deleted, Original_PersonID, Original_NameFirst, Original_NameLast, Original_Email, Original_PhonePrimary, Original_UserName, Original_AccountType, Original_Deleted, Original_PersonID);
+        public virtual int Update(
+                    string NameFirst, 
+                    string NameLast, 
+                    string Email, 
+                    string PhonePrimary, 
+                    string UserName, 
+                    string AccountType, 
+                    bool Deleted, 
+                    global::System.Nullable<decimal> PayRate, 
+                    int Original_PersonID, 
+                    string Original_NameFirst, 
+                    string Original_NameLast, 
+                    string Original_Email, 
+                    string Original_PhonePrimary, 
+                    string Original_UserName, 
+                    string Original_AccountType, 
+                    bool Original_Deleted, 
+                    global::System.Nullable<decimal> Original_PayRate) {
+            return this.Update(NameFirst, NameLast, Email, PhonePrimary, UserName, AccountType, Deleted, PayRate, Original_PersonID, Original_NameFirst, Original_NameLast, Original_Email, Original_PhonePrimary, Original_UserName, Original_AccountType, Original_Deleted, Original_PayRate, Original_PersonID);
         }
     }
     
@@ -1382,7 +1471,7 @@ SELECT PersonID, NameFirst, NameLast, Email, PhonePrimary, UserName, AccountType
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateUpdatedRows(DataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(DataSetPerson dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._personTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Person.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
@@ -1401,7 +1490,7 @@ SELECT PersonID, NameFirst, NameLast, Email, PhonePrimary, UserName, AccountType
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateInsertedRows(DataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(DataSetPerson dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._personTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Person.Select(null, null, global::System.Data.DataViewRowState.Added);
@@ -1419,7 +1508,7 @@ SELECT PersonID, NameFirst, NameLast, Email, PhonePrimary, UserName, AccountType
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateDeletedRows(DataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(DataSetPerson dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             if ((this._personTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Person.Select(null, null, global::System.Data.DataViewRowState.Deleted);
@@ -1461,7 +1550,7 @@ SELECT PersonID, NameFirst, NameLast, Email, PhonePrimary, UserName, AccountType
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public virtual int UpdateAll(DataSet1 dataSet) {
+        public virtual int UpdateAll(DataSetPerson dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }

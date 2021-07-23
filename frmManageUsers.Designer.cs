@@ -31,7 +31,7 @@ namespace SU21_Final_Project
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManageUsers));
-            this.dvgPerson = new System.Windows.Forms.DataGridView();
+            this.dgvPerson = new System.Windows.Forms.DataGridView();
             this.personIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameFirstDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameLastDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,28 +39,29 @@ namespace SU21_Final_Project
             this.phonePrimaryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.accountTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.payRateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.deletedDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.personBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSet1 = new SU21_Final_Project.DataSet1();
-            this.personTableAdapter = new SU21_Final_Project.DataSet1TableAdapters.PersonTableAdapter();
+            this.dataSetPerson = new SU21_Final_Project.DataSetPerson();
+            this.personTableAdapter = new SU21_Final_Project.DataSetPersonTableAdapters.PersonTableAdapter();
             this.btnCustomer = new System.Windows.Forms.Button();
             this.btnEmployee = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDeleteOrRestore = new System.Windows.Forms.Button();
             this.btnHelp = new System.Windows.Forms.Button();
             this.btnReturn = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dvgPerson)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPerson)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.personBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSetPerson)).BeginInit();
             this.SuspendLayout();
             // 
-            // dvgPerson
+            // dgvPerson
             // 
-            this.dvgPerson.AllowUserToAddRows = false;
-            this.dvgPerson.AllowUserToDeleteRows = false;
-            this.dvgPerson.AutoGenerateColumns = false;
-            this.dvgPerson.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dvgPerson.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvPerson.AllowUserToAddRows = false;
+            this.dgvPerson.AllowUserToDeleteRows = false;
+            this.dgvPerson.AutoGenerateColumns = false;
+            this.dgvPerson.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPerson.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.personIDDataGridViewTextBoxColumn,
             this.nameFirstDataGridViewTextBoxColumn,
             this.nameLastDataGridViewTextBoxColumn,
@@ -68,16 +69,16 @@ namespace SU21_Final_Project
             this.phonePrimaryDataGridViewTextBoxColumn,
             this.userNameDataGridViewTextBoxColumn,
             this.accountTypeDataGridViewTextBoxColumn,
+            this.payRateDataGridViewTextBoxColumn,
             this.deletedDataGridViewCheckBoxColumn});
-            this.dvgPerson.DataSource = this.personBindingSource;
-            this.dvgPerson.Location = new System.Drawing.Point(1, 0);
-            this.dvgPerson.MultiSelect = false;
-            this.dvgPerson.Name = "dvgPerson";
-            this.dvgPerson.ReadOnly = true;
-            this.dvgPerson.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dvgPerson.Size = new System.Drawing.Size(892, 363);
-            this.dvgPerson.TabIndex = 0;
-            this.dvgPerson.SelectionChanged += new System.EventHandler(this.dvgPerson_SelectionChanged);
+            this.dgvPerson.DataSource = this.personBindingSource;
+            this.dgvPerson.Location = new System.Drawing.Point(1, 0);
+            this.dgvPerson.Name = "dgvPerson";
+            this.dgvPerson.ReadOnly = true;
+            this.dgvPerson.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPerson.Size = new System.Drawing.Size(1069, 312);
+            this.dgvPerson.TabIndex = 0;
+            this.dgvPerson.SelectionChanged += new System.EventHandler(this.dgvPerson_SelectionChanged);
             // 
             // personIDDataGridViewTextBoxColumn
             // 
@@ -109,14 +110,14 @@ namespace SU21_Final_Project
             // 
             // phonePrimaryDataGridViewTextBoxColumn
             // 
-            this.phonePrimaryDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.phonePrimaryDataGridViewTextBoxColumn.DataPropertyName = "PhonePrimary";
-            this.phonePrimaryDataGridViewTextBoxColumn.HeaderText = "Phone Number";
+            this.phonePrimaryDataGridViewTextBoxColumn.HeaderText = "Phone#";
             this.phonePrimaryDataGridViewTextBoxColumn.Name = "phonePrimaryDataGridViewTextBoxColumn";
             this.phonePrimaryDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // userNameDataGridViewTextBoxColumn
             // 
+            this.userNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.userNameDataGridViewTextBoxColumn.DataPropertyName = "UserName";
             this.userNameDataGridViewTextBoxColumn.HeaderText = "UserName";
             this.userNameDataGridViewTextBoxColumn.Name = "userNameDataGridViewTextBoxColumn";
@@ -129,6 +130,13 @@ namespace SU21_Final_Project
             this.accountTypeDataGridViewTextBoxColumn.Name = "accountTypeDataGridViewTextBoxColumn";
             this.accountTypeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // payRateDataGridViewTextBoxColumn
+            // 
+            this.payRateDataGridViewTextBoxColumn.DataPropertyName = "PayRate";
+            this.payRateDataGridViewTextBoxColumn.HeaderText = "Pay Rate";
+            this.payRateDataGridViewTextBoxColumn.Name = "payRateDataGridViewTextBoxColumn";
+            this.payRateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // deletedDataGridViewCheckBoxColumn
             // 
             this.deletedDataGridViewCheckBoxColumn.DataPropertyName = "Deleted";
@@ -139,12 +147,12 @@ namespace SU21_Final_Project
             // personBindingSource
             // 
             this.personBindingSource.DataMember = "Person";
-            this.personBindingSource.DataSource = this.dataSet1;
+            this.personBindingSource.DataSource = this.dataSetPerson;
             // 
-            // dataSet1
+            // dataSetPerson
             // 
-            this.dataSet1.DataSetName = "DataSet1";
-            this.dataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.dataSetPerson.DataSetName = "DataSetPerson";
+            this.dataSetPerson.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // personTableAdapter
             // 
@@ -153,67 +161,65 @@ namespace SU21_Final_Project
             // btnCustomer
             // 
             this.btnCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCustomer.Location = new System.Drawing.Point(12, 369);
+            this.btnCustomer.Location = new System.Drawing.Point(12, 318);
             this.btnCustomer.Name = "btnCustomer";
-            this.btnCustomer.Size = new System.Drawing.Size(115, 38);
+            this.btnCustomer.Size = new System.Drawing.Size(128, 44);
             this.btnCustomer.TabIndex = 1;
-            this.btnCustomer.Text = "&Customer Only";
+            this.btnCustomer.Text = "Customer Only";
             this.btnCustomer.UseVisualStyleBackColor = true;
             this.btnCustomer.Click += new System.EventHandler(this.btnCustomer_Click);
             // 
             // btnEmployee
             // 
             this.btnEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEmployee.Location = new System.Drawing.Point(164, 369);
+            this.btnEmployee.Location = new System.Drawing.Point(198, 318);
             this.btnEmployee.Name = "btnEmployee";
-            this.btnEmployee.Size = new System.Drawing.Size(115, 38);
+            this.btnEmployee.Size = new System.Drawing.Size(128, 44);
             this.btnEmployee.TabIndex = 2;
-            this.btnEmployee.Text = "&Employee Only";
+            this.btnEmployee.Text = "Employee Only";
             this.btnEmployee.UseVisualStyleBackColor = true;
             this.btnEmployee.Click += new System.EventHandler(this.btnEmployee_Click);
             // 
             // btnEdit
             // 
-            this.btnEdit.Enabled = false;
             this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(316, 369);
+            this.btnEdit.Location = new System.Drawing.Point(384, 318);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(115, 38);
+            this.btnEdit.Size = new System.Drawing.Size(128, 44);
             this.btnEdit.TabIndex = 3;
-            this.btnEdit.Text = "Edi&t";
+            this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnDeleteOrRestore
             // 
             this.btnDeleteOrRestore.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteOrRestore.Location = new System.Drawing.Point(468, 369);
+            this.btnDeleteOrRestore.Location = new System.Drawing.Point(570, 318);
             this.btnDeleteOrRestore.Name = "btnDeleteOrRestore";
-            this.btnDeleteOrRestore.Size = new System.Drawing.Size(115, 38);
+            this.btnDeleteOrRestore.Size = new System.Drawing.Size(128, 44);
             this.btnDeleteOrRestore.TabIndex = 4;
-            this.btnDeleteOrRestore.Text = "&Delete/Restore";
+            this.btnDeleteOrRestore.Text = "Delete/Restore";
             this.btnDeleteOrRestore.UseVisualStyleBackColor = true;
             this.btnDeleteOrRestore.Click += new System.EventHandler(this.btnDeleteOrRestore_Click);
             // 
             // btnHelp
             // 
             this.btnHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHelp.Location = new System.Drawing.Point(620, 369);
+            this.btnHelp.Location = new System.Drawing.Point(756, 318);
             this.btnHelp.Name = "btnHelp";
-            this.btnHelp.Size = new System.Drawing.Size(115, 38);
+            this.btnHelp.Size = new System.Drawing.Size(128, 44);
             this.btnHelp.TabIndex = 5;
-            this.btnHelp.Text = "&Help";
+            this.btnHelp.Text = "Help";
             this.btnHelp.UseVisualStyleBackColor = true;
-            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
             // btnReturn
             // 
             this.btnReturn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReturn.Location = new System.Drawing.Point(772, 369);
+            this.btnReturn.Location = new System.Drawing.Point(942, 318);
             this.btnReturn.Name = "btnReturn";
-            this.btnReturn.Size = new System.Drawing.Size(115, 38);
+            this.btnReturn.Size = new System.Drawing.Size(128, 44);
             this.btnReturn.TabIndex = 6;
-            this.btnReturn.Text = "&Return";
+            this.btnReturn.Text = "Return";
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
@@ -221,34 +227,32 @@ namespace SU21_Final_Project
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(894, 413);
+            this.ClientSize = new System.Drawing.Size(1077, 373);
             this.Controls.Add(this.btnReturn);
             this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.btnDeleteOrRestore);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnEmployee);
             this.Controls.Add(this.btnCustomer);
-            this.Controls.Add(this.dvgPerson);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Controls.Add(this.dgvPerson);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
             this.Name = "frmManageUsers";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manage Users";
             this.Load += new System.EventHandler(this.frmManageUsers_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dvgPerson)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPerson)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.personBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSetPerson)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dvgPerson;
-        private DataSet1 dataSet1;
+        private System.Windows.Forms.DataGridView dgvPerson;
+        private DataSetPerson dataSetPerson;
         private System.Windows.Forms.BindingSource personBindingSource;
-        private DataSet1TableAdapters.PersonTableAdapter personTableAdapter;
+        private DataSetPersonTableAdapters.PersonTableAdapter personTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn personIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameFirstDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameLastDataGridViewTextBoxColumn;
@@ -256,6 +260,7 @@ namespace SU21_Final_Project
         private System.Windows.Forms.DataGridViewTextBoxColumn phonePrimaryDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn userNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn accountTypeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn payRateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn deletedDataGridViewCheckBoxColumn;
         private System.Windows.Forms.Button btnCustomer;
         private System.Windows.Forms.Button btnEmployee;

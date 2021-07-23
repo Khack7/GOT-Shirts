@@ -30,26 +30,35 @@ namespace SU21_Final_Project.Data
 
         public string CardExperation { get; set; }
 
+        public string Invoice { get; set; }
+
         public static void SaveOrder(SqlConnection con, DataOrder order, SqlTransaction transaction)
         {
             string sql = "INSERT INTO HackK21Su2332.Orders(PersonID, OrderDate, DiscountCode, Shipping," +
-                        " CardType, CardNumber, CardExperation)" +
-                        " VALUES(@PersonID, @OrderDate, @DiscountCode, @Shipping, @CardType, @CardNumber, @CardExperation);" +
+                        " CardType, CardNumber, CardExperation, Invoice)" +
+                        " VALUES(@PersonID, @OrderDate, @DiscountCode, @Shipping, @CardType, @CardNumber, @CardExperation, @Invoice);" +
                         " SELECT OrderNum = SCOPE_IDENTITY()";
-
+            if (order.OrderNum > 0)
+            {
+                sql = "UPDATE HackK21Su2332.Orders SET Invoice = @Invoice WHERE OrderNum = @OrderNum";
+            }
             using (SqlCommand cmd = DataCommon.StartTextCommand(con, sql, transaction))
             {
-                if (order.OrderNum != 0)
+                if (order.OrderNum > 0)
                 {
                     cmd.Parameters.AddWithValue("@OrderNum", order.OrderNum);
                 }
-                cmd.Parameters.AddWithValue("@PersonID", order.PersonID);
-                cmd.Parameters.AddWithValue("@OrderDate", order.OrderDate);
-                cmd.Parameters.AddWithValue("@DiscountCode", order.DiscountCode == null ? DBNull.Value : (object)order.DiscountCode);
-                cmd.Parameters.AddWithValue("@Shipping", order.Shipping);
-                cmd.Parameters.AddWithValue("@CardType", order.CardType);
-                cmd.Parameters.AddWithValue("@CardNumber", order.CardNumber);
-                cmd.Parameters.AddWithValue("@CardExperation", order.CardExperation);
+                else
+                {
+                    cmd.Parameters.AddWithValue("@PersonID", order.PersonID);
+                    cmd.Parameters.AddWithValue("@OrderDate", order.OrderDate);
+                    cmd.Parameters.AddWithValue("@DiscountCode", order.DiscountCode == null ? DBNull.Value : (object)order.DiscountCode);
+                    cmd.Parameters.AddWithValue("@Shipping", order.Shipping);
+                    cmd.Parameters.AddWithValue("@CardType", order.CardType);
+                    cmd.Parameters.AddWithValue("@CardNumber", order.CardNumber);
+                    cmd.Parameters.AddWithValue("@CardExperation", order.CardExperation);
+                }
+                cmd.Parameters.AddWithValue("@Invoice", order.Invoice == null ? DBNull.Value : (object)order.Invoice);
 
                 if (order.OrderNum > 0)
                 {
@@ -61,8 +70,11 @@ namespace SU21_Final_Project.Data
                     {
                         if (sdr.Read())
                         {
-                            int.TryParse(sdr["OrderNum"].ToString(), out int num);
-                            order.OrderNum = num;
+                            if (!int.TryParse(sdr["OrderNum"].ToString(), out int intNum))
+                            {
+                                throw new Exception("Error With Order. Try Again");
+                            }
+                            order.OrderNum = intNum;
                         }
                     }
                 }

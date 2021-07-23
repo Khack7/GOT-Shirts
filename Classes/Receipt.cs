@@ -12,21 +12,21 @@ namespace SU21_Final_Project.Classes
     {
         public static string LoadTemplate()
         {
-            string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
-            string filePath = $"{path}\\Templates\\Receipt.html";
-            using(StreamReader reader = new StreamReader(filePath))
+            string strPath = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            string strFilePath = $"{strPath}\\Templates\\Receipt.html";
+            using(StreamReader srReader = new StreamReader(strFilePath))
             {
-                return reader.ReadToEnd();
+                return srReader.ReadToEnd();
             }
         }
 
         public static string LoadInventoryTemplate()
         {
-            string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
-            string filePath = $"{path}\\Templates\\Inventory-Update.html";
-            using (StreamReader reader = new StreamReader(filePath))
+            string strPath = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            string strFilePath = $"{strPath}\\Templates\\Inventory-Update.html";
+            using (StreamReader srReader = new StreamReader(strFilePath))
             {
-                return reader.ReadToEnd();
+                return srReader.ReadToEnd();
             }
         }
     }

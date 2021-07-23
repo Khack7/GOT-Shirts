@@ -67,10 +67,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Receipt.cs" />
-    <Compile Include="DataSet11.Designer.cs">
+    <Compile Include="DataSetPerson.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DataSet11.xsd</DependentUpon>
+      <DependentUpon>DataSetPerson.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetReports.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetReports.xsd</DependentUpon>
     </Compile>
     <Compile Include="Data\DataCodes.cs" />
     <Compile Include="Data\DataCommon.cs" />
@@ -151,6 +156,12 @@
     </Compile>
     <Compile Include="frmInventory.Designer.cs">
       <DependentUpon>frmInventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmInvoiceView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInvoiceView.Designer.cs">
+      <DependentUpon>frmInvoiceView.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -262,6 +273,9 @@
     <EmbeddedResource Include="frmInventory.resx">
       <DependentUpon>frmInventory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmInvoiceView.resx">
+      <DependentUpon>frmInvoiceView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -311,16 +325,27 @@
     <None Include="Course Design Guides\Design Guide - Classroom Program Requirements and Naming Standards%28Final Project%29%282021-03-26%29.pdf" />
     <None Include="Course Design Guides\Notes" />
     <None Include="Course Design Guides\Prefixes%282021-03-26%29.pdf" />
-    <None Include="DataSet11.xsc">
-      <DependentUpon>DataSet11.xsd</DependentUpon>
+    <None Include="DataSetPerson.xsc">
+      <DependentUpon>DataSetPerson.xsd</DependentUpon>
     </None>
-    <None Include="DataSet11.xsd">
+    <None Include="DataSetPerson.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSet11.Designer.cs</LastGenOutput>
+      <LastGenOutput>DataSetPerson.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="DataSet11.xss">
-      <DependentUpon>DataSet11.xsd</DependentUpon>
+    <None Include="DataSetPerson.xss">
+      <DependentUpon>DataSetPerson.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetReports.xsc">
+      <DependentUpon>DataSetReports.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetReports.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetReports.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSetReports.xss">
+      <DependentUpon>DataSetReports.xsd</DependentUpon>
     </None>
     <None Include="HelpFiles\Readme.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

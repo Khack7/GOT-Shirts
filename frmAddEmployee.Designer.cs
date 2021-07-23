@@ -72,6 +72,8 @@ namespace SU21_Final_Project
             this.rdoEmployee = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rdoManager = new System.Windows.Forms.RadioButton();
+            this.txtPayRate = new System.Windows.Forms.TextBox();
+            this.lblPayRate = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -287,7 +289,7 @@ namespace SU21_Final_Project
             this.btnCancel.Location = new System.Drawing.Point(15, 504);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(147, 44);
-            this.btnCancel.TabIndex = 39;
+            this.btnCancel.TabIndex = 41;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -299,7 +301,7 @@ namespace SU21_Final_Project
             this.btnRegister.Location = new System.Drawing.Point(695, 504);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(147, 44);
-            this.btnRegister.TabIndex = 38;
+            this.btnRegister.TabIndex = 40;
             this.btnRegister.Text = "Re&gister";
             this.btnRegister.UseVisualStyleBackColor = true;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
@@ -458,10 +460,10 @@ namespace SU21_Final_Project
             // 
             this.groupBox1.Controls.Add(this.rdoManager);
             this.groupBox1.Controls.Add(this.rdoEmployee);
-            this.groupBox1.Location = new System.Drawing.Point(268, 495);
+            this.groupBox1.Location = new System.Drawing.Point(396, 495);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(256, 53);
-            this.groupBox1.TabIndex = 37;
+            this.groupBox1.TabIndex = 39;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Worker Type*";
             // 
@@ -476,11 +478,31 @@ namespace SU21_Final_Project
             this.rdoManager.Text = "&Manager";
             this.rdoManager.UseVisualStyleBackColor = true;
             // 
+            // txtPayRate
+            // 
+            this.txtPayRate.Location = new System.Drawing.Point(282, 519);
+            this.txtPayRate.Name = "txtPayRate";
+            this.txtPayRate.Size = new System.Drawing.Size(99, 20);
+            this.txtPayRate.TabIndex = 38;
+            this.txtPayRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPayRate_KeyPress);
+            // 
+            // lblPayRate
+            // 
+            this.lblPayRate.AutoSize = true;
+            this.lblPayRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPayRate.Location = new System.Drawing.Point(209, 522);
+            this.lblPayRate.Name = "lblPayRate";
+            this.lblPayRate.Size = new System.Drawing.Size(67, 17);
+            this.lblPayRate.TabIndex = 37;
+            this.lblPayRate.Text = "PayRa&te*";
+            // 
             // frmAddEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(858, 557);
+            this.Controls.Add(this.txtPayRate);
+            this.Controls.Add(this.lblPayRate);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtAnswer3);
             this.Controls.Add(this.txtAnswer2);
@@ -579,5 +601,7 @@ namespace SU21_Final_Project
         private System.Windows.Forms.RadioButton rdoEmployee;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rdoManager;
+        private System.Windows.Forms.TextBox txtPayRate;
+        private System.Windows.Forms.Label lblPayRate;
     }
 }

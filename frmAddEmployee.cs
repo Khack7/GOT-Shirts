@@ -24,12 +24,28 @@ namespace SU21_Final_Project
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            bool bolAcceptedPassword = false;
+            bool bolAcceptedPassword = false, bolValidPay = false;
 
             string strAttemptedPassword = txtPassword.Text;
 
             int intPasswordRequirements = 0;
             var regex = new Regex(@"[^a-zA-Z0-9\s]");
+
+            double dblPay = 0;
+
+            if (double.TryParse(txtPayRate.Text, out double dblRate))
+            {
+                if (dblRate < 7.5)
+                {
+                    bolValidPay = false;
+                }
+                else
+                {
+                    bolValidPay = true;
+                    dblPay = Math.Round(dblRate, 2);
+                }
+            }
+
 
             if (strAttemptedPassword.Any(char.IsLower))
             {
@@ -91,7 +107,7 @@ namespace SU21_Final_Project
                        txtZip.Text == "" || txtUsername.Text == "" || txtPassword.Text == "" ||
                        cmboSecurity1.SelectedItem == null || cmboSecurity2.SelectedItem == null ||
                        cmboSecurity3.SelectedItem == null || txtAnswer1.Text == "" || txtAnswer2.Text == ""
-                       || txtAnswer3.Text == "")
+                       || txtAnswer3.Text == "" || bolValidPay == false)
                     {
                         MessageBox.Show("Feilds with ' * ' are required", "Please fill out all required fields", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
@@ -100,9 +116,13 @@ namespace SU21_Final_Project
                             txtZip.Focus();
                             MessageBox.Show("Zipcode must be a valid 5 digit number", "Invalid Zipcode", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
-                        else if(txtPhone.Text.Length < 10 || txtEmail.Text == "")
+                        else if (txtPhone.Text.Length < 10 || txtEmail.Text == "")
                         {
                             MessageBox.Show("Employees are required to have at least one method of contact", "Please fill out a contact field", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                        else if (bolValidPay == false || txtPayRate.Text == "")
+                        {
+                            MessageBox.Show("Payrate must be above $7.50", "Invalid PayRate", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
                         else
                         {
@@ -138,11 +158,11 @@ namespace SU21_Final_Project
                         else
                         {
                             string strAccountType = "";
-                            if(rdoEmployee.Checked == true)
+                            if (rdoEmployee.Checked == true)
                             {
                                 strAccountType = "Employee";
                             }
-                            else if(rdoManager.Checked == true)
+                            else if (rdoManager.Checked == true)
                             {
                                 strAccountType = "Manager";
                             }
@@ -171,7 +191,8 @@ namespace SU21_Final_Project
                                 SecurityAnswer2 = txtAnswer2.Text,
                                 SecurityQuestion3 = cmboSecurity3.SelectedItem.ToString(),
                                 SecurityAnswer3 = txtAnswer3.Text,
-                                Deleted = false
+                                Deleted = false,
+                                PayRate = dblPay
                             };
                             DataPerson.SavePerson(person);
                             MessageBox.Show("Account Succesfully Created!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -407,6 +428,22 @@ namespace SU21_Final_Project
             {
                 e.Handled = true;
             }
+        }
+
+        private void txtPayRate_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+               (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+            bolChangesMade = true;
         }
     }
 }

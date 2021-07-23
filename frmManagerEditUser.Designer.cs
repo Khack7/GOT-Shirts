@@ -47,6 +47,8 @@ namespace SU21_Final_Project
             this.btnHelp = new System.Windows.Forms.Button();
             this.btnReturn = new System.Windows.Forms.Button();
             this.cboAccountType = new System.Windows.Forms.ComboBox();
+            this.txtPayRate = new System.Windows.Forms.TextBox();
+            this.lblPay = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblFirstName
@@ -210,12 +212,34 @@ namespace SU21_Final_Project
             this.cboAccountType.Name = "cboAccountType";
             this.cboAccountType.Size = new System.Drawing.Size(141, 21);
             this.cboAccountType.TabIndex = 17;
+            this.cboAccountType.SelectedValueChanged += new System.EventHandler(this.cboAccountType_SelectedValueChanged);
+            // 
+            // txtPayRate
+            // 
+            this.txtPayRate.Location = new System.Drawing.Point(94, 181);
+            this.txtPayRate.Name = "txtPayRate";
+            this.txtPayRate.ShortcutsEnabled = false;
+            this.txtPayRate.Size = new System.Drawing.Size(142, 20);
+            this.txtPayRate.TabIndex = 19;
+            this.txtPayRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPayRate_KeyPress);
+            // 
+            // lblPay
+            // 
+            this.lblPay.AutoSize = true;
+            this.lblPay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPay.Location = new System.Drawing.Point(12, 183);
+            this.lblPay.Name = "lblPay";
+            this.lblPay.Size = new System.Drawing.Size(62, 17);
+            this.lblPay.TabIndex = 18;
+            this.lblPay.Text = "Pa&yRate";
             // 
             // frmManagerEditUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 258);
+            this.Controls.Add(this.txtPayRate);
+            this.Controls.Add(this.lblPay);
             this.Controls.Add(this.cboAccountType);
             this.Controls.Add(this.btnReturn);
             this.Controls.Add(this.btnHelp);
@@ -265,5 +289,7 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Button btnHelp;
         private System.Windows.Forms.Button btnReturn;
         private System.Windows.Forms.ComboBox cboAccountType;
+        private System.Windows.Forms.TextBox txtPayRate;
+        private System.Windows.Forms.Label lblPay;
     }
 }

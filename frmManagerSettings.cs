@@ -104,30 +104,70 @@ namespace SU21_Final_Project
                 {
                     DataSettings settingUpdate = DataSettings.GetSettings(cboSettingNames.SelectedItem.ToString());
 
-                    if(double.TryParse(txtValue.Text, out double dblSettingValue))
+                    double dblTax = 0;
+
+                    if(settingUpdate.SettingName == "TaxRate")
                     {
-                        settingUpdate.SettingValue = dblSettingValue.ToString();
+                        if (double.TryParse(txtValue.Text, out double dblSettingValue))
+                        {
+                            dblTax = dblSettingValue;
+                        }
+                        else
+                        {
+                            throw new Exception("Invalid Value inputed. Please enter a money value");
+                        }
+
+                        if(dblTax > 1 || dblTax == 0)
+                        {
+                            MessageBox.Show("Please input tax percentage as a decimal. Example: 8% = 0.08", "Wrong Format Or Value Of Zero", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                        }
+                        else
+                        {
+                            settingUpdate.SettingValue = dblTax.ToString();
+                            DataSettings.SaveSetting(settingUpdate);
+                            MessageBox.Show("Updates saved!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            cboSettingNames.SelectedItem = null;
+                            txtValue.Text = "";
+                            txtValue.ReadOnly = true;
+                            btnApply.Enabled = false;
+
+                            cboSettingNames.Items.Clear();
+                            _lstSettings = DataSettings.ListSettings();
+                            List<string> lstNames = _lstSettings.Select(n => n.SettingName).Distinct().OrderBy(n => n).ToList();
+
+                            for (int intIndex = 0; intIndex < lstNames.Count; intIndex++)
+                            {
+                                cboSettingNames.Items.Add(lstNames[intIndex]);
+                            }
+                        }
                     }
                     else
                     {
-                        throw new Exception("Invalid Value inputed. Please enter a money value");
-                    }
+                        if (double.TryParse(txtValue.Text, out double dblSettingValue))
+                        {
+                            settingUpdate.SettingValue = dblSettingValue.ToString();
+                        }
+                        else
+                        {
+                            throw new Exception("Invalid Value inputed. Please enter a money value");
+                        }
 
-                    DataSettings.SaveSetting(settingUpdate);
-                    MessageBox.Show("Updates saved!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    cboSettingNames.SelectedItem = null;
-                    txtValue.Text = "";
-                    txtValue.ReadOnly = true;
-                    btnApply.Enabled = false;
+                        DataSettings.SaveSetting(settingUpdate);
+                        MessageBox.Show("Updates saved!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        cboSettingNames.SelectedItem = null;
+                        txtValue.Text = "";
+                        txtValue.ReadOnly = true;
+                        btnApply.Enabled = false;
 
-                    cboSettingNames.Items.Clear();
-                    _lstSettings = DataSettings.ListSettings();
-                    List<string> lstNames = _lstSettings.Select(n => n.SettingName).Distinct().OrderBy(n => n).ToList();
+                        cboSettingNames.Items.Clear();
+                        _lstSettings = DataSettings.ListSettings();
+                        List<string> lstNames = _lstSettings.Select(n => n.SettingName).Distinct().OrderBy(n => n).ToList();
 
-                    for (int intIndex = 0; intIndex < lstNames.Count; intIndex++)
-                    {
-                        cboSettingNames.Items.Add(lstNames[intIndex]);
-                    }
+                        for (int intIndex = 0; intIndex < lstNames.Count; intIndex++)
+                        {
+                            cboSettingNames.Items.Add(lstNames[intIndex]);
+                        }
+                    }                  
                 }
                 catch (Exception ex)
                 {

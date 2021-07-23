@@ -165,7 +165,7 @@ namespace SU21_Final_Project
 
                 parsedDate = DateTime.Parse(strSelectedDate);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -249,9 +249,13 @@ namespace SU21_Final_Project
 
                                 DataOrderItem.SaveItems(con, orderItems, objTrans);
 
+                                GenerateReceipt(order, orderItems);
+
+                                DataOrder.SaveOrder(con, order, objTrans);
+
                                 objTrans.Commit();
 
-                                PrintReceipt(order, orderItems);
+                                PrintReceipt(order);
                             }
                             catch (Exception ex)
                             {
@@ -266,52 +270,56 @@ namespace SU21_Final_Project
                         MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-            } 
+            }
+        }
+        private void GenerateReceipt(DataOrder order, List<DataOrderItem> lstItems)
+        {
+            string strReceipt = Receipt.LoadTemplate();
+            strReceipt = strReceipt.Replace("{OrderNum}", order.OrderNum.ToString());
+            strReceipt = strReceipt.Replace("{OrderDate}", order.OrderDate.ToString("MM-dd-yyyy"));
+            strReceipt = strReceipt.Replace("{Payment}", $"{order.CardType} xxxx{order.CardNumber.Substring(order.CardNumber.Length - 4)}");
+            var person = DataPerson.GetPerson(order.PersonID);
+            strReceipt = strReceipt.Replace("{AddressName}", $"{person.NameFirst} {person.NameLast}");
+            List<string> streetLines = new List<string>();
+            streetLines.Add(person.Address1);
+            if (!string.IsNullOrEmpty(person.Address2))
+            {
+                streetLines.Add(person.Address2);
+            }
+            if (!string.IsNullOrEmpty(person.Address3))
+            {
+                streetLines.Add(person.Address3);
+            }
+            strReceipt = strReceipt.Replace("{AddressStreet}", string.Join("<br/>", streetLines));
+            strReceipt = strReceipt.Replace("{AddressCity}", person.City);
+            strReceipt = strReceipt.Replace("{AddressState}", person.State);
+            strReceipt = strReceipt.Replace("{AddressZip}", person.Zipcode);
+
+            StringBuilder itemHTML = new StringBuilder();
+
+            for (int intIndex = 0; intIndex < lstItems.Count; intIndex++)
+            {
+
+                itemHTML.AppendFormat("<tr>");
+                itemHTML.AppendFormat("    <td>{0} {1}</td>", lstItems[intIndex].Product.Color, lstItems[intIndex].Product.Size);
+                itemHTML.AppendFormat("    <td>{0}</td>", lstItems[intIndex].intQuantity);
+                itemHTML.AppendFormat("    <td>{0:C2}</td>", lstItems[intIndex].Product.Price);
+                itemHTML.AppendFormat("    <td>{0:C2}</td>", lstItems[intIndex].Product.Price * lstItems[intIndex].intQuantity);
+                itemHTML.AppendFormat("</tr>");
+            }
+            strReceipt = strReceipt.Replace("{Items}", itemHTML.ToString());
+            strReceipt = strReceipt.Replace("{SubTotal}", dblSubCost.ToString("C2"));
+            strReceipt = strReceipt.Replace("{TaxTotal}", dblTaxCost.ToString("C2"));
+            strReceipt = strReceipt.Replace("{ShippingTotal}", dblShippingCost.ToString("C2"));
+            strReceipt = strReceipt.Replace("{OrderTotal}", dblTotalCost.ToString("C2"));
+
+            order.Invoice = strReceipt.ToString();
         }
 
-        private void PrintReceipt(DataOrder order, List<DataOrderItem> lstItems)
+        private void PrintReceipt(DataOrder order)
         {
             try
             {
-                string strReceipt = Receipt.LoadTemplate();
-                strReceipt = strReceipt.Replace("{OrderNum}", order.OrderNum.ToString());
-                strReceipt = strReceipt.Replace("{OrderDate}", order.OrderDate.ToString("MM-dd-yyyy"));
-                strReceipt = strReceipt.Replace("{Payment}", $"{order.CardType} xxxx{order.CardNumber.Substring(order.CardNumber.Length - 4)}");
-                var person = DataPerson.GetPerson(order.PersonID);
-                strReceipt = strReceipt.Replace("{AddressName}", $"{person.NameFirst} {person.NameLast}");
-                List<string> streetLines = new List<string>();
-                streetLines.Add(person.Address1);
-                if (!string.IsNullOrEmpty(person.Address2))
-                {
-                    streetLines.Add(person.Address2);
-                }
-                if (!string.IsNullOrEmpty(person.Address3))
-                {
-                    streetLines.Add(person.Address3);
-                }
-                strReceipt = strReceipt.Replace("{AddressStreet}", string.Join("<br/>", streetLines));
-                strReceipt = strReceipt.Replace("{AddressCity}", person.City);
-                strReceipt = strReceipt.Replace("{AddressState}", person.State);
-                strReceipt = strReceipt.Replace("{AddressZip}", person.Zipcode);
-
-                StringBuilder itemHTML = new StringBuilder();
-
-                for (int intIndex = 0; intIndex < lstItems.Count; intIndex++)
-                {
-
-                    itemHTML.AppendFormat("<tr>");
-                    itemHTML.AppendFormat("    <td>{0} {1}</td>", lstItems[intIndex].Product.Color, lstItems[intIndex].Product.Size);
-                    itemHTML.AppendFormat("    <td>{0}</td>", lstItems[intIndex].intQuantity);
-                    itemHTML.AppendFormat("    <td>{0:C2}</td>", lstItems[intIndex].Product.Price);
-                    itemHTML.AppendFormat("    <td>{0:C2}</td>", lstItems[intIndex].Product.Price * lstItems[intIndex].intQuantity);
-                    itemHTML.AppendFormat("</tr>");
-                }
-                strReceipt = strReceipt.Replace("{Items}", itemHTML.ToString());
-                strReceipt = strReceipt.Replace("{SubTotal}", dblSubCost.ToString("C2"));
-                strReceipt = strReceipt.Replace("{TaxTotal}", dblTaxCost.ToString("C2"));
-                strReceipt = strReceipt.Replace("{ShippingTotal}", dblShippingCost.ToString("C2"));
-                strReceipt = strReceipt.Replace("{OrderTotal}", dblTotalCost.ToString("C2"));
-
                 //GET USERS SELECTED PATH
                 string strPath = "";
                 bool bolPathSelected = false;
@@ -321,14 +329,14 @@ namespace SU21_Final_Project
                 {
                     while (bolPathSelected == false)
                     {
-                        SaveFileDialog fd = new SaveFileDialog();
-                        fd.Title = "Select save location";
-                        fd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                        fd.FileName = $"GOT Shirts-Receipt-{order.OrderNum}.html";
+                        SaveFileDialog sfdFile = new SaveFileDialog();
+                        sfdFile.Title = "Select save location";
+                        sfdFile.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                        sfdFile.FileName = $"GOT Shirts-Receipt-{order.OrderNum}.html";
 
-                        if (fd.ShowDialog() == DialogResult.OK)
+                        if (sfdFile.ShowDialog() == DialogResult.OK)
                         {
-                            strPath = fd.FileName;
+                            strPath = sfdFile.FileName;
                             bolPathSelected = true;
                             break;
                         }
@@ -337,24 +345,25 @@ namespace SU21_Final_Project
                             MessageBox.Show("Please select a folder to save your receipt", "Please choose a folder", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             bolPathSelected = false;
                         }
-
                     }
 
                     using (FileStream fs = new FileStream(strPath, FileMode.Create))
                     {
                         using (StreamWriter w = new StreamWriter(fs, Encoding.UTF8))
                         {
-                            w.Write(strReceipt);
+                            w.Write(order.Invoice);
                         }
                     }
                     System.Diagnostics.Process.Start(strPath);
-                    this.Close();
                     bolCloseShop = true;
+                    bolCloseCheck = true;
+                    this.Close();
                 }
                 else
                 {
-                    this.Close();
                     bolCloseShop = true;
+                    bolCloseCheck = true;
+                    this.Close();
                 }
             }
             catch (Exception ex)
@@ -405,6 +414,7 @@ namespace SU21_Final_Project
         }
 
         public static bool bolCloseShop = false;
+        bool bolCloseCheck = false;
         private void btnCancel_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Are you sure want to quit? Your order will be canceled and you will be signed out", "Alert!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -412,6 +422,7 @@ namespace SU21_Final_Project
             if (result == DialogResult.Yes)
             {
                 bolCloseShop = true;
+                bolCloseCheck = true;
                 this.Close();
                 frmSignIn.intID = 0;
             }
@@ -441,16 +452,19 @@ namespace SU21_Final_Project
 
         private void frmCheckout_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult result = MessageBox.Show("Are you sure want to quit? Your order will be canceled and you will be signed out", "Alert!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if(bolCloseCheck == false)
+            {
+                DialogResult result = MessageBox.Show("Are you sure want to quit? Your order will be canceled and you will be signed out", "Alert!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-            if (result == DialogResult.Yes)
-            {
-                bolCloseShop = true;
-                frmSignIn.intID = 0;
-            }
-            else
-            {
-                e.Cancel = true;
+                if (result == DialogResult.Yes)
+                {
+                    bolCloseShop = true;
+                    frmSignIn.intID = 0;
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
             }
         }
 

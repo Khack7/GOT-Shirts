@@ -321,14 +321,14 @@ namespace SU21_Final_Project
 
                 while (bolPathSelected == false)
                 {
-                    SaveFileDialog fd = new SaveFileDialog();
-                    fd.Title = "Select save location";
-                    fd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                    fd.FileName = $"GOT Shirts-Inv.Update-{DateTime.Now.ToString("MM-dd-yyyy--hh_mm")}.html";
+                    SaveFileDialog sfdFile = new SaveFileDialog();
+                    sfdFile.Title = "Select save location";
+                    sfdFile.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                    sfdFile.FileName = $"GOT Shirts-Inv.Update-{DateTime.Now.ToString("MM-dd-yyyy--hh_mm")}.html";
 
-                    if (fd.ShowDialog() == DialogResult.OK)
+                    if (sfdFile.ShowDialog() == DialogResult.OK)
                     {
-                        strPath = fd.FileName;
+                        strPath = sfdFile.FileName;
                         bolPathSelected = true;
                         break;
                     }
@@ -340,11 +340,11 @@ namespace SU21_Final_Project
 
                 }
 
-                using (FileStream fs = new FileStream(strPath, FileMode.Create))
+                using (FileStream fsStream = new FileStream(strPath, FileMode.Create))
                 {
-                    using (StreamWriter w = new StreamWriter(fs, Encoding.UTF8))
+                    using (StreamWriter swWriter = new StreamWriter(fsStream, Encoding.UTF8))
                     {
-                        w.Write(strReceipt);
+                        swWriter.Write(strReceipt);
                     }
                 }
                 System.Diagnostics.Process.Start(strPath);

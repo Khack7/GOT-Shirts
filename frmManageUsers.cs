@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SU21_Final_Project.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,8 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.VisualBasic;
-using SU21_Final_Project.Data;
 
 namespace SU21_Final_Project
 {
@@ -23,8 +22,8 @@ namespace SU21_Final_Project
         {
             try
             {
-                // TODO: This line of code loads data into the 'dataSet1.Person' table. You can move, or remove it, as needed.
-                this.personTableAdapter.Fill(this.dataSet1.Person);
+                // TODO: This line of code loads data into the 'dataSetPerson.Person' table. You can move, or remove it, as needed.
+                this.personTableAdapter.Fill(this.dataSetPerson.Person);
             }
             catch (Exception ex)
             {
@@ -33,24 +32,8 @@ namespace SU21_Final_Project
             }
         }
 
-        private void btnReturn_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btnCustomer_Click(object sender, EventArgs e)
-        {
-            DataView dv;
-            dv = new DataView(dataSet1.Tables[0], "AccountType = 'Customer'", "AccountType Desc", DataViewRowState.CurrentRows);
-            dvgPerson.DataSource = dv;
-        }
-
-        private void btnEmployee_Click(object sender, EventArgs e)
-        {
-            DataView dv;
-            dv = new DataView(dataSet1.Tables[0], "AccountType = 'Employee' OR AccountType = 'Manager'", "AccountType Desc", DataViewRowState.CurrentRows);
-            dvgPerson.DataSource = dv;
-        }
+        //VARIABLES THAT CAN BE EDITED. ID STORED JUST FOR REFERENCE SHOULD ANY MAJOR CHANGES HAPPEN
+        public static string strFirstName, strLastName, strUserName, strAccountType, strPhone, strEmail;
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
@@ -128,7 +111,7 @@ namespace SU21_Final_Project
                             person.Deleted = true;
                             DataPerson.SavePerson(person);
                             MessageBox.Show("Account has been Deleted", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            this.personTableAdapter.Fill(this.dataSet1.Person);
+                            this.personTableAdapter.Fill(this.dataSetPerson.Person);
                         }
                     }
                 }
@@ -140,7 +123,7 @@ namespace SU21_Final_Project
                         person.Deleted = false;
                         DataPerson.SavePerson(person);
                         MessageBox.Show("Account has been restored", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        this.personTableAdapter.Fill(this.dataSet1.Person);
+                        this.personTableAdapter.Fill(this.dataSetPerson.Person);
                     }
                 }
 
@@ -151,30 +134,42 @@ namespace SU21_Final_Project
             }
         }
 
-        private void btnHelp_Click(object sender, EventArgs e)
+        private void btnReturn_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
-        //VARIABLES THAT CAN BE EDITED. ID STORED JUST FOR REFERENCE SHOULD ANY MAJOR CHANGES HAPPEN
-        public static string strFirstName, strLastName, strUserName, strAccountType, strPhone, strEmail;
+        private void btnEmployee_Click(object sender, EventArgs e)
+        {
+            DataView dv;
+            dv = new DataView(dataSetPerson.Tables[0], "AccountType = 'Employee' OR AccountType = 'Manager'", "AccountType Desc", DataViewRowState.CurrentRows);
+            dgvPerson.DataSource = dv;
+        }
+
+        private void btnCustomer_Click(object sender, EventArgs e)
+        {
+            DataView dv;
+            dv = new DataView(dataSetPerson.Tables[0], "AccountType = 'Customer'", "AccountType Desc", DataViewRowState.CurrentRows);
+            dgvPerson.DataSource = dv;
+        }
+
         public static int intPersonID;
         bool bolIsDeleted = false;
-        private void dvgPerson_SelectionChanged(object sender, EventArgs e)
+        private void dgvPerson_SelectionChanged(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in dvgPerson.SelectedRows)
+            foreach (DataGridViewRow row in dgvPerson.SelectedRows)
             {
                 if (!int.TryParse(row.Cells[0].Value.ToString(), out int intID))
                 {
                     MessageBox.Show("Error occurred while getting selected ID. Please try again", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    dvgPerson.ClearSelection();
+                    dgvPerson.ClearSelection();
                     btnEdit.Enabled = false;
                     btnEdit.Enabled = false;
                     break;
                 }
-                if (!bool.TryParse(row.Cells[7].Value.ToString(), out bool bolStatus))
+                if (!bool.TryParse(row.Cells[8].Value.ToString(), out bool bolStatus))
                 {
-                    dvgPerson.ClearSelection();
+                    dgvPerson.ClearSelection();
                     MessageBox.Show("Error occurred while getting person's account status. Please try again", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     btnEdit.Enabled = false;
                     btnEdit.Enabled = false;
