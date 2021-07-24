@@ -44,6 +44,7 @@ namespace SU21_Final_Project
                         CodeUsed = true;
                         CouponCode = code.DiscountCode;
                         percentOff = code.PercentOff;
+                        this.Close();
                     }
                     else
                     {
@@ -64,6 +65,14 @@ namespace SU21_Final_Project
         private void frmCouponInput_Load(object sender, EventArgs e)
         {
             txtCode.MaxLength = 5;
+        }
+
+        private void txtCode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == (char)Keys.Space)
+            {
+                e.Handled = true;
+            }
         }
     }
 }

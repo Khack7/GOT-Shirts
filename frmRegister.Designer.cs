@@ -69,6 +69,7 @@ namespace SU21_Final_Project
             this.txtAnswer1 = new System.Windows.Forms.TextBox();
             this.txtAnswer2 = new System.Windows.Forms.TextBox();
             this.txtAnswer3 = new System.Windows.Forms.TextBox();
+            this.btnShowPass = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cboStates
@@ -437,11 +438,24 @@ namespace SU21_Final_Project
             this.txtAnswer3.TabIndex = 36;
             this.txtAnswer3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAnswer3_KeyPress);
             // 
+            // btnShowPass
+            // 
+            this.btnShowPass.BackColor = System.Drawing.Color.Transparent;
+            this.btnShowPass.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnShowPass.BackgroundImage")));
+            this.btnShowPass.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnShowPass.Location = new System.Drawing.Point(848, 264);
+            this.btnShowPass.Name = "btnShowPass";
+            this.btnShowPass.Size = new System.Drawing.Size(25, 22);
+            this.btnShowPass.TabIndex = 39;
+            this.btnShowPass.UseVisualStyleBackColor = false;
+            this.btnShowPass.Click += new System.EventHandler(this.btnShowPass_Click);
+            // 
             // frmRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(875, 556);
+            this.Controls.Add(this.btnShowPass);
             this.Controls.Add(this.txtAnswer3);
             this.Controls.Add(this.txtAnswer2);
             this.Controls.Add(this.txtAnswer1);
@@ -535,5 +549,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.TextBox txtAnswer1;
         private System.Windows.Forms.TextBox txtAnswer2;
         private System.Windows.Forms.TextBox txtAnswer3;
+        private System.Windows.Forms.Button btnShowPass;
     }
 }

@@ -568,15 +568,22 @@ namespace SU21_Final_Project
 
         private void frmShop_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult result = MessageBox.Show("Are you sure want to quit? Your order will be canceled and you will be signed out", "Alert!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-            if (result == DialogResult.Yes)
+            if(frmCheckout.bolCloseShop == true)
             {
-                frmSignIn.intID = 0;
+                this.Close();
             }
             else
             {
-                e.Cancel = true;
+                DialogResult result = MessageBox.Show("Are you sure want to quit? Your order will be canceled and you will be signed out", "Alert!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    frmSignIn.intID = 0;
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
             }
         }
 

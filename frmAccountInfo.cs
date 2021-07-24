@@ -149,11 +149,13 @@ namespace SU21_Final_Project
 
         private void txtFirst_KeyPress(object sender, KeyPressEventArgs e)
         {
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
             changesMade = true;
         }
 
         private void txtLast_KeyPress(object sender, KeyPressEventArgs e)
         {
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
             changesMade = true;
         }
 
@@ -174,7 +176,7 @@ namespace SU21_Final_Project
 
         private void txtCity_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Space || e.KeyChar == (char)Keys.OemPeriod);
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Space);
             changesMade = true;
         }
 
@@ -196,13 +198,12 @@ namespace SU21_Final_Project
                 e.Handled = true;
             }
             txtPhone.MaxLength = 10;
-            txtPhone.MaxLength = 10;
         }
 
         private void txtEmail_KeyPress(object sender, KeyPressEventArgs e)
         {
             changesMade = true;
-            if (e.KeyChar == (char)Keys.Space)
+            if (e.KeyChar == (char)Keys.Space || e.KeyChar == '-')
             {
                 e.Handled = true;
             }
@@ -225,11 +226,6 @@ namespace SU21_Final_Project
         }
 
         private void cboStates_SelectedValueChanged(object sender, EventArgs e)
-        {
-            changesMade = true;
-        }
-
-        private void txtFirst_TextChanged(object sender, EventArgs e)
         {
             changesMade = true;
         }

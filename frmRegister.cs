@@ -221,6 +221,11 @@ namespace SU21_Final_Project
                         }
                         else
                         {
+                            string strPhone = txtPhone.Text;
+                            if(strPhone != "")
+                            {
+                                strPhone = String.Format("{0:(###)-###-####}", Convert.ToInt64(txtPhone.Text));
+                            }
                             person = new DataPerson
                             {
                                 NameFirst = txtFirst.Text,
@@ -232,7 +237,7 @@ namespace SU21_Final_Project
                                 State = cboStates.SelectedItem.ToString(),
                                 Zipcode = txtZip.Text,
                                 Email = txtEmail.Text,
-                                PhonePrimary = String.Format("{0:(###)-###-####}", Convert.ToInt64(txtPhone.Text)),
+                                PhonePrimary = strPhone,
                                 UserName = txtUsername.Text,
                                 Password = txtPassword.Text,
                                 AccountType = "Customer",
@@ -272,7 +277,7 @@ namespace SU21_Final_Project
 
         private void txtCity_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Space || e.KeyChar == (char)Keys.OemPeriod);
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Space);
             bolChangesMade = true;
         }
 
@@ -287,6 +292,7 @@ namespace SU21_Final_Project
                 DialogResult dr = MessageBox.Show("All changes will be discarded. Are you sure you want to cancel?", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dr == DialogResult.Yes)
                 {
+                    bolComplete = true;
                     this.Close();
                 }
             }
@@ -393,9 +399,25 @@ namespace SU21_Final_Project
 
         private void txtEmail_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Space)
+            if (e.KeyChar == (char)Keys.Space || e.KeyChar == '-')
             {
                 e.Handled = true;
+            }
+        }
+
+        bool bolShowPass = true;
+
+        private void btnShowPass_Click(object sender, EventArgs e)
+        {
+            if(bolShowPass == true)
+            {
+                txtPassword.PasswordChar = '\0';
+                bolShowPass = false;
+            }
+            else
+            {
+                txtPassword.PasswordChar = '•';
+                bolShowPass = true;
             }
         }
     }

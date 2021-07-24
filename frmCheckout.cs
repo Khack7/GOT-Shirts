@@ -417,14 +417,13 @@ namespace SU21_Final_Project
         bool bolCloseCheck = false;
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Are you sure want to quit? Your order will be canceled and you will be signed out", "Alert!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult result = MessageBox.Show("Are you sure want to cancel? You will be brought back to the shop", "Alert!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (result == DialogResult.Yes)
             {
-                bolCloseShop = true;
+                bolCloseShop = false;
                 bolCloseCheck = true;
                 this.Close();
-                frmSignIn.intID = 0;
             }
         }
 
@@ -454,12 +453,11 @@ namespace SU21_Final_Project
         {
             if(bolCloseCheck == false)
             {
-                DialogResult result = MessageBox.Show("Are you sure want to quit? Your order will be canceled and you will be signed out", "Alert!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult result = MessageBox.Show("Are you sure want to cancel? You will be brought back to the shop", "Alert!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (result == DialogResult.Yes)
                 {
                     bolCloseShop = true;
-                    frmSignIn.intID = 0;
                 }
                 else
                 {

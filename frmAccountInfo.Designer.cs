@@ -190,7 +190,6 @@ namespace SU21_Final_Project
             this.txtFirst.ReadOnly = true;
             this.txtFirst.Size = new System.Drawing.Size(155, 20);
             this.txtFirst.TabIndex = 3;
-            this.txtFirst.TextChanged += new System.EventHandler(this.txtFirst_TextChanged);
             this.txtFirst.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFirst_KeyPress);
             // 
             // lblZip

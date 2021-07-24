@@ -424,7 +424,7 @@ namespace SU21_Final_Project
 
         private void txtEmail_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Space)
+            if (e.KeyChar == (char)Keys.Space || e.KeyChar == '-')
             {
                 e.Handled = true;
             }
