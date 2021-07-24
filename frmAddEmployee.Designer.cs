@@ -75,6 +75,7 @@ namespace SU21_Final_Project
             this.txtPayRate = new System.Windows.Forms.TextBox();
             this.lblPayRate = new System.Windows.Forms.Label();
             this.btnHelp = new System.Windows.Forms.Button();
+            this.btnShowPass = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -230,7 +231,7 @@ namespace SU21_Final_Project
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(12, 9);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(830, 17);
+            this.label3.Size = new System.Drawing.Size(853, 17);
             this.label3.TabIndex = 0;
             this.label3.Text = "Please fill out all that apply. The fields with \" * \" are required";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -299,7 +300,7 @@ namespace SU21_Final_Project
             // 
             this.btnRegister.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegister.Location = new System.Drawing.Point(695, 504);
+            this.btnRegister.Location = new System.Drawing.Point(718, 504);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(147, 44);
             this.btnRegister.TabIndex = 40;
@@ -507,11 +508,24 @@ namespace SU21_Final_Project
             this.btnHelp.UseVisualStyleBackColor = true;
             this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
+            // btnShowPass
+            // 
+            this.btnShowPass.BackColor = System.Drawing.Color.Transparent;
+            this.btnShowPass.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnShowPass.BackgroundImage")));
+            this.btnShowPass.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnShowPass.Location = new System.Drawing.Point(848, 266);
+            this.btnShowPass.Name = "btnShowPass";
+            this.btnShowPass.Size = new System.Drawing.Size(25, 22);
+            this.btnShowPass.TabIndex = 43;
+            this.btnShowPass.UseVisualStyleBackColor = false;
+            this.btnShowPass.Click += new System.EventHandler(this.btnShowPass_Click);
+            // 
             // frmAddEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(858, 557);
+            this.ClientSize = new System.Drawing.Size(881, 557);
+            this.Controls.Add(this.btnShowPass);
             this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.txtPayRate);
             this.Controls.Add(this.lblPayRate);
@@ -616,5 +630,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.TextBox txtPayRate;
         private System.Windows.Forms.Label lblPayRate;
         private System.Windows.Forms.Button btnHelp;
+        private System.Windows.Forms.Button btnShowPass;
     }
 }

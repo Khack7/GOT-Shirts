@@ -154,5 +154,22 @@ namespace SU21_Final_Project
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        bool bolShowPass = true;
+        private void btnShowPass_Click(object sender, EventArgs e)
+        {
+            if (bolShowPass == true)
+            {
+                txtPassword.PasswordChar = '\0';
+                txtConfirmPass.PasswordChar = '\0';
+                bolShowPass = false;
+            }
+            else
+            {
+                txtPassword.PasswordChar = '•';
+                txtConfirmPass.PasswordChar = '•';
+                bolShowPass = true;
+            }
+        }
     }
 }

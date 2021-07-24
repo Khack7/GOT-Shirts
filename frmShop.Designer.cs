@@ -58,6 +58,8 @@ namespace SU21_Final_Project
             this.lblItemPricePointer = new System.Windows.Forms.Label();
             this.lblItemPrice = new System.Windows.Forms.Label();
             this.btnUpload = new System.Windows.Forms.Button();
+            this.lblColor = new System.Windows.Forms.Label();
+            this.lblColorPointer = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numUDQuantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxShirt)).BeginInit();
             this.SuspendLayout();
@@ -367,11 +369,31 @@ namespace SU21_Final_Project
             this.btnUpload.Visible = false;
             this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
             // 
+            // lblColor
+            // 
+            this.lblColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblColor.Location = new System.Drawing.Point(215, 215);
+            this.lblColor.Name = "lblColor";
+            this.lblColor.Size = new System.Drawing.Size(64, 19);
+            this.lblColor.TabIndex = 29;
+            // 
+            // lblColorPointer
+            // 
+            this.lblColorPointer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblColorPointer.Location = new System.Drawing.Point(162, 215);
+            this.lblColorPointer.Name = "lblColorPointer";
+            this.lblColorPointer.Size = new System.Drawing.Size(47, 17);
+            this.lblColorPointer.TabIndex = 28;
+            this.lblColorPointer.Text = "Color:";
+            // 
             // frmShop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(651, 284);
+            this.Controls.Add(this.lblColor);
+            this.Controls.Add(this.lblColorPointer);
             this.Controls.Add(this.btnUpload);
             this.Controls.Add(this.lblItemPrice);
             this.Controls.Add(this.lblItemPricePointer);
@@ -445,5 +467,7 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label lblItemPricePointer;
         private System.Windows.Forms.Label lblItemPrice;
         private System.Windows.Forms.Button btnUpload;
+        private System.Windows.Forms.Label lblColor;
+        private System.Windows.Forms.Label lblColorPointer;
     }
 }

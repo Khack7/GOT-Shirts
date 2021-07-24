@@ -407,6 +407,8 @@ namespace SU21_Final_Project
                     this.Show();
                 }
             }
+            intTotalRows = 0;
+            dgvReports.ClearSelection();
         }
     }
 }

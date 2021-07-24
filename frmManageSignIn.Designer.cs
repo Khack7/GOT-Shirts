@@ -38,6 +38,7 @@ namespace SU21_Final_Project
             this.lblUserName = new System.Windows.Forms.Label();
             this.btnReturn = new System.Windows.Forms.Button();
             this.btnSign = new System.Windows.Forms.Button();
+            this.btnShowPass = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnForgot
@@ -127,12 +128,25 @@ namespace SU21_Final_Project
             this.btnSign.UseVisualStyleBackColor = true;
             this.btnSign.Click += new System.EventHandler(this.btnSign_Click);
             // 
+            // btnShowPass
+            // 
+            this.btnShowPass.BackColor = System.Drawing.Color.Transparent;
+            this.btnShowPass.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnShowPass.BackgroundImage")));
+            this.btnShowPass.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnShowPass.Location = new System.Drawing.Point(361, 152);
+            this.btnShowPass.Name = "btnShowPass";
+            this.btnShowPass.Size = new System.Drawing.Size(25, 22);
+            this.btnShowPass.TabIndex = 41;
+            this.btnShowPass.UseVisualStyleBackColor = false;
+            this.btnShowPass.Click += new System.EventHandler(this.btnShowPass_Click);
+            // 
             // frmManageSignIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(497, 315);
+            this.Controls.Add(this.btnShowPass);
             this.Controls.Add(this.btnForgot);
             this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.txtPassword);
@@ -163,5 +177,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label lblUserName;
         private System.Windows.Forms.Button btnReturn;
         private System.Windows.Forms.Button btnSign;
+        private System.Windows.Forms.Button btnShowPass;
     }
 }

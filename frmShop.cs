@@ -217,6 +217,7 @@ namespace SU21_Final_Project
         private void btnOrange_Click(object sender, EventArgs e)
         {
             strCurrentColor = btnOrange.BackColor.Name;
+            lblColor.Text = strCurrentColor;
             string strSize;
             if (rdoSmall.Checked == true)
             {
@@ -246,6 +247,7 @@ namespace SU21_Final_Project
         private void btnBlack_Click(object sender, EventArgs e)
         {
             strCurrentColor = btnBlack.BackColor.Name;
+            lblColor.Text = strCurrentColor;
             string strSize;
             if (rdoSmall.Checked == true)
             {
@@ -275,6 +277,7 @@ namespace SU21_Final_Project
         private void btnBlue_Click(object sender, EventArgs e)
         {
             strCurrentColor = btnBlue.BackColor.Name;
+            lblColor.Text = strCurrentColor;
             string strSize;
             if (rdoSmall.Checked == true)
             {
@@ -304,6 +307,7 @@ namespace SU21_Final_Project
         private void btnGreen_Click(object sender, EventArgs e)
         {
             strCurrentColor = btnGreen.BackColor.Name;
+            lblColor.Text = strCurrentColor;
             string strSize;
             if (rdoSmall.Checked == true)
             {
@@ -333,6 +337,7 @@ namespace SU21_Final_Project
         private void btnPink_Click(object sender, EventArgs e)
         {
             strCurrentColor = btnPink.BackColor.Name;
+            lblColor.Text = strCurrentColor;
             string strSize;
             if (rdoSmall.Checked == true)
             {
@@ -362,6 +367,7 @@ namespace SU21_Final_Project
         private void btnPurple_Click(object sender, EventArgs e)
         {
             strCurrentColor = btnPurple.BackColor.Name;
+            lblColor.Text = strCurrentColor;
             string strSize;
             if (rdoSmall.Checked == true)
             {
@@ -391,6 +397,7 @@ namespace SU21_Final_Project
         private void btnRed_Click(object sender, EventArgs e)
         {
             strCurrentColor = btnRed.BackColor.Name;
+            lblColor.Text = strCurrentColor;
             string strSize;
             if (rdoSmall.Checked == true)
             {
@@ -420,6 +427,7 @@ namespace SU21_Final_Project
         private void btnWhite_Click(object sender, EventArgs e)
         {
             strCurrentColor = btnWhite.BackColor.Name;
+            lblColor.Text = strCurrentColor;
             string strSize;
             if (rdoSmall.Checked == true)
             {
@@ -449,6 +457,7 @@ namespace SU21_Final_Project
         private void btnYellow_Click(object sender, EventArgs e)
         {
             strCurrentColor = btnYellow.BackColor.Name;
+            lblColor.Text = strCurrentColor;
             string strSize;
             if (rdoSmall.Checked == true)
             {
