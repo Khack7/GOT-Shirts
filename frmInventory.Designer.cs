@@ -44,6 +44,7 @@ namespace SU21_Final_Project
             this.cboSize = new System.Windows.Forms.ComboBox();
             this.btnHelp = new System.Windows.Forms.Button();
             this.pbxShirt = new System.Windows.Forms.PictureBox();
+            this.btnReport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbxShirt)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,7 +78,7 @@ namespace SU21_Final_Project
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(40, 17);
             this.lblPrice.TabIndex = 12;
-            this.lblPrice.Text = "&Price";
+            this.lblPrice.Text = "Pric&e";
             // 
             // txtPrice
             // 
@@ -173,7 +174,7 @@ namespace SU21_Final_Project
             // btnHelp
             // 
             this.btnHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHelp.Location = new System.Drawing.Point(273, 310);
+            this.btnHelp.Location = new System.Drawing.Point(359, 310);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(94, 36);
             this.btnHelp.TabIndex = 20;
@@ -191,11 +192,23 @@ namespace SU21_Final_Project
             this.pbxShirt.TabIndex = 28;
             this.pbxShirt.TabStop = false;
             // 
+            // btnReport
+            // 
+            this.btnReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReport.Location = new System.Drawing.Point(187, 310);
+            this.btnReport.Name = "btnReport";
+            this.btnReport.Size = new System.Drawing.Size(94, 36);
+            this.btnReport.TabIndex = 29;
+            this.btnReport.Text = "&Print Report";
+            this.btnReport.UseVisualStyleBackColor = true;
+            this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
+            // 
             // frmInventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(637, 363);
+            this.Controls.Add(this.btnReport);
             this.Controls.Add(this.pbxShirt);
             this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.lblSize);
@@ -239,5 +252,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.ComboBox cboSize;
         private System.Windows.Forms.Button btnHelp;
         private System.Windows.Forms.PictureBox pbxShirt;
+        private System.Windows.Forms.Button btnReport;
     }
 }

@@ -204,18 +204,6 @@ namespace SU21_Final_Project
             }
         }
 
-        private void frmShop_Load(object sender, EventArgs e)
-        {
-            if (frmSignIn.strCustomerType == "Employee")
-            {
-                btnAccount.Visible = false;
-            }
-            else
-            {
-                btnAccount.Visible = true;
-            }
-        }
-
         private void btnOrange_Click(object sender, EventArgs e)
         {
             strCurrentColor = btnOrange.BackColor.Name;
@@ -480,7 +468,7 @@ namespace SU21_Final_Project
                 pbxShirt.Image = product.ProductImage;
                 getItemPrice(strCurrentColor, strSize);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -521,10 +509,21 @@ namespace SU21_Final_Project
 
         private void btnAccount_Click(object sender, EventArgs e)
         {
-            frmAccountInfo accountInfo = new frmAccountInfo();
-            this.Hide();
-            accountInfo.ShowDialog();
-            this.Show();
+            if (frmSignIn.strCustomerType == "Employee")
+            {
+                frmEmpInfo frmInfo = new frmEmpInfo();
+                this.Hide();
+                frmInfo.ShowDialog();
+                this.Show();
+            }
+            else
+            {
+                frmAccountInfo accountInfo = new frmAccountInfo();
+                this.Hide();
+                accountInfo.ShowDialog();
+                this.Show();
+            }
+
         }
 
         private void btnHelp_Click(object sender, EventArgs e)
@@ -579,7 +578,7 @@ namespace SU21_Final_Project
 
         private void frmShop_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(frmCheckout.bolCloseShop == true || bolCloseShop == true)
+            if (frmCheckout.bolCloseShop == true || bolCloseShop == true)
             {
                 //this.Close();
             }
@@ -604,7 +603,7 @@ namespace SU21_Final_Project
             {
                 DataProduct.SaveImage(pbxShirt.Image, strCurrentColor);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }

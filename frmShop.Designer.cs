@@ -429,7 +429,6 @@ namespace SU21_Final_Project
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Shop";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmShop_FormClosing);
-            this.Load += new System.EventHandler(this.frmShop_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numUDQuantity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxShirt)).EndInit();
             this.ResumeLayout(false);

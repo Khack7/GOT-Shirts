@@ -191,7 +191,7 @@ namespace SU21_Final_Project
                         dblNewCost = product.Cost;
                     }
 
-                    DataProduct.SaveProduct(product);  
+                    DataProduct.SaveProduct(product);
 
                     MessageBox.Show("Updates saved!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -274,6 +274,113 @@ namespace SU21_Final_Project
                 e.Handled = true;
             }
             bolChangesMade = true;
+        }
+
+        public bool IsDirectoryEmpty(string path)
+        {
+            return !Directory.EnumerateFileSystemEntries(path).Any();
+        }
+
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bool bolEmptyFolder = false;
+                string strPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                bool bolStopLoop = false;
+
+                string strColor, strSize;
+
+                SaveFileDialog sfdFile = new SaveFileDialog();
+
+                DataProduct product = null;
+
+                _products = DataProduct.ListProducts();
+                List<string> lstColors = _products.Select(p => p.Color).Distinct().OrderBy(c => c).ToList();
+                List<string> lstSizes = _products.Select(p => p.Size).Distinct().OrderBy(s => s).ToList();
+
+
+                for (int intIndexColors = 0; intIndexColors < lstColors.Count; intIndexColors++)
+                {
+                    strColor = lstColors[intIndexColors].ToString();
+                    for (int intIndexSize = 0; intIndexSize < lstSizes.Count; intIndexSize++)
+                    {
+                        string strFileName = $"GOT Shirts-Current-Inventory-{lstSizes[intIndexSize].ToString() + "_" + lstColors[intIndexColors].ToString()}.html";
+
+                        strSize = lstSizes[intIndexSize].ToString();
+
+                        while (bolEmptyFolder == false)
+                        {
+                            sfdFile.FileName = strFileName;
+                            sfdFile.Title = "Select save location. Empty Folder Required";
+                            sfdFile.InitialDirectory = strPath;
+
+                            if (sfdFile.ShowDialog() == DialogResult.OK)
+                            {
+                                strPath = Path.GetDirectoryName(sfdFile.FileName);
+
+                                bolEmptyFolder = IsDirectoryEmpty(strPath);
+                                if (!bolEmptyFolder)
+                                {
+                                    MessageBox.Show("Please select an empty folder", "Empty Folder Needed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
+                            else
+                            {
+                                bolStopLoop = true;
+                                break;
+                            }
+                        }
+                        if (bolStopLoop == true)
+                        {
+                            break;
+                        }
+
+                        strFileName = Path.Combine(strPath, strFileName);
+
+                        product = DataProduct.GetProduct(strColor, strSize);
+
+                        GenerateReport(product, strFileName);
+                    } 
+                    if(bolStopLoop == true)
+                    {
+                        break;
+                    }
+                }
+                System.Diagnostics.Process.Start(strPath);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        private void GenerateReport(DataProduct product, string strFileName)
+        {
+            string strReport = Receipt.LoadInventoryReportTemplate();
+
+            strReport = strReport.Replace("{Date}", DateTime.Now.ToString());
+            strReport = strReport.Replace("{Product}", product.Size + " " + product.Color);
+
+            StringBuilder itemHTML = new StringBuilder();
+
+            itemHTML.AppendFormat("<tr>");
+            itemHTML.AppendFormat("    <td>{0} {1}</td>", product.Color, product.Size);
+            itemHTML.AppendFormat("    <td>{0}</td>", product.QuantityOnHand);
+            itemHTML.AppendFormat("    <td>{0:C2}</td>", product.Cost);
+            itemHTML.AppendFormat("    <td>{0:C2}</td>", product.Price);
+            itemHTML.AppendFormat("</tr>");
+
+            strReport = strReport.Replace("{Items}", itemHTML.ToString());
+
+            using (FileStream fs = new FileStream(strFileName, FileMode.Create))
+            {
+                using (StreamWriter w = new StreamWriter(fs, Encoding.UTF8))
+                {
+                    w.Write(strReport);
+                }
+            }
         }
 
         private void btnHelp_Click(object sender, EventArgs e)

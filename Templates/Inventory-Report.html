@@ -1,0 +1,27 @@
+﻿<html>
+<head>
+    <title>Report Date {Date}</title>
+    <style>
+        body {
+            font-family: tahoma;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Inventory Check: {Product}</h1>
+    <div style="float:left">
+        <div>{Date}</div>
+    </div>
+    <div style="clear:both"></div>
+    <table style="width:100%" border="1" cellpadding="3" cellspacing="0">
+        <tr>
+            <th align="left" style="background-color: #ddd">Item</th>
+            <th align="left" style="background-color: #ddd">Qty</th>
+            <th align="left" style="background-color: #ddd">Cost</th>
+            <th align="left" style="background-color: #ddd">Price</th>
+        </tr>
+        {Items}
+    </table>
+</body>
+</html>
