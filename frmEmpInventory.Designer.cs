@@ -75,7 +75,7 @@ namespace SU21_Final_Project
             this.lblCost.Name = "lblCost";
             this.lblCost.Size = new System.Drawing.Size(36, 17);
             this.lblCost.TabIndex = 26;
-            this.lblCost.Text = "Cost";
+            this.lblCost.Text = "C&ost";
             // 
             // txtCost
             // 
@@ -94,7 +94,7 @@ namespace SU21_Final_Project
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(40, 17);
             this.lblPrice.TabIndex = 24;
-            this.lblPrice.Text = "Price";
+            this.lblPrice.Text = "&Price";
             // 
             // txtPrice
             // 
@@ -113,7 +113,7 @@ namespace SU21_Final_Project
             this.lblAmount.Name = "lblAmount";
             this.lblAmount.Size = new System.Drawing.Size(61, 17);
             this.lblAmount.TabIndex = 22;
-            this.lblAmount.Text = "Quantity";
+            this.lblAmount.Text = "&Quantity";
             // 
             // lblColor
             // 

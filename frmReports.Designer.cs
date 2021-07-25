@@ -170,7 +170,7 @@ namespace SU21_Final_Project
             this.btnViewToday.Name = "btnViewToday";
             this.btnViewToday.Size = new System.Drawing.Size(107, 44);
             this.btnViewToday.TabIndex = 1;
-            this.btnViewToday.Text = "View Today\'s";
+            this.btnViewToday.Text = "View &Today\'s";
             this.btnViewToday.UseVisualStyleBackColor = true;
             this.btnViewToday.Click += new System.EventHandler(this.btnViewToday_Click);
             // 
@@ -181,7 +181,7 @@ namespace SU21_Final_Project
             this.btnViewWeek.Name = "btnViewWeek";
             this.btnViewWeek.Size = new System.Drawing.Size(107, 44);
             this.btnViewWeek.TabIndex = 2;
-            this.btnViewWeek.Text = "View This Week\'s";
+            this.btnViewWeek.Text = "View This &Week\'s";
             this.btnViewWeek.UseVisualStyleBackColor = true;
             this.btnViewWeek.Click += new System.EventHandler(this.btnViewWeek_Click);
             // 
@@ -192,7 +192,7 @@ namespace SU21_Final_Project
             this.btnViewMonth.Name = "btnViewMonth";
             this.btnViewMonth.Size = new System.Drawing.Size(107, 44);
             this.btnViewMonth.TabIndex = 3;
-            this.btnViewMonth.Text = "View This Month\'s";
+            this.btnViewMonth.Text = "View This &Month\'s";
             this.btnViewMonth.UseVisualStyleBackColor = true;
             this.btnViewMonth.Click += new System.EventHandler(this.btnViewMonth_Click);
             // 
@@ -203,7 +203,7 @@ namespace SU21_Final_Project
             this.btnShowInvoice.Name = "btnShowInvoice";
             this.btnShowInvoice.Size = new System.Drawing.Size(107, 44);
             this.btnShowInvoice.TabIndex = 7;
-            this.btnShowInvoice.Text = "View Order\'s Invoice";
+            this.btnShowInvoice.Text = "View &Order\'s Invoice";
             this.btnShowInvoice.UseVisualStyleBackColor = true;
             this.btnShowInvoice.Click += new System.EventHandler(this.btnShowInvoice_Click);
             // 
@@ -214,7 +214,7 @@ namespace SU21_Final_Project
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(107, 44);
             this.btnHelp.TabIndex = 8;
-            this.btnHelp.Text = "Help";
+            this.btnHelp.Text = "&Help";
             this.btnHelp.UseVisualStyleBackColor = true;
             this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
@@ -225,7 +225,7 @@ namespace SU21_Final_Project
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(107, 44);
             this.btnReturn.TabIndex = 9;
-            this.btnReturn.Text = "Return";
+            this.btnReturn.Text = "&Return";
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
@@ -236,7 +236,7 @@ namespace SU21_Final_Project
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(107, 44);
             this.btnPrint.TabIndex = 10;
-            this.btnPrint.Text = "Print";
+            this.btnPrint.Text = "&Print";
             this.btnPrint.UseVisualStyleBackColor = true;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 

@@ -35,7 +35,6 @@ namespace SU21_Final_Project
             this.txtAddress2 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cboStates = new System.Windows.Forms.ComboBox();
-            this.txtPhone = new System.Windows.Forms.TextBox();
             this.lblPhone = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
@@ -54,6 +53,7 @@ namespace SU21_Final_Project
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.lblInfo = new System.Windows.Forms.Label();
+            this.txtPhone = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // txtAddress3
@@ -106,16 +106,6 @@ namespace SU21_Final_Project
             this.cboStates.Size = new System.Drawing.Size(155, 21);
             this.cboStates.TabIndex = 15;
             this.cboStates.SelectedValueChanged += new System.EventHandler(this.cboStates_SelectedValueChanged);
-            // 
-            // txtPhone
-            // 
-            this.txtPhone.Location = new System.Drawing.Point(119, 354);
-            this.txtPhone.Name = "txtPhone";
-            this.txtPhone.ReadOnly = true;
-            this.txtPhone.ShortcutsEnabled = false;
-            this.txtPhone.Size = new System.Drawing.Size(155, 20);
-            this.txtPhone.TabIndex = 19;
-            this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
             // 
             // lblPhone
             // 
@@ -299,11 +289,23 @@ namespace SU21_Final_Project
             this.lblInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblInfo.Visible = false;
             // 
+            // txtPhone
+            // 
+            this.txtPhone.Location = new System.Drawing.Point(119, 355);
+            this.txtPhone.Mask = "(999) 000-0000";
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.ReadOnly = true;
+            this.txtPhone.Size = new System.Drawing.Size(155, 20);
+            this.txtPhone.TabIndex = 19;
+            this.txtPhone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
+            // 
             // frmAccountInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(572, 484);
+            this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.lblInfo);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnUpdate);
@@ -313,7 +315,6 @@ namespace SU21_Final_Project
             this.Controls.Add(this.txtAddress2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.cboStates);
-            this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.lblPhone);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.lblEmail);
@@ -347,7 +348,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.TextBox txtAddress2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cboStates;
-        private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.Label lblPhone;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label lblEmail;
@@ -366,5 +366,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Label lblInfo;
+        private System.Windows.Forms.MaskedTextBox txtPhone;
     }
 }

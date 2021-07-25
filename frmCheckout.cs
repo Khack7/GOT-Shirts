@@ -449,6 +449,22 @@ namespace SU21_Final_Project
             }
         }
 
+        bool bolShowCardNum = true;
+
+        private void btnShowCard_Click(object sender, EventArgs e)
+        {
+            if (bolShowCardNum == true)
+            {
+                txtCard.PasswordChar = '\0';
+                bolShowCardNum = false;
+            }
+            else
+            {
+                txtCard.PasswordChar = '•';
+                bolShowCardNum = true;
+            }
+        }
+
         private void frmCheckout_FormClosing(object sender, FormClosingEventArgs e)
         {
             if(bolCloseCheck == false)

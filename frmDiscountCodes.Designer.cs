@@ -58,7 +58,6 @@ namespace SU21_Final_Project
             this.cboCodes.FormattingEnabled = true;
             this.cboCodes.ItemHeight = 16;
             this.cboCodes.Location = new System.Drawing.Point(15, 60);
-            this.cboCodes.MaxDropDownItems = 7;
             this.cboCodes.Name = "cboCodes";
             this.cboCodes.Size = new System.Drawing.Size(121, 24);
             this.cboCodes.TabIndex = 1;

@@ -55,6 +55,7 @@ namespace SU21_Final_Project
             this.lblShipping = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.btnHelp = new System.Windows.Forms.Button();
+            this.btnShowCard = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,7 +73,7 @@ namespace SU21_Final_Project
             // 
             this.btnConfirm.Enabled = false;
             this.btnConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirm.Location = new System.Drawing.Point(256, 377);
+            this.btnConfirm.Location = new System.Drawing.Point(320, 377);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(102, 47);
             this.btnConfirm.TabIndex = 19;
@@ -190,7 +191,7 @@ namespace SU21_Final_Project
             // 
             this.rdoSecondDay.AutoSize = true;
             this.rdoSecondDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoSecondDay.Location = new System.Drawing.Point(252, 19);
+            this.rdoSecondDay.Location = new System.Drawing.Point(320, 19);
             this.rdoSecondDay.Name = "rdoSecondDay";
             this.rdoSecondDay.Size = new System.Drawing.Size(100, 21);
             this.rdoSecondDay.TabIndex = 2;
@@ -202,7 +203,7 @@ namespace SU21_Final_Project
             // 
             this.rdoNextDay.AutoSize = true;
             this.rdoNextDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoNextDay.Location = new System.Drawing.Point(123, 19);
+            this.rdoNextDay.Location = new System.Drawing.Point(157, 19);
             this.rdoNextDay.Name = "rdoNextDay";
             this.rdoNextDay.Size = new System.Drawing.Size(104, 21);
             this.rdoNextDay.TabIndex = 1;
@@ -241,7 +242,7 @@ namespace SU21_Final_Project
             this.groupBox1.Controls.Add(this.rdoSecondDay);
             this.groupBox1.Location = new System.Drawing.Point(0, 317);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(370, 54);
+            this.groupBox1.Size = new System.Drawing.Size(431, 54);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             // 
@@ -315,7 +316,7 @@ namespace SU21_Final_Project
             // btnHelp
             // 
             this.btnHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHelp.Location = new System.Drawing.Point(134, 377);
+            this.btnHelp.Location = new System.Drawing.Point(166, 377);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(102, 47);
             this.btnHelp.TabIndex = 21;
@@ -323,11 +324,24 @@ namespace SU21_Final_Project
             this.btnHelp.UseVisualStyleBackColor = true;
             this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
+            // btnShowCard
+            // 
+            this.btnShowCard.BackColor = System.Drawing.Color.Transparent;
+            this.btnShowCard.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnShowCard.BackgroundImage")));
+            this.btnShowCard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnShowCard.Location = new System.Drawing.Point(337, 217);
+            this.btnShowCard.Name = "btnShowCard";
+            this.btnShowCard.Size = new System.Drawing.Size(25, 22);
+            this.btnShowCard.TabIndex = 42;
+            this.btnShowCard.UseVisualStyleBackColor = false;
+            this.btnShowCard.Click += new System.EventHandler(this.btnShowCard_Click);
+            // 
             // frmCheckout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(370, 436);
+            this.ClientSize = new System.Drawing.Size(433, 436);
+            this.Controls.Add(this.btnShowCard);
             this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.lblShipping);
@@ -392,5 +406,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label lblShipping;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Button btnHelp;
+        private System.Windows.Forms.Button btnShowCard;
     }
 }

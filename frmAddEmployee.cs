@@ -158,46 +158,97 @@ namespace SU21_Final_Project
                         else
                         {
                             string strAccountType = "";
-                            if (rdoEmployee.Checked == true)
+
+                            if (!txtPhone.MaskCompleted)
                             {
-                                strAccountType = "Employee";
-                            }
-                            else if (rdoManager.Checked == true)
-                            {
-                                strAccountType = "Manager";
+                                DialogResult dr = MessageBox.Show("You don't have a valid phone number. Continue without one?", "Invalid phone", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                                if (dr == DialogResult.Yes)
+                                {
+                                    if (rdoEmployee.Checked == true)
+                                    {
+                                        strAccountType = "Employee";
+                                    }
+                                    else if (rdoManager.Checked == true)
+                                    {
+                                        strAccountType = "Manager";
+                                    }
+                                    else
+                                    {
+                                        strAccountType = "Customer";
+                                    }
+                                    person = new DataPerson
+                                    {
+                                        NameFirst = txtFirst.Text,
+                                        NameLast = txtLast.Text,
+                                        Address1 = txtAddress1.Text,
+                                        Address2 = txtAddress2.Text,
+                                        Address3 = txtAddress3.Text,
+                                        City = txtCity.Text,
+                                        State = cboStates.SelectedItem.ToString(),
+                                        Zipcode = txtZip.Text,
+                                        Email = txtEmail.Text,
+                                        PhonePrimary = "",
+                                        UserName = txtUsername.Text,
+                                        Password = txtPassword.Text,
+                                        AccountType = strAccountType,
+                                        SecurityQuestion1 = cmboSecurity1.SelectedItem.ToString(),
+                                        SecurityAnswer1 = txtAnswer1.Text,
+                                        SecurityQuestion2 = cmboSecurity2.SelectedItem.ToString(),
+                                        SecurityAnswer2 = txtAnswer2.Text,
+                                        SecurityQuestion3 = cmboSecurity3.SelectedItem.ToString(),
+                                        SecurityAnswer3 = txtAnswer3.Text,
+                                        Deleted = false,
+                                        PayRate = dblPay
+                                    };
+                                    DataPerson.SavePerson(person);
+                                    MessageBox.Show("Account Succesfully Created!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    bolComplete = true;
+                                    this.Close();
+                                }
                             }
                             else
                             {
-                                strAccountType = "Customer";
-                            }
-                            person = new DataPerson
-                            {
-                                NameFirst = txtFirst.Text,
-                                NameLast = txtLast.Text,
-                                Address1 = txtAddress1.Text,
-                                Address2 = txtAddress2.Text,
-                                Address3 = txtAddress3.Text,
-                                City = txtCity.Text,
-                                State = cboStates.SelectedItem.ToString(),
-                                Zipcode = txtZip.Text,
-                                Email = txtEmail.Text,
-                                PhonePrimary = String.Format("{0:(###)-###-####}", Convert.ToInt64(txtPhone.Text)),
-                                UserName = txtUsername.Text,
-                                Password = txtPassword.Text,
-                                AccountType = strAccountType,
-                                SecurityQuestion1 = cmboSecurity1.SelectedItem.ToString(),
-                                SecurityAnswer1 = txtAnswer1.Text,
-                                SecurityQuestion2 = cmboSecurity2.SelectedItem.ToString(),
-                                SecurityAnswer2 = txtAnswer2.Text,
-                                SecurityQuestion3 = cmboSecurity3.SelectedItem.ToString(),
-                                SecurityAnswer3 = txtAnswer3.Text,
-                                Deleted = false,
-                                PayRate = dblPay
-                            };
-                            DataPerson.SavePerson(person);
-                            MessageBox.Show("Account Succesfully Created!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            bolComplete = true;
-                            this.Close();
+                                if (rdoEmployee.Checked == true)
+                                {
+                                    strAccountType = "Employee";
+                                }
+                                else if (rdoManager.Checked == true)
+                                {
+                                    strAccountType = "Manager";
+                                }
+                                else
+                                {
+                                    strAccountType = "Customer";
+                                }
+                                person = new DataPerson
+                                {
+                                    NameFirst = txtFirst.Text,
+                                    NameLast = txtLast.Text,
+                                    Address1 = txtAddress1.Text,
+                                    Address2 = txtAddress2.Text,
+                                    Address3 = txtAddress3.Text,
+                                    City = txtCity.Text,
+                                    State = cboStates.SelectedItem.ToString(),
+                                    Zipcode = txtZip.Text,
+                                    Email = txtEmail.Text,
+                                    PhonePrimary = String.Format("{0:(###)-###-####}", Convert.ToInt64(txtPhone.Text)),
+                                    UserName = txtUsername.Text,
+                                    Password = txtPassword.Text,
+                                    AccountType = strAccountType,
+                                    SecurityQuestion1 = cmboSecurity1.SelectedItem.ToString(),
+                                    SecurityAnswer1 = txtAnswer1.Text,
+                                    SecurityQuestion2 = cmboSecurity2.SelectedItem.ToString(),
+                                    SecurityAnswer2 = txtAnswer2.Text,
+                                    SecurityQuestion3 = cmboSecurity3.SelectedItem.ToString(),
+                                    SecurityAnswer3 = txtAnswer3.Text,
+                                    Deleted = false,
+                                    PayRate = dblPay
+                                };
+                                DataPerson.SavePerson(person);
+                                MessageBox.Show("Account Succesfully Created!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                bolComplete = true;
+                                this.Close();
+                            }       
                         }
                     }
                 }
@@ -323,16 +374,6 @@ namespace SU21_Final_Project
             }
             bolChangesMade = true;
             txtZip.MaxLength = 5;
-        }
-
-        private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            txtPhone.MaxLength = 10;
-            bolChangesMade = true;
         }
 
         private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)

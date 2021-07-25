@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -57,7 +58,7 @@ namespace SU21_Final_Project
                         txtSecurity2.Text = person.SecurityQuestion2;
                         txtSecurity3.Text = person.SecurityQuestion3;
 
-                        btnEnter.Text = "Enter";
+                        btnEnter.Text = "&Enter";
                         txtAnswer1.Focus();
                     }
                     else
@@ -71,7 +72,7 @@ namespace SU21_Final_Project
                     if (txtAnswer1.Text == person.SecurityAnswer1 && txtAnswer2.Text == person.SecurityAnswer2 &&
                         txtAnswer3.Text == person.SecurityAnswer3)
                     {
-                        btnEnter.Text = "Confirm Change";
+                        btnEnter.Text = "&Confirm Change";
                         lblPass.Enabled = true;
                         lblConfirm.Enabled = true;
                         txtPassword.Enabled = true;
@@ -90,21 +91,33 @@ namespace SU21_Final_Project
                 {
                     string strAttemptedPassword = txtPassword.Text;
 
-                    if (!strAttemptedPassword.Any(char.IsLower))
+                    int intPasswordRequirements = 0;
+                    var regex = new Regex(@"[^a-zA-Z0-9\s]");
+
+                    if (strAttemptedPassword.Any(char.IsLower))
                     {
-                        MessageBox.Show("Password must contain a lower case letter", "Missing password requirement", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
+                        intPasswordRequirements++;
                     }
-                    else if (!strAttemptedPassword.Any(char.IsUpper))
+                    if (strAttemptedPassword.Any(char.IsUpper))
                     {
-                        MessageBox.Show("Password must contain an upper case letter", "Missing password requirement", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
+                        intPasswordRequirements++;
                     }
-                    else if (!strAttemptedPassword.Any(char.IsDigit))
+                    if (strAttemptedPassword.Any(char.IsDigit))
                     {
-                        MessageBox.Show("Password must contain a number", "Missing password requirement", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
+                        intPasswordRequirements++;
                     }
-                    else if (strAttemptedPassword.Length < 8 || strAttemptedPassword.Length > 10)
+                    if (regex.IsMatch(strAttemptedPassword))
                     {
-                        MessageBox.Show("Password must be between 8 and 10 charactors", "Invalid length", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
+                        intPasswordRequirements++;
+                    }
+                    if (strAttemptedPassword.Length < 8 || strAttemptedPassword.Length > 10)
+                    {
+                        intPasswordRequirements = 0;
+                    }
+
+                    if (intPasswordRequirements < 3)
+                    {
+                        MessageBox.Show("Password must be at least 8 charactors long and contain at least 3 of the following: lower case letter, upper case letter, number, or special charactor(ex: !, @, #, $)", "Missing password requirement", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
                     }
                     else
                     {

@@ -182,7 +182,7 @@ namespace SU21_Final_Project
                             txtZip.Focus();
                             MessageBox.Show("Zipcode must be a valid 5 digit number", "Invalid Zipcode", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
-                        else if(txtCity.Text.Length < 3)
+                        else if (txtCity.Text.Length < 3)
                         {
                             txtCity.Focus();
                             MessageBox.Show("There are no city names with less than 3 charactors", "Invalid City", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -221,38 +221,72 @@ namespace SU21_Final_Project
                         }
                         else
                         {
-                            string strPhone = txtPhone.Text;
-                            if(strPhone != "")
+
+                            if (!txtPhone.MaskCompleted)
                             {
-                                strPhone = String.Format("{0:(###)-###-####}", Convert.ToInt64(txtPhone.Text));
+                                DialogResult dr = MessageBox.Show("You don't have a valid phone number. Continue without one?", "Invalid phone", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                                if(dr == DialogResult.Yes)
+                                {
+                                    string strEmptyPhone = "";
+                                    person = new DataPerson
+                                    {
+                                        NameFirst = txtFirst.Text,
+                                        NameLast = txtLast.Text,
+                                        Address1 = txtAddress1.Text,
+                                        Address2 = txtAddress2.Text,
+                                        Address3 = txtAddress3.Text,
+                                        City = txtCity.Text,
+                                        State = cboStates.SelectedItem.ToString(),
+                                        Zipcode = txtZip.Text,
+                                        Email = txtEmail.Text,
+                                        PhonePrimary = strEmptyPhone,
+                                        UserName = txtUsername.Text,
+                                        Password = txtPassword.Text,
+                                        AccountType = "Customer",
+                                        SecurityQuestion1 = cmboSecurity1.SelectedItem.ToString(),
+                                        SecurityAnswer1 = txtAnswer1.Text,
+                                        SecurityQuestion2 = cmboSecurity2.SelectedItem.ToString(),
+                                        SecurityAnswer2 = txtAnswer2.Text,
+                                        SecurityQuestion3 = cmboSecurity3.SelectedItem.ToString(),
+                                        SecurityAnswer3 = txtAnswer3.Text,
+                                        Deleted = false
+                                    };
+                                    DataPerson.SavePerson(person);
+                                    MessageBox.Show("Account Succesfully Created!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    bolComplete = true;
+                                    this.Close();
+                                }
                             }
-                            person = new DataPerson
+                            else
                             {
-                                NameFirst = txtFirst.Text,
-                                NameLast = txtLast.Text,
-                                Address1 = txtAddress1.Text,
-                                Address2 = txtAddress2.Text,
-                                Address3 = txtAddress3.Text,
-                                City = txtCity.Text,
-                                State = cboStates.SelectedItem.ToString(),
-                                Zipcode = txtZip.Text,
-                                Email = txtEmail.Text,
-                                PhonePrimary = strPhone,
-                                UserName = txtUsername.Text,
-                                Password = txtPassword.Text,
-                                AccountType = "Customer",
-                                SecurityQuestion1 = cmboSecurity1.SelectedItem.ToString(),
-                                SecurityAnswer1 = txtAnswer1.Text,
-                                SecurityQuestion2 = cmboSecurity2.SelectedItem.ToString(),
-                                SecurityAnswer2 = txtAnswer2.Text,
-                                SecurityQuestion3 = cmboSecurity3.SelectedItem.ToString(),
-                                SecurityAnswer3 = txtAnswer3.Text,
-                                Deleted = false
-                            };
-                            DataPerson.SavePerson(person);
-                            MessageBox.Show("Account Succesfully Created!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            bolComplete = true;
-                            this.Close();
+                                person = new DataPerson
+                                {
+                                    NameFirst = txtFirst.Text,
+                                    NameLast = txtLast.Text,
+                                    Address1 = txtAddress1.Text,
+                                    Address2 = txtAddress2.Text,
+                                    Address3 = txtAddress3.Text,
+                                    City = txtCity.Text,
+                                    State = cboStates.SelectedItem.ToString(),
+                                    Zipcode = txtZip.Text,
+                                    Email = txtEmail.Text,
+                                    PhonePrimary = txtPhone.Text,
+                                    UserName = txtUsername.Text,
+                                    Password = txtPassword.Text,
+                                    AccountType = "Customer",
+                                    SecurityQuestion1 = cmboSecurity1.SelectedItem.ToString(),
+                                    SecurityAnswer1 = txtAnswer1.Text,
+                                    SecurityQuestion2 = cmboSecurity2.SelectedItem.ToString(),
+                                    SecurityAnswer2 = txtAnswer2.Text,
+                                    SecurityQuestion3 = cmboSecurity3.SelectedItem.ToString(),
+                                    SecurityAnswer3 = txtAnswer3.Text,
+                                    Deleted = false
+                                };
+                                DataPerson.SavePerson(person);
+                                MessageBox.Show("Account Succesfully Created!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                bolComplete = true;
+                                this.Close();
+                            }
                         }
                     }
                 }
@@ -306,16 +340,6 @@ namespace SU21_Final_Project
             }
             bolChangesMade = true;
             txtZip.MaxLength = 5;
-        }
-
-        private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            txtPhone.MaxLength = 10;
-            bolChangesMade = true;
         }
 
         private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
@@ -409,7 +433,7 @@ namespace SU21_Final_Project
 
         private void btnShowPass_Click(object sender, EventArgs e)
         {
-            if(bolShowPass == true)
+            if (bolShowPass == true)
             {
                 txtPassword.PasswordChar = '\0';
                 bolShowPass = false;
@@ -419,6 +443,11 @@ namespace SU21_Final_Project
                 txtPassword.PasswordChar = '•';
                 bolShowPass = true;
             }
+        }
+
+        private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            bolChangesMade = true;
         }
     }
 }

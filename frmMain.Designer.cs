@@ -63,6 +63,7 @@ namespace SU21_Final_Project
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.Color.Transparent;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuManage});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -85,9 +86,9 @@ namespace SU21_Final_Project
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(554, 311);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.btnShop);
             this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.menuStrip1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

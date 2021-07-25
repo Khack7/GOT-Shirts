@@ -165,7 +165,7 @@ namespace SU21_Final_Project
             this.btnCustomer.Name = "btnCustomer";
             this.btnCustomer.Size = new System.Drawing.Size(128, 44);
             this.btnCustomer.TabIndex = 1;
-            this.btnCustomer.Text = "Customer Only";
+            this.btnCustomer.Text = "&Customer Only";
             this.btnCustomer.UseVisualStyleBackColor = true;
             this.btnCustomer.Click += new System.EventHandler(this.btnCustomer_Click);
             // 
@@ -176,7 +176,7 @@ namespace SU21_Final_Project
             this.btnEmployee.Name = "btnEmployee";
             this.btnEmployee.Size = new System.Drawing.Size(128, 44);
             this.btnEmployee.TabIndex = 2;
-            this.btnEmployee.Text = "Employee Only";
+            this.btnEmployee.Text = "&Employee Only";
             this.btnEmployee.UseVisualStyleBackColor = true;
             this.btnEmployee.Click += new System.EventHandler(this.btnEmployee_Click);
             // 
@@ -187,7 +187,7 @@ namespace SU21_Final_Project
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(128, 44);
             this.btnEdit.TabIndex = 3;
-            this.btnEdit.Text = "Edit";
+            this.btnEdit.Text = "E&dit";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
@@ -198,7 +198,7 @@ namespace SU21_Final_Project
             this.btnDeleteOrRestore.Name = "btnDeleteOrRestore";
             this.btnDeleteOrRestore.Size = new System.Drawing.Size(128, 44);
             this.btnDeleteOrRestore.TabIndex = 4;
-            this.btnDeleteOrRestore.Text = "Delete/Restore";
+            this.btnDeleteOrRestore.Text = "De&lete/Restore";
             this.btnDeleteOrRestore.UseVisualStyleBackColor = true;
             this.btnDeleteOrRestore.Click += new System.EventHandler(this.btnDeleteOrRestore_Click);
             // 
@@ -209,7 +209,7 @@ namespace SU21_Final_Project
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(128, 44);
             this.btnHelp.TabIndex = 5;
-            this.btnHelp.Text = "Help";
+            this.btnHelp.Text = "&Help";
             this.btnHelp.UseVisualStyleBackColor = true;
             this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
@@ -220,7 +220,7 @@ namespace SU21_Final_Project
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(128, 44);
             this.btnReturn.TabIndex = 6;
-            this.btnReturn.Text = "Return";
+            this.btnReturn.Text = "&Return";
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 

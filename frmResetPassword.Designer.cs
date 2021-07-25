@@ -74,22 +74,22 @@ namespace SU21_Final_Project
             // 
             this.lblPass.AutoSize = true;
             this.lblPass.Enabled = false;
-            this.lblPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPass.Location = new System.Drawing.Point(16, 378);
             this.lblPass.Name = "lblPass";
-            this.lblPass.Size = new System.Drawing.Size(89, 15);
+            this.lblPass.Size = new System.Drawing.Size(98, 16);
             this.lblPass.TabIndex = 14;
-            this.lblPass.Text = "New Password";
+            this.lblPass.Text = "&New Password";
             // 
             // lblUserName
             // 
             this.lblUserName.AutoSize = true;
-            this.lblUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUserName.Location = new System.Drawing.Point(9, 12);
             this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(67, 15);
+            this.lblUserName.Size = new System.Drawing.Size(74, 16);
             this.lblUserName.TabIndex = 0;
-            this.lblUserName.Text = "UserName";
+            this.lblUserName.Text = "&UserName";
             // 
             // txtConfirmPass
             // 
@@ -104,20 +104,21 @@ namespace SU21_Final_Project
             // 
             this.lblConfirm.AutoSize = true;
             this.lblConfirm.Enabled = false;
-            this.lblConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblConfirm.Location = new System.Drawing.Point(12, 430);
             this.lblConfirm.Name = "lblConfirm";
-            this.lblConfirm.Size = new System.Drawing.Size(107, 15);
+            this.lblConfirm.Size = new System.Drawing.Size(116, 16);
             this.lblConfirm.TabIndex = 16;
-            this.lblConfirm.Text = "Confirm Password";
+            this.lblConfirm.Text = "Confirm &Password";
             // 
             // btnCancel
             // 
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.Location = new System.Drawing.Point(19, 487);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(104, 36);
             this.btnCancel.TabIndex = 20;
-            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Text = "C&ancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -149,21 +150,21 @@ namespace SU21_Final_Project
             // 
             this.lblAnswer3.AutoSize = true;
             this.lblAnswer3.Enabled = false;
-            this.lblAnswer3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAnswer3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAnswer3.Location = new System.Drawing.Point(12, 324);
             this.lblAnswer3.Name = "lblAnswer3";
-            this.lblAnswer3.Size = new System.Drawing.Size(67, 17);
+            this.lblAnswer3.Size = new System.Drawing.Size(67, 16);
             this.lblAnswer3.TabIndex = 12;
-            this.lblAnswer3.Text = "Answer3*";
+            this.lblAnswer3.Text = "Answer &3*";
             // 
             // lblSecurity3
             // 
             this.lblSecurity3.AutoSize = true;
             this.lblSecurity3.Enabled = false;
-            this.lblSecurity3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSecurity3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSecurity3.Location = new System.Drawing.Point(12, 270);
             this.lblSecurity3.Name = "lblSecurity3";
-            this.lblSecurity3.Size = new System.Drawing.Size(137, 17);
+            this.lblSecurity3.Size = new System.Drawing.Size(127, 16);
             this.lblSecurity3.TabIndex = 10;
             this.lblSecurity3.Text = "Security Question 3*";
             // 
@@ -171,21 +172,21 @@ namespace SU21_Final_Project
             // 
             this.lblAnswer2.AutoSize = true;
             this.lblAnswer2.Enabled = false;
-            this.lblAnswer2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAnswer2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAnswer2.Location = new System.Drawing.Point(12, 218);
             this.lblAnswer2.Name = "lblAnswer2";
-            this.lblAnswer2.Size = new System.Drawing.Size(67, 17);
+            this.lblAnswer2.Size = new System.Drawing.Size(67, 16);
             this.lblAnswer2.TabIndex = 8;
-            this.lblAnswer2.Text = "Answer2*";
+            this.lblAnswer2.Text = "Answer &2*";
             // 
             // lblSecurity2
             // 
             this.lblSecurity2.AutoSize = true;
             this.lblSecurity2.Enabled = false;
-            this.lblSecurity2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSecurity2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSecurity2.Location = new System.Drawing.Point(12, 166);
             this.lblSecurity2.Name = "lblSecurity2";
-            this.lblSecurity2.Size = new System.Drawing.Size(137, 17);
+            this.lblSecurity2.Size = new System.Drawing.Size(127, 16);
             this.lblSecurity2.TabIndex = 6;
             this.lblSecurity2.Text = "Security Question 2*";
             // 
@@ -193,31 +194,32 @@ namespace SU21_Final_Project
             // 
             this.lblAnswer1.AutoSize = true;
             this.lblAnswer1.Enabled = false;
-            this.lblAnswer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAnswer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAnswer1.Location = new System.Drawing.Point(12, 114);
             this.lblAnswer1.Name = "lblAnswer1";
-            this.lblAnswer1.Size = new System.Drawing.Size(67, 17);
+            this.lblAnswer1.Size = new System.Drawing.Size(67, 16);
             this.lblAnswer1.TabIndex = 4;
-            this.lblAnswer1.Text = "Answer1*";
+            this.lblAnswer1.Text = "Answer &1*";
             // 
             // lblSecurity1
             // 
             this.lblSecurity1.AutoSize = true;
             this.lblSecurity1.Enabled = false;
-            this.lblSecurity1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSecurity1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSecurity1.Location = new System.Drawing.Point(8, 62);
             this.lblSecurity1.Name = "lblSecurity1";
-            this.lblSecurity1.Size = new System.Drawing.Size(137, 17);
+            this.lblSecurity1.Size = new System.Drawing.Size(127, 16);
             this.lblSecurity1.TabIndex = 2;
             this.lblSecurity1.Text = "Security Question 1*";
             // 
             // btnEnter
             // 
+            this.btnEnter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEnter.Location = new System.Drawing.Point(357, 487);
             this.btnEnter.Name = "btnEnter";
             this.btnEnter.Size = new System.Drawing.Size(104, 36);
             this.btnEnter.TabIndex = 18;
-            this.btnEnter.Text = "Load";
+            this.btnEnter.Text = "&Load";
             this.btnEnter.UseVisualStyleBackColor = true;
             this.btnEnter.Click += new System.EventHandler(this.btnEnter_Click);
             // 
@@ -250,11 +252,12 @@ namespace SU21_Final_Project
             // 
             // btnHelp
             // 
+            this.btnHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHelp.Location = new System.Drawing.Point(188, 487);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(104, 36);
             this.btnHelp.TabIndex = 19;
-            this.btnHelp.Text = "Help";
+            this.btnHelp.Text = "&Help";
             this.btnHelp.UseVisualStyleBackColor = true;
             this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 

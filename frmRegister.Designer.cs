@@ -37,7 +37,6 @@ namespace SU21_Final_Project
             this.label1 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnRegister = new System.Windows.Forms.Button();
-            this.txtPhone = new System.Windows.Forms.TextBox();
             this.lblPhone = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
@@ -70,6 +69,7 @@ namespace SU21_Final_Project
             this.txtAnswer2 = new System.Windows.Forms.TextBox();
             this.txtAnswer3 = new System.Windows.Forms.TextBox();
             this.btnShowPass = new System.Windows.Forms.Button();
+            this.txtPhone = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // cboStates
@@ -81,43 +81,43 @@ namespace SU21_Final_Project
             this.cboStates.Location = new System.Drawing.Point(403, 200);
             this.cboStates.Name = "cboStates";
             this.cboStates.Size = new System.Drawing.Size(155, 21);
-            this.cboStates.TabIndex = 16;
+            this.cboStates.TabIndex = 17;
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(403, 264);
+            this.txtUsername.Location = new System.Drawing.Point(119, 55);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(155, 20);
-            this.txtUsername.TabIndex = 22;
+            this.txtUsername.TabIndex = 2;
             this.txtUsername.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUsername_KeyPress);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(301, 262);
+            this.label2.Location = new System.Drawing.Point(17, 53);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(80, 17);
-            this.label2.TabIndex = 21;
+            this.label2.TabIndex = 1;
             this.label2.Text = "&UserName*";
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(687, 266);
+            this.txtPassword.Location = new System.Drawing.Point(403, 57);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '•';
             this.txtPassword.Size = new System.Drawing.Size(155, 20);
-            this.txtPassword.TabIndex = 24;
+            this.txtPassword.TabIndex = 4;
             this.txtPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPassword_KeyPress);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(588, 262);
+            this.label1.Location = new System.Drawing.Point(304, 53);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 17);
-            this.label1.TabIndex = 23;
+            this.label1.TabIndex = 3;
             this.label1.Text = "Passw&ord*";
             // 
             // btnCancel
@@ -127,7 +127,7 @@ namespace SU21_Final_Project
             this.btnCancel.Location = new System.Drawing.Point(15, 504);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(147, 44);
-            this.btnCancel.TabIndex = 38;
+            this.btnCancel.TabIndex = 39;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -139,19 +139,10 @@ namespace SU21_Final_Project
             this.btnRegister.Location = new System.Drawing.Point(716, 504);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(147, 44);
-            this.btnRegister.TabIndex = 37;
+            this.btnRegister.TabIndex = 38;
             this.btnRegister.Text = "&Register";
             this.btnRegister.UseVisualStyleBackColor = true;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
-            // 
-            // txtPhone
-            // 
-            this.txtPhone.Location = new System.Drawing.Point(119, 261);
-            this.txtPhone.Name = "txtPhone";
-            this.txtPhone.ShortcutsEnabled = false;
-            this.txtPhone.Size = new System.Drawing.Size(155, 20);
-            this.txtPhone.TabIndex = 20;
-            this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
             // 
             // lblPhone
             // 
@@ -160,34 +151,34 @@ namespace SU21_Final_Project
             this.lblPhone.Location = new System.Drawing.Point(12, 266);
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Size = new System.Drawing.Size(49, 17);
-            this.lblPhone.TabIndex = 19;
+            this.lblPhone.TabIndex = 20;
             this.lblPhone.Text = "P&hone";
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(687, 57);
+            this.txtEmail.Location = new System.Drawing.Point(703, 57);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(155, 20);
-            this.txtEmail.TabIndex = 6;
+            this.txtEmail.TabIndex = 7;
             this.txtEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEmail_KeyPress);
             // 
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.Location = new System.Drawing.Point(588, 57);
+            this.lblEmail.Location = new System.Drawing.Point(604, 57);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(42, 17);
-            this.lblEmail.TabIndex = 5;
+            this.lblEmail.TabIndex = 6;
             this.lblEmail.Text = "&Email";
             // 
             // txtZip
             // 
-            this.txtZip.Location = new System.Drawing.Point(687, 201);
+            this.txtZip.Location = new System.Drawing.Point(703, 201);
             this.txtZip.Name = "txtZip";
             this.txtZip.ShortcutsEnabled = false;
             this.txtZip.Size = new System.Drawing.Size(155, 20);
-            this.txtZip.TabIndex = 18;
+            this.txtZip.TabIndex = 19;
             this.txtZip.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtZip_KeyPress);
             // 
             // txtCity
@@ -195,15 +186,15 @@ namespace SU21_Final_Project
             this.txtCity.Location = new System.Drawing.Point(119, 193);
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(155, 20);
-            this.txtCity.TabIndex = 14;
+            this.txtCity.TabIndex = 15;
             this.txtCity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCity_KeyPress);
             // 
             // txtLast
             // 
-            this.txtLast.Location = new System.Drawing.Point(403, 57);
+            this.txtLast.Location = new System.Drawing.Point(703, 266);
             this.txtLast.Name = "txtLast";
             this.txtLast.Size = new System.Drawing.Size(155, 20);
-            this.txtLast.TabIndex = 4;
+            this.txtLast.TabIndex = 25;
             this.txtLast.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLast_KeyPress);
             // 
             // txtAddress1
@@ -211,24 +202,24 @@ namespace SU21_Final_Project
             this.txtAddress1.Location = new System.Drawing.Point(119, 125);
             this.txtAddress1.Name = "txtAddress1";
             this.txtAddress1.Size = new System.Drawing.Size(155, 20);
-            this.txtAddress1.TabIndex = 8;
+            this.txtAddress1.TabIndex = 9;
             // 
             // txtFirst
             // 
-            this.txtFirst.Location = new System.Drawing.Point(119, 57);
+            this.txtFirst.Location = new System.Drawing.Point(403, 261);
             this.txtFirst.Name = "txtFirst";
             this.txtFirst.Size = new System.Drawing.Size(155, 20);
-            this.txtFirst.TabIndex = 2;
+            this.txtFirst.TabIndex = 23;
             this.txtFirst.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFirst_KeyPress);
             // 
             // lblZip
             // 
             this.lblZip.AutoSize = true;
             this.lblZip.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblZip.Location = new System.Drawing.Point(588, 201);
+            this.lblZip.Location = new System.Drawing.Point(604, 201);
             this.lblZip.Name = "lblZip";
             this.lblZip.Size = new System.Drawing.Size(64, 17);
-            this.lblZip.TabIndex = 17;
+            this.lblZip.TabIndex = 18;
             this.lblZip.Text = "Zi&pcode*";
             // 
             // lblState
@@ -238,7 +229,7 @@ namespace SU21_Final_Project
             this.lblState.Location = new System.Drawing.Point(300, 201);
             this.lblState.Name = "lblState";
             this.lblState.Size = new System.Drawing.Size(46, 17);
-            this.lblState.TabIndex = 15;
+            this.lblState.TabIndex = 16;
             this.lblState.Text = "S&tate*";
             // 
             // lblCity
@@ -248,7 +239,7 @@ namespace SU21_Final_Project
             this.lblCity.Location = new System.Drawing.Point(12, 200);
             this.lblCity.Name = "lblCity";
             this.lblCity.Size = new System.Drawing.Size(36, 17);
-            this.lblCity.TabIndex = 13;
+            this.lblCity.TabIndex = 14;
             this.lblCity.Text = "C&ity*";
             // 
             // lblAddress
@@ -258,27 +249,27 @@ namespace SU21_Final_Project
             this.lblAddress.Location = new System.Drawing.Point(12, 131);
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(65, 17);
-            this.lblAddress.TabIndex = 7;
+            this.lblAddress.TabIndex = 8;
             this.lblAddress.Text = "&Address*";
             // 
             // lblLName
             // 
             this.lblLName.AutoSize = true;
             this.lblLName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLName.Location = new System.Drawing.Point(300, 57);
+            this.lblLName.Location = new System.Drawing.Point(600, 266);
             this.lblLName.Name = "lblLName";
             this.lblLName.Size = new System.Drawing.Size(81, 17);
-            this.lblLName.TabIndex = 3;
+            this.lblLName.TabIndex = 24;
             this.lblLName.Text = "&Last Name*";
             // 
             // lblFName
             // 
             this.lblFName.AutoSize = true;
             this.lblFName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFName.Location = new System.Drawing.Point(12, 57);
+            this.lblFName.Location = new System.Drawing.Point(296, 266);
             this.lblFName.Name = "lblFName";
             this.lblFName.Size = new System.Drawing.Size(81, 17);
-            this.lblFName.TabIndex = 1;
+            this.lblFName.TabIndex = 22;
             this.lblFName.Text = "&First Name*";
             // 
             // label3
@@ -298,7 +289,7 @@ namespace SU21_Final_Project
             this.txtAddress2.Location = new System.Drawing.Point(403, 125);
             this.txtAddress2.Name = "txtAddress2";
             this.txtAddress2.Size = new System.Drawing.Size(155, 20);
-            this.txtAddress2.TabIndex = 10;
+            this.txtAddress2.TabIndex = 11;
             // 
             // label5
             // 
@@ -307,24 +298,24 @@ namespace SU21_Final_Project
             this.label5.Location = new System.Drawing.Point(300, 128);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(68, 17);
-            this.label5.TabIndex = 9;
+            this.label5.TabIndex = 10;
             this.label5.Text = "A&ddress2";
             // 
             // txtAddress3
             // 
-            this.txtAddress3.Location = new System.Drawing.Point(687, 125);
+            this.txtAddress3.Location = new System.Drawing.Point(703, 125);
             this.txtAddress3.Name = "txtAddress3";
             this.txtAddress3.Size = new System.Drawing.Size(155, 20);
-            this.txtAddress3.TabIndex = 12;
+            this.txtAddress3.TabIndex = 13;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(588, 128);
+            this.label6.Location = new System.Drawing.Point(604, 128);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(68, 17);
-            this.label6.TabIndex = 11;
+            this.label6.TabIndex = 12;
             this.label6.Text = "Add&ress3";
             // 
             // lblAnswer1
@@ -334,7 +325,7 @@ namespace SU21_Final_Project
             this.lblAnswer1.Location = new System.Drawing.Point(478, 339);
             this.lblAnswer1.Name = "lblAnswer1";
             this.lblAnswer1.Size = new System.Drawing.Size(67, 17);
-            this.lblAnswer1.TabIndex = 27;
+            this.lblAnswer1.TabIndex = 28;
             this.lblAnswer1.Text = "Ans&wer1*";
             // 
             // lblSecurity1
@@ -344,7 +335,7 @@ namespace SU21_Final_Project
             this.lblSecurity1.Location = new System.Drawing.Point(12, 342);
             this.lblSecurity1.Name = "lblSecurity1";
             this.lblSecurity1.Size = new System.Drawing.Size(137, 17);
-            this.lblSecurity1.TabIndex = 25;
+            this.lblSecurity1.TabIndex = 26;
             this.lblSecurity1.Text = "Secu&rity Question &1*";
             // 
             // cmboSecurity1
@@ -354,7 +345,7 @@ namespace SU21_Final_Project
             this.cmboSecurity1.Location = new System.Drawing.Point(150, 338);
             this.cmboSecurity1.Name = "cmboSecurity1";
             this.cmboSecurity1.Size = new System.Drawing.Size(306, 21);
-            this.cmboSecurity1.TabIndex = 26;
+            this.cmboSecurity1.TabIndex = 27;
             // 
             // cmboSecurity2
             // 
@@ -363,7 +354,7 @@ namespace SU21_Final_Project
             this.cmboSecurity2.Location = new System.Drawing.Point(150, 379);
             this.cmboSecurity2.Name = "cmboSecurity2";
             this.cmboSecurity2.Size = new System.Drawing.Size(306, 21);
-            this.cmboSecurity2.TabIndex = 30;
+            this.cmboSecurity2.TabIndex = 31;
             // 
             // lblAnswer2
             // 
@@ -372,7 +363,7 @@ namespace SU21_Final_Project
             this.lblAnswer2.Location = new System.Drawing.Point(478, 383);
             this.lblAnswer2.Name = "lblAnswer2";
             this.lblAnswer2.Size = new System.Drawing.Size(67, 17);
-            this.lblAnswer2.TabIndex = 31;
+            this.lblAnswer2.TabIndex = 32;
             this.lblAnswer2.Text = "An&swer2*";
             // 
             // lblSecurity2
@@ -382,7 +373,7 @@ namespace SU21_Final_Project
             this.lblSecurity2.Location = new System.Drawing.Point(12, 383);
             this.lblSecurity2.Name = "lblSecurity2";
             this.lblSecurity2.Size = new System.Drawing.Size(137, 17);
-            this.lblSecurity2.TabIndex = 29;
+            this.lblSecurity2.TabIndex = 30;
             this.lblSecurity2.Text = "Security Question &2*";
             // 
             // cmboSecurity3
@@ -392,7 +383,7 @@ namespace SU21_Final_Project
             this.cmboSecurity3.Location = new System.Drawing.Point(150, 423);
             this.cmboSecurity3.Name = "cmboSecurity3";
             this.cmboSecurity3.Size = new System.Drawing.Size(306, 21);
-            this.cmboSecurity3.TabIndex = 34;
+            this.cmboSecurity3.TabIndex = 35;
             // 
             // lblAnswer3
             // 
@@ -401,7 +392,7 @@ namespace SU21_Final_Project
             this.lblAnswer3.Location = new System.Drawing.Point(478, 428);
             this.lblAnswer3.Name = "lblAnswer3";
             this.lblAnswer3.Size = new System.Drawing.Size(67, 17);
-            this.lblAnswer3.TabIndex = 35;
+            this.lblAnswer3.TabIndex = 36;
             this.lblAnswer3.Text = "A&nswer3*";
             // 
             // lblSecurity3
@@ -411,31 +402,31 @@ namespace SU21_Final_Project
             this.lblSecurity3.Location = new System.Drawing.Point(12, 424);
             this.lblSecurity3.Name = "lblSecurity3";
             this.lblSecurity3.Size = new System.Drawing.Size(137, 17);
-            this.lblSecurity3.TabIndex = 33;
+            this.lblSecurity3.TabIndex = 34;
             this.lblSecurity3.Text = "Security Question &3*";
             // 
             // txtAnswer1
             // 
-            this.txtAnswer1.Location = new System.Drawing.Point(591, 341);
+            this.txtAnswer1.Location = new System.Drawing.Point(607, 342);
             this.txtAnswer1.Name = "txtAnswer1";
             this.txtAnswer1.Size = new System.Drawing.Size(251, 20);
-            this.txtAnswer1.TabIndex = 28;
+            this.txtAnswer1.TabIndex = 29;
             this.txtAnswer1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAnswer1_KeyPress);
             // 
             // txtAnswer2
             // 
-            this.txtAnswer2.Location = new System.Drawing.Point(591, 382);
+            this.txtAnswer2.Location = new System.Drawing.Point(607, 383);
             this.txtAnswer2.Name = "txtAnswer2";
             this.txtAnswer2.Size = new System.Drawing.Size(251, 20);
-            this.txtAnswer2.TabIndex = 32;
+            this.txtAnswer2.TabIndex = 33;
             this.txtAnswer2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAnswer2_KeyPress);
             // 
             // txtAnswer3
             // 
-            this.txtAnswer3.Location = new System.Drawing.Point(591, 423);
+            this.txtAnswer3.Location = new System.Drawing.Point(607, 424);
             this.txtAnswer3.Name = "txtAnswer3";
             this.txtAnswer3.Size = new System.Drawing.Size(251, 20);
-            this.txtAnswer3.TabIndex = 36;
+            this.txtAnswer3.TabIndex = 37;
             this.txtAnswer3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAnswer3_KeyPress);
             // 
             // btnShowPass
@@ -443,18 +434,29 @@ namespace SU21_Final_Project
             this.btnShowPass.BackColor = System.Drawing.Color.Transparent;
             this.btnShowPass.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnShowPass.BackgroundImage")));
             this.btnShowPass.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnShowPass.Location = new System.Drawing.Point(848, 264);
+            this.btnShowPass.Location = new System.Drawing.Point(564, 55);
             this.btnShowPass.Name = "btnShowPass";
             this.btnShowPass.Size = new System.Drawing.Size(25, 22);
-            this.btnShowPass.TabIndex = 39;
+            this.btnShowPass.TabIndex = 5;
             this.btnShowPass.UseVisualStyleBackColor = false;
             this.btnShowPass.Click += new System.EventHandler(this.btnShowPass_Click);
+            // 
+            // txtPhone
+            // 
+            this.txtPhone.Location = new System.Drawing.Point(119, 266);
+            this.txtPhone.Mask = "(999) 000-0000";
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(155, 20);
+            this.txtPhone.TabIndex = 21;
+            this.txtPhone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
             // 
             // frmRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(875, 556);
+            this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.btnShowPass);
             this.Controls.Add(this.txtAnswer3);
             this.Controls.Add(this.txtAnswer2);
@@ -480,7 +482,6 @@ namespace SU21_Final_Project
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnRegister);
-            this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.lblPhone);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.lblEmail);
@@ -517,7 +518,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnRegister;
-        private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.Label lblPhone;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label lblEmail;
@@ -550,5 +550,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.TextBox txtAnswer2;
         private System.Windows.Forms.TextBox txtAnswer3;
         private System.Windows.Forms.Button btnShowPass;
+        private System.Windows.Forms.MaskedTextBox txtPhone;
     }
 }

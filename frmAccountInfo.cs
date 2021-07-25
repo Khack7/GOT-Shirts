@@ -118,6 +118,30 @@ namespace SU21_Final_Project
                 {
                     MessageBox.Show("Make sure all required files are filled out", "Missing information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+                else if (!txtPhone.MaskCompleted)
+                {
+                    DialogResult dr = MessageBox.Show("You don't have a valid phone number. Continue without one?", "Invalid phone", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (dr == DialogResult.Yes)
+                    {
+                        DataPerson person = DataPerson.GetPerson(frmSignIn.strUserName);
+
+                        person.NameFirst = txtFirst.Text;
+                        person.NameLast = txtLast.Text;
+                        person.Address1 = txtAddress1.Text;
+                        person.Address2 = txtAddress2.Text;
+                        person.Address3 = txtAddress3.Text;
+                        person.City = txtCity.Text;
+                        person.State = cboStates.SelectedItem.ToString();
+                        person.Zipcode = txtZip.Text;
+                        person.PhonePrimary = "";
+                        person.Email = txtEmail.Text;
+
+                        DataPerson.SavePerson(person);
+
+                        MessageBox.Show("Changes Saved!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Close();
+                    }
+                }
                 else
                 {
                     DataPerson person = DataPerson.GetPerson(frmSignIn.strUserName);
@@ -190,16 +214,6 @@ namespace SU21_Final_Project
             txtZip.MaxLength = 5;
         }
 
-        private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            changesMade = true;
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            txtPhone.MaxLength = 10;
-        }
-
         private void txtEmail_KeyPress(object sender, KeyPressEventArgs e)
         {
             changesMade = true;
@@ -226,6 +240,11 @@ namespace SU21_Final_Project
         }
 
         private void cboStates_SelectedValueChanged(object sender, EventArgs e)
+        {
+            changesMade = true;
+        }
+
+        private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
         {
             changesMade = true;
         }

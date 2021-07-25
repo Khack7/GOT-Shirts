@@ -150,6 +150,7 @@ namespace SU21_Final_Project
         }
 
         string strCurrentColor;
+        bool bolCloseShop = false;
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -157,6 +158,7 @@ namespace SU21_Final_Project
 
             if (result == DialogResult.Yes)
             {
+                bolCloseShop = true;
                 this.Close();
                 frmSignIn.intID = 0;
             }
@@ -577,9 +579,9 @@ namespace SU21_Final_Project
 
         private void frmShop_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(frmCheckout.bolCloseShop == true)
+            if(frmCheckout.bolCloseShop == true || bolCloseShop == true)
             {
-                this.Close();
+                //this.Close();
             }
             else
             {

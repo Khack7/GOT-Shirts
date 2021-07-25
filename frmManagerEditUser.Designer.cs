@@ -40,7 +40,6 @@ namespace SU21_Final_Project
             this.txtLastName = new System.Windows.Forms.TextBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
-            this.txtPhone = new System.Windows.Forms.TextBox();
             this.lblPersonIDPointer = new System.Windows.Forms.Label();
             this.lblPersonID = new System.Windows.Forms.Label();
             this.btnApply = new System.Windows.Forms.Button();
@@ -49,6 +48,7 @@ namespace SU21_Final_Project
             this.cboAccountType = new System.Windows.Forms.ComboBox();
             this.txtPayRate = new System.Windows.Forms.TextBox();
             this.lblPay = new System.Windows.Forms.Label();
+            this.txtPhone = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // lblFirstName
@@ -68,7 +68,7 @@ namespace SU21_Final_Project
             this.label1.Location = new System.Drawing.Point(288, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(76, 17);
-            this.label1.TabIndex = 1;
+            this.label1.TabIndex = 2;
             this.label1.Text = "&Last Name";
             // 
             // label2
@@ -78,7 +78,7 @@ namespace SU21_Final_Project
             this.label2.Location = new System.Drawing.Point(564, 13);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 17);
-            this.label2.TabIndex = 2;
+            this.label2.TabIndex = 4;
             this.label2.Text = "&UserName";
             // 
             // lblEmail
@@ -88,7 +88,7 @@ namespace SU21_Final_Project
             this.lblEmail.Location = new System.Drawing.Point(12, 113);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(42, 17);
-            this.lblEmail.TabIndex = 3;
+            this.lblEmail.TabIndex = 6;
             this.lblEmail.Text = "&Email";
             // 
             // lblAccountType
@@ -98,7 +98,7 @@ namespace SU21_Final_Project
             this.lblAccountType.Location = new System.Drawing.Point(544, 113);
             this.lblAccountType.Name = "lblAccountType";
             this.lblAccountType.Size = new System.Drawing.Size(95, 17);
-            this.lblAccountType.TabIndex = 4;
+            this.lblAccountType.TabIndex = 10;
             this.lblAccountType.Text = "&Account Type";
             // 
             // label5
@@ -108,7 +108,7 @@ namespace SU21_Final_Project
             this.label5.Location = new System.Drawing.Point(288, 113);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(49, 17);
-            this.label5.TabIndex = 5;
+            this.label5.TabIndex = 8;
             this.label5.Text = "&Phone";
             // 
             // txtFirstName
@@ -116,7 +116,7 @@ namespace SU21_Final_Project
             this.txtFirstName.Location = new System.Drawing.Point(94, 13);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(142, 20);
-            this.txtFirstName.TabIndex = 6;
+            this.txtFirstName.TabIndex = 1;
             this.txtFirstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFirstName_KeyPress);
             // 
             // txtLastName
@@ -124,7 +124,7 @@ namespace SU21_Final_Project
             this.txtLastName.Location = new System.Drawing.Point(370, 12);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(142, 20);
-            this.txtLastName.TabIndex = 7;
+            this.txtLastName.TabIndex = 3;
             this.txtLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLastName_KeyPress);
             // 
             // txtUsername
@@ -132,7 +132,7 @@ namespace SU21_Final_Project
             this.txtUsername.Location = new System.Drawing.Point(646, 12);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(142, 20);
-            this.txtUsername.TabIndex = 8;
+            this.txtUsername.TabIndex = 5;
             this.txtUsername.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUsername_KeyPress);
             // 
             // txtEmail
@@ -140,17 +140,8 @@ namespace SU21_Final_Project
             this.txtEmail.Location = new System.Drawing.Point(94, 111);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(142, 20);
-            this.txtEmail.TabIndex = 9;
+            this.txtEmail.TabIndex = 7;
             this.txtEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEmail_KeyPress);
-            // 
-            // txtPhone
-            // 
-            this.txtPhone.Location = new System.Drawing.Point(370, 112);
-            this.txtPhone.Name = "txtPhone";
-            this.txtPhone.ShortcutsEnabled = false;
-            this.txtPhone.Size = new System.Drawing.Size(142, 20);
-            this.txtPhone.TabIndex = 10;
-            this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
             // 
             // lblPersonIDPointer
             // 
@@ -159,7 +150,7 @@ namespace SU21_Final_Project
             this.lblPersonIDPointer.Location = new System.Drawing.Point(12, 217);
             this.lblPersonIDPointer.Name = "lblPersonIDPointer";
             this.lblPersonIDPointer.Size = new System.Drawing.Size(66, 17);
-            this.lblPersonIDPointer.TabIndex = 12;
+            this.lblPersonIDPointer.TabIndex = 14;
             this.lblPersonIDPointer.Text = "PersonID";
             // 
             // lblPersonID
@@ -169,7 +160,7 @@ namespace SU21_Final_Project
             this.lblPersonID.Location = new System.Drawing.Point(91, 213);
             this.lblPersonID.Name = "lblPersonID";
             this.lblPersonID.Size = new System.Drawing.Size(145, 24);
-            this.lblPersonID.TabIndex = 13;
+            this.lblPersonID.TabIndex = 15;
             this.lblPersonID.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnApply
@@ -178,7 +169,7 @@ namespace SU21_Final_Project
             this.btnApply.Location = new System.Drawing.Point(289, 193);
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(114, 47);
-            this.btnApply.TabIndex = 14;
+            this.btnApply.TabIndex = 16;
             this.btnApply.Text = "A&pply";
             this.btnApply.UseVisualStyleBackColor = true;
             this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
@@ -189,7 +180,7 @@ namespace SU21_Final_Project
             this.btnHelp.Location = new System.Drawing.Point(481, 193);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(114, 47);
-            this.btnHelp.TabIndex = 15;
+            this.btnHelp.TabIndex = 17;
             this.btnHelp.Text = "&Help";
             this.btnHelp.UseVisualStyleBackColor = true;
             this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
@@ -200,7 +191,7 @@ namespace SU21_Final_Project
             this.btnReturn.Location = new System.Drawing.Point(673, 193);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(114, 47);
-            this.btnReturn.TabIndex = 16;
+            this.btnReturn.TabIndex = 18;
             this.btnReturn.Text = "&Return to Previous";
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
@@ -212,7 +203,7 @@ namespace SU21_Final_Project
             this.cboAccountType.Location = new System.Drawing.Point(646, 110);
             this.cboAccountType.Name = "cboAccountType";
             this.cboAccountType.Size = new System.Drawing.Size(141, 21);
-            this.cboAccountType.TabIndex = 17;
+            this.cboAccountType.TabIndex = 11;
             this.cboAccountType.SelectedValueChanged += new System.EventHandler(this.cboAccountType_SelectedValueChanged);
             // 
             // txtPayRate
@@ -221,7 +212,7 @@ namespace SU21_Final_Project
             this.txtPayRate.Name = "txtPayRate";
             this.txtPayRate.ShortcutsEnabled = false;
             this.txtPayRate.Size = new System.Drawing.Size(142, 20);
-            this.txtPayRate.TabIndex = 19;
+            this.txtPayRate.TabIndex = 13;
             this.txtPayRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPayRate_KeyPress);
             // 
             // lblPay
@@ -231,14 +222,24 @@ namespace SU21_Final_Project
             this.lblPay.Location = new System.Drawing.Point(12, 183);
             this.lblPay.Name = "lblPay";
             this.lblPay.Size = new System.Drawing.Size(62, 17);
-            this.lblPay.TabIndex = 18;
+            this.lblPay.TabIndex = 12;
             this.lblPay.Text = "Pa&yRate";
+            // 
+            // txtPhone
+            // 
+            this.txtPhone.Location = new System.Drawing.Point(370, 110);
+            this.txtPhone.Mask = "(999) 000-0000";
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(142, 20);
+            this.txtPhone.TabIndex = 9;
+            this.txtPhone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // frmManagerEditUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 258);
+            this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.txtPayRate);
             this.Controls.Add(this.lblPay);
             this.Controls.Add(this.cboAccountType);
@@ -247,7 +248,6 @@ namespace SU21_Final_Project
             this.Controls.Add(this.btnApply);
             this.Controls.Add(this.lblPersonID);
             this.Controls.Add(this.lblPersonIDPointer);
-            this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.txtLastName);
@@ -283,7 +283,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.TextBox txtLastName;
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.Label lblPersonIDPointer;
         private System.Windows.Forms.Label lblPersonID;
         private System.Windows.Forms.Button btnApply;
@@ -292,5 +291,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.ComboBox cboAccountType;
         private System.Windows.Forms.TextBox txtPayRate;
         private System.Windows.Forms.Label lblPay;
+        private System.Windows.Forms.MaskedTextBox txtPhone;
     }
 }

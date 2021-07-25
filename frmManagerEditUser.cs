@@ -42,32 +42,130 @@ namespace SU21_Final_Project
         bool bolEditsSaved = false;
         private void btnApply_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Are you sure all edits are correct?", "Please ensure all changes are correct!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if(dr == DialogResult.Yes)
+            DialogResult dr;
+
+            if (!txtPhone.MaskCompleted)
             {
-                try
+                dr = MessageBox.Show("You don't have a valid phone number. Continue without one?", "Invalid phone", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dr == DialogResult.Yes)
                 {
-                    DataPerson person = DataPerson.GetPerson(frmManageUsers.strUserName);
-
-                    if (!double.TryParse(txtPayRate.Text, out double dblPay))
+                    dr = MessageBox.Show("Are you sure all edits are correct?", "Please ensure all changes are correct!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (dr == DialogResult.Yes)
                     {
-                        throw new Exception("Invalid Payrate!");
-                    }
-
-                    if (cboAccountType.SelectedItem.ToString() == "Manager" || cboAccountType.SelectedItem.ToString() == "Employee")
-                    {
-                        person.PayRate = dblPay;
-                    }
-                    else
-                    {
-                        dblPay = 0;
-                    }
-
-                    if (txtUsername.Text != frmManageUsers.strUserName)
-                    {
-                        if (person.UserName != null)
+                        try
                         {
-                            MessageBox.Show("This Username is already taken", "Name in use", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            DataPerson person = DataPerson.GetPerson(frmManageUsers.strUserName);
+
+                            if (!double.TryParse(txtPayRate.Text, out double dblPay))
+                            {
+                                throw new Exception("Invalid Payrate!");
+                            }
+
+                            if (cboAccountType.SelectedItem.ToString() == "Manager" || cboAccountType.SelectedItem.ToString() == "Employee")
+                            {
+                                person.PayRate = dblPay;
+                            }
+                            else
+                            {
+                                dblPay = 0;
+                            }
+
+                            if (txtUsername.Text != frmManageUsers.strUserName)
+                            {
+                                if (person.UserName != null)
+                                {
+                                    MessageBox.Show("This Username is already taken", "Name in use", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                }
+                                else
+                                {
+                                    person.NameFirst = txtFirstName.Text;
+                                    person.NameLast = txtLastName.Text;
+                                    person.UserName = txtUsername.Text;
+                                    person.Email = txtEmail.Text;
+                                    person.PhonePrimary = "";
+                                    person.AccountType = cboAccountType.SelectedItem.ToString();
+                                    person.PayRate = dblPay;
+
+                                    DataPerson.SavePerson(person);
+                                    MessageBox.Show("Changes Saved Successfully!", "Changes Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    bolEditsSaved = true;
+                                    frmManageUsers frmManage = new frmManageUsers();
+                                    this.Close();
+                                    frmManage.ShowDialog();
+                                }
+                            }
+                            else
+                            {
+                                person.NameFirst = txtFirstName.Text;
+                                person.NameLast = txtLastName.Text;
+                                person.UserName = txtUsername.Text;
+                                person.Email = txtEmail.Text;
+                                person.PhonePrimary = "";
+                                person.AccountType = cboAccountType.SelectedItem.ToString();
+                                person.PayRate = dblPay;
+
+                                DataPerson.SavePerson(person);
+                                MessageBox.Show("Changes Saved Successfully!", "Changes Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                bolEditsSaved = true;
+                                frmManageUsers frmManage = new frmManageUsers();
+                                this.Close();
+                                frmManage.ShowDialog();
+                            }
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                dr = MessageBox.Show("Are you sure all edits are correct?", "Please ensure all changes are correct!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dr == DialogResult.Yes)
+                {
+                    try
+                    {
+                        DataPerson person = DataPerson.GetPerson(frmManageUsers.strUserName);
+
+                        if (!double.TryParse(txtPayRate.Text, out double dblPay))
+                        {
+                            throw new Exception("Invalid Payrate!");
+                        }
+
+                        if (cboAccountType.SelectedItem.ToString() == "Manager" || cboAccountType.SelectedItem.ToString() == "Employee")
+                        {
+                            person.PayRate = dblPay;
+                        }
+                        else
+                        {
+                            dblPay = 0;
+                        }
+
+                        if (txtUsername.Text != frmManageUsers.strUserName)
+                        {
+                            if (person.UserName != null)
+                            {
+                                MessageBox.Show("This Username is already taken", "Name in use", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            }
+                            else
+                            {
+                                person.NameFirst = txtFirstName.Text;
+                                person.NameLast = txtLastName.Text;
+                                person.UserName = txtUsername.Text;
+                                person.Email = txtEmail.Text;
+                                person.PhonePrimary = txtPhone.Text;
+                                person.AccountType = cboAccountType.SelectedItem.ToString();
+                                person.PayRate = dblPay;
+
+                                DataPerson.SavePerson(person);
+                                MessageBox.Show("Changes Saved Successfully!", "Changes Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                bolEditsSaved = true;
+                                frmManageUsers frmManage = new frmManageUsers();
+                                this.Close();
+                                frmManage.ShowDialog();
+                            }
                         }
                         else
                         {
@@ -87,30 +185,12 @@ namespace SU21_Final_Project
                             frmManage.ShowDialog();
                         }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        person.NameFirst = txtFirstName.Text;
-                        person.NameLast = txtLastName.Text;
-                        person.UserName = txtUsername.Text;
-                        person.Email = txtEmail.Text;
-                        person.PhonePrimary = txtPhone.Text;
-                        person.AccountType = cboAccountType.SelectedItem.ToString();
-                        person.PayRate = dblPay;
-
-                        DataPerson.SavePerson(person);
-                        MessageBox.Show("Changes Saved Successfully!", "Changes Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        bolEditsSaved = true;
-                        frmManageUsers frmManage = new frmManageUsers();
-                        this.Close();
-                        frmManage.ShowDialog();
+                        MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    
                 }
-                catch(Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
+            }            
         }
 
         private void btnReturn_Click(object sender, EventArgs e)
@@ -145,7 +225,7 @@ namespace SU21_Final_Project
 
         private void txtEmail_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Space)
+            if (e.KeyChar == (char)Keys.Space || e.KeyChar == '-')
             {
                 e.Handled = true;
             }
