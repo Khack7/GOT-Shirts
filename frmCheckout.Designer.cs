@@ -56,6 +56,8 @@ namespace SU21_Final_Project
             this.lblTotal = new System.Windows.Forms.Label();
             this.btnHelp = new System.Windows.Forms.Button();
             this.btnShowCard = new System.Windows.Forms.Button();
+            this.lblDiscount = new System.Windows.Forms.Label();
+            this.lblDiscountPointer = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,7 +65,7 @@ namespace SU21_Final_Project
             // 
             this.lblShippingPointer.AutoSize = true;
             this.lblShippingPointer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblShippingPointer.Location = new System.Drawing.Point(201, 103);
+            this.lblShippingPointer.Location = new System.Drawing.Point(201, 107);
             this.lblShippingPointer.Name = "lblShippingPointer";
             this.lblShippingPointer.Size = new System.Drawing.Size(67, 17);
             this.lblShippingPointer.TabIndex = 5;
@@ -150,7 +152,7 @@ namespace SU21_Final_Project
             // 
             this.lblTotalPointer.AutoSize = true;
             this.lblTotalPointer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalPointer.Location = new System.Drawing.Point(201, 143);
+            this.lblTotalPointer.Location = new System.Drawing.Point(201, 140);
             this.lblTotalPointer.Name = "lblTotalPointer";
             this.lblTotalPointer.Size = new System.Drawing.Size(44, 17);
             this.lblTotalPointer.TabIndex = 7;
@@ -160,7 +162,7 @@ namespace SU21_Final_Project
             // 
             this.lblTaxPointer.AutoSize = true;
             this.lblTaxPointer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTaxPointer.Location = new System.Drawing.Point(201, 53);
+            this.lblTaxPointer.Location = new System.Drawing.Point(201, 74);
             this.lblTaxPointer.Name = "lblTaxPointer";
             this.lblTaxPointer.Size = new System.Drawing.Size(35, 17);
             this.lblTaxPointer.TabIndex = 3;
@@ -289,7 +291,7 @@ namespace SU21_Final_Project
             // lblTax
             // 
             this.lblTax.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTax.Location = new System.Drawing.Point(276, 53);
+            this.lblTax.Location = new System.Drawing.Point(276, 74);
             this.lblTax.Name = "lblTax";
             this.lblTax.Size = new System.Drawing.Size(55, 17);
             this.lblTax.TabIndex = 4;
@@ -298,7 +300,7 @@ namespace SU21_Final_Project
             // lblShipping
             // 
             this.lblShipping.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblShipping.Location = new System.Drawing.Point(276, 103);
+            this.lblShipping.Location = new System.Drawing.Point(276, 107);
             this.lblShipping.Name = "lblShipping";
             this.lblShipping.Size = new System.Drawing.Size(55, 17);
             this.lblShipping.TabIndex = 6;
@@ -307,7 +309,7 @@ namespace SU21_Final_Project
             // lblTotal
             // 
             this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.Location = new System.Drawing.Point(276, 143);
+            this.lblTotal.Location = new System.Drawing.Point(276, 140);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(55, 17);
             this.lblTotal.TabIndex = 8;
@@ -336,11 +338,32 @@ namespace SU21_Final_Project
             this.btnShowCard.UseVisualStyleBackColor = false;
             this.btnShowCard.Click += new System.EventHandler(this.btnShowCard_Click);
             // 
+            // lblDiscount
+            // 
+            this.lblDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDiscount.Location = new System.Drawing.Point(276, 41);
+            this.lblDiscount.Name = "lblDiscount";
+            this.lblDiscount.Size = new System.Drawing.Size(55, 17);
+            this.lblDiscount.TabIndex = 44;
+            this.lblDiscount.Text = "$0.00";
+            // 
+            // lblDiscountPointer
+            // 
+            this.lblDiscountPointer.AutoSize = true;
+            this.lblDiscountPointer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDiscountPointer.Location = new System.Drawing.Point(201, 41);
+            this.lblDiscountPointer.Name = "lblDiscountPointer";
+            this.lblDiscountPointer.Size = new System.Drawing.Size(80, 17);
+            this.lblDiscountPointer.TabIndex = 43;
+            this.lblDiscountPointer.Text = "Discount:  -";
+            // 
             // frmCheckout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(433, 436);
+            this.Controls.Add(this.lblDiscount);
+            this.Controls.Add(this.lblDiscountPointer);
             this.Controls.Add(this.btnShowCard);
             this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.lblTotal);
@@ -407,5 +430,7 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Button btnHelp;
         private System.Windows.Forms.Button btnShowCard;
+        private System.Windows.Forms.Label lblDiscount;
+        private System.Windows.Forms.Label lblDiscountPointer;
     }
 }

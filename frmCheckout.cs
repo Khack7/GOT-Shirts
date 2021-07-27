@@ -56,7 +56,7 @@ namespace SU21_Final_Project
             }
         }
 
-        double dblShippingCost, dblTaxCost, dblSubCost, dblTotalCost;
+        double dblShippingCost, dblTaxCost, dblSubCost, dblTotalCost, dblDiscountAmount = 0;
 
         private void frmCheckout_Load(object sender, System.EventArgs e)
         {
@@ -77,9 +77,14 @@ namespace SU21_Final_Project
                     }
 
                     double dblDiscount = frmCouponInput.percentOff;
-                    dblSubCost = (dblSub - (dblSub * (dblDiscount / 100)));
+                    dblSubCost = dblSub;
+                    //dblSubCost = (dblSub - (dblSub * (dblDiscount / 100)));
+                    dblDiscountAmount = (dblSub * (dblDiscount / 100));
+                    lblDiscount.Text = dblDiscountAmount.ToString("C2");
 
                     lblSubtotal.Text = dblSubCost.ToString("C2");
+
+
                 }
                 else
                 {
@@ -106,7 +111,7 @@ namespace SU21_Final_Project
 
                 lblTax.Text = (dblTaxCost).ToString("C2");
 
-                dblTotalCost = dblSubCost + dblTaxCost + dblShippingCost;
+                dblTotalCost = dblSubCost + dblTaxCost + dblShippingCost - dblDiscountAmount;
 
                 lblTotal.Text = (dblTotalCost).ToString("C2");
 
@@ -309,6 +314,7 @@ namespace SU21_Final_Project
             }
             strReceipt = strReceipt.Replace("{Items}", itemHTML.ToString());
             strReceipt = strReceipt.Replace("{SubTotal}", dblSubCost.ToString("C2"));
+            strReceipt = strReceipt.Replace("{Discount}", dblDiscountAmount.ToString("C2"));
             strReceipt = strReceipt.Replace("{TaxTotal}", dblTaxCost.ToString("C2"));
             strReceipt = strReceipt.Replace("{ShippingTotal}", dblShippingCost.ToString("C2"));
             strReceipt = strReceipt.Replace("{OrderTotal}", dblTotalCost.ToString("C2"));
