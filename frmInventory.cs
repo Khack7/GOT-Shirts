@@ -383,6 +383,14 @@ namespace SU21_Final_Project
             }
         }
 
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            frmAddProduct frmNewProduct = new frmAddProduct();
+            this.Hide();
+            frmNewProduct.ShowDialog();
+            this.Show();
+        }
+
         private void btnHelp_Click(object sender, EventArgs e)
         {
             string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);

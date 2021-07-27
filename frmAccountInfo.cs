@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -123,6 +124,100 @@ namespace SU21_Final_Project
                     DialogResult dr = MessageBox.Show("You don't have a valid phone number. Continue without one?", "Invalid phone", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (dr == DialogResult.Yes)
                     {
+                        if (txtEmail.Text != "")
+                        {
+                            string email = txtEmail.Text;
+
+                            Regex regex = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$",
+
+                            RegexOptions.CultureInvariant | RegexOptions.Singleline);
+
+                            bool isValidEmail = regex.IsMatch(email);
+                            if (!isValidEmail)
+                            {
+                                throw new Exception("Invalid email inserted. Please enter a vailid email or make sure no text is in the email field");
+                            }
+                            else
+                            {
+                                DataPerson person = DataPerson.GetPerson(frmSignIn.strUserName);
+
+                                person.NameFirst = txtFirst.Text;
+                                person.NameLast = txtLast.Text;
+                                person.Address1 = txtAddress1.Text;
+                                person.Address2 = txtAddress2.Text;
+                                person.Address3 = txtAddress3.Text;
+                                person.City = txtCity.Text;
+                                person.State = cboStates.SelectedItem.ToString();
+                                person.Zipcode = txtZip.Text;
+                                person.PhonePrimary = "";
+                                person.Email = txtEmail.Text;
+
+                                DataPerson.SavePerson(person);
+
+                                MessageBox.Show("Changes Saved!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                this.Close();
+                            }
+                        }
+                        else
+                        {
+                            DataPerson person = DataPerson.GetPerson(frmSignIn.strUserName);
+
+                            person.NameFirst = txtFirst.Text;
+                            person.NameLast = txtLast.Text;
+                            person.Address1 = txtAddress1.Text;
+                            person.Address2 = txtAddress2.Text;
+                            person.Address3 = txtAddress3.Text;
+                            person.City = txtCity.Text;
+                            person.State = cboStates.SelectedItem.ToString();
+                            person.Zipcode = txtZip.Text;
+                            person.PhonePrimary = txtPhone.Text;
+                            person.Email = txtEmail.Text;
+
+                            DataPerson.SavePerson(person);
+
+                            MessageBox.Show("Changes Saved!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.Close();
+                        }
+                    }
+                }
+                else
+                {
+                    if (txtEmail.Text != "")
+                    {
+                        string email = txtEmail.Text;
+
+                        Regex regex = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$",
+
+                        RegexOptions.CultureInvariant | RegexOptions.Singleline);
+
+                        bool isValidEmail = regex.IsMatch(email);
+                        if (!isValidEmail)
+                        {
+                            throw new Exception("Invalid email inserted. Please enter a vailid email or make sure no text is in the email field");
+                        }
+                        else
+                        {
+                            DataPerson person = DataPerson.GetPerson(frmSignIn.strUserName);
+
+                            person.NameFirst = txtFirst.Text;
+                            person.NameLast = txtLast.Text;
+                            person.Address1 = txtAddress1.Text;
+                            person.Address2 = txtAddress2.Text;
+                            person.Address3 = txtAddress3.Text;
+                            person.City = txtCity.Text;
+                            person.State = cboStates.SelectedItem.ToString();
+                            person.Zipcode = txtZip.Text;
+                            person.PhonePrimary = txtPhone.Text;
+                            person.Email = txtEmail.Text;
+
+                            DataPerson.SavePerson(person);
+
+                            MessageBox.Show("Changes Saved!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.Close();
+                        }
+                    }
+                    else
+                    {
                         DataPerson person = DataPerson.GetPerson(frmSignIn.strUserName);
 
                         person.NameFirst = txtFirst.Text;
@@ -133,7 +228,7 @@ namespace SU21_Final_Project
                         person.City = txtCity.Text;
                         person.State = cboStates.SelectedItem.ToString();
                         person.Zipcode = txtZip.Text;
-                        person.PhonePrimary = "";
+                        person.PhonePrimary = txtPhone.Text;
                         person.Email = txtEmail.Text;
 
                         DataPerson.SavePerson(person);
@@ -141,26 +236,6 @@ namespace SU21_Final_Project
                         MessageBox.Show("Changes Saved!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();
                     }
-                }
-                else
-                {
-                    DataPerson person = DataPerson.GetPerson(frmSignIn.strUserName);
-
-                    person.NameFirst = txtFirst.Text;
-                    person.NameLast = txtLast.Text;
-                    person.Address1 = txtAddress1.Text;
-                    person.Address2 = txtAddress2.Text;
-                    person.Address3 = txtAddress3.Text;
-                    person.City = txtCity.Text;
-                    person.State = cboStates.SelectedItem.ToString();
-                    person.Zipcode = txtZip.Text;
-                    person.PhonePrimary = txtPhone.Text;
-                    person.Email = txtEmail.Text;
-
-                    DataPerson.SavePerson(person);
-
-                    MessageBox.Show("Changes Saved!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
                 }
             }
             catch (Exception ex)

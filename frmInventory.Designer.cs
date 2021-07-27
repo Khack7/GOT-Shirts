@@ -45,15 +45,16 @@ namespace SU21_Final_Project
             this.btnHelp = new System.Windows.Forms.Button();
             this.pbxShirt = new System.Windows.Forms.PictureBox();
             this.btnReport = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbxShirt)).BeginInit();
             this.SuspendLayout();
             // 
             // btnReturn
             // 
             this.btnReturn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReturn.Location = new System.Drawing.Point(531, 310);
+            this.btnReturn.Location = new System.Drawing.Point(528, 310);
             this.btnReturn.Name = "btnReturn";
-            this.btnReturn.Size = new System.Drawing.Size(94, 36);
+            this.btnReturn.Size = new System.Drawing.Size(123, 42);
             this.btnReturn.TabIndex = 15;
             this.btnReturn.Text = "&Return";
             this.btnReturn.UseVisualStyleBackColor = true;
@@ -62,9 +63,9 @@ namespace SU21_Final_Project
             // btnUpdate
             // 
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(15, 310);
+            this.btnUpdate.Location = new System.Drawing.Point(12, 310);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(94, 36);
+            this.btnUpdate.Size = new System.Drawing.Size(123, 42);
             this.btnUpdate.TabIndex = 14;
             this.btnUpdate.Text = "&Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
@@ -174,9 +175,9 @@ namespace SU21_Final_Project
             // btnHelp
             // 
             this.btnHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHelp.Location = new System.Drawing.Point(359, 310);
+            this.btnHelp.Location = new System.Drawing.Point(399, 310);
             this.btnHelp.Name = "btnHelp";
-            this.btnHelp.Size = new System.Drawing.Size(94, 36);
+            this.btnHelp.Size = new System.Drawing.Size(123, 42);
             this.btnHelp.TabIndex = 20;
             this.btnHelp.Text = "&Help";
             this.btnHelp.UseVisualStyleBackColor = true;
@@ -188,26 +189,38 @@ namespace SU21_Final_Project
             this.pbxShirt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pbxShirt.Location = new System.Drawing.Point(317, 8);
             this.pbxShirt.Name = "pbxShirt";
-            this.pbxShirt.Size = new System.Drawing.Size(309, 258);
+            this.pbxShirt.Size = new System.Drawing.Size(332, 258);
             this.pbxShirt.TabIndex = 28;
             this.pbxShirt.TabStop = false;
             // 
             // btnReport
             // 
             this.btnReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReport.Location = new System.Drawing.Point(187, 310);
+            this.btnReport.Location = new System.Drawing.Point(141, 310);
             this.btnReport.Name = "btnReport";
-            this.btnReport.Size = new System.Drawing.Size(94, 36);
+            this.btnReport.Size = new System.Drawing.Size(123, 42);
             this.btnReport.TabIndex = 29;
             this.btnReport.Text = "&Print Report";
             this.btnReport.UseVisualStyleBackColor = true;
             this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
             // 
+            // btnAdd
+            // 
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.Location = new System.Drawing.Point(270, 310);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(123, 42);
+            this.btnAdd.TabIndex = 30;
+            this.btnAdd.Text = "&Add New Product";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
             // frmInventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(637, 363);
+            this.ClientSize = new System.Drawing.Size(661, 363);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnReport);
             this.Controls.Add(this.pbxShirt);
             this.Controls.Add(this.btnHelp);
@@ -253,5 +266,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Button btnHelp;
         private System.Windows.Forms.PictureBox pbxShirt;
         private System.Windows.Forms.Button btnReport;
+        private System.Windows.Forms.Button btnAdd;
     }
 }

@@ -176,6 +176,60 @@ namespace SU21_Final_Project
                                     {
                                         strAccountType = "Customer";
                                     }
+                                    if(CheckEmail(txtEmail.Text) == true)
+                                    {
+                                        person = new DataPerson
+                                        {
+                                            NameFirst = txtFirst.Text,
+                                            NameLast = txtLast.Text,
+                                            Address1 = txtAddress1.Text,
+                                            Address2 = txtAddress2.Text,
+                                            Address3 = txtAddress3.Text,
+                                            City = txtCity.Text,
+                                            State = cboStates.SelectedItem.ToString(),
+                                            Zipcode = txtZip.Text,
+                                            Email = txtEmail.Text,
+                                            PhonePrimary = "",
+                                            UserName = txtUsername.Text,
+                                            Password = txtPassword.Text,
+                                            AccountType = strAccountType,
+                                            SecurityQuestion1 = cmboSecurity1.SelectedItem.ToString(),
+                                            SecurityAnswer1 = txtAnswer1.Text,
+                                            SecurityQuestion2 = cmboSecurity2.SelectedItem.ToString(),
+                                            SecurityAnswer2 = txtAnswer2.Text,
+                                            SecurityQuestion3 = cmboSecurity3.SelectedItem.ToString(),
+                                            SecurityAnswer3 = txtAnswer3.Text,
+                                            Deleted = false,
+                                            PayRate = dblPay
+                                        };
+                                        DataPerson.SavePerson(person);
+                                        MessageBox.Show("Account Succesfully Created!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        bolComplete = true;
+                                        this.Close();
+                                    } 
+                                    else
+                                    {
+                                        throw new Exception("Invalid email inserted. Please enter a vailid email or make sure no text is in the email field");
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                if (rdoEmployee.Checked == true)
+                                {
+                                    strAccountType = "Employee";
+                                }
+                                else if (rdoManager.Checked == true)
+                                {
+                                    strAccountType = "Manager";
+                                }
+                                else
+                                {
+                                    strAccountType = "Customer";
+                                }
+
+                                if(CheckEmail(txtEmail.Text) == true)
+                                {
                                     person = new DataPerson
                                     {
                                         NameFirst = txtFirst.Text,
@@ -187,7 +241,7 @@ namespace SU21_Final_Project
                                         State = cboStates.SelectedItem.ToString(),
                                         Zipcode = txtZip.Text,
                                         Email = txtEmail.Text,
-                                        PhonePrimary = "",
+                                        PhonePrimary = txtPhone.Text,
                                         UserName = txtUsername.Text,
                                         Password = txtPassword.Text,
                                         AccountType = strAccountType,
@@ -205,49 +259,10 @@ namespace SU21_Final_Project
                                     bolComplete = true;
                                     this.Close();
                                 }
-                            }
-                            else
-                            {
-                                if (rdoEmployee.Checked == true)
-                                {
-                                    strAccountType = "Employee";
-                                }
-                                else if (rdoManager.Checked == true)
-                                {
-                                    strAccountType = "Manager";
-                                }
                                 else
                                 {
-                                    strAccountType = "Customer";
+                                    throw new Exception("Invalid email inserted. Please enter a vailid email or make sure no text is in the email field");
                                 }
-                                person = new DataPerson
-                                {
-                                    NameFirst = txtFirst.Text,
-                                    NameLast = txtLast.Text,
-                                    Address1 = txtAddress1.Text,
-                                    Address2 = txtAddress2.Text,
-                                    Address3 = txtAddress3.Text,
-                                    City = txtCity.Text,
-                                    State = cboStates.SelectedItem.ToString(),
-                                    Zipcode = txtZip.Text,
-                                    Email = txtEmail.Text,
-                                    PhonePrimary = String.Format("{0:(###)-###-####}", Convert.ToInt64(txtPhone.Text)),
-                                    UserName = txtUsername.Text,
-                                    Password = txtPassword.Text,
-                                    AccountType = strAccountType,
-                                    SecurityQuestion1 = cmboSecurity1.SelectedItem.ToString(),
-                                    SecurityAnswer1 = txtAnswer1.Text,
-                                    SecurityQuestion2 = cmboSecurity2.SelectedItem.ToString(),
-                                    SecurityAnswer2 = txtAnswer2.Text,
-                                    SecurityQuestion3 = cmboSecurity3.SelectedItem.ToString(),
-                                    SecurityAnswer3 = txtAnswer3.Text,
-                                    Deleted = false,
-                                    PayRate = dblPay
-                                };
-                                DataPerson.SavePerson(person);
-                                MessageBox.Show("Account Succesfully Created!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                bolComplete = true;
-                                this.Close();
                             }       
                         }
                     }
@@ -513,6 +528,53 @@ namespace SU21_Final_Project
                 txtPassword.PasswordChar = '•';
                 bolShowPass = true;
             }
+        }
+        public bool CheckEmail(string email)
+        {
+            bool result;
+            Regex regex = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$",
+
+            RegexOptions.CultureInvariant | RegexOptions.Singleline);
+
+            bool isValidEmail = regex.IsMatch(email);
+
+            if(txtPhone.Text == "")
+            {
+                if (email == "")
+                {
+                    result = false;
+                }
+                else
+                {
+                    if (!isValidEmail)
+                    {
+                        result = false;
+                    }
+                    else
+                    {
+                        result = true;
+                    }
+                }
+            }
+            else
+            {
+                if (email == "")
+                {
+                    result = true;
+                }
+                else
+                {
+                    if (!isValidEmail)
+                    {
+                        result = false;
+                    }
+                    else
+                    {
+                        result = true;
+                    }
+                }
+            }
+            return result;
         }
     }
 }

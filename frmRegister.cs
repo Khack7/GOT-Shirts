@@ -221,13 +221,54 @@ namespace SU21_Final_Project
                         }
                         else
                         {
-
                             if (!txtPhone.MaskCompleted)
                             {
                                 DialogResult dr = MessageBox.Show("You don't have a valid phone number. Continue without one?", "Invalid phone", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                                if(dr == DialogResult.Yes)
+                                if (dr == DialogResult.Yes)
                                 {
                                     string strEmptyPhone = "";
+
+                                    if (CheckEmail(txtEmail.Text) == true)
+                                    {
+                                        person = new DataPerson
+                                        {
+                                            NameFirst = txtFirst.Text,
+                                            NameLast = txtLast.Text,
+                                            Address1 = txtAddress1.Text,
+                                            Address2 = txtAddress2.Text,
+                                            Address3 = txtAddress3.Text,
+                                            City = txtCity.Text,
+                                            State = cboStates.SelectedItem.ToString(),
+                                            Zipcode = txtZip.Text,
+                                            Email = txtEmail.Text,
+                                            PhonePrimary = strEmptyPhone,
+                                            UserName = txtUsername.Text,
+                                            Password = txtPassword.Text,
+                                            AccountType = "Customer",
+                                            SecurityQuestion1 = cmboSecurity1.SelectedItem.ToString(),
+                                            SecurityAnswer1 = txtAnswer1.Text,
+                                            SecurityQuestion2 = cmboSecurity2.SelectedItem.ToString(),
+                                            SecurityAnswer2 = txtAnswer2.Text,
+                                            SecurityQuestion3 = cmboSecurity3.SelectedItem.ToString(),
+                                            SecurityAnswer3 = txtAnswer3.Text,
+                                            Deleted = false
+                                        };
+                                        DataPerson.SavePerson(person);
+                                        MessageBox.Show("Account Succesfully Created!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        bolComplete = true;
+                                        this.Close();
+                                    }
+                                    else
+                                    {
+                                        throw new Exception("Invalid email inserted. Please enter a vailid email or make sure no text is in the email field");
+                                    }
+
+                                }
+                            }
+                            else
+                            {
+                                if(CheckEmail(txtEmail.Text) == true)
+                                {
                                     person = new DataPerson
                                     {
                                         NameFirst = txtFirst.Text,
@@ -239,7 +280,7 @@ namespace SU21_Final_Project
                                         State = cboStates.SelectedItem.ToString(),
                                         Zipcode = txtZip.Text,
                                         Email = txtEmail.Text,
-                                        PhonePrimary = strEmptyPhone,
+                                        PhonePrimary = txtPhone.Text,
                                         UserName = txtUsername.Text,
                                         Password = txtPassword.Text,
                                         AccountType = "Customer",
@@ -256,36 +297,10 @@ namespace SU21_Final_Project
                                     bolComplete = true;
                                     this.Close();
                                 }
-                            }
-                            else
-                            {
-                                person = new DataPerson
+                                else
                                 {
-                                    NameFirst = txtFirst.Text,
-                                    NameLast = txtLast.Text,
-                                    Address1 = txtAddress1.Text,
-                                    Address2 = txtAddress2.Text,
-                                    Address3 = txtAddress3.Text,
-                                    City = txtCity.Text,
-                                    State = cboStates.SelectedItem.ToString(),
-                                    Zipcode = txtZip.Text,
-                                    Email = txtEmail.Text,
-                                    PhonePrimary = txtPhone.Text,
-                                    UserName = txtUsername.Text,
-                                    Password = txtPassword.Text,
-                                    AccountType = "Customer",
-                                    SecurityQuestion1 = cmboSecurity1.SelectedItem.ToString(),
-                                    SecurityAnswer1 = txtAnswer1.Text,
-                                    SecurityQuestion2 = cmboSecurity2.SelectedItem.ToString(),
-                                    SecurityAnswer2 = txtAnswer2.Text,
-                                    SecurityQuestion3 = cmboSecurity3.SelectedItem.ToString(),
-                                    SecurityAnswer3 = txtAnswer3.Text,
-                                    Deleted = false
-                                };
-                                DataPerson.SavePerson(person);
-                                MessageBox.Show("Account Succesfully Created!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                bolComplete = true;
-                                this.Close();
+                                    throw new Exception("Invalid email inserted. Please enter a vailid email or make sure no text is in the email field");
+                                }
                             }
                         }
                     }
@@ -448,6 +463,33 @@ namespace SU21_Final_Project
         private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
         {
             bolChangesMade = true;
+        }
+
+        public bool CheckEmail(string email)
+        {
+            bool result;
+            Regex regex = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$",
+
+            RegexOptions.CultureInvariant | RegexOptions.Singleline);
+
+            bool isValidEmail = regex.IsMatch(email);
+            if (email == "")
+            {
+                result = true;
+            }
+            else
+            {
+                if (!isValidEmail)
+                {
+                    result = false;
+                }
+                else
+                {
+                    result = true;
+                }
+            }
+
+            return result;
         }
     }
 }

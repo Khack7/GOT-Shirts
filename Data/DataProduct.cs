@@ -178,6 +178,35 @@ namespace SU21_Final_Project.Data
             }
         }
 
+        public static void AddProduct(DataProduct product)
+        {
+            string strSQL;
+
+            strSQL = "INSERT INTO HackK21Su2332.Products(Color, Size, QuantityOnHand, Cost, Price, ProductImage) " +
+                     "VALUES(@Color, @Size, @QuantityOnHand, @Cost, @Price, @ProductImage)";
+
+            using (SqlConnection con = DataCommon.StartConnection())
+            {
+                using (SqlCommand cmd = new SqlCommand(strSQL))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Connection = con;
+                    byte[] imgData = DataProduct.GetImageData(product.ProductImage);
+
+                    cmd.Parameters.AddWithValue("@Color", product.Color);
+                    cmd.Parameters.AddWithValue("@Size", product.Size);
+                    cmd.Parameters.AddWithValue("@QuantityOnHand", product.QuantityOnHand);
+                    cmd.Parameters.AddWithValue("@Cost", product.Cost);
+                    cmd.Parameters.AddWithValue("@Price", product.Price);
+                    cmd.Parameters.Add("@ProductImage", SqlDbType.Image, imgData.Length).Value = imgData;
+
+                    cmd.ExecuteNonQuery();
+
+                    con.Close();
+                }
+            }
+        }
+
         public static byte[] GetImageData(Image img)
         {
             using (MemoryStream mStream = new MemoryStream())

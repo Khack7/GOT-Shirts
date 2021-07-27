@@ -34,7 +34,7 @@ namespace SU21_Final_Project
         {
             try
             {
-                DataPerson person = DataPerson.GetPerson(txtUsername.Text);
+                DataPerson person = DataPerson.GetPerson(txtUsername.Text.ToUpper());
                 if (person != null)
                 {
                     if (person.Deleted == true)

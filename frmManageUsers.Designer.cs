@@ -32,15 +32,6 @@ namespace SU21_Final_Project
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManageUsers));
             this.dgvPerson = new System.Windows.Forms.DataGridView();
-            this.personIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameFirstDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameLastDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.phonePrimaryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.userNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.accountTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.payRateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.deletedDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.personBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSetPerson = new SU21_Final_Project.DataSetPerson();
             this.personTableAdapter = new SU21_Final_Project.DataSetPersonTableAdapters.PersonTableAdapter();
@@ -50,6 +41,15 @@ namespace SU21_Final_Project
             this.btnDeleteOrRestore = new System.Windows.Forms.Button();
             this.btnHelp = new System.Windows.Forms.Button();
             this.btnReturn = new System.Windows.Forms.Button();
+            this.personIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameFirstDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameLastDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phonePrimaryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.userNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.accountTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.payRateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deletedDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPerson)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.personBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetPerson)).BeginInit();
@@ -73,76 +73,13 @@ namespace SU21_Final_Project
             this.deletedDataGridViewCheckBoxColumn});
             this.dgvPerson.DataSource = this.personBindingSource;
             this.dgvPerson.Location = new System.Drawing.Point(1, 0);
+            this.dgvPerson.MultiSelect = false;
             this.dgvPerson.Name = "dgvPerson";
             this.dgvPerson.ReadOnly = true;
             this.dgvPerson.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPerson.Size = new System.Drawing.Size(1069, 312);
             this.dgvPerson.TabIndex = 0;
             this.dgvPerson.SelectionChanged += new System.EventHandler(this.dgvPerson_SelectionChanged);
-            // 
-            // personIDDataGridViewTextBoxColumn
-            // 
-            this.personIDDataGridViewTextBoxColumn.DataPropertyName = "PersonID";
-            this.personIDDataGridViewTextBoxColumn.HeaderText = "Person ID";
-            this.personIDDataGridViewTextBoxColumn.Name = "personIDDataGridViewTextBoxColumn";
-            this.personIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nameFirstDataGridViewTextBoxColumn
-            // 
-            this.nameFirstDataGridViewTextBoxColumn.DataPropertyName = "NameFirst";
-            this.nameFirstDataGridViewTextBoxColumn.HeaderText = "First Name";
-            this.nameFirstDataGridViewTextBoxColumn.Name = "nameFirstDataGridViewTextBoxColumn";
-            this.nameFirstDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nameLastDataGridViewTextBoxColumn
-            // 
-            this.nameLastDataGridViewTextBoxColumn.DataPropertyName = "NameLast";
-            this.nameLastDataGridViewTextBoxColumn.HeaderText = "Last Name";
-            this.nameLastDataGridViewTextBoxColumn.Name = "nameLastDataGridViewTextBoxColumn";
-            this.nameLastDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // emailDataGridViewTextBoxColumn
-            // 
-            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
-            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
-            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
-            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // phonePrimaryDataGridViewTextBoxColumn
-            // 
-            this.phonePrimaryDataGridViewTextBoxColumn.DataPropertyName = "PhonePrimary";
-            this.phonePrimaryDataGridViewTextBoxColumn.HeaderText = "Phone#";
-            this.phonePrimaryDataGridViewTextBoxColumn.Name = "phonePrimaryDataGridViewTextBoxColumn";
-            this.phonePrimaryDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // userNameDataGridViewTextBoxColumn
-            // 
-            this.userNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.userNameDataGridViewTextBoxColumn.DataPropertyName = "UserName";
-            this.userNameDataGridViewTextBoxColumn.HeaderText = "UserName";
-            this.userNameDataGridViewTextBoxColumn.Name = "userNameDataGridViewTextBoxColumn";
-            this.userNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // accountTypeDataGridViewTextBoxColumn
-            // 
-            this.accountTypeDataGridViewTextBoxColumn.DataPropertyName = "AccountType";
-            this.accountTypeDataGridViewTextBoxColumn.HeaderText = "Account Type";
-            this.accountTypeDataGridViewTextBoxColumn.Name = "accountTypeDataGridViewTextBoxColumn";
-            this.accountTypeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // payRateDataGridViewTextBoxColumn
-            // 
-            this.payRateDataGridViewTextBoxColumn.DataPropertyName = "PayRate";
-            this.payRateDataGridViewTextBoxColumn.HeaderText = "Pay Rate";
-            this.payRateDataGridViewTextBoxColumn.Name = "payRateDataGridViewTextBoxColumn";
-            this.payRateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // deletedDataGridViewCheckBoxColumn
-            // 
-            this.deletedDataGridViewCheckBoxColumn.DataPropertyName = "Deleted";
-            this.deletedDataGridViewCheckBoxColumn.HeaderText = "Deleted";
-            this.deletedDataGridViewCheckBoxColumn.Name = "deletedDataGridViewCheckBoxColumn";
-            this.deletedDataGridViewCheckBoxColumn.ReadOnly = true;
             // 
             // personBindingSource
             // 
@@ -224,6 +161,71 @@ namespace SU21_Final_Project
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
+            // personIDDataGridViewTextBoxColumn
+            // 
+            this.personIDDataGridViewTextBoxColumn.DataPropertyName = "PersonID";
+            this.personIDDataGridViewTextBoxColumn.HeaderText = "Person ID";
+            this.personIDDataGridViewTextBoxColumn.Name = "personIDDataGridViewTextBoxColumn";
+            this.personIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nameFirstDataGridViewTextBoxColumn
+            // 
+            this.nameFirstDataGridViewTextBoxColumn.DataPropertyName = "NameFirst";
+            this.nameFirstDataGridViewTextBoxColumn.HeaderText = "First Name";
+            this.nameFirstDataGridViewTextBoxColumn.Name = "nameFirstDataGridViewTextBoxColumn";
+            this.nameFirstDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nameLastDataGridViewTextBoxColumn
+            // 
+            this.nameLastDataGridViewTextBoxColumn.DataPropertyName = "NameLast";
+            this.nameLastDataGridViewTextBoxColumn.HeaderText = "Last Name";
+            this.nameLastDataGridViewTextBoxColumn.Name = "nameLastDataGridViewTextBoxColumn";
+            this.nameLastDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
+            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
+            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // phonePrimaryDataGridViewTextBoxColumn
+            // 
+            this.phonePrimaryDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.phonePrimaryDataGridViewTextBoxColumn.DataPropertyName = "PhonePrimary";
+            this.phonePrimaryDataGridViewTextBoxColumn.HeaderText = "Phone Number";
+            this.phonePrimaryDataGridViewTextBoxColumn.Name = "phonePrimaryDataGridViewTextBoxColumn";
+            this.phonePrimaryDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // userNameDataGridViewTextBoxColumn
+            // 
+            this.userNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.userNameDataGridViewTextBoxColumn.DataPropertyName = "UserName";
+            this.userNameDataGridViewTextBoxColumn.HeaderText = "Username";
+            this.userNameDataGridViewTextBoxColumn.Name = "userNameDataGridViewTextBoxColumn";
+            this.userNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // accountTypeDataGridViewTextBoxColumn
+            // 
+            this.accountTypeDataGridViewTextBoxColumn.DataPropertyName = "AccountType";
+            this.accountTypeDataGridViewTextBoxColumn.HeaderText = "Account Type";
+            this.accountTypeDataGridViewTextBoxColumn.Name = "accountTypeDataGridViewTextBoxColumn";
+            this.accountTypeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // payRateDataGridViewTextBoxColumn
+            // 
+            this.payRateDataGridViewTextBoxColumn.DataPropertyName = "PayRate";
+            this.payRateDataGridViewTextBoxColumn.HeaderText = "Pay Rate";
+            this.payRateDataGridViewTextBoxColumn.Name = "payRateDataGridViewTextBoxColumn";
+            this.payRateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // deletedDataGridViewCheckBoxColumn
+            // 
+            this.deletedDataGridViewCheckBoxColumn.DataPropertyName = "Deleted";
+            this.deletedDataGridViewCheckBoxColumn.HeaderText = "Deleted";
+            this.deletedDataGridViewCheckBoxColumn.Name = "deletedDataGridViewCheckBoxColumn";
+            this.deletedDataGridViewCheckBoxColumn.ReadOnly = true;
+            // 
             // frmManageUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -237,6 +239,7 @@ namespace SU21_Final_Project
             this.Controls.Add(this.btnCustomer);
             this.Controls.Add(this.dgvPerson);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "frmManageUsers";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manage Users";
@@ -254,6 +257,12 @@ namespace SU21_Final_Project
         private DataSetPerson dataSetPerson;
         private System.Windows.Forms.BindingSource personBindingSource;
         private DataSetPersonTableAdapters.PersonTableAdapter personTableAdapter;
+        private System.Windows.Forms.Button btnCustomer;
+        private System.Windows.Forms.Button btnEmployee;
+        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnDeleteOrRestore;
+        private System.Windows.Forms.Button btnHelp;
+        private System.Windows.Forms.Button btnReturn;
         private System.Windows.Forms.DataGridViewTextBoxColumn personIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameFirstDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameLastDataGridViewTextBoxColumn;
@@ -263,11 +272,5 @@ namespace SU21_Final_Project
         private System.Windows.Forms.DataGridViewTextBoxColumn accountTypeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn payRateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn deletedDataGridViewCheckBoxColumn;
-        private System.Windows.Forms.Button btnCustomer;
-        private System.Windows.Forms.Button btnEmployee;
-        private System.Windows.Forms.Button btnEdit;
-        private System.Windows.Forms.Button btnDeleteOrRestore;
-        private System.Windows.Forms.Button btnHelp;
-        private System.Windows.Forms.Button btnReturn;
     }
 }

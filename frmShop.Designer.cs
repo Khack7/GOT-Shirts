@@ -60,6 +60,7 @@ namespace SU21_Final_Project
             this.btnUpload = new System.Windows.Forms.Button();
             this.lblColor = new System.Windows.Forms.Label();
             this.lblColorPointer = new System.Windows.Forms.Label();
+            this.btnMore = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numUDQuantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxShirt)).BeginInit();
             this.SuspendLayout();
@@ -360,7 +361,7 @@ namespace SU21_Final_Project
             // 
             // btnUpload
             // 
-            this.btnUpload.Location = new System.Drawing.Point(526, 188);
+            this.btnUpload.Location = new System.Drawing.Point(564, 187);
             this.btnUpload.Name = "btnUpload";
             this.btnUpload.Size = new System.Drawing.Size(75, 23);
             this.btnUpload.TabIndex = 26;
@@ -387,11 +388,22 @@ namespace SU21_Final_Project
             this.lblColorPointer.TabIndex = 28;
             this.lblColorPointer.Text = "Color:";
             // 
+            // btnMore
+            // 
+            this.btnMore.Location = new System.Drawing.Point(442, 187);
+            this.btnMore.Name = "btnMore";
+            this.btnMore.Size = new System.Drawing.Size(116, 23);
+            this.btnMore.TabIndex = 30;
+            this.btnMore.Text = "Show More";
+            this.btnMore.UseVisualStyleBackColor = true;
+            this.btnMore.Visible = false;
+            // 
             // frmShop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(651, 284);
+            this.Controls.Add(this.btnMore);
             this.Controls.Add(this.lblColor);
             this.Controls.Add(this.lblColorPointer);
             this.Controls.Add(this.btnUpload);
@@ -468,5 +480,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Button btnUpload;
         private System.Windows.Forms.Label lblColor;
         private System.Windows.Forms.Label lblColorPointer;
+        private System.Windows.Forms.Button btnMore;
     }
 }

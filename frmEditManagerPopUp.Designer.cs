@@ -31,7 +31,7 @@ namespace SU21_Final_Project
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEditManagerPopUp));
             this.lblPrompt = new System.Windows.Forms.Label();
-            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.txtUserName = new System.Windows.Forms.TextBox();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -48,13 +48,13 @@ namespace SU21_Final_Project
     "continue, enter the selected manager\'s password";
             this.lblPrompt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // txtPassword
+            // txtUserName
             // 
-            this.txtPassword.Location = new System.Drawing.Point(12, 61);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(480, 20);
-            this.txtPassword.TabIndex = 1;
-            this.txtPassword.UseSystemPasswordChar = true;
+            this.txtUserName.Location = new System.Drawing.Point(12, 61);
+            this.txtUserName.Name = "txtUserName";
+            this.txtUserName.Size = new System.Drawing.Size(480, 20);
+            this.txtUserName.TabIndex = 1;
+            this.txtUserName.UseSystemPasswordChar = true;
             // 
             // btnOk
             // 
@@ -85,7 +85,7 @@ namespace SU21_Final_Project
             this.ClientSize = new System.Drawing.Size(504, 151);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
-            this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.txtUserName);
             this.Controls.Add(this.lblPrompt);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -100,7 +100,7 @@ namespace SU21_Final_Project
         #endregion
 
         private System.Windows.Forms.Label lblPrompt;
-        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.TextBox txtUserName;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnCancel;
     }

@@ -44,10 +44,99 @@ namespace SU21_Final_Project
         {
             DialogResult dr;
 
-            if (!txtPhone.MaskCompleted)
+            if(txtPhone.Text == "" && txtEmail.Text == "" && frmManageUsers.strAccountType != "Customer")
             {
-                dr = MessageBox.Show("You don't have a valid phone number. Continue without one?", "Invalid phone", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dr == DialogResult.Yes)
+                MessageBox.Show("Employees and Managers require at least 1 mehtod of contact", "Email or Phone required", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                if (!txtPhone.MaskCompleted)
+                {
+                    dr = MessageBox.Show("You don't have a valid phone number. Continue without one?", "Invalid phone", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (dr == DialogResult.Yes)
+                    {
+                        dr = MessageBox.Show("Are you sure all edits are correct?", "Please ensure all changes are correct!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        if (dr == DialogResult.Yes)
+                        {
+                            try
+                            {
+                                DataPerson person = DataPerson.GetPerson(frmManageUsers.strUserName);
+
+                                if (!double.TryParse(txtPayRate.Text, out double dblPay))
+                                {
+                                    throw new Exception("Invalid Payrate!");
+                                }
+
+                                if (cboAccountType.SelectedItem.ToString() == "Manager" || cboAccountType.SelectedItem.ToString() == "Employee")
+                                {
+                                    person.PayRate = dblPay;
+                                }
+                                else
+                                {
+                                    dblPay = 0;
+                                }
+
+                                if (txtUsername.Text != frmManageUsers.strUserName)
+                                {
+                                    if (person.UserName != null)
+                                    {
+                                        MessageBox.Show("This Username is already taken", "Name in use", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                    }
+                                    else
+                                    {
+                                        if (CheckEmail(txtEmail.Text) == true)
+                                        {
+                                            person.NameFirst = txtFirstName.Text;
+                                            person.NameLast = txtLastName.Text;
+                                            person.UserName = txtUsername.Text;
+                                            person.Email = txtEmail.Text;
+                                            person.PhonePrimary = "";
+                                            person.AccountType = cboAccountType.SelectedItem.ToString();
+                                            person.PayRate = dblPay;
+
+                                            DataPerson.SavePerson(person);
+                                            MessageBox.Show("Changes Saved Successfully!", "Changes Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                            bolEditsSaved = true;
+                                            this.Close();
+                                        }
+                                        else
+                                        {
+                                            throw new Exception("Invalid email inserted. Please enter a vailid email or make sure no text is in the email field");
+                                        }
+
+                                    }
+                                }
+                                else
+                                {
+                                    if (CheckEmail(txtEmail.Text) == true)
+                                    {
+                                        person.NameFirst = txtFirstName.Text;
+                                        person.NameLast = txtLastName.Text;
+                                        person.UserName = txtUsername.Text;
+                                        person.Email = txtEmail.Text;
+                                        person.PhonePrimary = "";
+                                        person.AccountType = cboAccountType.SelectedItem.ToString();
+                                        person.PayRate = dblPay;
+
+                                        DataPerson.SavePerson(person);
+                                        MessageBox.Show("Changes Saved Successfully!", "Changes Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        bolEditsSaved = true;
+                                        this.Close();
+                                    }
+                                    else
+                                    {
+                                        throw new Exception("Invalid email inserted. Please enter a vailid email or make sure no text is in the email field");
+                                    }
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                }
+                else
                 {
                     dr = MessageBox.Show("Are you sure all edits are correct?", "Please ensure all changes are correct!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (dr == DialogResult.Yes)
@@ -78,40 +167,49 @@ namespace SU21_Final_Project
                                 }
                                 else
                                 {
+                                    if (CheckEmail(txtEmail.Text) == true)
+                                    {
+                                        person.NameFirst = txtFirstName.Text;
+                                        person.NameLast = txtLastName.Text;
+                                        person.UserName = txtUsername.Text;
+                                        person.Email = txtEmail.Text;
+                                        person.PhonePrimary = txtPhone.Text;
+                                        person.AccountType = cboAccountType.SelectedItem.ToString();
+                                        person.PayRate = dblPay;
+
+                                        DataPerson.SavePerson(person);
+                                        MessageBox.Show("Changes Saved Successfully!", "Changes Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        bolEditsSaved = true;
+                                        this.Close();
+                                    }
+                                    else
+                                    {
+                                        throw new Exception("Invalid email inserted. Please enter a vailid email or make sure no text is in the email field");
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                if (CheckEmail(txtEmail.Text) == true)
+                                {
                                     person.NameFirst = txtFirstName.Text;
                                     person.NameLast = txtLastName.Text;
                                     person.UserName = txtUsername.Text;
                                     person.Email = txtEmail.Text;
-                                    person.PhonePrimary = "";
+                                    person.PhonePrimary = txtPhone.Text;
                                     person.AccountType = cboAccountType.SelectedItem.ToString();
                                     person.PayRate = dblPay;
 
                                     DataPerson.SavePerson(person);
                                     MessageBox.Show("Changes Saved Successfully!", "Changes Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     bolEditsSaved = true;
-                                    frmManageUsers frmManage = new frmManageUsers();
                                     this.Close();
-                                    frmManage.ShowDialog();
+                                }
+                                else
+                                {
+                                    throw new Exception("Invalid email inserted. Please enter a vailid email or make sure no text is in the email field");
                                 }
                             }
-                            else
-                            {
-                                person.NameFirst = txtFirstName.Text;
-                                person.NameLast = txtLastName.Text;
-                                person.UserName = txtUsername.Text;
-                                person.Email = txtEmail.Text;
-                                person.PhonePrimary = "";
-                                person.AccountType = cboAccountType.SelectedItem.ToString();
-                                person.PayRate = dblPay;
-
-                                DataPerson.SavePerson(person);
-                                MessageBox.Show("Changes Saved Successfully!", "Changes Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                bolEditsSaved = true;
-                                frmManageUsers frmManage = new frmManageUsers();
-                                this.Close();
-                                frmManage.ShowDialog();
-                            }
-
                         }
                         catch (Exception ex)
                         {
@@ -119,78 +217,7 @@ namespace SU21_Final_Project
                         }
                     }
                 }
-            }
-            else
-            {
-                dr = MessageBox.Show("Are you sure all edits are correct?", "Please ensure all changes are correct!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (dr == DialogResult.Yes)
-                {
-                    try
-                    {
-                        DataPerson person = DataPerson.GetPerson(frmManageUsers.strUserName);
-
-                        if (!double.TryParse(txtPayRate.Text, out double dblPay))
-                        {
-                            throw new Exception("Invalid Payrate!");
-                        }
-
-                        if (cboAccountType.SelectedItem.ToString() == "Manager" || cboAccountType.SelectedItem.ToString() == "Employee")
-                        {
-                            person.PayRate = dblPay;
-                        }
-                        else
-                        {
-                            dblPay = 0;
-                        }
-
-                        if (txtUsername.Text != frmManageUsers.strUserName)
-                        {
-                            if (person.UserName != null)
-                            {
-                                MessageBox.Show("This Username is already taken", "Name in use", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            }
-                            else
-                            {
-                                person.NameFirst = txtFirstName.Text;
-                                person.NameLast = txtLastName.Text;
-                                person.UserName = txtUsername.Text;
-                                person.Email = txtEmail.Text;
-                                person.PhonePrimary = txtPhone.Text;
-                                person.AccountType = cboAccountType.SelectedItem.ToString();
-                                person.PayRate = dblPay;
-
-                                DataPerson.SavePerson(person);
-                                MessageBox.Show("Changes Saved Successfully!", "Changes Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                bolEditsSaved = true;
-                                frmManageUsers frmManage = new frmManageUsers();
-                                this.Close();
-                                frmManage.ShowDialog();
-                            }
-                        }
-                        else
-                        {
-                            person.NameFirst = txtFirstName.Text;
-                            person.NameLast = txtLastName.Text;
-                            person.UserName = txtUsername.Text;
-                            person.Email = txtEmail.Text;
-                            person.PhonePrimary = txtPhone.Text;
-                            person.AccountType = cboAccountType.SelectedItem.ToString();
-                            person.PayRate = dblPay;
-
-                            DataPerson.SavePerson(person);
-                            MessageBox.Show("Changes Saved Successfully!", "Changes Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            bolEditsSaved = true;
-                            frmManageUsers frmManage = new frmManageUsers();
-                            this.Close();
-                            frmManage.ShowDialog();
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }            
+            }                       
         }
 
         private void btnReturn_Click(object sender, EventArgs e)
@@ -248,10 +275,8 @@ namespace SU21_Final_Project
                 DialogResult dr = MessageBox.Show("Are you sure you want to exit? Any and all changes made will be discarded!", "Unsaved Changes!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if(dr == DialogResult.Yes)
                 {
-                    frmManageUsers frmManage = new frmManageUsers();
                     bolEditsSaved = true;
                     this.Close();
-                    frmManage.ShowDialog();
                 }
                 else
                 {
@@ -301,6 +326,32 @@ namespace SU21_Final_Project
             {
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        public bool CheckEmail(string email)
+        {
+            bool result;
+            Regex regex = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$",
+
+            RegexOptions.CultureInvariant | RegexOptions.Singleline);
+
+            bool isValidEmail = regex.IsMatch(email);
+            if(email == "")
+            {
+                result = true;
+            }
+            else
+            {
+                if (!isValidEmail)
+                {
+                    result = false;
+                }
+                else
+                {
+                    result = true;
+                }
+            }
+            return result;
         }
     }
 }

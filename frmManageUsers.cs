@@ -24,6 +24,7 @@ namespace SU21_Final_Project
             {
                 // TODO: This line of code loads data into the 'dataSetPerson.Person' table. You can move, or remove it, as needed.
                 this.personTableAdapter.Fill(this.dataSetPerson.Person);
+                dgvPerson.Columns[7].DefaultCellStyle.Format = "C2";
             }
             catch (Exception ex)
             {
@@ -50,12 +51,13 @@ namespace SU21_Final_Project
                     frmEditManagerPopUp frmPopUp = new frmEditManagerPopUp();
                     frmPopUp.ShowDialog();
 
-                    if (frmEditManagerPopUp.strpasswordInput == person.Password)
+                    if (frmEditManagerPopUp.strSelectedUserName == person.UserName)
                     {
                         frmManagerEditUser frmEditUser = new frmManagerEditUser();
                         this.Hide();
-                        this.Close();
                         frmEditUser.ShowDialog();
+                        this.Show();
+                        this.personTableAdapter.Fill(this.dataSetPerson.Person);
                     }
                     else
                     {
@@ -71,8 +73,9 @@ namespace SU21_Final_Project
             {
                 frmManagerEditUser frmEditUser = new frmManagerEditUser();
                 this.Hide();
-                this.Close();
                 frmEditUser.ShowDialog();
+                this.Show();
+                this.personTableAdapter.Fill(this.dataSetPerson.Person);
             }
         }
 
@@ -89,13 +92,14 @@ namespace SU21_Final_Project
                         frmEditManagerPopUp frmPopUp = new frmEditManagerPopUp();
                         frmPopUp.ShowDialog();
 
-                        if (frmEditManagerPopUp.strpasswordInput == person.Password)
+                        if (frmEditManagerPopUp.strSelectedUserName == person.UserName)
                         {
                             DialogResult dr = MessageBox.Show("Are you sure you want to delete this user?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                             if (dr == DialogResult.Yes)
                             {
                                 person.Deleted = true;
                                 DataPerson.SavePerson(person);
+                                this.personTableAdapter.Fill(this.dataSetPerson.Person);
                             }
                         }
                         else

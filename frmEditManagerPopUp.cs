@@ -22,10 +22,10 @@ namespace SU21_Final_Project
             this.Close();
         }
 
-        public static string strpasswordInput = "";
+        public static string strSelectedUserName = "";
         private void btnOk_Click(object sender, EventArgs e)
         {
-            strpasswordInput = txtPassword.Text;
+            strSelectedUserName = txtUserName.Text;
             this.Close();
         }
     }

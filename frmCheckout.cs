@@ -363,12 +363,14 @@ namespace SU21_Final_Project
                     System.Diagnostics.Process.Start(strPath);
                     bolCloseShop = true;
                     bolCloseCheck = true;
+                    frmCouponInput.CouponCode = string.Empty;
                     this.Close();
                 }
                 else
                 {
                     bolCloseShop = true;
                     bolCloseCheck = true;
+                    frmCouponInput.CouponCode = string.Empty;
                     this.Close();
                 }
             }

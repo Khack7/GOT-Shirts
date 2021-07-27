@@ -161,6 +161,7 @@ namespace SU21_Final_Project
                 bolCloseShop = true;
                 this.Close();
                 frmSignIn.intID = 0;
+                frmCouponInput.CouponCode = string.Empty;
             }
         }
 
@@ -605,7 +606,7 @@ namespace SU21_Final_Project
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
