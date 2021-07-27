@@ -30,12 +30,11 @@ namespace SU21_Final_Project
         {
             bool bolAcceptedUsername = false;
 
-            string strConstr = ConfigurationManager.ConnectionStrings["SU21_Final_Project.Properties.Settings.ConnectionString"].ConnectionString;
             try
             {
                 DataPerson person = DataPerson.GetPerson(txtUsername.Text);
 
-                if (btnEnter.Text == "Load")
+                if (btnEnter.Text == "&Load")
                 {
 
                     if (person != null)
@@ -67,7 +66,7 @@ namespace SU21_Final_Project
                     }
 
                 }
-                else if (btnEnter.Text == "Enter")
+                else if (btnEnter.Text == "&Enter")
                 {
                     if (txtAnswer1.Text == person.SecurityAnswer1 && txtAnswer2.Text == person.SecurityAnswer2 &&
                         txtAnswer3.Text == person.SecurityAnswer3)

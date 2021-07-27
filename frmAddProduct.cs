@@ -23,7 +23,7 @@ namespace SU21_Final_Project
         {
             try
             {
-                if(txtColor.Text == "" || txtAmount.Text == "" || txtCost.Text == "" ||
+                if (txtColor.Text == "" || txtAmount.Text == "" || txtCost.Text == "" ||
                    txtPrice.Text == "" || pbxShirt.Image == null)
                 {
                     MessageBox.Show("Please fill out all fields", "Missing Data!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -32,45 +32,49 @@ namespace SU21_Final_Project
                 {
                     DataProduct product = new DataProduct();
 
-                    List<string> lstSizes = new List<string>();
-                    lstSizes.Add("Small");
-                    lstSizes.Add("Medium");
-                    lstSizes.Add("Large");
-
                     string strColor = "";
 
-                    for (int intIndex = 0; intIndex < lstSizes.Count; intIndex++)
+
+                    strColor = txtColor.Text;
+
+                    strColor.ToLower();
+
+                    strColor = char.ToUpper(strColor[0]) + strColor.Substring(1);
+
+                    product.Color = strColor;
+
+                    if (!double.TryParse(txtPrice.Text, out double dblPrice))
                     {
-                        strColor = txtColor.Text;
-
-                        strColor.ToLower();
-
-                        strColor = char.ToUpper(strColor[0]) + strColor.Substring(1);
-
-                        product.Color = strColor;
-
-                        if (!double.TryParse(txtPrice.Text, out double dblPrice))
-                        {
-                            throw new Exception("Invalid price inputted");
-                        }
-                        if (!double.TryParse(txtCost.Text, out double dblCost))
-                        {
-                            throw new Exception("Invalid cost inputted");
-                        }
-                        if(!int.TryParse(txtAmount.Text, out int intQuantity))
-                        {
-                            throw new Exception("Invalid quantity inputted");
-                        }
-
-                        product.QuantityOnHand = intQuantity;
-                        product.Size = lstSizes[intIndex];
-                        product.Price = dblPrice;
-                        product.Cost = dblCost;
-                        product.ProductImage = pbxShirt.Image;
-
-                        DataProduct.AddProduct(product);
+                        throw new Exception("Invalid price inputted");
                     }
-                    MessageBox.Show("Product Added!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (!double.TryParse(txtCost.Text, out double dblCost))
+                    {
+                        throw new Exception("Invalid cost inputted");
+                    }
+                    if (!int.TryParse(txtAmount.Text, out int intQuantity))
+                    {
+                        throw new Exception("Invalid quantity inputted");
+                    }
+
+                    product.QuantityOnHand = intQuantity;
+                    product.Size = cboSize.SelectedItem.ToString();
+                    product.Price = dblPrice;
+                    product.Cost = dblCost;
+                    product.ProductImage = pbxShirt.Image;
+
+                    DataProduct checkProduct = DataProduct.GetProduct(strColor, cboSize.SelectedItem.ToString());
+
+                    if(checkProduct != null)
+                    {
+                        MessageBox.Show("This product already exists!", "Duplicate Item", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        DataProduct.AddProduct(product);
+
+                        MessageBox.Show("Product Added!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
                     btnUpload.Enabled = false;
                     txtAmount.Clear();
                     txtColor.Clear();
@@ -81,9 +85,11 @@ namespace SU21_Final_Project
                     txtColor.ReadOnly = true;
                     txtPrice.ReadOnly = true;
                     txtCost.ReadOnly = true;
+                    cboSize.Enabled = false;
+                    cboSize.SelectedIndex = -1;
 
                     pbxShirt.Image.Dispose();
-                }           
+                }
             }
             catch (Exception ex)
             {
@@ -94,7 +100,7 @@ namespace SU21_Final_Project
         private void btnSearch_Click(object sender, EventArgs e)
         {
             string strPath;
-            
+
             try
             {
                 OpenFileDialog ofdFile = new OpenFileDialog();
@@ -112,9 +118,10 @@ namespace SU21_Final_Project
                     txtAmount.ReadOnly = false;
                     txtCost.ReadOnly = false;
                     txtPrice.ReadOnly = false;
+                    cboSize.Enabled = true;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -161,6 +168,26 @@ namespace SU21_Final_Project
             {
                 e.Handled = true;
             }
+        }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            try
+            {
+                System.Diagnostics.Process.Start($"{path}\\HelpFiles\\Manager_Add_Product_Help.html");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void frmAddProduct_Load(object sender, EventArgs e)
+        {
+            cboSize.Items.Add("Small");
+            cboSize.Items.Add("Medium");
+            cboSize.Items.Add("Large");
         }
     }
 }

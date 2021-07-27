@@ -43,9 +43,9 @@ namespace SU21_Final_Project
             this.lblSize = new System.Windows.Forms.Label();
             this.cboSize = new System.Windows.Forms.ComboBox();
             this.btnHelp = new System.Windows.Forms.Button();
-            this.pbxShirt = new System.Windows.Forms.PictureBox();
             this.btnReport = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.pbxShirt = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbxShirt)).BeginInit();
             this.SuspendLayout();
             // 
@@ -183,16 +183,6 @@ namespace SU21_Final_Project
             this.btnHelp.UseVisualStyleBackColor = true;
             this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
-            // pbxShirt
-            // 
-            this.pbxShirt.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.pbxShirt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbxShirt.Location = new System.Drawing.Point(317, 8);
-            this.pbxShirt.Name = "pbxShirt";
-            this.pbxShirt.Size = new System.Drawing.Size(332, 258);
-            this.pbxShirt.TabIndex = 28;
-            this.pbxShirt.TabStop = false;
-            // 
             // btnReport
             // 
             this.btnReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -214,6 +204,17 @@ namespace SU21_Final_Project
             this.btnAdd.Text = "&Add New Product";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // pbxShirt
+            // 
+            this.pbxShirt.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.pbxShirt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbxShirt.Location = new System.Drawing.Point(317, 8);
+            this.pbxShirt.Name = "pbxShirt";
+            this.pbxShirt.Size = new System.Drawing.Size(332, 258);
+            this.pbxShirt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxShirt.TabIndex = 28;
+            this.pbxShirt.TabStop = false;
             // 
             // frmInventory
             // 

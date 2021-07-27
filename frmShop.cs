@@ -597,18 +597,6 @@ namespace SU21_Final_Project
                 }
             }
         }
-
-        private void btnUpload_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                DataProduct.SaveImage(pbxShirt.Image, strCurrentColor);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
     }
 
     public class CartItem

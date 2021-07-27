@@ -54,13 +54,12 @@ namespace SU21_Final_Project
             this.btnGreen = new System.Windows.Forms.Button();
             this.btnBlack = new System.Windows.Forms.Button();
             this.btnBlue = new System.Windows.Forms.Button();
-            this.pbxShirt = new System.Windows.Forms.PictureBox();
             this.lblItemPricePointer = new System.Windows.Forms.Label();
             this.lblItemPrice = new System.Windows.Forms.Label();
-            this.btnUpload = new System.Windows.Forms.Button();
             this.lblColor = new System.Windows.Forms.Label();
             this.lblColorPointer = new System.Windows.Forms.Label();
             this.btnMore = new System.Windows.Forms.Button();
+            this.pbxShirt = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.numUDQuantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxShirt)).BeginInit();
             this.SuspendLayout();
@@ -329,16 +328,6 @@ namespace SU21_Final_Project
             this.btnBlue.UseVisualStyleBackColor = false;
             this.btnBlue.Click += new System.EventHandler(this.btnBlue_Click);
             // 
-            // pbxShirt
-            // 
-            this.pbxShirt.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.pbxShirt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbxShirt.Location = new System.Drawing.Point(12, 12);
-            this.pbxShirt.Name = "pbxShirt";
-            this.pbxShirt.Size = new System.Drawing.Size(267, 198);
-            this.pbxShirt.TabIndex = 27;
-            this.pbxShirt.TabStop = false;
-            // 
             // lblItemPricePointer
             // 
             this.lblItemPricePointer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -358,17 +347,6 @@ namespace SU21_Final_Project
             this.lblItemPrice.Size = new System.Drawing.Size(46, 19);
             this.lblItemPrice.TabIndex = 10;
             this.lblItemPrice.Text = "$0.00";
-            // 
-            // btnUpload
-            // 
-            this.btnUpload.Location = new System.Drawing.Point(564, 187);
-            this.btnUpload.Name = "btnUpload";
-            this.btnUpload.Size = new System.Drawing.Size(75, 23);
-            this.btnUpload.TabIndex = 26;
-            this.btnUpload.Text = "upload";
-            this.btnUpload.UseVisualStyleBackColor = true;
-            this.btnUpload.Visible = false;
-            this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
             // 
             // lblColor
             // 
@@ -398,6 +376,17 @@ namespace SU21_Final_Project
             this.btnMore.UseVisualStyleBackColor = true;
             this.btnMore.Visible = false;
             // 
+            // pbxShirt
+            // 
+            this.pbxShirt.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.pbxShirt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbxShirt.Location = new System.Drawing.Point(12, 12);
+            this.pbxShirt.Name = "pbxShirt";
+            this.pbxShirt.Size = new System.Drawing.Size(267, 198);
+            this.pbxShirt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxShirt.TabIndex = 27;
+            this.pbxShirt.TabStop = false;
+            // 
             // frmShop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -406,7 +395,6 @@ namespace SU21_Final_Project
             this.Controls.Add(this.btnMore);
             this.Controls.Add(this.lblColor);
             this.Controls.Add(this.lblColorPointer);
-            this.Controls.Add(this.btnUpload);
             this.Controls.Add(this.lblItemPrice);
             this.Controls.Add(this.lblItemPricePointer);
             this.Controls.Add(this.btnAccount);
@@ -477,7 +465,6 @@ namespace SU21_Final_Project
         public System.Windows.Forms.ListBox lstCart;
         private System.Windows.Forms.Label lblItemPricePointer;
         private System.Windows.Forms.Label lblItemPrice;
-        private System.Windows.Forms.Button btnUpload;
         private System.Windows.Forms.Label lblColor;
         private System.Windows.Forms.Label lblColorPointer;
         private System.Windows.Forms.Button btnMore;
