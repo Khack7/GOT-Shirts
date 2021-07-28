@@ -46,13 +46,14 @@ namespace SU21_Final_Project
             this.btnReport = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.pbxShirt = new System.Windows.Forms.PictureBox();
+            this.btnRemove = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbxShirt)).BeginInit();
             this.SuspendLayout();
             // 
             // btnReturn
             // 
             this.btnReturn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReturn.Location = new System.Drawing.Point(528, 310);
+            this.btnReturn.Location = new System.Drawing.Point(647, 310);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(123, 42);
             this.btnReturn.TabIndex = 15;
@@ -75,7 +76,7 @@ namespace SU21_Final_Project
             // 
             this.lblPrice.AutoSize = true;
             this.lblPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrice.Location = new System.Drawing.Point(12, 187);
+            this.lblPrice.Location = new System.Drawing.Point(12, 195);
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(40, 17);
             this.lblPrice.TabIndex = 12;
@@ -83,7 +84,7 @@ namespace SU21_Final_Project
             // 
             // txtPrice
             // 
-            this.txtPrice.Location = new System.Drawing.Point(115, 187);
+            this.txtPrice.Location = new System.Drawing.Point(115, 193);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.ReadOnly = true;
             this.txtPrice.ShortcutsEnabled = false;
@@ -95,7 +96,7 @@ namespace SU21_Final_Project
             // 
             this.lblAmount.AutoSize = true;
             this.lblAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAmount.Location = new System.Drawing.Point(12, 129);
+            this.lblAmount.Location = new System.Drawing.Point(12, 133);
             this.lblAmount.Name = "lblAmount";
             this.lblAmount.Size = new System.Drawing.Size(61, 17);
             this.lblAmount.TabIndex = 10;
@@ -113,7 +114,7 @@ namespace SU21_Final_Project
             // 
             // txtAmount
             // 
-            this.txtAmount.Location = new System.Drawing.Point(115, 128);
+            this.txtAmount.Location = new System.Drawing.Point(115, 132);
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.ReadOnly = true;
             this.txtAmount.ShortcutsEnabled = false;
@@ -135,7 +136,7 @@ namespace SU21_Final_Project
             // 
             this.lblCost.AutoSize = true;
             this.lblCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCost.Location = new System.Drawing.Point(12, 249);
+            this.lblCost.Location = new System.Drawing.Point(12, 257);
             this.lblCost.Name = "lblCost";
             this.lblCost.Size = new System.Drawing.Size(36, 17);
             this.lblCost.TabIndex = 16;
@@ -143,7 +144,7 @@ namespace SU21_Final_Project
             // 
             // txtCost
             // 
-            this.txtCost.Location = new System.Drawing.Point(115, 246);
+            this.txtCost.Location = new System.Drawing.Point(115, 254);
             this.txtCost.Name = "txtCost";
             this.txtCost.ReadOnly = true;
             this.txtCost.ShortcutsEnabled = false;
@@ -155,7 +156,7 @@ namespace SU21_Final_Project
             // 
             this.lblSize.AutoSize = true;
             this.lblSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSize.Location = new System.Drawing.Point(12, 69);
+            this.lblSize.Location = new System.Drawing.Point(12, 71);
             this.lblSize.Name = "lblSize";
             this.lblSize.Size = new System.Drawing.Size(88, 17);
             this.lblSize.TabIndex = 18;
@@ -166,7 +167,7 @@ namespace SU21_Final_Project
             this.cboSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboSize.Enabled = false;
             this.cboSize.FormattingEnabled = true;
-            this.cboSize.Location = new System.Drawing.Point(115, 68);
+            this.cboSize.Location = new System.Drawing.Point(115, 70);
             this.cboSize.Name = "cboSize";
             this.cboSize.Size = new System.Drawing.Size(186, 21);
             this.cboSize.TabIndex = 19;
@@ -175,7 +176,7 @@ namespace SU21_Final_Project
             // btnHelp
             // 
             this.btnHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHelp.Location = new System.Drawing.Point(399, 310);
+            this.btnHelp.Location = new System.Drawing.Point(520, 310);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(123, 42);
             this.btnHelp.TabIndex = 20;
@@ -186,7 +187,7 @@ namespace SU21_Final_Project
             // btnReport
             // 
             this.btnReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReport.Location = new System.Drawing.Point(141, 310);
+            this.btnReport.Location = new System.Drawing.Point(139, 310);
             this.btnReport.Name = "btnReport";
             this.btnReport.Size = new System.Drawing.Size(123, 42);
             this.btnReport.TabIndex = 29;
@@ -197,7 +198,7 @@ namespace SU21_Final_Project
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(270, 310);
+            this.btnAdd.Location = new System.Drawing.Point(266, 310);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(123, 42);
             this.btnAdd.TabIndex = 30;
@@ -211,16 +212,29 @@ namespace SU21_Final_Project
             this.pbxShirt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pbxShirt.Location = new System.Drawing.Point(317, 8);
             this.pbxShirt.Name = "pbxShirt";
-            this.pbxShirt.Size = new System.Drawing.Size(332, 258);
+            this.pbxShirt.Size = new System.Drawing.Size(453, 296);
             this.pbxShirt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxShirt.TabIndex = 28;
             this.pbxShirt.TabStop = false;
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.Enabled = false;
+            this.btnRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemove.Location = new System.Drawing.Point(393, 310);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(123, 42);
+            this.btnRemove.TabIndex = 31;
+            this.btnRemove.Text = "Re&move Product";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // frmInventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(661, 363);
+            this.ClientSize = new System.Drawing.Size(783, 363);
+            this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnReport);
             this.Controls.Add(this.pbxShirt);
@@ -268,5 +282,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.PictureBox pbxShirt;
         private System.Windows.Forms.Button btnReport;
         private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnRemove;
     }
 }

@@ -125,6 +125,7 @@ namespace SU21_Final_Project
                 txtPrice.ReadOnly = false;
                 txtCost.ReadOnly = false;
                 bolChangesMade = true;
+                btnRemove.Enabled = true;
 
                 try
                 {
@@ -162,6 +163,7 @@ namespace SU21_Final_Project
                 txtPrice.Clear();
                 txtCost.ReadOnly = true;
                 txtCost.Clear();
+                btnRemove.Enabled = false;
             }
         }
 
@@ -410,7 +412,80 @@ namespace SU21_Final_Project
             frmAddProduct frmNewProduct = new frmAddProduct();
             this.Hide();
             frmNewProduct.ShowDialog();
-            this.Show();
+            try
+            {
+                _products = DataProduct.ListProducts();
+                List<string> lstColors = _products.Select(p => p.Color).Distinct().OrderBy(c => c).ToList();
+                List<string> lstSizes = _products.Select(p => p.Size).Distinct().OrderBy(s => s).ToList();
+
+                cboSize.Items.Clear();
+                cboColor.Items.Clear();
+
+                for (int intI = 0; intI < lstColors.Count; intI++)
+                {
+                    cboColor.Items.Add(lstColors[intI]);
+                }
+                for (int intI = 0; intI < lstSizes.Count; intI++)
+                {
+                    cboSize.Items.Add(lstSizes[intI]);
+                }
+                this.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            DataProduct product = new DataProduct();
+            try
+            {
+                DialogResult dr = MessageBox.Show("Are you sure you want to remove this product? This cannot be undone!", "WARNING!!!", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+
+                if(dr == DialogResult.Yes)
+                {
+                    product.Color = cboColor.SelectedItem.ToString();
+                    product.Size = cboSize.SelectedItem.ToString();
+
+                    DataProduct.RemoveProduct(product);
+
+                    MessageBox.Show("Item Removed", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    bolChangesMade = false;
+                    txtAmount.Clear();
+                    txtCost.Clear();
+                    txtPrice.Clear();
+                    txtAmount.ReadOnly = true;
+                    txtCost.ReadOnly = true;
+                    txtPrice.ReadOnly = true;
+                    cboColor.SelectedIndex = -1;
+                    cboSize.SelectedIndex = -1;
+                    pbxShirt.Image = null;
+                    btnRemove.Enabled = false;
+
+                    _products = DataProduct.ListProducts();
+                    List<string> lstColors = _products.Select(p => p.Color).Distinct().OrderBy(c => c).ToList();
+                    List<string> lstSizes = _products.Select(p => p.Size).Distinct().OrderBy(s => s).ToList();
+
+                    cboSize.Items.Clear();
+                    cboColor.Items.Clear();
+
+                    for (int intI = 0; intI < lstColors.Count; intI++)
+                    {
+                        cboColor.Items.Add(lstColors[intI]);
+                    }
+                    for (int intI = 0; intI < lstSizes.Count; intI++)
+                    {
+                        cboSize.Items.Add(lstSizes[intI]);
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnHelp_Click(object sender, EventArgs e)

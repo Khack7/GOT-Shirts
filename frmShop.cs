@@ -527,23 +527,32 @@ namespace SU21_Final_Project
             coupon.ShowDialog();
         }
 
+        public static bool bolEmpFromShop = false;
+
         private void btnAccount_Click(object sender, EventArgs e)
         {
-            if (frmSignIn.strCustomerType == "Employee")
+            try
             {
-                frmEmpInfo frmInfo = new frmEmpInfo();
-                this.Hide();
-                frmInfo.ShowDialog();
-                this.Show();
+                if (frmSignIn.strCustomerType == "Employee")
+                {
+                    bolEmpFromShop = true;
+                    frmEmpInfo frmInfo = new frmEmpInfo();
+                    this.Hide();
+                    frmInfo.ShowDialog();
+                    this.Show();
+                }
+                else
+                {
+                    frmAccountInfo accountInfo = new frmAccountInfo();
+                    this.Hide();
+                    accountInfo.ShowDialog();
+                    this.Show();
+                }
             }
-            else
+            catch(Exception ex)
             {
-                frmAccountInfo accountInfo = new frmAccountInfo();
-                this.Hide();
-                accountInfo.ShowDialog();
-                this.Show();
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
         private void btnHelp_Click(object sender, EventArgs e)

@@ -207,6 +207,29 @@ namespace SU21_Final_Project.Data
             }
         }
 
+        public static void RemoveProduct(DataProduct product)
+        {
+            string strSQL;
+
+            strSQL = "DELETE FROM HackK21Su2332.Products WHERE Color = @Color AND Size = @Size";
+
+            using (SqlConnection con = DataCommon.StartConnection())
+            {
+                using (SqlCommand cmd = new SqlCommand(strSQL))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Connection = con;
+
+                    cmd.Parameters.AddWithValue("@Color", product.Color);
+                    cmd.Parameters.AddWithValue("@Size", product.Size);
+                    
+                    cmd.ExecuteNonQuery();
+
+                    con.Close();
+                }
+            }
+        }
+
         public static byte[] GetImageData(Image img)
         {
             using (MemoryStream mStream = new MemoryStream())
