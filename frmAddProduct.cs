@@ -175,7 +175,6 @@ namespace SU21_Final_Project
             string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
             try
             {
-                //TODO
                 System.Diagnostics.Process.Start($"{path}\\HelpFiles\\Manager_Add_Product_Help.html");
             }
             catch (Exception ex)
