@@ -85,19 +85,26 @@ namespace SU21_Final_Project
 
             if (cboColor.SelectedItem != null && cboSize.SelectedItem != null)
             {
-                string strSelectedColor = (string)cboColor.SelectedItem;
-                string strSelectedSize = (string)cboSize.SelectedItem;
-                var product = _products.Where(p => p.Color == strSelectedColor && p.Size == strSelectedSize).SingleOrDefault();
-                txtAmount.Text = product.QuantityOnHand.ToString();
-                txtPrice.Text = product.Price.ToString();
-                txtCost.Text = product.Cost.ToString();
-                //TO BE USED FOR INVOICE
-                intOldQuantity = product.QuantityOnHand;
-                dblNewPrice = product.Price;
-                dblNewCost = product.Price;
-
                 try
                 {
+                    string strSelectedColor = (string)cboColor.SelectedItem;
+                    string strSelectedSize = (string)cboSize.SelectedItem;
+                    var product = _products.Where(p => p.Color == strSelectedColor && p.Size == strSelectedSize).SingleOrDefault();
+
+                    if (product == null)
+                    {
+                        cboSize.SelectedIndex = -1;
+                        throw new Exception("There is currently no product in this size");
+                    }
+
+                    txtAmount.Text = product.QuantityOnHand.ToString();
+                    txtPrice.Text = product.Price.ToString();
+                    txtCost.Text = product.Cost.ToString();
+                    //TO BE USED FOR INVOICE
+                    intOldQuantity = product.QuantityOnHand;
+                    dblNewPrice = product.Price;
+                    dblNewCost = product.Price;
+
                     DataProduct productImage = DataProduct.GetProduct(strSelectedColor, strSelectedSize);
                     pbxShirt.Image = productImage.ProductImage;
                 }
@@ -119,19 +126,26 @@ namespace SU21_Final_Project
                 txtCost.ReadOnly = false;
                 bolChangesMade = true;
 
-                string strSelectedColor = (string)cboColor.SelectedItem;
-                string strSelectedSize = (string)cboSize.SelectedItem;
-                var product = _products.Where(p => p.Color == strSelectedColor && p.Size == strSelectedSize).SingleOrDefault();
-                txtAmount.Text = product.QuantityOnHand.ToString();
-                txtPrice.Text = product.Price.ToString();
-                txtCost.Text = product.Cost.ToString();
-                //TO BE USED FOR INVOICE
-                intOldQuantity = product.QuantityOnHand;
-                dblNewPrice = product.Price;
-                dblNewCost = product.Price;
-
                 try
                 {
+                    string strSelectedColor = (string)cboColor.SelectedItem;
+                    string strSelectedSize = (string)cboSize.SelectedItem;
+                    var product = _products.Where(p => p.Color == strSelectedColor && p.Size == strSelectedSize).SingleOrDefault();
+
+                    if (product == null)
+                    {
+                        cboSize.SelectedIndex = -1;
+                        throw new Exception("There is currently no product in this size");
+                    }
+
+                    txtAmount.Text = product.QuantityOnHand.ToString();
+                    txtPrice.Text = product.Price.ToString();
+                    txtCost.Text = product.Cost.ToString();
+                    //TO BE USED FOR INVOICE
+                    intOldQuantity = product.QuantityOnHand;
+                    dblNewPrice = product.Price;
+                    dblNewCost = product.Price;
+
                     DataProduct productImage = DataProduct.GetProduct(strSelectedColor, strSelectedSize);
                     pbxShirt.Image = productImage.ProductImage;
                 }
@@ -340,9 +354,12 @@ namespace SU21_Final_Project
 
                         product = DataProduct.GetProduct(strColor, strSize);
 
-                        GenerateReport(product, strFileName);
-                    } 
-                    if(bolStopLoop == true)
+                        if(product != null)
+                        {
+                            GenerateReport(product, strFileName);
+                        }
+                    }
+                    if (bolStopLoop == true)
                     {
                         break;
                     }
@@ -364,6 +381,11 @@ namespace SU21_Final_Project
             strReport = strReport.Replace("{Product}", product.Size + " " + product.Color);
 
             StringBuilder itemHTML = new StringBuilder();
+
+            if(product.QuantityOnHand < 1)
+            {
+                product.QuantityOnHand = 0;
+            }
 
             itemHTML.AppendFormat("<tr>");
             itemHTML.AppendFormat("    <td>{0} {1}</td>", product.Color, product.Size);

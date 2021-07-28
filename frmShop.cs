@@ -172,6 +172,7 @@ namespace SU21_Final_Project
                 this.Close();
                 frmSignIn.intID = 0;
                 frmCouponInput.CouponCode = string.Empty;
+                frmCouponInput.CodeUsed = false;
             }
         }
 

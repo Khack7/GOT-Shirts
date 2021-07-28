@@ -364,6 +364,7 @@ namespace SU21_Final_Project
                     bolCloseShop = true;
                     bolCloseCheck = true;
                     frmCouponInput.CouponCode = string.Empty;
+                    frmCouponInput.CodeUsed = false;
                     this.Close();
                 }
                 else
@@ -371,6 +372,7 @@ namespace SU21_Final_Project
                     bolCloseShop = true;
                     bolCloseCheck = true;
                     frmCouponInput.CouponCode = string.Empty;
+                    frmCouponInput.CodeUsed = false;
                     this.Close();
                 }
             }
