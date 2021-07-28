@@ -269,6 +269,7 @@ namespace SU21_Final_Project
             {
                 DataProduct product = DataProduct.GetProduct(strCurrentColor, strSize);
                 pbxShirt.Image = product.ProductImage;
+
                 getItemPrice(strCurrentColor, strSize);
             }
             catch (Exception ex)
@@ -574,7 +575,7 @@ namespace SU21_Final_Project
             {
                 DataProduct productPrice = DataProduct.GetProduct(strColor, strSize);
 
-                if (productPrice != null)
+                if (productPrice != null && productPrice.Deleted != true)
                 {
                     lblItemPrice.Text = productPrice.Price.ToString("C2");
                     btnAdd.Enabled = true;
@@ -674,31 +675,43 @@ namespace SU21_Final_Project
             if (cboColor.SelectedIndex != -1)
             {
                 strCurrentColor = cboColor.SelectedItem.ToString();
-            }
-            lblColor.Text = strCurrentColor;
-            string strSize;
-            if (rdoSmall.Checked == true)
-            {
-                strSize = "Small";
-            }
-            else if (rdoMedium.Checked == true)
-            {
-                strSize = "Medium";
-            }
-            else
-            {
-                strSize = "Large";
-            }
+                lblColor.Text = strCurrentColor;
+                string strSize;
+                if (rdoSmall.Checked == true)
+                {
+                    strSize = "Small";
+                }
+                else if (rdoMedium.Checked == true)
+                {
+                    strSize = "Medium";
+                }
+                else
+                {
+                    strSize = "Large";
+                }
 
-            try
-            {
-                DataProduct product = DataProduct.GetProduct(strCurrentColor, strSize);
-                pbxShirt.Image = product.ProductImage;
-                getItemPrice(strCurrentColor, strSize);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                try
+                {
+                    DataProduct product = DataProduct.GetProduct(strCurrentColor, strSize);
+
+                    if(product != null)
+                    {
+                        pbxShirt.Image = product.ProductImage;
+                        getItemPrice(strCurrentColor, strSize);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Something went wrong. Please select a different size and/or color", "OOPS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if(cboColor.SelectedIndex != -1)
+                        {
+                            cboColor.SelectedIndex = -1;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }

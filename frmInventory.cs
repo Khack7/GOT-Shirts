@@ -100,6 +100,20 @@ namespace SU21_Final_Project
                     txtAmount.Text = product.QuantityOnHand.ToString();
                     txtPrice.Text = product.Price.ToString();
                     txtCost.Text = product.Cost.ToString();
+
+                    if (!bool.TryParse(product.Deleted.ToString(), out bool bolDeleted))
+                    {
+                        bolDeleted = false;
+                    }
+
+                    if (bolDeleted == false)
+                    {
+                        lblStatus.Text = "Available";
+                    }
+                    else
+                    {
+                        lblStatus.Text = "Unavailable";
+                    }
                     //TO BE USED FOR INVOICE
                     intOldQuantity = product.QuantityOnHand;
                     dblNewPrice = product.Price;
@@ -142,6 +156,21 @@ namespace SU21_Final_Project
                     txtAmount.Text = product.QuantityOnHand.ToString();
                     txtPrice.Text = product.Price.ToString();
                     txtCost.Text = product.Cost.ToString();
+                    
+                    if(!bool.TryParse(product.Deleted.ToString(), out bool bolDeleted))
+                    {
+                        bolDeleted = true;
+                    }
+
+                    if(bolDeleted == false)
+                    {
+                        lblStatus.Text = "Available";
+                    }
+                    else
+                    {
+                        lblStatus.Text = "Unavailable";
+                    }
+
                     //TO BE USED FOR INVOICE
                     intOldQuantity = product.QuantityOnHand;
                     dblNewPrice = product.Price;
@@ -164,6 +193,7 @@ namespace SU21_Final_Project
                 txtCost.ReadOnly = true;
                 txtCost.Clear();
                 btnRemove.Enabled = false;
+                lblStatus.Text = string.Empty;
             }
         }
 
@@ -227,6 +257,7 @@ namespace SU21_Final_Project
                     cboColor.SelectedIndex = -1;
                     cboSize.SelectedIndex = -1;
                     pbxShirt.Image = null;
+                    lblStatus.Text = string.Empty;
 
                     _products = DataProduct.ListProducts();
                     List<string> lstColors = _products.Select(p => p.Color).Distinct().OrderBy(c => c).ToList();
@@ -235,13 +266,13 @@ namespace SU21_Final_Project
                     cboSize.Items.Clear();
                     cboColor.Items.Clear();
 
-                    for (int intI = 0; intI < lstColors.Count; intI++)
+                    for (int intIndex = 0; intIndex < lstColors.Count; intIndex++)
                     {
-                        cboColor.Items.Add(lstColors[intI]);
+                        cboColor.Items.Add(lstColors[intIndex]);
                     }
-                    for (int intI = 0; intI < lstSizes.Count; intI++)
+                    for (int intIndex = 0; intIndex < lstSizes.Count; intIndex++)
                     {
-                        cboSize.Items.Add(lstSizes[intI]);
+                        cboSize.Items.Add(lstSizes[intIndex]);
                     }
                 }
                 catch (Exception ex)
@@ -439,46 +470,91 @@ namespace SU21_Final_Project
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            DataProduct product = new DataProduct();
+            DataProduct product = DataProduct.GetProduct(cboColor.SelectedItem.ToString(), cboSize.SelectedItem.ToString());
             try
             {
-                DialogResult dr = MessageBox.Show("Are you sure you want to remove this product? This cannot be undone!", "WARNING!!!", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
-
-                if(dr == DialogResult.Yes)
+                if(product.Deleted == false)
                 {
-                    product.Color = cboColor.SelectedItem.ToString();
-                    product.Size = cboSize.SelectedItem.ToString();
+                    DialogResult dr = MessageBox.Show("Are you sure you want to remove this product?", "WARNING!!!", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
 
-                    DataProduct.RemoveProduct(product);
-
-                    MessageBox.Show("Item Removed", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    bolChangesMade = false;
-                    txtAmount.Clear();
-                    txtCost.Clear();
-                    txtPrice.Clear();
-                    txtAmount.ReadOnly = true;
-                    txtCost.ReadOnly = true;
-                    txtPrice.ReadOnly = true;
-                    cboColor.SelectedIndex = -1;
-                    cboSize.SelectedIndex = -1;
-                    pbxShirt.Image = null;
-                    btnRemove.Enabled = false;
-
-                    _products = DataProduct.ListProducts();
-                    List<string> lstColors = _products.Select(p => p.Color).Distinct().OrderBy(c => c).ToList();
-                    List<string> lstSizes = _products.Select(p => p.Size).Distinct().OrderBy(s => s).ToList();
-
-                    cboSize.Items.Clear();
-                    cboColor.Items.Clear();
-
-                    for (int intI = 0; intI < lstColors.Count; intI++)
+                    if (dr == DialogResult.Yes)
                     {
-                        cboColor.Items.Add(lstColors[intI]);
+                        product.Deleted = true;
+
+                        DataProduct.DeleteOrRestoreProduct(product);
+
+                        MessageBox.Show("Item Removed", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        bolChangesMade = false;
+                        txtAmount.Clear();
+                        txtCost.Clear();
+                        txtPrice.Clear();
+                        txtAmount.ReadOnly = true;
+                        txtCost.ReadOnly = true;
+                        txtPrice.ReadOnly = true;
+                        cboColor.SelectedIndex = -1;
+                        cboSize.SelectedIndex = -1;
+                        pbxShirt.Image = null;
+                        btnRemove.Enabled = false;
+                        lblStatus.Text = string.Empty;
+
+                        _products = DataProduct.ListProducts();
+                        List<string> lstColors = _products.Select(p => p.Color).Distinct().OrderBy(c => c).ToList();
+                        List<string> lstSizes = _products.Select(p => p.Size).Distinct().OrderBy(s => s).ToList();
+
+                        cboSize.Items.Clear();
+                        cboColor.Items.Clear();
+
+                        for (int intIndex = 0; intIndex < lstColors.Count; intIndex++)
+                        {
+                            cboColor.Items.Add(lstColors[intIndex]);
+                        }
+                        for (int intIndex = 0; intIndex < lstSizes.Count; intIndex++)
+                        {
+                            cboSize.Items.Add(lstSizes[intIndex]);
+                        }
                     }
-                    for (int intI = 0; intI < lstSizes.Count; intI++)
+                }
+                else
+                {
+                    DialogResult dr = MessageBox.Show("Are you sure you want to recover this product?", "WARNING!!!", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+
+                    if (dr == DialogResult.Yes)
                     {
-                        cboSize.Items.Add(lstSizes[intI]);
+                        product.Deleted = false;
+
+                        DataProduct.DeleteOrRestoreProduct(product);
+
+                        MessageBox.Show("Item Recovered", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        bolChangesMade = false;
+                        txtAmount.Clear();
+                        txtCost.Clear();
+                        txtPrice.Clear();
+                        txtAmount.ReadOnly = true;
+                        txtCost.ReadOnly = true;
+                        txtPrice.ReadOnly = true;
+                        cboColor.SelectedIndex = -1;
+                        cboSize.SelectedIndex = -1;
+                        pbxShirt.Image = null;
+                        btnRemove.Enabled = false;
+                        lblStatus.Text = string.Empty;
+
+                        _products = DataProduct.ListProducts();
+                        List<string> lstColors = _products.Select(p => p.Color).Distinct().OrderBy(c => c).ToList();
+                        List<string> lstSizes = _products.Select(p => p.Size).Distinct().OrderBy(s => s).ToList();
+
+                        cboSize.Items.Clear();
+                        cboColor.Items.Clear();
+
+                        for (int intIndex = 0; intIndex < lstColors.Count; intIndex++)
+                        {
+                            cboColor.Items.Add(lstColors[intIndex]);
+                        }
+                        for (int intIndex = 0; intIndex < lstSizes.Count; intIndex++)
+                        {
+                            cboSize.Items.Add(lstSizes[intIndex]);
+                        }
                     }
                 }
             }

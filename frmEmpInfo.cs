@@ -87,24 +87,8 @@ namespace SU21_Final_Project
                             }
                         }
                         else
-                        {
-                            DataPerson person = DataPerson.GetPerson(frmSignIn.strUserName);
-
-                            person.NameFirst = txtFirst.Text;
-                            person.NameLast = txtLast.Text;
-                            person.Address1 = txtAddress1.Text;
-                            person.Address2 = txtAddress2.Text;
-                            person.Address3 = txtAddress3.Text;
-                            person.City = txtCity.Text;
-                            person.State = cboStates.SelectedItem.ToString();
-                            person.Zipcode = txtZip.Text;
-                            person.PhonePrimary = txtPhone.Text;
-                            person.Email = txtEmail.Text;
-
-                            DataPerson.SavePerson(person);
-
-                            MessageBox.Show("Changes Saved!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            this.Close();
+                        {                         
+                            MessageBox.Show("Employees are required to have at least 1 method of contact", "Phone# or email required!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                 }

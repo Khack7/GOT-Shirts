@@ -61,6 +61,7 @@ namespace SU21_Final_Project
                     product.Price = dblPrice;
                     product.Cost = dblCost;
                     product.ProductImage = pbxShirt.Image;
+                    product.Deleted = false;
 
                     DataProduct checkProduct = DataProduct.GetProduct(strColor, cboSize.SelectedItem.ToString());
 

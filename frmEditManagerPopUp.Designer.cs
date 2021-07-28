@@ -45,7 +45,7 @@ namespace SU21_Final_Project
             this.lblPrompt.Size = new System.Drawing.Size(481, 34);
             this.lblPrompt.TabIndex = 0;
             this.lblPrompt.Text = "You are attempting to edit a manager\'s information, or delete their account.\r\nTo " +
-    "continue, enter the selected manager\'s password";
+    "continue, enter the selected manager\'s username";
             this.lblPrompt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtUserName

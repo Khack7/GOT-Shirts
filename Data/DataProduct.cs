@@ -21,6 +21,7 @@ namespace SU21_Final_Project.Data
         public double Cost { get; set; }
         public double Price { get; set; }
         public Image ProductImage { get; set; }
+        public bool Deleted { get; set; }
 
         public static DataProduct GetProduct(string color, string size)
         {
@@ -106,6 +107,10 @@ namespace SU21_Final_Project.Data
             {
                 dblPrice = 0;
             }
+            if (!bool.TryParse(sdr["Deleted"].ToString(), out bool bolStatus))
+            {
+                bolStatus = true;
+            }
             object objImage = sdr["ProductImage"];
             Image image = null;
             if(objImage != DBNull.Value)
@@ -121,7 +126,8 @@ namespace SU21_Final_Project.Data
                 Size = sdr["Size"].ToString(),
                 Cost = dblCost,
                 Price = dblPrice,
-                ProductImage = image
+                ProductImage = image,
+                Deleted = bolStatus
             };
         }
 
@@ -182,8 +188,8 @@ namespace SU21_Final_Project.Data
         {
             string strSQL;
 
-            strSQL = "INSERT INTO HackK21Su2332.Products(Color, Size, QuantityOnHand, Cost, Price, ProductImage) " +
-                     "VALUES(@Color, @Size, @QuantityOnHand, @Cost, @Price, @ProductImage)";
+            strSQL = "INSERT INTO HackK21Su2332.Products(Color, Size, QuantityOnHand, Cost, Price, ProductImage, Deleted) " +
+                     "VALUES(@Color, @Size, @QuantityOnHand, @Cost, @Price, @ProductImage, @Deleted)";
 
             using (SqlConnection con = DataCommon.StartConnection())
             {
@@ -199,6 +205,7 @@ namespace SU21_Final_Project.Data
                     cmd.Parameters.AddWithValue("@Cost", product.Cost);
                     cmd.Parameters.AddWithValue("@Price", product.Price);
                     cmd.Parameters.Add("@ProductImage", SqlDbType.Image, imgData.Length).Value = imgData;
+                    cmd.Parameters.AddWithValue("@Deleted", false);
 
                     cmd.ExecuteNonQuery();
 
@@ -207,11 +214,11 @@ namespace SU21_Final_Project.Data
             }
         }
 
-        public static void RemoveProduct(DataProduct product)
+        public static void DeleteOrRestoreProduct(DataProduct product)
         {
             string strSQL;
 
-            strSQL = "DELETE FROM HackK21Su2332.Products WHERE Color = @Color AND Size = @Size";
+            strSQL = "UPDATE HackK21Su2332.Products SET Deleted = @Deleted WHERE Color = @Color AND Size = @Size";
 
             using (SqlConnection con = DataCommon.StartConnection())
             {
@@ -222,6 +229,7 @@ namespace SU21_Final_Project.Data
 
                     cmd.Parameters.AddWithValue("@Color", product.Color);
                     cmd.Parameters.AddWithValue("@Size", product.Size);
+                    cmd.Parameters.AddWithValue("@Deleted", product.Deleted);
                     
                     cmd.ExecuteNonQuery();
 

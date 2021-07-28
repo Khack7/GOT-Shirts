@@ -410,9 +410,7 @@
     <Content Include="HelpFiles\Manager_Employee_SignIn_Help.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="HelpFiles\Manager_Inventory_Help.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="HelpFiles\Manager_Inventory_Help.html" />
     <Content Include="HelpFiles\Manager_Main_Help.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -232,7 +232,7 @@ namespace SU21_Final_Project
             this.lblShippingMethod.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblShippingMethod.Location = new System.Drawing.Point(13, 298);
             this.lblShippingMethod.Name = "lblShippingMethod";
-            this.lblShippingMethod.Size = new System.Drawing.Size(318, 23);
+            this.lblShippingMethod.Size = new System.Drawing.Size(418, 23);
             this.lblShippingMethod.TabIndex = 17;
             this.lblShippingMethod.Text = "Select Shipping Method";
             this.lblShippingMethod.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

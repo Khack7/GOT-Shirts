@@ -56,7 +56,7 @@ namespace SU21_Final_Project
             this.btnUpload.Name = "btnUpload";
             this.btnUpload.Size = new System.Drawing.Size(116, 45);
             this.btnUpload.TabIndex = 11;
-            this.btnUpload.Text = "Upload";
+            this.btnUpload.Text = "&Upload";
             this.btnUpload.UseVisualStyleBackColor = true;
             this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
             // 
@@ -67,7 +67,7 @@ namespace SU21_Final_Project
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(116, 45);
             this.btnSearch.TabIndex = 0;
-            this.btnSearch.Text = "Search Image";
+            this.btnSearch.Text = "Search &Image";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
@@ -78,7 +78,7 @@ namespace SU21_Final_Project
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(116, 45);
             this.btnHelp.TabIndex = 12;
-            this.btnHelp.Text = "Help";
+            this.btnHelp.Text = "&Help";
             this.btnHelp.UseVisualStyleBackColor = true;
             this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
@@ -89,7 +89,7 @@ namespace SU21_Final_Project
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(116, 45);
             this.btnReturn.TabIndex = 13;
-            this.btnReturn.Text = "Return";
+            this.btnReturn.Text = "&Return";
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
@@ -201,7 +201,7 @@ namespace SU21_Final_Project
             this.lblSize.Name = "lblSize";
             this.lblSize.Size = new System.Drawing.Size(35, 17);
             this.lblSize.TabIndex = 9;
-            this.lblSize.Text = "Size";
+            this.lblSize.Text = "&Size";
             // 
             // frmAddProduct
             // 

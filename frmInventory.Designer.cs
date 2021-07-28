@@ -47,6 +47,8 @@ namespace SU21_Final_Project
             this.btnAdd = new System.Windows.Forms.Button();
             this.pbxShirt = new System.Windows.Forms.PictureBox();
             this.btnRemove = new System.Windows.Forms.Button();
+            this.lblStatus = new System.Windows.Forms.Label();
+            this.lblStatusPointer = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbxShirt)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,7 +78,7 @@ namespace SU21_Final_Project
             // 
             this.lblPrice.AutoSize = true;
             this.lblPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrice.Location = new System.Drawing.Point(12, 195);
+            this.lblPrice.Location = new System.Drawing.Point(12, 165);
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(40, 17);
             this.lblPrice.TabIndex = 12;
@@ -84,7 +86,7 @@ namespace SU21_Final_Project
             // 
             // txtPrice
             // 
-            this.txtPrice.Location = new System.Drawing.Point(115, 193);
+            this.txtPrice.Location = new System.Drawing.Point(115, 166);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.ReadOnly = true;
             this.txtPrice.ShortcutsEnabled = false;
@@ -96,7 +98,7 @@ namespace SU21_Final_Project
             // 
             this.lblAmount.AutoSize = true;
             this.lblAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAmount.Location = new System.Drawing.Point(12, 133);
+            this.lblAmount.Location = new System.Drawing.Point(12, 113);
             this.lblAmount.Name = "lblAmount";
             this.lblAmount.Size = new System.Drawing.Size(61, 17);
             this.lblAmount.TabIndex = 10;
@@ -114,7 +116,7 @@ namespace SU21_Final_Project
             // 
             // txtAmount
             // 
-            this.txtAmount.Location = new System.Drawing.Point(115, 132);
+            this.txtAmount.Location = new System.Drawing.Point(115, 114);
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.ReadOnly = true;
             this.txtAmount.ShortcutsEnabled = false;
@@ -136,7 +138,7 @@ namespace SU21_Final_Project
             // 
             this.lblCost.AutoSize = true;
             this.lblCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCost.Location = new System.Drawing.Point(12, 257);
+            this.lblCost.Location = new System.Drawing.Point(12, 217);
             this.lblCost.Name = "lblCost";
             this.lblCost.Size = new System.Drawing.Size(36, 17);
             this.lblCost.TabIndex = 16;
@@ -144,7 +146,7 @@ namespace SU21_Final_Project
             // 
             // txtCost
             // 
-            this.txtCost.Location = new System.Drawing.Point(115, 254);
+            this.txtCost.Location = new System.Drawing.Point(115, 218);
             this.txtCost.Name = "txtCost";
             this.txtCost.ReadOnly = true;
             this.txtCost.ShortcutsEnabled = false;
@@ -156,7 +158,7 @@ namespace SU21_Final_Project
             // 
             this.lblSize.AutoSize = true;
             this.lblSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSize.Location = new System.Drawing.Point(12, 71);
+            this.lblSize.Location = new System.Drawing.Point(12, 61);
             this.lblSize.Name = "lblSize";
             this.lblSize.Size = new System.Drawing.Size(88, 17);
             this.lblSize.TabIndex = 18;
@@ -167,7 +169,7 @@ namespace SU21_Final_Project
             this.cboSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboSize.Enabled = false;
             this.cboSize.FormattingEnabled = true;
-            this.cboSize.Location = new System.Drawing.Point(115, 70);
+            this.cboSize.Location = new System.Drawing.Point(115, 61);
             this.cboSize.Name = "cboSize";
             this.cboSize.Size = new System.Drawing.Size(186, 21);
             this.cboSize.TabIndex = 19;
@@ -225,15 +227,36 @@ namespace SU21_Final_Project
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(123, 42);
             this.btnRemove.TabIndex = 31;
-            this.btnRemove.Text = "Re&move Product";
+            this.btnRemove.Text = "Re&move/Restore Product";
             this.btnRemove.UseVisualStyleBackColor = true;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatus.Location = new System.Drawing.Point(112, 270);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(189, 20);
+            this.lblStatus.TabIndex = 32;
+            // 
+            // lblStatusPointer
+            // 
+            this.lblStatusPointer.AutoSize = true;
+            this.lblStatusPointer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatusPointer.Location = new System.Drawing.Point(12, 269);
+            this.lblStatusPointer.Name = "lblStatusPointer";
+            this.lblStatusPointer.Size = new System.Drawing.Size(52, 17);
+            this.lblStatusPointer.TabIndex = 33;
+            this.lblStatusPointer.Text = "Status:";
             // 
             // frmInventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(783, 363);
+            this.Controls.Add(this.lblStatusPointer);
+            this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnReport);
@@ -283,5 +306,7 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Button btnReport;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.Label lblStatusPointer;
     }
 }

@@ -394,7 +394,7 @@ namespace SU21_Final_Project
             this.lblOtherColors.Name = "lblOtherColors";
             this.lblOtherColors.Size = new System.Drawing.Size(113, 28);
             this.lblOtherColors.TabIndex = 0;
-            this.lblOtherColors.Text = "For more color options click the dropdown";
+            this.lblOtherColors.Text = "&For more color options click the dropdown";
             this.lblOtherColors.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmShop
