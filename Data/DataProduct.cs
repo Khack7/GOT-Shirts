@@ -158,8 +158,8 @@ namespace SU21_Final_Project.Data
                 }
             }
         }
-        //USED DURING DEVELOPMENT. NOT USED IN NORMAL USE
-        //NOTE: MIGHT IMPLEMENT TO ALLOW USER TO UPDATE PRODUCT IMAGES IF/WHEN NEEDED
+
+        //ALLOWS USER TO UPDATE PRODUCT IMAGES IF/WHEN NEEDED
         public static void SaveImage(Image image, string strColor)
         {
             string strSQL;

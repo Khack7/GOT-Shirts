@@ -770,6 +770,7 @@ namespace SU21_Final_Project
                 Cursor.Current = Cursors.WaitCursor;
                 strCurrentColor = cboColor.SelectedItem.ToString();
                 lblColor.Text = strCurrentColor;
+                CheckAvailability(strCurrentColor);
                 string strSize;
                 if (rdoSmall.Checked == true)
                 {
@@ -790,7 +791,6 @@ namespace SU21_Final_Project
 
                     if (product != null)
                     {
-                        CheckAvailability(strCurrentColor);
                         pbxShirt.Image = product.ProductImage;
                         getItemPrice(strCurrentColor, strSize);
                         Cursor.Current = Cursors.Default;

@@ -48,6 +48,8 @@ namespace SU21_Final_Project
                 }
                 else
                 {
+                    Cursor.Current = Cursors.WaitCursor;
+
                     DataProduct product = new DataProduct();
 
                     string strColor = "";
@@ -74,12 +76,10 @@ namespace SU21_Final_Project
                         throw new Exception("Invalid quantity inputted");
                     }
 
-
-
                     product.QuantityOnHand = intQuantity;
                     product.Size = cboSize.SelectedItem.ToString();
-                    product.Price = dblPrice;
-                    product.Cost = dblCost;
+                    product.Price = Math.Round(dblPrice, 2);
+                    product.Cost = Math.Round(dblCost, 2);
                     product.ProductImage = resizeImage(pbxShirt.Image, pbxShirt.Width, pbxShirt.Height);
                     product.Deleted = false;
 
@@ -87,11 +87,11 @@ namespace SU21_Final_Project
 
                     if (checkProduct != null)
                     {
+                        Cursor.Current = Cursors.Default;
                         MessageBox.Show("This product already exists!", "Duplicate Item", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        Cursor.Current = Cursors.WaitCursor;
                         DataProduct.AddProduct(product);
                         Cursor.Current = Cursors.Default;
                         MessageBox.Show("Product Added!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -110,11 +110,12 @@ namespace SU21_Final_Project
                     cboSize.Enabled = false;
                     cboSize.SelectedIndex = -1;
 
-                    pbxShirt.Image.Dispose();
+                    pbxShirt.Image = null;
                 }
             }
             catch (Exception ex)
             {
+                Cursor.Current = Cursors.Default;
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -190,6 +191,15 @@ namespace SU21_Final_Project
             {
                 e.Handled = true;
             }
+
+            if (txtColor.Text == string.Empty)
+            {
+                btnUpdateImage.Enabled = false;
+            }
+            else
+            {
+                btnUpdateImage.Enabled = true;
+            }
         }
 
         private void btnHelp_Click(object sender, EventArgs e)
@@ -212,19 +222,105 @@ namespace SU21_Final_Project
             cboSize.Items.Add("Large");
         }
 
-        private void btnSecret_Click(object sender, EventArgs e)
+        private void btnUpdateImage_Click(object sender, EventArgs e)
         {
-            //TEMP. BUTTON. WILL POSSIBLY DELETE
             try
             {
                 string color = txtColor.Text;
                 Image image = resizeImage(pbxShirt.Image, pbxShirt.Width, pbxShirt.Height);
 
-                DataProduct.SaveImage(image, color);
+                if(txtColor.Text == "")
+                {
+                    MessageBox.Show("Please type the color you'd like to update and esure it is spelled correctly", "No color!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    DialogResult dr = MessageBox.Show("Are you sure you want to update these shirt's images?", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (dr == DialogResult.Yes)
+                    {
+                        List<string> lstSizes = new List<string>();
+                        lstSizes.Add("Small");
+                        lstSizes.Add("Medium");
+                        lstSizes.Add("Large");
+
+                        bool bolProductFound = false;
+
+                        for(int intIndex = 0; intIndex < lstSizes.Count; intIndex++)
+                        {
+                            DataProduct checkProduct = DataProduct.GetProduct(color, lstSizes[intIndex]);
+                            if(checkProduct != null)
+                            {
+                                bolProductFound = true;
+                                break;
+                            }
+                        }
+
+                        if(bolProductFound == true)
+                        {
+                            DataProduct.SaveImage(image, color);
+                            MessageBox.Show("Image Updated", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("This product doesn't currently exist", "No product(s) found!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                }              
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtColor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+
+            if (txtColor.Text.Length > 0 && chkUpdate.Checked == true)
+            {
+                btnUpdateImage.Enabled = true;
+            }
+            else
+            {
+                btnUpdateImage.Enabled = false;
+            }
+        }
+
+        private void chkUpdate_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkUpdate.Checked == true)
+            {
+                txtAmount.Enabled = false;
+                txtPrice.Enabled = false;
+                txtCost.Enabled = false;
+                cboSize.Enabled = false;
+
+                if (txtColor.Text.Length > 0 && chkUpdate.Checked == true)
+                {
+                    btnUpdateImage.Enabled = true;
+                }
+                else
+                {
+                    btnUpdateImage.Enabled = false;
+                }
+            }
+            else
+            {
+                txtAmount.Enabled = true;
+                txtPrice.Enabled = true;
+                txtCost.Enabled = true;
+                cboSize.Enabled = true;
+
+                if (txtColor.Text.Length > 0 && chkUpdate.Checked == true)
+                {
+                    btnUpdateImage.Enabled = true;
+                }
+                else
+                {
+                    btnUpdateImage.Enabled = false;
+                }
             }
         }
     }
