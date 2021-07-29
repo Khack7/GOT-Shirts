@@ -160,6 +160,7 @@ namespace SU21_Final_Project
             var parsedDate = DateTime.Now;
             try
             {
+                Cursor.Current = Cursors.WaitCursor;
                 if (!int.TryParse(cboMonth.SelectedItem.ToString(), out int intMonth))
                 {
                     intMonth = 0;
@@ -172,12 +173,14 @@ namespace SU21_Final_Project
             }
             catch (Exception ex)
             {
+                Cursor.Current = Cursors.Default;
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
                 if (parsedDate < DateTime.Today.Date)
                 {
+                    Cursor.Current = Cursors.Default;
                     MessageBox.Show("This card is expired", "Date is expired", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
@@ -264,6 +267,7 @@ namespace SU21_Final_Project
                             }
                             catch (Exception ex)
                             {
+                                Cursor.Current = Cursors.Default;
                                 objTrans.Rollback();
                                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error); ;
                             }
@@ -272,6 +276,7 @@ namespace SU21_Final_Project
                     }
                     catch (Exception ex)
                     {
+                        Cursor.Current = Cursors.Default;
                         MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
@@ -329,6 +334,7 @@ namespace SU21_Final_Project
                 //GET USERS SELECTED PATH
                 string strPath = "";
                 bool bolPathSelected = false;
+                Cursor.Current = Cursors.Default;
 
                 DialogResult wantReceipt = MessageBox.Show("Would you like a receipt?", "Almost Done", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (wantReceipt == DialogResult.Yes)
@@ -344,6 +350,7 @@ namespace SU21_Final_Project
                         {
                             strPath = sfdFile.FileName;
                             bolPathSelected = true;
+                            Cursor.Current = Cursors.WaitCursor;
                             break;
                         }
                         else
@@ -360,6 +367,7 @@ namespace SU21_Final_Project
                             w.Write(order.Invoice);
                         }
                     }
+                    Cursor.Current = Cursors.Default;
                     System.Diagnostics.Process.Start(strPath);
                     bolCloseShop = true;
                     bolCloseCheck = true;
@@ -378,6 +386,7 @@ namespace SU21_Final_Project
             }
             catch (Exception ex)
             {
+                Cursor.Current = Cursors.Default;
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

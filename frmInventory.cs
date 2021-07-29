@@ -229,6 +229,8 @@ namespace SU21_Final_Project
             {
                 try
                 {
+                    Cursor.Current = Cursors.WaitCursor;
+
                     DataProduct product = DataProduct.GetProduct(cboColor.SelectedItem.ToString(), cboSize.SelectedItem.ToString()); ;
                     if (int.TryParse(txtAmount.Text, out int intAmount))
                     {
@@ -283,9 +285,11 @@ namespace SU21_Final_Project
                     {
                         cboSize.Items.Add(lstSizes[intIndex]);
                     }
+                    Cursor.Current = Cursors.Default;
                 }
                 catch (Exception ex)
                 {
+                    Cursor.Current = Cursors.Default;
                     MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -367,6 +371,7 @@ namespace SU21_Final_Project
 
                         while (bolEmptyFolder == false)
                         {
+                            Cursor.Current = Cursors.Default;
                             sfdFile.FileName = strFileName;
                             sfdFile.Title = "Select save location. Empty Folder Required";
                             sfdFile.InitialDirectory = strPath;
@@ -406,10 +411,12 @@ namespace SU21_Final_Project
                         break;
                     }
                 }
+                Cursor.Current = Cursors.Default;
                 System.Diagnostics.Process.Start(strPath);
             }
             catch (Exception ex)
             {
+                Cursor.Current = Cursors.Default;
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

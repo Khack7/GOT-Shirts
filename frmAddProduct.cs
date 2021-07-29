@@ -239,6 +239,8 @@ namespace SU21_Final_Project
 
                     if (dr == DialogResult.Yes)
                     {
+                        Cursor.Current = Cursors.WaitCursor;
+
                         List<string> lstSizes = new List<string>();
                         lstSizes.Add("Small");
                         lstSizes.Add("Medium");
@@ -258,11 +260,13 @@ namespace SU21_Final_Project
 
                         if(bolProductFound == true)
                         {
+                            Cursor.Current = Cursors.Default;
                             DataProduct.SaveImage(image, color);
                             MessageBox.Show("Image Updated", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                         {
+                            Cursor.Current = Cursors.Default;
                             MessageBox.Show("This product doesn't currently exist", "No product(s) found!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }

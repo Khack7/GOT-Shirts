@@ -158,16 +158,20 @@ namespace SU21_Final_Project
 
         private void btnEmployee_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             DataView dv;
             dv = new DataView(dataSetPerson.Tables[0], "AccountType = 'Employee' OR AccountType = 'Manager'", "AccountType Desc", DataViewRowState.CurrentRows);
             dgvPerson.DataSource = dv;
+            Cursor.Current = Cursors.Default;
         }
 
         private void btnCustomer_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             DataView dv;
             dv = new DataView(dataSetPerson.Tables[0], "AccountType = 'Customer'", "AccountType Desc", DataViewRowState.CurrentRows);
             dgvPerson.DataSource = dv;
+            Cursor.Current = Cursors.Default;
         }
 
         public static int intPersonID;

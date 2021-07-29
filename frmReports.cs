@@ -146,11 +146,15 @@ namespace SU21_Final_Project
 
                             if (dr == DialogResult.Yes)
                             {
+                                Cursor.Current = Cursors.WaitCursor;
+
                                 dgvReports.SelectAll();
 
                                 foreach (DataGridViewRow row in dgvReports.SelectedRows)
                                 {
                                     string strFileName = $"GOT Shirts-Receipt-{row.Cells[0].Value.ToString()}.html";
+
+                                    Cursor.Current = Cursors.Default;
 
                                     while (bolEmptyFolder == false)
                                     {
@@ -160,22 +164,27 @@ namespace SU21_Final_Project
 
                                         if (sfdFile.ShowDialog() == DialogResult.OK)
                                         {
+                                            Cursor.Current = Cursors.WaitCursor;
+
                                             strPath = Path.GetDirectoryName(sfdFile.FileName);
 
                                             bolEmptyFolder = IsDirectoryEmpty(strPath);
                                             if (!bolEmptyFolder)
                                             {
+                                                Cursor.Current = Cursors.Default;
                                                 MessageBox.Show("Please select an empty folder", "Empty Folder Needed", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                             }
                                         }
                                         else
                                         {
                                             bolStopLoop = true;
+                                            Cursor.Current = Cursors.Default;
                                             break;
                                         }
                                     }
                                     if (bolStopLoop == true)
                                     {
+                                        Cursor.Current = Cursors.Default;
                                         dgvReports.ClearSelection();
                                         break;
                                     }
@@ -194,6 +203,7 @@ namespace SU21_Final_Project
                                 }
                                 System.Diagnostics.Process.Start(strPath);
                                 dgvReports.ClearSelection();
+                                Cursor.Current = Cursors.Default;
                             }
                             break;
                         case currentView.ViewDay:
@@ -201,6 +211,8 @@ namespace SU21_Final_Project
 
                             if (dr == DialogResult.Yes)
                             {
+                                Cursor.Current = Cursors.WaitCursor;
+
                                 dgvReports.SelectAll();
 
                                 foreach (DataGridViewRow row in dgvReports.SelectedRows)
@@ -209,28 +221,34 @@ namespace SU21_Final_Project
 
                                     while (bolEmptyFolder == false)
                                     {
+                                        Cursor.Current = Cursors.Default;
                                         sfdFile.FileName = strFileName;
                                         sfdFile.Title = "Select save location. Empty Folder Required";
                                         sfdFile.InitialDirectory = strPath;
 
                                         if (sfdFile.ShowDialog() == DialogResult.OK)
                                         {
+                                            Cursor.Current = Cursors.WaitCursor;
+
                                             strPath = Path.GetDirectoryName(sfdFile.FileName);
 
                                             bolEmptyFolder = IsDirectoryEmpty(strPath);
                                             if (!bolEmptyFolder)
                                             {
+                                                Cursor.Current = Cursors.Default;
                                                 MessageBox.Show("Please select an empty folder", "Empty Folder Needed", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                             }
                                         }
                                         else
                                         {
+                                            Cursor.Current = Cursors.Default;
                                             bolStopLoop = true;
                                             break;
                                         }
                                     }
                                     if (bolStopLoop == true)
                                     {
+                                        Cursor.Current = Cursors.Default;
                                         dgvReports.ClearSelection();
                                         break;
                                     }
@@ -249,6 +267,7 @@ namespace SU21_Final_Project
                                 }
                                 System.Diagnostics.Process.Start(strPath);
                                 dgvReports.ClearSelection();
+                                Cursor.Current = Cursors.Default;
                             }
                             break;
                         case currentView.ViewWeek:
@@ -256,6 +275,8 @@ namespace SU21_Final_Project
 
                             if (dr == DialogResult.Yes)
                             {
+                                Cursor.Current = Cursors.WaitCursor;
+
                                 dgvReports.SelectAll();
 
                                 foreach (DataGridViewRow row in dgvReports.SelectedRows)
@@ -264,12 +285,16 @@ namespace SU21_Final_Project
 
                                     while (bolEmptyFolder == false)
                                     {
+                                        Cursor.Current = Cursors.Default;
+
                                         sfdFile.FileName = strFileName;
                                         sfdFile.Title = "Select save location. Empty Folder Required";
                                         sfdFile.InitialDirectory = strPath;
 
                                         if (sfdFile.ShowDialog() == DialogResult.OK)
                                         {
+                                            Cursor.Current = Cursors.WaitCursor;
+
                                             strPath = Path.GetDirectoryName(sfdFile.FileName);
 
                                             bolEmptyFolder = IsDirectoryEmpty(strPath);
@@ -281,12 +306,14 @@ namespace SU21_Final_Project
                                         else
                                         {
                                             bolStopLoop = true;
+                                            Cursor.Current = Cursors.Default;
                                             break;
                                         }
                                     }
                                     if (bolStopLoop == true)
                                     {
                                         dgvReports.ClearSelection();
+                                        Cursor.Current = Cursors.Default;
                                         break;
                                     }
 
@@ -304,6 +331,7 @@ namespace SU21_Final_Project
                                 }
                                 System.Diagnostics.Process.Start(strPath);
                                 dgvReports.ClearSelection();
+                                Cursor.Current = Cursors.Default;
                             }
                             break;
                         case currentView.ViewMonth:
@@ -311,6 +339,8 @@ namespace SU21_Final_Project
 
                             if (dr == DialogResult.Yes)
                             {
+                                Cursor.Current = Cursors.WaitCursor;
+
                                 dgvReports.SelectAll();
 
                                 foreach (DataGridViewRow row in dgvReports.SelectedRows)
@@ -319,12 +349,16 @@ namespace SU21_Final_Project
 
                                     while (bolEmptyFolder == false)
                                     {
+                                        Cursor.Current = Cursors.Default;
+
                                         sfdFile.FileName = strFileName;
                                         sfdFile.Title = "Select save location. Empty Folder Required";
                                         sfdFile.InitialDirectory = strPath;
 
                                         if (sfdFile.ShowDialog() == DialogResult.OK)
                                         {
+                                            Cursor.Current = Cursors.WaitCursor;
+
                                             strPath = Path.GetDirectoryName(sfdFile.FileName);
 
                                             bolEmptyFolder = IsDirectoryEmpty(strPath);
@@ -335,12 +369,14 @@ namespace SU21_Final_Project
                                         }
                                         else
                                         {
+                                            Cursor.Current = Cursors.Default;
                                             bolStopLoop = true;
                                             break;
                                         }
                                     }
                                     if (bolStopLoop == true)
                                     {
+                                        Cursor.Current = Cursors.Default;
                                         dgvReports.ClearSelection();
                                         break;
                                     }
@@ -359,6 +395,7 @@ namespace SU21_Final_Project
                                 }
                                 System.Diagnostics.Process.Start(strPath);
                                 dgvReports.ClearSelection();
+                                Cursor.Current = Cursors.Default;
                             }
                             break;
                         default:
@@ -368,6 +405,7 @@ namespace SU21_Final_Project
             }
             catch (Exception ex)
             {
+                Cursor.Current = Cursors.Default;
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
