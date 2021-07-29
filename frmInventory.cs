@@ -460,14 +460,19 @@ namespace SU21_Final_Project
 
                 cboSize.Items.Clear();
                 cboColor.Items.Clear();
+                txtAmount.Clear();
+                txtPrice.Clear();
+                txtCost.Clear();
+                pbxShirt.Image = null;
+                lblStatus.Text = string.Empty;
 
-                for (int intI = 0; intI < lstColors.Count; intI++)
+                for (int intIndex = 0; intIndex < lstColors.Count; intIndex++)
                 {
-                    cboColor.Items.Add(lstColors[intI]);
+                    cboColor.Items.Add(lstColors[intIndex]);
                 }
-                for (int intI = 0; intI < lstSizes.Count; intI++)
+                for (int intIndex = 0; intIndex < lstSizes.Count; intIndex++)
                 {
-                    cboSize.Items.Add(lstSizes[intI]);
+                    cboSize.Items.Add(lstSizes[intIndex]);
                 }
                 this.Show();
             }

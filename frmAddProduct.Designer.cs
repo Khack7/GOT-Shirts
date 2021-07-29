@@ -45,6 +45,7 @@ namespace SU21_Final_Project
             this.pbxShirt = new System.Windows.Forms.PictureBox();
             this.cboSize = new System.Windows.Forms.ComboBox();
             this.lblSize = new System.Windows.Forms.Label();
+            this.btnSecret = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbxShirt)).BeginInit();
             this.SuspendLayout();
             // 
@@ -203,11 +204,22 @@ namespace SU21_Final_Project
             this.lblSize.TabIndex = 9;
             this.lblSize.Text = "&Size";
             // 
+            // btnSecret
+            // 
+            this.btnSecret.Location = new System.Drawing.Point(434, 191);
+            this.btnSecret.Name = "btnSecret";
+            this.btnSecret.Size = new System.Drawing.Size(138, 23);
+            this.btnSecret.TabIndex = 29;
+            this.btnSecret.Text = "Secret Button";
+            this.btnSecret.UseVisualStyleBackColor = true;
+            this.btnSecret.Click += new System.EventHandler(this.btnSecret_Click);
+            // 
             // frmAddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(599, 327);
+            this.Controls.Add(this.btnSecret);
             this.Controls.Add(this.lblSize);
             this.Controls.Add(this.cboSize);
             this.Controls.Add(this.lblColor);
@@ -253,5 +265,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.TextBox txtColor;
         private System.Windows.Forms.ComboBox cboSize;
         private System.Windows.Forms.Label lblSize;
+        private System.Windows.Forms.Button btnSecret;
     }
 }

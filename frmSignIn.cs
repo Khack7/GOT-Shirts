@@ -51,12 +51,14 @@ namespace SU21_Final_Project
         {
             try
             {
+                Cursor.Current = Cursors.WaitCursor;
                 DataPerson person = DataPerson.GetPerson(txtUsername.Text);
                 if (person != null)
                 {
                     if (person.Deleted == true)
                     {
                         MessageBox.Show("This account has been suspended. If you'd like to reactivate this account, please click on the help file and contact the supervisor via their email", "Account Suspended", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Cursor.Current = Cursors.Default;
                     }
                     else
                     {
@@ -67,7 +69,6 @@ namespace SU21_Final_Project
                             intID = person.PersonID;
                             strUserName = txtUsername.Text;
 
-                            Cursor.Current = Cursors.WaitCursor;
                             frmShop shop = new frmShop();
                             this.Hide();
                             shop.ShowDialog();
@@ -78,6 +79,7 @@ namespace SU21_Final_Project
                             MessageBox.Show("Your password is incorrect", "Invalid Password", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             txtPassword.Focus();
                             txtPassword.SelectAll();
+                            Cursor.Current = Cursors.Default;
                         }
                     }
 
@@ -87,11 +89,13 @@ namespace SU21_Final_Project
                     MessageBox.Show("This account doesn't exist", "Invalid Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtUsername.Focus();
                     txtUsername.SelectAll();
+                    Cursor.Current = Cursors.Default;
                 }
 
             }
             catch (Exception ex)
             {
+                Cursor.Current = Cursors.Default;
                 MessageBox.Show(ex.Message);
             }
         }

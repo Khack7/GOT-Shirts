@@ -74,7 +74,7 @@ namespace SU21_Final_Project
                         throw new Exception("Invalid quantity inputted");
                     }
 
-                    
+
 
                     product.QuantityOnHand = intQuantity;
                     product.Size = cboSize.SelectedItem.ToString();
@@ -85,7 +85,7 @@ namespace SU21_Final_Project
 
                     DataProduct checkProduct = DataProduct.GetProduct(strColor, cboSize.SelectedItem.ToString());
 
-                    if(checkProduct != null)
+                    if (checkProduct != null)
                     {
                         MessageBox.Show("This product already exists!", "Duplicate Item", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -210,6 +210,22 @@ namespace SU21_Final_Project
             cboSize.Items.Add("Small");
             cboSize.Items.Add("Medium");
             cboSize.Items.Add("Large");
+        }
+
+        private void btnSecret_Click(object sender, EventArgs e)
+        {
+            //TEMP. BUTTON. WILL POSSIBLY DELETE
+            try
+            {
+                string color = txtColor.Text;
+                Image image = resizeImage(pbxShirt.Image, pbxShirt.Width, pbxShirt.Height);
+
+                DataProduct.SaveImage(image, color);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
