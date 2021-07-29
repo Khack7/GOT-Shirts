@@ -68,8 +68,8 @@ namespace SU21_Final_Project
                 }
                 else if (btnEnter.Text == "&Enter")
                 {
-                    if (txtAnswer1.Text == person.SecurityAnswer1 && txtAnswer2.Text == person.SecurityAnswer2 &&
-                        txtAnswer3.Text == person.SecurityAnswer3)
+                    if (string.Equals(txtAnswer1.Text, person.SecurityAnswer1, StringComparison.CurrentCultureIgnoreCase) && string.Equals(txtAnswer2.Text, person.SecurityAnswer2, StringComparison.CurrentCultureIgnoreCase) &&
+                        string.Equals(txtAnswer3.Text, person.SecurityAnswer3, StringComparison.CurrentCultureIgnoreCase))
                     {
                         btnEnter.Text = "&Confirm Change";
                         lblPass.Enabled = true;

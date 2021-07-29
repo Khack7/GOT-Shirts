@@ -40,6 +40,7 @@ namespace SU21_Final_Project
 
         private void btnInventory_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             frmEmpInventory empInventory = new frmEmpInventory();
             this.Hide();
             empInventory.ShowDialog();

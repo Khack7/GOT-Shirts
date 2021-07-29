@@ -19,6 +19,24 @@ namespace SU21_Final_Project
             InitializeComponent();
         }
 
+        private Image resizeImage(Image src, int width, int height)
+        {
+            Image bmpNewImage = new Bitmap(width, height);
+            using (Graphics gfxNewImage = Graphics.FromImage(bmpNewImage))
+            {
+                gfxNewImage.DrawImage(
+                    src,
+                    new Rectangle(0, 0, bmpNewImage.Width, bmpNewImage.Height),
+                    0,
+                    0,
+                    src.Width,
+                    src.Height,
+                    GraphicsUnit.Pixel
+                );
+            }
+            return bmpNewImage;
+        }
+
         private void btnUpload_Click(object sender, EventArgs e)
         {
             try
@@ -56,11 +74,13 @@ namespace SU21_Final_Project
                         throw new Exception("Invalid quantity inputted");
                     }
 
+                    
+
                     product.QuantityOnHand = intQuantity;
                     product.Size = cboSize.SelectedItem.ToString();
                     product.Price = dblPrice;
                     product.Cost = dblCost;
-                    product.ProductImage = pbxShirt.Image;
+                    product.ProductImage = resizeImage(pbxShirt.Image, pbxShirt.Width, pbxShirt.Height);
                     product.Deleted = false;
 
                     DataProduct checkProduct = DataProduct.GetProduct(strColor, cboSize.SelectedItem.ToString());
@@ -71,8 +91,9 @@ namespace SU21_Final_Project
                     }
                     else
                     {
+                        Cursor.Current = Cursors.WaitCursor;
                         DataProduct.AddProduct(product);
-
+                        Cursor.Current = Cursors.Default;
                         MessageBox.Show("Product Added!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
 

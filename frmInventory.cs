@@ -16,13 +16,13 @@ namespace SU21_Final_Project
 {
     public partial class frmInventory : Form
     {
-        private List<DataProduct> _products;
+        private List<DataProduct> _lstProducts;
         public frmInventory()
         {
             InitializeComponent();
             try
             {
-                _products = DataProduct.ListProducts();
+                _lstProducts = DataProduct.ListProducts();
             }
             catch (Exception ex)
             {
@@ -51,8 +51,8 @@ namespace SU21_Final_Project
         {
             try
             {
-                List<string> lstColors = _products.Select(p => p.Color).Distinct().OrderBy(c => c).ToList();
-                List<string> lstSizes = _products.Select(p => p.Size).Distinct().OrderBy(s => s).ToList();
+                List<string> lstColors = _lstProducts.Select(p => p.Color).Distinct().OrderBy(c => c).ToList();
+                List<string> lstSizes = _lstProducts.Select(p => p.Size).Distinct().OrderBy(s => s).ToList();
 
                 for (int intI = 0; intI < lstColors.Count; intI++)
                 {
@@ -62,6 +62,7 @@ namespace SU21_Final_Project
                 {
                     cboSize.Items.Add(lstSizes[intI]);
                 }
+                Cursor.Current = Cursors.Default;
             }
             catch (Exception ex)
             {
@@ -87,13 +88,16 @@ namespace SU21_Final_Project
             {
                 try
                 {
+                    Cursor.Current = Cursors.WaitCursor;
                     string strSelectedColor = (string)cboColor.SelectedItem;
                     string strSelectedSize = (string)cboSize.SelectedItem;
-                    var product = _products.Where(p => p.Color == strSelectedColor && p.Size == strSelectedSize).SingleOrDefault();
+                    var product = _lstProducts.Where(p => p.Color == strSelectedColor && p.Size == strSelectedSize).SingleOrDefault();
 
                     if (product == null)
                     {
                         cboSize.SelectedIndex = -1;
+                        cboColor.SelectedIndex = -1;
+                        pbxShirt.Image = null;
                         throw new Exception("There is currently no product in this size");
                     }
 
@@ -121,6 +125,7 @@ namespace SU21_Final_Project
 
                     DataProduct productImage = DataProduct.GetProduct(strSelectedColor, strSelectedSize);
                     pbxShirt.Image = productImage.ProductImage;
+                    Cursor.Current = Cursors.Default;
                 }
                 catch (Exception ex)
                 {
@@ -143,13 +148,16 @@ namespace SU21_Final_Project
 
                 try
                 {
+                    Cursor.Current = Cursors.WaitCursor;
                     string strSelectedColor = (string)cboColor.SelectedItem;
                     string strSelectedSize = (string)cboSize.SelectedItem;
-                    var product = _products.Where(p => p.Color == strSelectedColor && p.Size == strSelectedSize).SingleOrDefault();
+                    var product = _lstProducts.Where(p => p.Color == strSelectedColor && p.Size == strSelectedSize).SingleOrDefault();
 
                     if (product == null)
                     {
                         cboSize.SelectedIndex = -1;
+                        cboColor.SelectedIndex = -1;
+                        pbxShirt.Image = null;
                         throw new Exception("There is currently no product in this size");
                     }
 
@@ -178,6 +186,7 @@ namespace SU21_Final_Project
 
                     DataProduct productImage = DataProduct.GetProduct(strSelectedColor, strSelectedSize);
                     pbxShirt.Image = productImage.ProductImage;
+                    Cursor.Current = Cursors.Default;
                 }
                 catch (Exception ex)
                 {
@@ -259,9 +268,9 @@ namespace SU21_Final_Project
                     pbxShirt.Image = null;
                     lblStatus.Text = string.Empty;
 
-                    _products = DataProduct.ListProducts();
-                    List<string> lstColors = _products.Select(p => p.Color).Distinct().OrderBy(c => c).ToList();
-                    List<string> lstSizes = _products.Select(p => p.Size).Distinct().OrderBy(s => s).ToList();
+                    _lstProducts = DataProduct.ListProducts();
+                    List<string> lstColors = _lstProducts.Select(p => p.Color).Distinct().OrderBy(c => c).ToList();
+                    List<string> lstSizes = _lstProducts.Select(p => p.Size).Distinct().OrderBy(s => s).ToList();
 
                     cboSize.Items.Clear();
                     cboColor.Items.Clear();
@@ -342,9 +351,9 @@ namespace SU21_Final_Project
 
                 DataProduct product = null;
 
-                _products = DataProduct.ListProducts();
-                List<string> lstColors = _products.Select(p => p.Color).Distinct().OrderBy(c => c).ToList();
-                List<string> lstSizes = _products.Select(p => p.Size).Distinct().OrderBy(s => s).ToList();
+                _lstProducts = DataProduct.ListProducts();
+                List<string> lstColors = _lstProducts.Select(p => p.Color).Distinct().OrderBy(c => c).ToList();
+                List<string> lstSizes = _lstProducts.Select(p => p.Size).Distinct().OrderBy(s => s).ToList();
 
 
                 for (int intIndexColors = 0; intIndexColors < lstColors.Count; intIndexColors++)
@@ -445,9 +454,9 @@ namespace SU21_Final_Project
             frmNewProduct.ShowDialog();
             try
             {
-                _products = DataProduct.ListProducts();
-                List<string> lstColors = _products.Select(p => p.Color).Distinct().OrderBy(c => c).ToList();
-                List<string> lstSizes = _products.Select(p => p.Size).Distinct().OrderBy(s => s).ToList();
+                _lstProducts = DataProduct.ListProducts();
+                List<string> lstColors = _lstProducts.Select(p => p.Color).Distinct().OrderBy(c => c).ToList();
+                List<string> lstSizes = _lstProducts.Select(p => p.Size).Distinct().OrderBy(s => s).ToList();
 
                 cboSize.Items.Clear();
                 cboColor.Items.Clear();
@@ -498,9 +507,9 @@ namespace SU21_Final_Project
                         btnRemove.Enabled = false;
                         lblStatus.Text = string.Empty;
 
-                        _products = DataProduct.ListProducts();
-                        List<string> lstColors = _products.Select(p => p.Color).Distinct().OrderBy(c => c).ToList();
-                        List<string> lstSizes = _products.Select(p => p.Size).Distinct().OrderBy(s => s).ToList();
+                        _lstProducts = DataProduct.ListProducts();
+                        List<string> lstColors = _lstProducts.Select(p => p.Color).Distinct().OrderBy(c => c).ToList();
+                        List<string> lstSizes = _lstProducts.Select(p => p.Size).Distinct().OrderBy(s => s).ToList();
 
                         cboSize.Items.Clear();
                         cboColor.Items.Clear();
@@ -540,9 +549,9 @@ namespace SU21_Final_Project
                         btnRemove.Enabled = false;
                         lblStatus.Text = string.Empty;
 
-                        _products = DataProduct.ListProducts();
-                        List<string> lstColors = _products.Select(p => p.Color).Distinct().OrderBy(c => c).ToList();
-                        List<string> lstSizes = _products.Select(p => p.Size).Distinct().OrderBy(s => s).ToList();
+                        _lstProducts = DataProduct.ListProducts();
+                        List<string> lstColors = _lstProducts.Select(p => p.Color).Distinct().OrderBy(c => c).ToList();
+                        List<string> lstSizes = _lstProducts.Select(p => p.Size).Distinct().OrderBy(s => s).ToList();
 
                         cboSize.Items.Clear();
                         cboColor.Items.Clear();

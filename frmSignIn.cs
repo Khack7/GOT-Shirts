@@ -60,8 +60,6 @@ namespace SU21_Final_Project
                     }
                     else
                     {
-
-
                         if (txtPassword.Text == person.Password)
                         {
                             strCustomerType = person.AccountType;
@@ -69,6 +67,7 @@ namespace SU21_Final_Project
                             intID = person.PersonID;
                             strUserName = txtUsername.Text;
 
+                            Cursor.Current = Cursors.WaitCursor;
                             frmShop shop = new frmShop();
                             this.Hide();
                             shop.ShowDialog();

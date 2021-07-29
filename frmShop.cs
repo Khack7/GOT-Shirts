@@ -218,6 +218,10 @@ namespace SU21_Final_Project
 
         private void btnOrange_Click(object sender, EventArgs e)
         {
+            if(cboColor.SelectedIndex == -1)
+            {
+                cboColor.SelectedIndex = 0;
+            }
             strCurrentColor = btnOrange.BackColor.Name;
             lblColor.Text = strCurrentColor;
             string strSize;
@@ -236,9 +240,11 @@ namespace SU21_Final_Project
 
             try
             {
+                CheckAvailability(strSize);
                 DataProduct product = DataProduct.GetProduct(strCurrentColor, strSize);
                 pbxShirt.Image = product.ProductImage;
                 getItemPrice(strCurrentColor, strSize);
+                cboColor.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
@@ -248,7 +254,10 @@ namespace SU21_Final_Project
 
         private void btnBlack_Click(object sender, EventArgs e)
         {
-            cboColor.SelectedIndex = -1;
+            if (cboColor.SelectedIndex == -1)
+            {
+                cboColor.SelectedIndex = 0;
+            }
             strCurrentColor = btnBlack.BackColor.Name;
             lblColor.Text = strCurrentColor;
             string strSize;
@@ -267,10 +276,11 @@ namespace SU21_Final_Project
 
             try
             {
+                CheckAvailability(strSize);
                 DataProduct product = DataProduct.GetProduct(strCurrentColor, strSize);
                 pbxShirt.Image = product.ProductImage;
-
                 getItemPrice(strCurrentColor, strSize);
+                cboColor.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
@@ -280,7 +290,10 @@ namespace SU21_Final_Project
 
         private void btnBlue_Click(object sender, EventArgs e)
         {
-            cboColor.SelectedIndex = -1;
+            if (cboColor.SelectedIndex == -1)
+            {
+                cboColor.SelectedIndex = 0;
+            }
             strCurrentColor = btnBlue.BackColor.Name;
             lblColor.Text = strCurrentColor;
             string strSize;
@@ -299,9 +312,11 @@ namespace SU21_Final_Project
 
             try
             {
+                CheckAvailability(strSize);
                 DataProduct product = DataProduct.GetProduct(strCurrentColor, strSize);
                 pbxShirt.Image = product.ProductImage;
                 getItemPrice(strCurrentColor, strSize);
+                cboColor.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
@@ -311,7 +326,10 @@ namespace SU21_Final_Project
 
         private void btnGreen_Click(object sender, EventArgs e)
         {
-            cboColor.SelectedIndex = -1;
+            if (cboColor.SelectedIndex == -1)
+            {
+                cboColor.SelectedIndex = 0;
+            }
             strCurrentColor = btnGreen.BackColor.Name;
             lblColor.Text = strCurrentColor;
             string strSize;
@@ -330,9 +348,11 @@ namespace SU21_Final_Project
 
             try
             {
+                CheckAvailability(strSize);
                 DataProduct product = DataProduct.GetProduct(strCurrentColor, strSize);
                 pbxShirt.Image = product.ProductImage;
                 getItemPrice(strCurrentColor, strSize);
+                cboColor.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
@@ -342,7 +362,10 @@ namespace SU21_Final_Project
 
         private void btnPink_Click(object sender, EventArgs e)
         {
-            cboColor.SelectedIndex = -1;
+            if (cboColor.SelectedIndex == -1)
+            {
+                cboColor.SelectedIndex = 0;
+            }
             strCurrentColor = btnPink.BackColor.Name;
             lblColor.Text = strCurrentColor;
             string strSize;
@@ -361,9 +384,11 @@ namespace SU21_Final_Project
 
             try
             {
+                CheckAvailability(strSize);
                 DataProduct product = DataProduct.GetProduct(strCurrentColor, strSize);
                 pbxShirt.Image = product.ProductImage;
                 getItemPrice(strCurrentColor, strSize);
+                cboColor.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
@@ -373,7 +398,10 @@ namespace SU21_Final_Project
 
         private void btnPurple_Click(object sender, EventArgs e)
         {
-            cboColor.SelectedIndex = -1;
+            if (cboColor.SelectedIndex == -1)
+            {
+                cboColor.SelectedIndex = 0;
+            }
             strCurrentColor = btnPurple.BackColor.Name;
             lblColor.Text = strCurrentColor;
             string strSize;
@@ -392,9 +420,11 @@ namespace SU21_Final_Project
 
             try
             {
+                CheckAvailability(strSize);
                 DataProduct product = DataProduct.GetProduct(strCurrentColor, strSize);
                 pbxShirt.Image = product.ProductImage;
                 getItemPrice(strCurrentColor, strSize);
+                cboColor.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
@@ -404,7 +434,10 @@ namespace SU21_Final_Project
 
         private void btnRed_Click(object sender, EventArgs e)
         {
-            cboColor.SelectedIndex = -1;
+            if (cboColor.SelectedIndex == -1)
+            {
+                cboColor.SelectedIndex = 0;
+            }
             strCurrentColor = btnRed.BackColor.Name;
             lblColor.Text = strCurrentColor;
             string strSize;
@@ -423,9 +456,11 @@ namespace SU21_Final_Project
 
             try
             {
+                CheckAvailability(strSize);
                 DataProduct product = DataProduct.GetProduct(strCurrentColor, strSize);
                 pbxShirt.Image = product.ProductImage;
                 getItemPrice(strCurrentColor, strSize);
+                cboColor.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
@@ -435,7 +470,10 @@ namespace SU21_Final_Project
 
         private void btnWhite_Click(object sender, EventArgs e)
         {
-            cboColor.SelectedIndex = -1;
+            if (cboColor.SelectedIndex == -1)
+            {
+                cboColor.SelectedIndex = 0;
+            }
             strCurrentColor = btnWhite.BackColor.Name;
             lblColor.Text = strCurrentColor;
             string strSize;
@@ -454,9 +492,11 @@ namespace SU21_Final_Project
 
             try
             {
+                CheckAvailability(strSize);
                 DataProduct product = DataProduct.GetProduct(strCurrentColor, strSize);
                 pbxShirt.Image = product.ProductImage;
                 getItemPrice(strCurrentColor, strSize);
+                cboColor.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
@@ -466,7 +506,10 @@ namespace SU21_Final_Project
 
         private void btnYellow_Click(object sender, EventArgs e)
         {
-            cboColor.SelectedIndex = -1;
+            if (cboColor.SelectedIndex == -1)
+            {
+                cboColor.SelectedIndex = -2;
+            }
             strCurrentColor = btnYellow.BackColor.Name;
             lblColor.Text = strCurrentColor;
             string strSize;
@@ -485,9 +528,11 @@ namespace SU21_Final_Project
 
             try
             {
+                CheckAvailability(strSize);
                 DataProduct product = DataProduct.GetProduct(strCurrentColor, strSize);
                 pbxShirt.Image = product.ProductImage;
                 getItemPrice(strCurrentColor, strSize);
+                cboColor.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
@@ -550,7 +595,7 @@ namespace SU21_Final_Project
                     this.Show();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -597,6 +642,7 @@ namespace SU21_Final_Project
         {
             if (strCurrentColor != null && rdoSmall.Checked == true)
             {
+                CheckAvailability("Small");
                 getItemPrice(strCurrentColor, "Small");
             }
         }
@@ -605,6 +651,7 @@ namespace SU21_Final_Project
         {
             if (strCurrentColor != null && rdoMedium.Checked == true)
             {
+                CheckAvailability("Medium");
                 getItemPrice(strCurrentColor, "Medium");
             }
         }
@@ -613,6 +660,7 @@ namespace SU21_Final_Project
         {
             if (strCurrentColor != null && rdoLarge.Checked == true)
             {
+                CheckAvailability("Large");
                 getItemPrice(strCurrentColor, "Large");
             }
         }
@@ -638,6 +686,111 @@ namespace SU21_Final_Project
             }
         }
 
+        public void CheckAvailability(string strSize)
+        {
+            try
+            {
+                List<Button> lstColorButtons = new List<Button>();
+                lstColorButtons.Add(btnBlack);
+                lstColorButtons.Add(btnBlue);
+                lstColorButtons.Add(btnGreen);
+                lstColorButtons.Add(btnOrange);
+                lstColorButtons.Add(btnPink);
+                lstColorButtons.Add(btnPurple);
+                lstColorButtons.Add(btnRed);
+                lstColorButtons.Add(btnWhite);
+                lstColorButtons.Add(btnYellow);
+
+                DataProduct product = new DataProduct();
+
+                List<string> lstRemovedItems = new List<string>();
+
+                if (cboColor.SelectedIndex == -1)
+                {
+                    foreach (Button btn in lstColorButtons)
+                    {
+                        product = DataProduct.GetProduct(btn.BackColor.Name, strSize);
+
+                        if (product.Deleted == true)
+                        {
+                            btn.Enabled = false;
+                        }
+                        else
+                        {
+                            btn.Enabled = true;
+                        }
+                    }
+
+
+                    for (int intIndex = 0; intIndex < cboColor.Items.Count;)
+                    {
+                        if (cboColor.Items.Count == 0)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            product = DataProduct.GetProduct(cboColor.Items[intIndex].ToString(), strSize);
+                        }
+
+                        if (product == null)
+                        {
+                            lstRemovedItems.Add(cboColor.Items[intIndex].ToString());
+                            cboColor.Items.RemoveAt(intIndex);
+                            intIndex = 0;
+                        }
+                        else if (product.Deleted == true)
+                        {
+                            lstRemovedItems.Add(cboColor.Items[intIndex].ToString());
+                            cboColor.Items.RemoveAt(intIndex);
+                            intIndex = 0;
+                        }
+                        else
+                        {
+                            for (int intRemovedIndex = 0; intRemovedIndex < lstRemovedItems.Count; intRemovedIndex++)
+                            {
+                                product = DataProduct.GetProduct(lstRemovedItems[intRemovedIndex], strSize);
+
+                                if (product != null || product.Deleted == false)
+                                {
+                                    cboColor.Items.Add(product.Color);
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    for (int intIndex = 0; intIndex < cboColor.Items.Count; intIndex++)
+                    {
+                        product = DataProduct.GetProduct(cboColor.SelectedItem.ToString(), strSize);
+
+                        if (product == null)
+                        {
+                            lstRemovedItems.Add(cboColor.Items[intIndex].ToString());
+                            cboColor.Items.RemoveAt(intIndex);
+                        }
+                        else if (product.Deleted == true)
+                        {
+                            lstRemovedItems.Add(cboColor.Items[intIndex].ToString());
+                            cboColor.Items.RemoveAt(intIndex);
+                        }
+                        else
+                        {
+                            for (int intRemovedIndex = 0; intRemovedIndex < lstRemovedItems.Count; intRemovedIndex++)
+                            {
+                                product = DataProduct.GetProduct(lstRemovedItems[intRemovedIndex], strSize);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void frmShop_Load(object sender, EventArgs e)
         {
             try
@@ -653,16 +806,18 @@ namespace SU21_Final_Project
                 lstShowColors.Add(btnWhite.BackColor.Name);
                 lstShowColors.Add(btnYellow.BackColor.Name);
 
-
                 List<string> lstColors = _products.Select(p => p.Color).Distinct().OrderBy(c => c).ToList();
 
-                for (int intI = 0; intI < lstColors.Count; intI++)
+                for (int intIndex = 0; intIndex < lstColors.Count; intIndex++)
                 {
-                    if (!lstShowColors.Contains(lstColors[intI]))
+                    if (!lstShowColors.Contains(lstColors[intIndex]))
                     {
-                        cboColor.Items.Add(lstColors[intI]);
+                        cboColor.Items.Add(lstColors[intIndex]);
                     }
                 }
+                //CHECKS SMALLS ONLY BECAUSE IT'S CHECKED BY DEFAULT
+                CheckAvailability("Small");
+                Cursor.Current = Cursors.Default;
             }
             catch (Exception ex)
             {
@@ -674,6 +829,7 @@ namespace SU21_Final_Project
         {
             if (cboColor.SelectedIndex != -1)
             {
+                Cursor.Current = Cursors.WaitCursor;
                 strCurrentColor = cboColor.SelectedItem.ToString();
                 lblColor.Text = strCurrentColor;
                 string strSize;
@@ -694,18 +850,20 @@ namespace SU21_Final_Project
                 {
                     DataProduct product = DataProduct.GetProduct(strCurrentColor, strSize);
 
-                    if(product != null)
+                    if (product != null)
                     {
                         pbxShirt.Image = product.ProductImage;
                         getItemPrice(strCurrentColor, strSize);
+                        Cursor.Current = Cursors.Default;
                     }
                     else
                     {
                         MessageBox.Show("Something went wrong. Please select a different size and/or color", "OOPS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        if(cboColor.SelectedIndex != -1)
+                        if (cboColor.SelectedIndex != -1)
                         {
                             cboColor.SelectedIndex = -1;
                         }
+                        Cursor.Current = Cursors.Default;
                     }
                 }
                 catch (Exception ex)

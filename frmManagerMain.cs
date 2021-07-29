@@ -24,6 +24,7 @@ namespace SU21_Final_Project
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             frmInventory frmInventory = new frmInventory();
             this.Hide();
             frmInventory.ShowDialog();

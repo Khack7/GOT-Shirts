@@ -43,6 +43,8 @@ namespace SU21_Final_Project
             this.btnReturn = new System.Windows.Forms.Button();
             this.btnHelp = new System.Windows.Forms.Button();
             this.pbxShirt = new System.Windows.Forms.PictureBox();
+            this.lblStatusPointer = new System.Windows.Forms.Label();
+            this.lblStatus = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbxShirt)).BeginInit();
             this.SuspendLayout();
             // 
@@ -173,14 +175,36 @@ namespace SU21_Final_Project
             this.pbxShirt.Location = new System.Drawing.Point(304, 13);
             this.pbxShirt.Name = "pbxShirt";
             this.pbxShirt.Size = new System.Drawing.Size(292, 257);
+            this.pbxShirt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxShirt.TabIndex = 32;
             this.pbxShirt.TabStop = false;
+            // 
+            // lblStatusPointer
+            // 
+            this.lblStatusPointer.AutoSize = true;
+            this.lblStatusPointer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatusPointer.Location = new System.Drawing.Point(160, 306);
+            this.lblStatusPointer.Name = "lblStatusPointer";
+            this.lblStatusPointer.Size = new System.Drawing.Size(52, 17);
+            this.lblStatusPointer.TabIndex = 35;
+            this.lblStatusPointer.Text = "Status:";
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatus.Location = new System.Drawing.Point(260, 307);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(189, 20);
+            this.lblStatus.TabIndex = 34;
             // 
             // frmEmpInventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(611, 350);
+            this.Controls.Add(this.lblStatusPointer);
+            this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.pbxShirt);
             this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.btnReturn);
@@ -222,5 +246,7 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Button btnReturn;
         private System.Windows.Forms.Button btnHelp;
         private System.Windows.Forms.PictureBox pbxShirt;
+        private System.Windows.Forms.Label lblStatusPointer;
+        private System.Windows.Forms.Label lblStatus;
     }
 }

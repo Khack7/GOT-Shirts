@@ -43,6 +43,7 @@ namespace SU21_Final_Project
                 {
                     cboSize.Items.Add(lstSizes[intIndex]);
                 }
+                Cursor.Current = Cursors.Default;
             }
             catch (Exception ex)
             {
@@ -65,15 +66,40 @@ namespace SU21_Final_Project
             {
                 try
                 {
+                    Cursor.Current = Cursors.WaitCursor;
                     string strSelectedColor = (string)cboColor.SelectedItem;
                     string strSelectedSize = (string)cboSize.SelectedItem;
                     var product = _lstProducts.Where(p => p.Color == strSelectedColor && p.Size == strSelectedSize).SingleOrDefault();
+
+                    if (product == null)
+                    {
+                        cboSize.SelectedIndex = -1;
+                        cboColor.SelectedIndex = -1;
+                        pbxShirt.Image = null;
+                        throw new Exception("There is currently no product in this size");
+                    }
+
                     txtAmount.Text = product.QuantityOnHand.ToString();
                     txtPrice.Text = product.Price.ToString();
                     txtCost.Text = product.Cost.ToString();
 
+                    if (!bool.TryParse(product.Deleted.ToString(), out bool bolDeleted))
+                    {
+                        bolDeleted = false;
+                    }
+
+                    if (bolDeleted == false)
+                    {
+                        lblStatus.Text = "Available";
+                    }
+                    else
+                    {
+                        lblStatus.Text = "Unavailable";
+                    }
+
                     DataProduct productImage = DataProduct.GetProduct(strSelectedColor, strSelectedSize);
                     pbxShirt.Image = productImage.ProductImage;
+                    Cursor.Current = Cursors.Default;
                 }
                 catch (Exception ex)
                 {
@@ -88,14 +114,40 @@ namespace SU21_Final_Project
             {
                 try
                 {
+                    Cursor.Current = Cursors.WaitCursor;
                     string strSelectedColor = (string)cboColor.SelectedItem;
                     string strSelectedSize = (string)cboSize.SelectedItem;
                     var product = _lstProducts.Where(p => p.Color == strSelectedColor && p.Size == strSelectedSize).SingleOrDefault();
+
+                    if (product == null)
+                    {
+                        cboSize.SelectedIndex = -1;
+                        cboColor.SelectedIndex = -1;
+                        pbxShirt.Image = null;
+                        throw new Exception("There is currently no product in this size");
+                    }
+
                     txtAmount.Text = product.QuantityOnHand.ToString();
                     txtPrice.Text = product.Price.ToString();
                     txtCost.Text = product.Cost.ToString();
+
+                    if (!bool.TryParse(product.Deleted.ToString(), out bool bolDeleted))
+                    {
+                        bolDeleted = true;
+                    }
+
+                    if (bolDeleted == false)
+                    {
+                        lblStatus.Text = "Available";
+                    }
+                    else
+                    {
+                        lblStatus.Text = "Unavailable";
+                    }
+
                     DataProduct productImage = DataProduct.GetProduct(strSelectedColor, strSelectedSize);
                     pbxShirt.Image = productImage.ProductImage;
+                    Cursor.Current = Cursors.Default;
                 }
                 catch (Exception ex)
                 {
