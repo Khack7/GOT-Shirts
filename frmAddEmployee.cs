@@ -116,7 +116,7 @@ namespace SU21_Final_Project
                             txtZip.Focus();
                             MessageBox.Show("Zipcode must be a valid 5 digit number", "Invalid Zipcode", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
-                        else if (txtPhone.Text.Length < 10 || txtEmail.Text == "")
+                        else if (txtPhone.MaskCompleted == false && txtEmail.Text == "")
                         {
                             MessageBox.Show("Employees are required to have at least one method of contact", "Please fill out a contact field", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }

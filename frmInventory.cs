@@ -162,13 +162,13 @@ namespace SU21_Final_Project
                     txtAmount.Text = product.QuantityOnHand.ToString();
                     txtPrice.Text = product.Price.ToString();
                     txtCost.Text = product.Cost.ToString();
-                    
-                    if(!bool.TryParse(product.Deleted.ToString(), out bool bolDeleted))
+
+                    if (!bool.TryParse(product.Deleted.ToString(), out bool bolDeleted))
                     {
                         bolDeleted = true;
                     }
 
-                    if(bolDeleted == false)
+                    if (bolDeleted == false)
                     {
                         lblStatus.Text = "Available";
                     }
@@ -334,18 +334,11 @@ namespace SU21_Final_Project
             bolChangesMade = true;
         }
 
-        public bool IsDirectoryEmpty(string path)
-        {
-            return !Directory.EnumerateFileSystemEntries(path).Any();
-        }
-
         private void btnReport_Click(object sender, EventArgs e)
         {
             try
             {
-                bool bolEmptyFolder = false;
                 string strPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                bool bolStopLoop = false;
 
                 string strColor, strSize;
 
@@ -353,64 +346,49 @@ namespace SU21_Final_Project
 
                 DataProduct product = null;
 
+                string strFileName = "";
+
                 _lstProducts = DataProduct.ListProducts();
                 List<string> lstColors = _lstProducts.Select(p => p.Color).Distinct().OrderBy(c => c).ToList();
                 List<string> lstSizes = _lstProducts.Select(p => p.Size).Distinct().OrderBy(s => s).ToList();
 
+                List<DataProduct> lstDataProducts = new List<DataProduct>();
 
-                for (int intIndexColors = 0; intIndexColors < lstColors.Count; intIndexColors++)
-                {
-                    strColor = lstColors[intIndexColors].ToString();
-                    for (int intIndexSize = 0; intIndexSize < lstSizes.Count; intIndexSize++)
-                    {
-                        string strFileName = $"GOT Shirts-Current-Inventory-{lstSizes[intIndexSize].ToString() + "_" + lstColors[intIndexColors].ToString()}.html";
+                strFileName = $"GOT Shirts-Current-Inventory-{DateTime.Today.ToString("dd_MM_yyyy")}.html";
 
-                        strSize = lstSizes[intIndexSize].ToString();
-
-                        while (bolEmptyFolder == false)
-                        {
-                            Cursor.Current = Cursors.Default;
-                            sfdFile.FileName = strFileName;
-                            sfdFile.Title = "Select save location. Empty Folder Required";
-                            sfdFile.InitialDirectory = strPath;
-
-                            if (sfdFile.ShowDialog() == DialogResult.OK)
-                            {
-                                strPath = Path.GetDirectoryName(sfdFile.FileName);
-
-                                bolEmptyFolder = IsDirectoryEmpty(strPath);
-                                if (!bolEmptyFolder)
-                                {
-                                    MessageBox.Show("Please select an empty folder", "Empty Folder Needed", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
-                            }
-                            else
-                            {
-                                bolStopLoop = true;
-                                break;
-                            }
-                        }
-                        if (bolStopLoop == true)
-                        {
-                            break;
-                        }
-
-                        strFileName = Path.Combine(strPath, strFileName);
-
-                        product = DataProduct.GetProduct(strColor, strSize);
-
-                        if(product != null)
-                        {
-                            GenerateReport(product, strFileName);
-                        }
-                    }
-                    if (bolStopLoop == true)
-                    {
-                        break;
-                    }
-                }
                 Cursor.Current = Cursors.Default;
-                System.Diagnostics.Process.Start(strPath);
+                sfdFile.FileName = strFileName;
+                sfdFile.Title = "Select save location";
+                sfdFile.InitialDirectory = strPath;
+
+                if (sfdFile.ShowDialog() == DialogResult.OK)
+                {
+                    Cursor.Current = Cursors.WaitCursor;
+                    strPath = Path.GetDirectoryName(sfdFile.FileName);
+
+                    for (int intIndexColors = 0; intIndexColors < lstColors.Count; intIndexColors++)
+                    {
+                        strColor = lstColors[intIndexColors].ToString();
+
+                        for (int intIndexSize = 0; intIndexSize < lstSizes.Count; intIndexSize++)
+                        {
+
+                            strSize = lstSizes[intIndexSize].ToString();
+
+                            strFileName = Path.Combine(strPath, strFileName);
+
+                            product = DataProduct.GetProduct(strColor, strSize);
+
+                            if (product != null)
+                            {
+                                lstDataProducts.Add(product);
+                            }
+                        }
+                    }
+                    GenerateReport(lstDataProducts, strFileName);
+                    Cursor.Current = Cursors.Default;
+                    System.Diagnostics.Process.Start(strFileName);
+                }                 
             }
             catch (Exception ex)
             {
@@ -420,26 +398,32 @@ namespace SU21_Final_Project
         }
 
 
-        private void GenerateReport(DataProduct product, string strFileName)
+        private void GenerateReport(List<DataProduct> lstProducts, string strFileName)
         {
             string strReport = Receipt.LoadInventoryReportTemplate();
 
             strReport = strReport.Replace("{Date}", DateTime.Now.ToString());
-            strReport = strReport.Replace("{Product}", product.Size + " " + product.Color);
 
             StringBuilder itemHTML = new StringBuilder();
 
-            if(product.QuantityOnHand < 1)
+
+
+            for (int intIndex = 0; intIndex < lstProducts.Count; intIndex++)
             {
-                product.QuantityOnHand = 0;
+                if (lstProducts[intIndex].QuantityOnHand < 1)
+                {
+                    lstProducts[intIndex].QuantityOnHand = 0;
+                }
+
+                itemHTML.AppendFormat("<tr>");
+                itemHTML.AppendFormat("    <td>{0} {1}</td>", lstProducts[intIndex].Color, lstProducts[intIndex].Size);
+                itemHTML.AppendFormat("    <td>{0}</td>", lstProducts[intIndex].QuantityOnHand);
+                itemHTML.AppendFormat("    <td>{0:C2}</td>", lstProducts[intIndex].Cost);
+                itemHTML.AppendFormat("    <td>{0:C2}</td>", lstProducts[intIndex].Price);
+                itemHTML.AppendFormat("</tr>");
             }
 
-            itemHTML.AppendFormat("<tr>");
-            itemHTML.AppendFormat("    <td>{0} {1}</td>", product.Color, product.Size);
-            itemHTML.AppendFormat("    <td>{0}</td>", product.QuantityOnHand);
-            itemHTML.AppendFormat("    <td>{0:C2}</td>", product.Cost);
-            itemHTML.AppendFormat("    <td>{0:C2}</td>", product.Price);
-            itemHTML.AppendFormat("</tr>");
+
 
             strReport = strReport.Replace("{Items}", itemHTML.ToString());
 
@@ -456,11 +440,11 @@ namespace SU21_Final_Project
         public static bool bolWantsUpdate = false;
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if(cboColor.SelectedIndex != -1)
+            if (cboColor.SelectedIndex != -1)
             {
                 DialogResult dr = MessageBox.Show("Do you want to update the currently selected item?", "Alert", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                
-                if(dr == DialogResult.Yes)
+
+                if (dr == DialogResult.Yes)
                 {
                     strUpdatingColor = cboColor.SelectedItem.ToString();
                     bolWantsUpdate = true;
@@ -508,7 +492,7 @@ namespace SU21_Final_Project
             DataProduct product = DataProduct.GetProduct(cboColor.SelectedItem.ToString(), cboSize.SelectedItem.ToString());
             try
             {
-                if(product.Deleted == false)
+                if (product.Deleted == false)
                 {
                     DialogResult dr = MessageBox.Show("Are you sure you want to remove this product?", "WARNING!!!", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
 
@@ -593,7 +577,7 @@ namespace SU21_Final_Project
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

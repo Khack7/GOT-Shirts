@@ -44,7 +44,7 @@ namespace SU21_Final_Project
         {
             DialogResult dr;
 
-            if(txtPhone.Text == "" && txtEmail.Text == "" && frmManageUsers.strAccountType != "Customer")
+            if(txtPhone.MaskCompleted == false && txtEmail.Text == "" && cboAccountType.SelectedItem.ToString() != "Customer")
             {
                 MessageBox.Show("Employees and Managers require at least 1 mehtod of contact", "Email or Phone required", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -69,7 +69,14 @@ namespace SU21_Final_Project
 
                                 if (cboAccountType.SelectedItem.ToString() == "Manager" || cboAccountType.SelectedItem.ToString() == "Employee")
                                 {
-                                    person.PayRate = dblPay;
+                                    if(dblPay < 7.50)
+                                    {
+                                        throw new Exception("Invalid payrate. Must be at least $7.50");
+                                    }
+                                    else
+                                    {
+                                        person.PayRate = dblPay;
+                                    }
                                 }
                                 else
                                 {
@@ -149,10 +156,16 @@ namespace SU21_Final_Project
                             {
                                 throw new Exception("Invalid Payrate!");
                             }
-
                             if (cboAccountType.SelectedItem.ToString() == "Manager" || cboAccountType.SelectedItem.ToString() == "Employee")
                             {
-                                person.PayRate = dblPay;
+                                if (dblPay < 7.50)
+                                {
+                                    throw new Exception("Invalid payrate. Must be at least $7.50");
+                                }
+                                else
+                                {
+                                    person.PayRate = dblPay;
+                                }
                             }
                             else
                             {
