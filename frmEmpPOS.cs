@@ -72,5 +72,13 @@ namespace SU21_Final_Project
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void txtUsername_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnSign.PerformClick();
+            }
+        }
     }
 }

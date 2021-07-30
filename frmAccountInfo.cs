@@ -323,5 +323,11 @@ namespace SU21_Final_Project
         {
             changesMade = true;
         }
+
+        private void txtPhone_Click(object sender, EventArgs e)
+        {
+            txtPhone.SelectAll();
+            this.txtPhone.Select(0, 0);
+        }
     }
 }

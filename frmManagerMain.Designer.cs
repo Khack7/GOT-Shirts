@@ -80,7 +80,7 @@ namespace SU21_Final_Project
             this.btnReport.Name = "btnReport";
             this.btnReport.Size = new System.Drawing.Size(94, 48);
             this.btnReport.TabIndex = 2;
-            this.btnReport.Text = "&Print  Report";
+            this.btnReport.Text = "&Sales Report";
             this.btnReport.UseVisualStyleBackColor = true;
             this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
             // 
@@ -102,7 +102,7 @@ namespace SU21_Final_Project
             this.btnManageUsers.Name = "btnManageUsers";
             this.btnManageUsers.Size = new System.Drawing.Size(94, 48);
             this.btnManageUsers.TabIndex = 5;
-            this.btnManageUsers.Text = "Manage &Users";
+            this.btnManageUsers.Text = "&Manage Users";
             this.btnManageUsers.UseVisualStyleBackColor = true;
             this.btnManageUsers.Click += new System.EventHandler(this.btnManageUsers_Click);
             // 
@@ -124,7 +124,7 @@ namespace SU21_Final_Project
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(94, 48);
             this.btnSettings.TabIndex = 3;
-            this.btnSettings.Text = "Price &Settings";
+            this.btnSettings.Text = "&Price Settings";
             this.btnSettings.UseVisualStyleBackColor = true;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 

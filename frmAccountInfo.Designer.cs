@@ -298,6 +298,7 @@ namespace SU21_Final_Project
             this.txtPhone.Size = new System.Drawing.Size(155, 20);
             this.txtPhone.TabIndex = 19;
             this.txtPhone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPhone.Click += new System.EventHandler(this.txtPhone_Click);
             this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
             // 
             // frmAccountInfo

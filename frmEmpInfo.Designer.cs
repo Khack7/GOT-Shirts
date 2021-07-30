@@ -64,7 +64,7 @@ namespace SU21_Final_Project
             this.lblInfo.Location = new System.Drawing.Point(12, 9);
             this.lblInfo.Name = "lblInfo";
             this.lblInfo.Size = new System.Drawing.Size(556, 43);
-            this.lblInfo.TabIndex = 25;
+            this.lblInfo.TabIndex = 1;
             this.lblInfo.Text = "Current Employee info. The fields with \" * \" are able to be changed. If any other" +
     "s need to be changed, please contact one of the Managers";
             this.lblInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -76,7 +76,7 @@ namespace SU21_Final_Project
             this.btnEdit.Location = new System.Drawing.Point(233, 422);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(106, 46);
-            this.btnEdit.TabIndex = 24;
+            this.btnEdit.TabIndex = 0;
             this.btnEdit.Text = "&Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
@@ -88,7 +88,7 @@ namespace SU21_Final_Project
             this.btnUpdate.Location = new System.Drawing.Point(451, 422);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(106, 46);
-            this.btnUpdate.TabIndex = 46;
+            this.btnUpdate.TabIndex = 22;
             this.btnUpdate.Text = "&Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -99,7 +99,7 @@ namespace SU21_Final_Project
             this.btnCancel.Location = new System.Drawing.Point(15, 422);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(106, 46);
-            this.btnCancel.TabIndex = 47;
+            this.btnCancel.TabIndex = 23;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -110,7 +110,7 @@ namespace SU21_Final_Project
             this.txtAddress3.Name = "txtAddress3";
             this.txtAddress3.ReadOnly = true;
             this.txtAddress3.Size = new System.Drawing.Size(155, 20);
-            this.txtAddress3.TabIndex = 35;
+            this.txtAddress3.TabIndex = 11;
             this.txtAddress3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAddress3_KeyPress);
             // 
             // label6
@@ -120,7 +120,7 @@ namespace SU21_Final_Project
             this.label6.Location = new System.Drawing.Point(12, 205);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(73, 17);
-            this.label6.TabIndex = 34;
+            this.label6.TabIndex = 10;
             this.label6.Text = "Add&ress3*";
             // 
             // txtAddress2
@@ -129,7 +129,7 @@ namespace SU21_Final_Project
             this.txtAddress2.Name = "txtAddress2";
             this.txtAddress2.ReadOnly = true;
             this.txtAddress2.Size = new System.Drawing.Size(155, 20);
-            this.txtAddress2.TabIndex = 33;
+            this.txtAddress2.TabIndex = 9;
             this.txtAddress2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAddress2_KeyPress);
             // 
             // label5
@@ -139,7 +139,7 @@ namespace SU21_Final_Project
             this.label5.Location = new System.Drawing.Point(304, 130);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(73, 17);
-            this.label5.TabIndex = 32;
+            this.label5.TabIndex = 8;
             this.label5.Text = "A&ddress2*";
             // 
             // cboStates
@@ -152,7 +152,7 @@ namespace SU21_Final_Project
             this.cboStates.Location = new System.Drawing.Point(119, 275);
             this.cboStates.Name = "cboStates";
             this.cboStates.Size = new System.Drawing.Size(155, 21);
-            this.cboStates.TabIndex = 39;
+            this.cboStates.TabIndex = 15;
             this.cboStates.SelectedValueChanged += new System.EventHandler(this.cboStates_SelectedValueChanged);
             // 
             // lblPhone
@@ -162,7 +162,7 @@ namespace SU21_Final_Project
             this.lblPhone.Location = new System.Drawing.Point(12, 355);
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Size = new System.Drawing.Size(54, 17);
-            this.lblPhone.TabIndex = 42;
+            this.lblPhone.TabIndex = 18;
             this.lblPhone.Text = "&Phone*";
             // 
             // txtEmail
@@ -171,7 +171,7 @@ namespace SU21_Final_Project
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.ReadOnly = true;
             this.txtEmail.Size = new System.Drawing.Size(155, 20);
-            this.txtEmail.TabIndex = 45;
+            this.txtEmail.TabIndex = 21;
             this.txtEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEmail_KeyPress);
             // 
             // lblEmail
@@ -181,7 +181,7 @@ namespace SU21_Final_Project
             this.lblEmail.Location = new System.Drawing.Point(300, 355);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(47, 17);
-            this.lblEmail.TabIndex = 44;
+            this.lblEmail.TabIndex = 20;
             this.lblEmail.Text = "E&mail*";
             // 
             // txtZip
@@ -190,7 +190,7 @@ namespace SU21_Final_Project
             this.txtZip.Name = "txtZip";
             this.txtZip.ReadOnly = true;
             this.txtZip.Size = new System.Drawing.Size(155, 20);
-            this.txtZip.TabIndex = 41;
+            this.txtZip.TabIndex = 17;
             this.txtZip.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtZip_KeyPress);
             // 
             // txtCity
@@ -199,7 +199,7 @@ namespace SU21_Final_Project
             this.txtCity.Name = "txtCity";
             this.txtCity.ReadOnly = true;
             this.txtCity.Size = new System.Drawing.Size(155, 20);
-            this.txtCity.TabIndex = 37;
+            this.txtCity.TabIndex = 13;
             this.txtCity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCity_KeyPress);
             // 
             // txtLast
@@ -208,7 +208,7 @@ namespace SU21_Final_Project
             this.txtLast.Name = "txtLast";
             this.txtLast.ReadOnly = true;
             this.txtLast.Size = new System.Drawing.Size(155, 20);
-            this.txtLast.TabIndex = 29;
+            this.txtLast.TabIndex = 5;
             // 
             // txtAddress1
             // 
@@ -216,7 +216,7 @@ namespace SU21_Final_Project
             this.txtAddress1.Name = "txtAddress1";
             this.txtAddress1.ReadOnly = true;
             this.txtAddress1.Size = new System.Drawing.Size(155, 20);
-            this.txtAddress1.TabIndex = 31;
+            this.txtAddress1.TabIndex = 7;
             this.txtAddress1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAddress1_KeyPress);
             // 
             // txtFirst
@@ -225,7 +225,7 @@ namespace SU21_Final_Project
             this.txtFirst.Name = "txtFirst";
             this.txtFirst.ReadOnly = true;
             this.txtFirst.Size = new System.Drawing.Size(155, 20);
-            this.txtFirst.TabIndex = 27;
+            this.txtFirst.TabIndex = 3;
             // 
             // lblZip
             // 
@@ -234,7 +234,7 @@ namespace SU21_Final_Project
             this.lblZip.Location = new System.Drawing.Point(300, 280);
             this.lblZip.Name = "lblZip";
             this.lblZip.Size = new System.Drawing.Size(64, 17);
-            this.lblZip.TabIndex = 40;
+            this.lblZip.TabIndex = 16;
             this.lblZip.Text = "&Zipcode*";
             // 
             // lblState
@@ -244,7 +244,7 @@ namespace SU21_Final_Project
             this.lblState.Location = new System.Drawing.Point(12, 280);
             this.lblState.Name = "lblState";
             this.lblState.Size = new System.Drawing.Size(46, 17);
-            this.lblState.TabIndex = 38;
+            this.lblState.TabIndex = 14;
             this.lblState.Text = "&State*";
             // 
             // lblCity
@@ -254,7 +254,7 @@ namespace SU21_Final_Project
             this.lblCity.Location = new System.Drawing.Point(304, 205);
             this.lblCity.Name = "lblCity";
             this.lblCity.Size = new System.Drawing.Size(36, 17);
-            this.lblCity.TabIndex = 36;
+            this.lblCity.TabIndex = 12;
             this.lblCity.Text = "C&ity*";
             // 
             // lblAddress
@@ -264,7 +264,7 @@ namespace SU21_Final_Project
             this.lblAddress.Location = new System.Drawing.Point(12, 130);
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(65, 17);
-            this.lblAddress.TabIndex = 30;
+            this.lblAddress.TabIndex = 6;
             this.lblAddress.Text = "&Address*";
             // 
             // lblLName
@@ -274,7 +274,7 @@ namespace SU21_Final_Project
             this.lblLName.Location = new System.Drawing.Point(300, 55);
             this.lblLName.Name = "lblLName";
             this.lblLName.Size = new System.Drawing.Size(76, 17);
-            this.lblLName.TabIndex = 28;
+            this.lblLName.TabIndex = 4;
             this.lblLName.Text = "Last Name";
             // 
             // lblFName
@@ -284,7 +284,7 @@ namespace SU21_Final_Project
             this.lblFName.Location = new System.Drawing.Point(12, 55);
             this.lblFName.Name = "lblFName";
             this.lblFName.Size = new System.Drawing.Size(76, 17);
-            this.lblFName.TabIndex = 26;
+            this.lblFName.TabIndex = 2;
             this.lblFName.Text = "First Name";
             // 
             // txtPhone
@@ -294,8 +294,9 @@ namespace SU21_Final_Project
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.ReadOnly = true;
             this.txtPhone.Size = new System.Drawing.Size(155, 20);
-            this.txtPhone.TabIndex = 48;
+            this.txtPhone.TabIndex = 19;
             this.txtPhone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPhone.Click += new System.EventHandler(this.txtPhone_Click);
             this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
             // 
             // frmEmpInfo

@@ -53,6 +53,7 @@ namespace SU21_Final_Project
             this.txtCode.Size = new System.Drawing.Size(213, 21);
             this.txtCode.TabIndex = 0;
             this.txtCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCode_KeyPress);
+            this.txtCode.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtCode_KeyUp);
             // 
             // btnCancel
             // 

@@ -491,5 +491,11 @@ namespace SU21_Final_Project
 
             return result;
         }
+
+        private void txtPhone_Click(object sender, EventArgs e)
+        {
+            txtPhone.SelectAll();
+            this.txtPhone.Select(0, 0);
+        }
     }
 }

@@ -35,6 +35,32 @@ namespace SU21_Final_Project
             this.Close();
         }
 
+        private void lstActive_SelectedValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                DataCodes codes = DataCodes.GetCode(lstActive.SelectedItem.ToString());
+                lblActiveDiscount.Text = codes.PercentOff.ToString() + "%";
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void lstInactive_SelectedValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                DataCodes codes = DataCodes.GetCode(lstActive.SelectedItem.ToString());
+                lblInactiveDiscount.Text = codes.PercentOff.ToString() + "%";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void frmEmpCodes_Load(object sender, EventArgs e)
         {
             List<string> lstActiveCodes = _lstActiveCodes.Select(c => c.DiscountCode).OrderBy(c => c).ToList();

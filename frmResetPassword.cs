@@ -71,7 +71,7 @@ namespace SU21_Final_Project
                     if (string.Equals(txtAnswer1.Text, person.SecurityAnswer1, StringComparison.CurrentCultureIgnoreCase) && string.Equals(txtAnswer2.Text, person.SecurityAnswer2, StringComparison.CurrentCultureIgnoreCase) &&
                         string.Equals(txtAnswer3.Text, person.SecurityAnswer3, StringComparison.CurrentCultureIgnoreCase))
                     {
-                        btnEnter.Text = "&Confirm Change";
+                        btnEnter.Text = "&Confirm";
                         lblPass.Enabled = true;
                         lblConfirm.Enabled = true;
                         txtPassword.Enabled = true;
@@ -181,6 +181,14 @@ namespace SU21_Final_Project
                 txtPassword.PasswordChar = '•';
                 txtConfirmPass.PasswordChar = '•';
                 bolShowPass = true;
+            }
+        }
+
+        private void txtConfirmPass_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnEnter.PerformClick();
             }
         }
     }

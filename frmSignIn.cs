@@ -134,5 +134,13 @@ namespace SU21_Final_Project
                 bolShowPass = true;
             }
         }
+
+        private void txtPassword_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnSign.PerformClick();
+            }
+        }
     }
 }

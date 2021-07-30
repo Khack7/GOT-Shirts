@@ -669,6 +669,12 @@ namespace SU21_Final_Project
         {
             frmCouponInput coupon = new frmCouponInput();
             coupon.ShowDialog();
+            if(frmCouponInput.CodeUsed == true)
+            {
+                lblCode.Text = frmCouponInput.CouponCode;
+                lblCode.Visible = true;
+                lblCodePointer.Visible = true;
+            }
         }
 
         public static bool bolEmpFromShop = false;

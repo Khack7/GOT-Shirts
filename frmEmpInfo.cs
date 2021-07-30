@@ -69,6 +69,7 @@ namespace SU21_Final_Project
                             {
                                 DataPerson person = DataPerson.GetPerson(frmSignIn.strUserName);
 
+                                person.UserName = frmSignIn.strUserName;
                                 person.NameFirst = txtFirst.Text;
                                 person.NameLast = txtLast.Text;
                                 person.Address1 = txtAddress1.Text;
@@ -109,8 +110,21 @@ namespace SU21_Final_Project
                         }
                         else
                         {
-                            DataPerson person = DataPerson.GetPerson(frmSignIn.strUserName);
+                            DataPerson person;
+                            string strUserName = "";
 
+                            if (frmShop.bolEmpFromShop == true)
+                            {
+                                person = DataPerson.GetPerson(frmSignIn.strUserName);
+                                strUserName = person.UserName;
+                            }
+                            else
+                            {
+                                person = DataPerson.GetPerson(frmManageSignIn.strUserName);
+                                strUserName = person.UserName;
+                            }
+
+                            person.UserName = strUserName;
                             person.NameFirst = txtFirst.Text;
                             person.NameLast = txtLast.Text;
                             person.Address1 = txtAddress1.Text;
@@ -130,8 +144,21 @@ namespace SU21_Final_Project
                     }
                     else
                     {
-                        DataPerson person = DataPerson.GetPerson(frmSignIn.strUserName);
+                        DataPerson person;
+                        string strUserName = "";
 
+                        if (frmShop.bolEmpFromShop == true)
+                        {
+                            person = DataPerson.GetPerson(frmSignIn.strUserName);
+                            strUserName = person.UserName;
+                        }
+                        else
+                        {
+                            person = DataPerson.GetPerson(frmManageSignIn.strUserName);
+                            strUserName = person.UserName;
+                        }
+
+                        person.UserName = strUserName;
                         person.NameFirst = txtFirst.Text;
                         person.NameLast = txtLast.Text;
                         person.Address1 = txtAddress1.Text;
@@ -298,6 +325,12 @@ namespace SU21_Final_Project
         private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
         {
             bolChangesMade = true;
+        }
+
+        private void txtPhone_Click(object sender, EventArgs e)
+        {
+            txtPhone.SelectAll();
+            this.txtPhone.Select(0, 0);
         }
     }
 }

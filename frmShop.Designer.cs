@@ -61,6 +61,8 @@ namespace SU21_Final_Project
             this.pbxShirt = new System.Windows.Forms.PictureBox();
             this.cboColor = new System.Windows.Forms.ComboBox();
             this.lblOtherColors = new System.Windows.Forms.Label();
+            this.lblCodePointer = new System.Windows.Forms.Label();
+            this.lblCode = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numUDQuantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxShirt)).BeginInit();
             this.SuspendLayout();
@@ -397,11 +399,35 @@ namespace SU21_Final_Project
             this.lblOtherColors.Text = "&For more color options click the dropdown";
             this.lblOtherColors.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // lblCodePointer
+            // 
+            this.lblCodePointer.AutoSize = true;
+            this.lblCodePointer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCodePointer.Location = new System.Drawing.Point(439, 193);
+            this.lblCodePointer.Name = "lblCodePointer";
+            this.lblCodePointer.Size = new System.Drawing.Size(155, 17);
+            this.lblCodePointer.TabIndex = 30;
+            this.lblCodePointer.Text = "Discount Code Applied:";
+            this.lblCodePointer.Visible = false;
+            // 
+            // lblCode
+            // 
+            this.lblCode.AutoSize = true;
+            this.lblCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCode.Location = new System.Drawing.Point(598, 193);
+            this.lblCode.Name = "lblCode";
+            this.lblCode.Size = new System.Drawing.Size(70, 17);
+            this.lblCode.TabIndex = 31;
+            this.lblCode.Text = "codeHere";
+            this.lblCode.Visible = false;
+            // 
             // frmShop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(679, 284);
+            this.Controls.Add(this.lblCode);
+            this.Controls.Add(this.lblCodePointer);
             this.Controls.Add(this.lblOtherColors);
             this.Controls.Add(this.cboColor);
             this.Controls.Add(this.lblColor);
@@ -481,5 +507,7 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label lblColorPointer;
         private System.Windows.Forms.ComboBox cboColor;
         private System.Windows.Forms.Label lblOtherColors;
+        private System.Windows.Forms.Label lblCodePointer;
+        private System.Windows.Forms.Label lblCode;
     }
 }

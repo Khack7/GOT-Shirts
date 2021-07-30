@@ -96,7 +96,6 @@ namespace SU21_Final_Project
                     if (product == null)
                     {
                         cboSize.SelectedIndex = -1;
-                        cboColor.SelectedIndex = -1;
                         pbxShirt.Image = null;
                         throw new Exception("There is currently no product in this size");
                     }
@@ -156,7 +155,6 @@ namespace SU21_Final_Project
                     if (product == null)
                     {
                         cboSize.SelectedIndex = -1;
-                        cboColor.SelectedIndex = -1;
                         pbxShirt.Image = null;
                         throw new Exception("There is currently no product in this size");
                     }

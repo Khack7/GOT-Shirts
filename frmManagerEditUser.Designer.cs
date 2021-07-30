@@ -233,6 +233,7 @@ namespace SU21_Final_Project
             this.txtPhone.Size = new System.Drawing.Size(142, 20);
             this.txtPhone.TabIndex = 9;
             this.txtPhone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPhone.Click += new System.EventHandler(this.txtPhone_Click);
             // 
             // frmManagerEditUser
             // 

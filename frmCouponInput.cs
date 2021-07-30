@@ -74,5 +74,13 @@ namespace SU21_Final_Project
                 e.Handled = true;
             }
         }
+
+        private void txtCode_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnEnter.PerformClick();
+            }
+        }
     }
 }

@@ -91,7 +91,7 @@ namespace SU21_Final_Project
             this.MaximizeBox = false;
             this.Name = "frmEditManagerPopUp";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Input Password";
+            this.Text = "Input Username";
             this.ResumeLayout(false);
             this.PerformLayout();
 

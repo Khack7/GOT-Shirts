@@ -517,8 +517,9 @@ namespace SU21_Final_Project
             this.txtPhone.Mask = "(999) 000-0000";
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(155, 20);
-            this.txtPhone.TabIndex = 44;
+            this.txtPhone.TabIndex = 21;
             this.txtPhone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPhone.Click += new System.EventHandler(this.txtPhone_Click);
             // 
             // frmAddEmployee
             // 
@@ -576,6 +577,7 @@ namespace SU21_Final_Project
             this.Text = "Add Employee";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAddEmployee_FormClosing);
             this.Load += new System.EventHandler(this.frmAddEmployee_Load);
+            this.Click += new System.EventHandler(this.frmAddEmployee_Click);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
