@@ -69,22 +69,18 @@ namespace SU21_Final_Project
                     lstCart.Items.Add(objCurrentItem);
                 }
 
-                if (frmCouponInput.CodeUsed == true)
+                if (frmCouponInput.bolCodeUsed == true)
                 {
                     if (!double.TryParse(frmShop.strSubtotal, out double dblSub))
                     {
                         dblSub = 0;
                     }
 
-                    double dblDiscount = frmCouponInput.percentOff;
+                    double dblDiscount = frmCouponInput.dblPercentOff;
                     dblSubCost = dblSub;
-                    //dblSubCost = (dblSub - (dblSub * (dblDiscount / 100)));
                     dblDiscountAmount = (dblSub * (dblDiscount / 100));
                     lblDiscount.Text = dblDiscountAmount.ToString("C2");
-
                     lblSubtotal.Text = dblSubCost.ToString("C2");
-
-
                 }
                 else
                 {
@@ -196,13 +192,13 @@ namespace SU21_Final_Project
 
                         string strCode;
 
-                        if (frmCouponInput.CouponCode == null)
+                        if (frmCouponInput.strCouponCode == null)
                         {
                             strCode = null;
                         }
                         else
                         {
-                            strCode = frmCouponInput.CouponCode;
+                            strCode = frmCouponInput.strCouponCode;
                         }
 
                         string strCardType;
@@ -238,13 +234,13 @@ namespace SU21_Final_Project
                             {
                                 DataOrder.SaveOrder(con, order, objTrans);
 
-                                List<DataOrderItem> orderItems = new List<DataOrderItem>();
+                                List<DataOrderItem> lstOrderItems = new List<DataOrderItem>();
 
                                 for (int intIndex = 0; intIndex < lstCart.Items.Count; intIndex++)
                                 {
                                     CartItem objItem = (CartItem)lstCart.Items[intIndex];
 
-                                    orderItems.Add(new DataOrderItem
+                                    lstOrderItems.Add(new DataOrderItem
                                     {
                                         intOrderNum = order.OrderNum,
                                         intProductID = objItem.Product.ProductID,
@@ -255,9 +251,9 @@ namespace SU21_Final_Project
                                     DataProduct.ReduceProductQuantity(con, objItem.Product.ProductID, objItem.intQuantity, objTrans);
                                 }
 
-                                DataOrderItem.SaveItems(con, orderItems, objTrans);
+                                DataOrderItem.SaveItems(con, lstOrderItems, objTrans);
 
-                                GenerateReceipt(order, orderItems);
+                                GenerateReceipt(order, lstOrderItems);
 
                                 DataOrder.SaveOrder(con, order, objTrans);
 
@@ -290,17 +286,17 @@ namespace SU21_Final_Project
             strReceipt = strReceipt.Replace("{Payment}", $"{order.CardType} xxxx{order.CardNumber.Substring(order.CardNumber.Length - 4)}");
             var person = DataPerson.GetPerson(order.PersonID);
             strReceipt = strReceipt.Replace("{AddressName}", $"{person.NameFirst} {person.NameLast}");
-            List<string> streetLines = new List<string>();
-            streetLines.Add(person.Address1);
+            List<string> lstStreetLines = new List<string>();
+            lstStreetLines.Add(person.Address1);
             if (!string.IsNullOrEmpty(person.Address2))
             {
-                streetLines.Add(person.Address2);
+                lstStreetLines.Add(person.Address2);
             }
             if (!string.IsNullOrEmpty(person.Address3))
             {
-                streetLines.Add(person.Address3);
+                lstStreetLines.Add(person.Address3);
             }
-            strReceipt = strReceipt.Replace("{AddressStreet}", string.Join("<br/>", streetLines));
+            strReceipt = strReceipt.Replace("{AddressStreet}", string.Join("<br/>", lstStreetLines));
             strReceipt = strReceipt.Replace("{AddressCity}", person.City);
             strReceipt = strReceipt.Replace("{AddressState}", person.State);
             strReceipt = strReceipt.Replace("{AddressZip}", person.Zipcode);
@@ -355,6 +351,7 @@ namespace SU21_Final_Project
                         }
                         else
                         {
+                            Cursor.Current = Cursors.Default;
                             MessageBox.Show("Please select a folder to save your receipt", "Please choose a folder", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             bolPathSelected = false;
                         }
@@ -371,16 +368,16 @@ namespace SU21_Final_Project
                     System.Diagnostics.Process.Start(strPath);
                     bolCloseShop = true;
                     bolCloseCheck = true;
-                    frmCouponInput.CouponCode = string.Empty;
-                    frmCouponInput.CodeUsed = false;
+                    frmCouponInput.strCouponCode = string.Empty;
+                    frmCouponInput.bolCodeUsed = false;
                     this.Close();
                 }
                 else
                 {
                     bolCloseShop = true;
                     bolCloseCheck = true;
-                    frmCouponInput.CouponCode = string.Empty;
-                    frmCouponInput.CodeUsed = false;
+                    frmCouponInput.strCouponCode = string.Empty;
+                    frmCouponInput.bolCodeUsed = false;
                     this.Close();
                 }
             }

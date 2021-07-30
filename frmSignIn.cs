@@ -69,9 +69,10 @@ namespace SU21_Final_Project
                             intID = person.PersonID;
                             strUserName = txtUsername.Text;
 
-                            frmShop shop = new frmShop();
+                            frmShop frmShopping = new frmShop();
                             this.Hide();
-                            shop.ShowDialog();
+                            frmShopping.ShowDialog();
+                            Cursor.Current = Cursors.Default;
                             this.Close();
                         }
                         else
@@ -96,22 +97,22 @@ namespace SU21_Final_Project
             catch (Exception ex)
             {
                 Cursor.Current = Cursors.Default;
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btnForgot_Click(object sender, EventArgs e)
         {
-            frmResetPassword reset = new frmResetPassword();
-            reset.ShowDialog();
+            frmResetPassword frmReset = new frmResetPassword();
+            frmReset.ShowDialog();
         }
 
         private void btnHelp_Click(object sender, EventArgs e)
         {
-            string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            string strPath = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
             try
             {
-                System.Diagnostics.Process.Start($"{path}\\HelpFiles\\Sign_In_Help.html");
+                System.Diagnostics.Process.Start($"{strPath}\\HelpFiles\\Sign_In_Help.html");
             }
             catch (Exception ex)
             {

@@ -25,9 +25,9 @@ namespace SU21_Final_Project
             this.Close();
         }
 
-        public static string CouponCode;
-        public static double percentOff;
-        public static bool CodeUsed = false;
+        public static string strCouponCode;
+        public static double dblPercentOff;
+        public static bool bolCodeUsed = false;
 
         private void btnEnter_Click(object sender, EventArgs e)
         {
@@ -41,9 +41,9 @@ namespace SU21_Final_Project
                     {
                         MessageBox.Show("Code accepted! Your discount will be applied at checkout", "Accepted!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        CodeUsed = true;
-                        CouponCode = code.DiscountCode;
-                        percentOff = code.PercentOff;
+                        bolCodeUsed = true;
+                        strCouponCode = code.DiscountCode;
+                        dblPercentOff = code.PercentOff;
                         this.Close();
                     }
                     else

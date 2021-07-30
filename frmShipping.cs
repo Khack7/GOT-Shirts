@@ -73,14 +73,8 @@ namespace SU21_Final_Project
                                 }
                                 else
                                 {
-                                    MessageBox.Show("There was a problem loading customer info. Please fill out all fields manually", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    txtFirst.ReadOnly = false;
-                                    txtLast.ReadOnly = false;
-                                    txtAddress1.ReadOnly = false;
-                                    txtAddress2.ReadOnly = false;
-                                    txtAddress3.ReadOnly = false;
-                                    txtCity.ReadOnly = false;
-                                    txtState.ReadOnly = false;
+                                    MessageBox.Show("There was a problem loading customer info. Please try again", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    this.Close();
                                 }
                             }
                             con.Close();
@@ -96,10 +90,10 @@ namespace SU21_Final_Project
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            frmCheckout checkout = new frmCheckout();
+            frmCheckout frmCheck = new frmCheckout();
             this.Hide();
             this.Close();
-            checkout.ShowDialog();
+            frmCheck.ShowDialog();
         }
 
         private void btnReturn_Click(object sender, EventArgs e)

@@ -54,13 +54,13 @@ namespace SU21_Final_Project
                     {
                         if (txtEmail.Text != "")
                         {
-                            string email = txtEmail.Text;
+                            string strEmail = txtEmail.Text;
 
                             Regex regex = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$",
 
                             RegexOptions.CultureInvariant | RegexOptions.Singleline);
 
-                            bool isValidEmail = regex.IsMatch(email);
+                            bool isValidEmail = regex.IsMatch(strEmail);
                             if (!isValidEmail)
                             {
                                 throw new Exception("Invalid email inserted. Please enter a vailid email or make sure no text is in the email field");
@@ -97,13 +97,13 @@ namespace SU21_Final_Project
                 {
                     if (txtEmail.Text != "")
                     {
-                        string email = txtEmail.Text;
+                        string strEmail = txtEmail.Text;
 
                         Regex regex = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$",
 
                         RegexOptions.CultureInvariant | RegexOptions.Singleline);
 
-                        bool isValidEmail = regex.IsMatch(email);
+                        bool isValidEmail = regex.IsMatch(strEmail);
                         if (!isValidEmail)
                         {
                             throw new Exception("Invalid email inserted. Please enter a vailid email or make sure no text is in the email field");
@@ -261,7 +261,6 @@ namespace SU21_Final_Project
                 txtEmail.Text = person.Email;
                 cboStates.SelectedItem = person.State;
                 bolChangesMade = false;
-                frmShop.bolEmpFromShop = false;
             }
             catch (Exception ex)
             {

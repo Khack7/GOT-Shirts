@@ -87,10 +87,10 @@ namespace SU21_Final_Project
 
         private void btnHelp_Click(object sender, EventArgs e)
         {
-            string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            string strPath = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
             try
             {
-                System.Diagnostics.Process.Start($"{path}\\HelpFiles\\Manager_Reports_Help.html");
+                System.Diagnostics.Process.Start($"{strPath}\\HelpFiles\\Manager_Reports_Help.html");
             }
             catch (Exception ex)
             {
@@ -107,7 +107,6 @@ namespace SU21_Final_Project
         };
 
         currentView view = currentView.ViewAll;
-
 
         public bool IsDirectoryEmpty(string path)
         {

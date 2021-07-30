@@ -26,13 +26,13 @@ namespace SU21_Final_Project
 {
     public partial class frmShop : Form
     {
-        private List<DataProduct> _products;
+        private List<DataProduct> _lstProducts;
         public frmShop()
         {
             InitializeComponent();
             try
             {
-                _products = DataProduct.ListProducts();
+                _lstProducts = DataProduct.ListProducts();
             }
             catch (Exception ex)
             {
@@ -117,9 +117,9 @@ namespace SU21_Final_Project
                         {
                             existingItem.intQuantity += intNumOfShirts;
 
-                            for (int intI = 0; intI < lstCart.Items.Count; intI++)
+                            for (int intIndex = 0; intIndex < lstCart.Items.Count; intIndex++)
                             {
-                                lstCart.Items[intI] = lstCart.Items[intI];
+                                lstCart.Items[intIndex] = lstCart.Items[intIndex];
                             }
 
                             dblCurrentTotal += (product.Price * intNumOfShirts);
@@ -154,9 +154,9 @@ namespace SU21_Final_Project
         {
             CartItem result = null;
 
-            for (int intI = 0; intI < lstCart.Items.Count; intI++)
+            for (int intIndex = 0; intIndex < lstCart.Items.Count; intIndex++)
             {
-                CartItem item = (CartItem)lstCart.Items[intI];
+                CartItem item = (CartItem)lstCart.Items[intIndex];
                 if (item.Product.ProductID == product.ProductID)
                 {
                     result = item;
@@ -179,8 +179,8 @@ namespace SU21_Final_Project
                 bolCloseShop = true;
                 this.Close();
                 frmSignIn.intID = 0;
-                frmCouponInput.CouponCode = string.Empty;
-                frmCouponInput.CodeUsed = false;
+                frmCouponInput.strCouponCode = string.Empty;
+                frmCouponInput.bolCodeUsed = false;
             }
         }
 
@@ -197,9 +197,9 @@ namespace SU21_Final_Project
                     lstCart.Items.RemoveAt(lstCart.SelectedIndex);
 
                     dblCurrentTotal = 0;
-                    for (int i = 0; i < lstCart.Items.Count; i++)
+                    for (int intIndex = 0; intIndex < lstCart.Items.Count; intIndex++)
                     {
-                        CartItem objItem = (CartItem)lstCart.Items[i];
+                        CartItem objItem = (CartItem)lstCart.Items[intIndex];
                         dblCurrentTotal += objItem.Product.Price * objItem.intQuantity;
                     }
 
@@ -624,7 +624,6 @@ namespace SU21_Final_Project
                 if (strSize != null)
                 {
                     getItemPrice(strCurrentColor, strSize);
-
                 }
                 else
                 {
@@ -650,9 +649,9 @@ namespace SU21_Final_Project
             {
                 lstCartItems.Add((CartItem)lstCart.Items[intIndex]);
             }
-            frmShipping ship = new frmShipping();
+            frmShipping frmShip = new frmShipping();
             this.Hide();
-            ship.ShowDialog();
+            frmShip.ShowDialog();
 
             if (frmCheckout.bolCloseShop == false)
             {
@@ -667,11 +666,11 @@ namespace SU21_Final_Project
 
         private void btnCode_Click(object sender, EventArgs e)
         {
-            frmCouponInput coupon = new frmCouponInput();
-            coupon.ShowDialog();
-            if(frmCouponInput.CodeUsed == true)
+            frmCouponInput frmCoupon = new frmCouponInput();
+            frmCoupon.ShowDialog();
+            if(frmCouponInput.bolCodeUsed == true)
             {
-                lblCode.Text = frmCouponInput.CouponCode;
+                lblCode.Text = frmCouponInput.strCouponCode;
                 lblCode.Visible = true;
                 lblCodePointer.Visible = true;
             }
@@ -693,9 +692,9 @@ namespace SU21_Final_Project
                 }
                 else
                 {
-                    frmAccountInfo accountInfo = new frmAccountInfo();
+                    frmAccountInfo frmAccount = new frmAccountInfo();
                     this.Hide();
-                    accountInfo.ShowDialog();
+                    frmAccount.ShowDialog();
                     this.Show();
                 }
             }
@@ -731,7 +730,6 @@ namespace SU21_Final_Project
                 }
                 else
                 {
-                    //MessageBox.Show("We currently don't have this size available", "Unavailable", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     btnAdd.Enabled = false;
                     lblItemPrice.Text = "$0.00";
                 }
@@ -746,7 +744,6 @@ namespace SU21_Final_Project
         {
             if (strCurrentColor != null && rdoSmall.Checked == true)
             {
-                //CheckAvailability("Small");
                 getItemPrice(strCurrentColor, "Small");
             }
         }
@@ -755,7 +752,6 @@ namespace SU21_Final_Project
         {
             if (strCurrentColor != null && rdoMedium.Checked == true)
             {
-                //CheckAvailability("Medium");
                 getItemPrice(strCurrentColor, "Medium");
             }
         }
@@ -764,7 +760,6 @@ namespace SU21_Final_Project
         {
             if (strCurrentColor != null && rdoLarge.Checked == true)
             {
-                //CheckAvailability("Large");
                 getItemPrice(strCurrentColor, "Large");
             }
         }
@@ -864,7 +859,7 @@ namespace SU21_Final_Project
                 lstShowColors.Add(btnWhite.BackColor.Name);
                 lstShowColors.Add(btnYellow.BackColor.Name);
 
-                List<string> lstColors = _products.Select(p => p.Color).Distinct().OrderBy(c => c).ToList();
+                List<string> lstColors = _lstProducts.Select(p => p.Color).Distinct().OrderBy(c => c).ToList();
 
                 for (int intIndex = 0; intIndex < lstColors.Count; intIndex++)
                 {
@@ -925,6 +920,7 @@ namespace SU21_Final_Project
                 }
                 catch (Exception ex)
                 {
+                    Cursor.Current = Cursors.Default;
                     MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

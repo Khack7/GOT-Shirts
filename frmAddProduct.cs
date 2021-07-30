@@ -43,7 +43,7 @@ namespace SU21_Final_Project
             {
                 if(frmInventory.bolWantsUpdate == true)
                 {
-                    string color = txtColor.Text;
+                    string strColor = txtColor.Text;
                     Image image = resizeImage(pbxShirt.Image, pbxShirt.Width, pbxShirt.Height);
 
                     if (txtColor.Text == "")
@@ -67,7 +67,7 @@ namespace SU21_Final_Project
 
                             for (int intIndex = 0; intIndex < lstSizes.Count; intIndex++)
                             {
-                                DataProduct checkProduct = DataProduct.GetProduct(color, lstSizes[intIndex]);
+                                DataProduct checkProduct = DataProduct.GetProduct(strColor, lstSizes[intIndex]);
                                 if (checkProduct != null)
                                 {
                                     bolProductFound = true;
@@ -78,7 +78,7 @@ namespace SU21_Final_Project
                             if (bolProductFound == true)
                             {
                                 Cursor.Current = Cursors.Default;
-                                DataProduct.SaveImage(image, color);
+                                DataProduct.SaveImage(image, strColor);
                                 MessageBox.Show("Image Updated", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             else

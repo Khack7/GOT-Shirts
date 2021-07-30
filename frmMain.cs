@@ -36,17 +36,17 @@ namespace SU21_Final_Project
 
         private void BtnShop_Click(object sender, EventArgs e)
         {
-            frmSignIn signIn = new frmSignIn();
+            frmSignIn frmCustomerSignIn = new frmSignIn();
             this.Hide();
-            signIn.ShowDialog();
+            frmCustomerSignIn.ShowDialog();
             this.Show();
         }
 
         private void mnuManage_Click(object sender, EventArgs e)
         {
-            frmManageSignIn manager = new frmManageSignIn();
+            frmManageSignIn frmManEmpSignIn = new frmManageSignIn();
             this.Hide();
-            manager.ShowDialog();
+            frmManEmpSignIn.ShowDialog();
             this.Show();
         }
     }

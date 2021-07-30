@@ -13,13 +13,13 @@ namespace SU21_Final_Project
 {
     public partial class frmDiscountCodes : Form
     {
-        private List<DataCodes> _codes;
+        private List<DataCodes> _lstCodes;
         public frmDiscountCodes()
         {
             InitializeComponent();
             try
             {
-                _codes = DataCodes.ListCodes();
+                _lstCodes = DataCodes.ListCodes();
             }
             catch(Exception ex)
             {
@@ -30,7 +30,7 @@ namespace SU21_Final_Project
 
         private void frmDiscountCodes_Load(object sender, EventArgs e)
         {
-            List<string> lstCodes = _codes.Select(c => c.DiscountCode).OrderBy(c => c).ToList();
+            List<string> lstCodes = _lstCodes.Select(c => c.DiscountCode).OrderBy(c => c).ToList();
 
             for (int intIndex = 0; intIndex < lstCodes.Count; intIndex++)
             {
@@ -66,9 +66,9 @@ namespace SU21_Final_Project
                 else
                 {
                     int intPercent = 0;
-                    if (int.TryParse(txtPercent.Text, out int P))
+                    if (int.TryParse(txtPercent.Text, out int intParsedPercent))
                     {
-                        intPercent = P;
+                        intPercent = intParsedPercent;
                     }
                     else
                     {
@@ -100,14 +100,14 @@ namespace SU21_Final_Project
                         lblPercentOff.Text = "";
                         lblStatus.Text = "";
                         //REFRESH CBOCODES TO SHOW NEW CODES AFTER CREATION
-                        _codes = DataCodes.ListCodes();
-                        List<string> codes = _codes.Select(c => c.DiscountCode).OrderBy(c => c).ToList();
+                        _lstCodes = DataCodes.ListCodes();
+                        List<string> lstCodes = _lstCodes.Select(c => c.DiscountCode).OrderBy(c => c).ToList();
 
                         cboCodes.Items.Clear();
 
-                        for (int intIndex = 0; intIndex < codes.Count; intIndex++)
+                        for (int intIndex = 0; intIndex < lstCodes.Count; intIndex++)
                         {
-                            cboCodes.Items.Add(codes[intIndex]);
+                            cboCodes.Items.Add(lstCodes[intIndex]);
                         }
                     }
                 }
@@ -139,7 +139,7 @@ namespace SU21_Final_Project
             string strSelectedCode = (string)cboCodes.SelectedItem;
             string strStatus = "";
 
-            var code = _codes.Where(c => c.DiscountCode == strSelectedCode).SingleOrDefault();
+            var code = _lstCodes.Where(c => c.DiscountCode == strSelectedCode).SingleOrDefault();
 
             lblPercentDisplay.Text = code.PercentOff.ToString();
 
@@ -184,8 +184,8 @@ namespace SU21_Final_Project
                 {
                     bolStatus = true;
                     DataCodes.CodeActivity(cboCodes.SelectedItem.ToString(), bolStatus);
-                    _codes = DataCodes.ListCodes();
-                    List<string> lstCodes = _codes.Select(c => c.DiscountCode).OrderBy(c => c).ToList();
+                    _lstCodes = DataCodes.ListCodes();
+                    List<string> lstCodes = _lstCodes.Select(c => c.DiscountCode).OrderBy(c => c).ToList();
 
                     cboCodes.Items.Clear();
                     lblStatus.Text = "";
@@ -215,8 +215,8 @@ namespace SU21_Final_Project
                 {
                     bolStatus = false;
                     DataCodes.CodeActivity(cboCodes.SelectedItem.ToString(), bolStatus);
-                    _codes = DataCodes.ListCodes();
-                    List<string> codes = _codes.Select(c => c.DiscountCode).OrderBy(c => c).ToList();
+                    _lstCodes = DataCodes.ListCodes();
+                    List<string> codes = _lstCodes.Select(c => c.DiscountCode).OrderBy(c => c).ToList();
 
                     cboCodes.Items.Clear();
                     lblStatus.Text = "";
@@ -232,10 +232,10 @@ namespace SU21_Final_Project
 
         private void btnHelp_Click(object sender, EventArgs e)
         {
-            string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            string strPath = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
             try
             {
-                System.Diagnostics.Process.Start($"{path}\\HelpFiles\\Manager_Codes_Help.html");
+                System.Diagnostics.Process.Start($"{strPath}\\HelpFiles\\Manager_Codes_Help.html");
             }
             catch (Exception ex)
             {

@@ -103,6 +103,7 @@ namespace SU21_Final_Project
                 }
                 catch (Exception ex)
                 {
+                    Cursor.Current = Cursors.Default;
                     MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

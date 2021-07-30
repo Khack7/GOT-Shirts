@@ -41,9 +41,9 @@ namespace SU21_Final_Project
                         frmSignIn.intID = person.PersonID;
                         frmSignIn.strUserName = txtUsername.Text;
 
-                        frmShop shop = new frmShop();
+                        frmShop frmShopping = new frmShop();
                         this.Hide();
-                        shop.ShowDialog();
+                        frmShopping.ShowDialog();
                         this.Close();
                     }
                 }

@@ -54,13 +54,13 @@ namespace SU21_Final_Project
                 List<string> lstColors = _lstProducts.Select(p => p.Color).Distinct().OrderBy(c => c).ToList();
                 List<string> lstSizes = _lstProducts.Select(p => p.Size).Distinct().OrderBy(s => s).ToList();
 
-                for (int intI = 0; intI < lstColors.Count; intI++)
+                for (int intIndex = 0; intIndex < lstColors.Count; intIndex++)
                 {
-                    cboColor.Items.Add(lstColors[intI]);
+                    cboColor.Items.Add(lstColors[intIndex]);
                 }
-                for (int intI = 0; intI < lstSizes.Count; intI++)
+                for (int intIndex = 0; intIndex < lstSizes.Count; intIndex++)
                 {
-                    cboSize.Items.Add(lstSizes[intI]);
+                    cboSize.Items.Add(lstSizes[intIndex]);
                 }
                 Cursor.Current = Cursors.Default;
             }
@@ -128,6 +128,7 @@ namespace SU21_Final_Project
                 }
                 catch (Exception ex)
                 {
+                    Cursor.Current = Cursors.Default;
                     MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -188,6 +189,7 @@ namespace SU21_Final_Project
                 }
                 catch (Exception ex)
                 {
+                    Cursor.Current = Cursors.Default;
                     MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -406,8 +408,6 @@ namespace SU21_Final_Project
 
             StringBuilder itemHTML = new StringBuilder();
 
-
-
             for (int intIndex = 0; intIndex < lstProducts.Count; intIndex++)
             {
                 if (lstProducts[intIndex].QuantityOnHand < 1)
@@ -455,6 +455,7 @@ namespace SU21_Final_Project
             frmNewProduct.ShowDialog();
             try
             {
+                Cursor.Current = Cursors.WaitCursor;
                 _lstProducts = DataProduct.ListProducts();
                 List<string> lstColors = _lstProducts.Select(p => p.Color).Distinct().OrderBy(c => c).ToList();
                 List<string> lstSizes = _lstProducts.Select(p => p.Size).Distinct().OrderBy(s => s).ToList();
@@ -480,9 +481,11 @@ namespace SU21_Final_Project
                 txtCost.ReadOnly = true;
                 txtPrice.ReadOnly = true;
                 this.Show();
+                Cursor.Current = Cursors.Default;
             }
             catch (Exception ex)
             {
+                Cursor.Current = Cursors.Default;
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -585,10 +588,10 @@ namespace SU21_Final_Project
 
         private void btnHelp_Click(object sender, EventArgs e)
         {
-            string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            string strPath = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
             try
             {
-                System.Diagnostics.Process.Start($"{path}\\HelpFiles\\Manager_Inventory_Help.html");
+                System.Diagnostics.Process.Start($"{strPath}\\HelpFiles\\Manager_Inventory_Help.html");
             }
             catch (Exception ex)
             {

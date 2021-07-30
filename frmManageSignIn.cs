@@ -20,9 +20,9 @@ namespace SU21_Final_Project
 
         private void btnForgot_Click(object sender, EventArgs e)
         {
-            frmResetPassword reset = new frmResetPassword();
+            frmResetPassword frmReset = new frmResetPassword();
             this.Hide();
-            reset.ShowDialog();
+            frmReset.ShowDialog();
             this.Show();
         }
 
@@ -52,17 +52,17 @@ namespace SU21_Final_Project
 
                             if (strEmployeeType == "Employee")
                             {
-                                frmEmpMain empMain = new frmEmpMain();
+                                frmEmpMain frmEmp = new frmEmpMain();
                                 this.Hide();
                                 this.Close();
-                                empMain.ShowDialog();
+                                frmEmp.ShowDialog();
                             }
                             else if (strEmployeeType == "Manager")
                             {
-                                frmManagerMain manager = new frmManagerMain();
+                                frmManagerMain frmManager = new frmManagerMain();
                                 this.Hide();
                                 this.Close();
-                                manager.ShowDialog();
+                                frmManager.ShowDialog();
                             }
                             else
                             {
@@ -100,10 +100,10 @@ namespace SU21_Final_Project
 
         private void btnHelp_Click(object sender, EventArgs e)
         {
-            string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            string strPath = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
             try
             {
-                System.Diagnostics.Process.Start($"{path}\\HelpFiles\\Manager_Employee_SignIn_Help.html");
+                System.Diagnostics.Process.Start($"{strPath}\\HelpFiles\\Manager_Employee_SignIn_Help.html");
             }
             catch (Exception ex)
             {

@@ -86,7 +86,7 @@ namespace SU21_Final_Project
             txtPhone.Text = person.PhonePrimary;
             txtEmail.Text = person.Email;
             cboStates.SelectedItem = person.State;
-            changesMade = false;
+            bolChangesMade = false;
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -126,13 +126,13 @@ namespace SU21_Final_Project
                     {
                         if (txtEmail.Text != "")
                         {
-                            string email = txtEmail.Text;
+                            string strEmail = txtEmail.Text;
 
                             Regex regex = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$",
 
                             RegexOptions.CultureInvariant | RegexOptions.Singleline);
 
-                            bool isValidEmail = regex.IsMatch(email);
+                            bool isValidEmail = regex.IsMatch(strEmail);
                             if (!isValidEmail)
                             {
                                 throw new Exception("Invalid email inserted. Please enter a vailid email or make sure no text is in the email field");
@@ -184,13 +184,13 @@ namespace SU21_Final_Project
                 {
                     if (txtEmail.Text != "")
                     {
-                        string email = txtEmail.Text;
+                        string strEmail = txtEmail.Text;
 
                         Regex regex = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$",
 
                         RegexOptions.CultureInvariant | RegexOptions.Singleline);
 
-                        bool isValidEmail = regex.IsMatch(email);
+                        bool isValidEmail = regex.IsMatch(strEmail);
                         if (!isValidEmail)
                         {
                             throw new Exception("Invalid email inserted. Please enter a vailid email or make sure no text is in the email field");
@@ -244,44 +244,44 @@ namespace SU21_Final_Project
             }
         }
 
-        bool changesMade = false;
+        bool bolChangesMade = false;
 
         private void txtFirst_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
-            changesMade = true;
+            bolChangesMade = true;
         }
 
         private void txtLast_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
-            changesMade = true;
+            bolChangesMade = true;
         }
 
         private void txtAddress1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            changesMade = true;
+            bolChangesMade = true;
         }
 
         private void txtAddress2_KeyPress(object sender, KeyPressEventArgs e)
         {
-            changesMade = true;
+            bolChangesMade = true;
         }
 
         private void txtAddress3_KeyPress(object sender, KeyPressEventArgs e)
         {
-            changesMade = true;
+            bolChangesMade = true;
         }
 
         private void txtCity_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Space);
-            changesMade = true;
+            bolChangesMade = true;
         }
 
         private void txtZip_KeyPress(object sender, KeyPressEventArgs e)
         {
-            changesMade = true;
+            bolChangesMade = true;
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
@@ -291,7 +291,7 @@ namespace SU21_Final_Project
 
         private void txtEmail_KeyPress(object sender, KeyPressEventArgs e)
         {
-            changesMade = true;
+            bolChangesMade = true;
             if (e.KeyChar == (char)Keys.Space || e.KeyChar == '-')
             {
                 e.Handled = true;
@@ -300,7 +300,7 @@ namespace SU21_Final_Project
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            if (changesMade == true)
+            if (bolChangesMade == true)
             {
                 DialogResult dr = MessageBox.Show("You have unsaved changes. Are you sure you want to cancel?", "Unsaved Changes!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                 if (dr == DialogResult.Yes)
@@ -316,12 +316,12 @@ namespace SU21_Final_Project
 
         private void cboStates_SelectedValueChanged(object sender, EventArgs e)
         {
-            changesMade = true;
+            bolChangesMade = true;
         }
 
         private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
         {
-            changesMade = true;
+            bolChangesMade = true;
         }
 
         private void txtPhone_Click(object sender, EventArgs e)

@@ -19,7 +19,7 @@ namespace SU21_Final_Project
 
         private void frmInvoiceView_Load(object sender, EventArgs e)
         {
-            webBrowser1.DocumentText = frmReports.strHTML;
+            InvoiceBrowser.DocumentText = frmReports.strHTML;
         }
 
         private void btnClose_Click(object sender, EventArgs e)

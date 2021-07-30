@@ -24,44 +24,44 @@ namespace SU21_Final_Project
 
         private void btnInfo_Click(object sender, EventArgs e)
         {
-            frmEmpInfo empInfo = new frmEmpInfo();
+            frmEmpInfo frmInfo = new frmEmpInfo();
             this.Hide();
-            empInfo.ShowDialog();
+            frmInfo.ShowDialog();
             this.Show();
         }
 
         private void btnCodes_Click(object sender, EventArgs e)
         {
-            frmEmpCodes empCodes = new frmEmpCodes();
+            frmEmpCodes frmCodes = new frmEmpCodes();
             this.Hide();
-            empCodes.ShowDialog();
+            frmCodes.ShowDialog();
             this.Show();
         }
 
         private void btnInventory_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
-            frmEmpInventory empInventory = new frmEmpInventory();
+            frmEmpInventory frmInventoryEmp = new frmEmpInventory();
             this.Hide();
-            empInventory.ShowDialog();
+            frmInventoryEmp.ShowDialog();
             this.Show();
 
         }
 
         private void btnPurchase_Click(object sender, EventArgs e)
         {
-            frmEmpPOS pos = new frmEmpPOS();
+            frmEmpPOS frmPOS = new frmEmpPOS();
             this.Hide();
-            pos.ShowDialog();
+            frmPOS.ShowDialog();
             this.Show();
         }
 
         private void btnHelp_Click(object sender, EventArgs e)
         {
-            string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            string strPath = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
             try
             {
-                System.Diagnostics.Process.Start($"{path}\\HelpFiles\\Employee_Main_Help.html");
+                System.Diagnostics.Process.Start($"{strPath}\\HelpFiles\\Employee_Main_Help.html");
             }
             catch (Exception ex)
             {

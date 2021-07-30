@@ -330,10 +330,10 @@ namespace SU21_Final_Project
 
         private void btnHelp_Click(object sender, EventArgs e)
         {
-            string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            string strPath = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
             try
             {
-                System.Diagnostics.Process.Start($"{path}\\HelpFiles\\Manager_Edit_User_Help.html");
+                System.Diagnostics.Process.Start($"{strPath}\\HelpFiles\\Manager_Edit_User_Help.html");
             }
             catch (Exception ex)
             {
@@ -341,30 +341,30 @@ namespace SU21_Final_Project
             }
         }
 
-        public bool CheckEmail(string email)
+        public bool CheckEmail(string strEmail)
         {
-            bool result;
+            bool bolResult;
             Regex regex = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$",
 
             RegexOptions.CultureInvariant | RegexOptions.Singleline);
 
-            bool isValidEmail = regex.IsMatch(email);
-            if(email == "")
+            bool isValidEmail = regex.IsMatch(strEmail);
+            if(strEmail == "")
             {
-                result = true;
+                bolResult = true;
             }
             else
             {
                 if (!isValidEmail)
                 {
-                    result = false;
+                    bolResult = false;
                 }
                 else
                 {
-                    result = true;
+                    bolResult = true;
                 }
             }
-            return result;
+            return bolResult;
         }
 
         private void txtPhone_Click(object sender, EventArgs e)

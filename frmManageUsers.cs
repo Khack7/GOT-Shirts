@@ -51,7 +51,7 @@ namespace SU21_Final_Project
                     frmEditManagerPopUp frmPopUp = new frmEditManagerPopUp();
                     frmPopUp.ShowDialog();
 
-                    if (frmEditManagerPopUp.strSelectedUserName == person.UserName)
+                    if (string.Equals(frmEditManagerPopUp.strSelectedUserName, person.UserName, StringComparison.CurrentCultureIgnoreCase))
                     {
                         frmManagerEditUser frmEditUser = new frmManagerEditUser();
                         this.Hide();
@@ -145,10 +145,10 @@ namespace SU21_Final_Project
 
         private void btnHelp_Click(object sender, EventArgs e)
         {
-            string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            string strPath = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
             try
             {
-                System.Diagnostics.Process.Start($"{path}\\HelpFiles\\Manager_Manage_Users_Help.html");
+                System.Diagnostics.Process.Start($"{strPath}\\HelpFiles\\Manager_Manage_Users_Help.html");
             }
             catch (Exception ex)
             {
