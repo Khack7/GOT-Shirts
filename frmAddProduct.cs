@@ -41,77 +41,133 @@ namespace SU21_Final_Project
         {
             try
             {
-                if (txtColor.Text == "" || txtAmount.Text == "" || txtCost.Text == "" ||
-                   txtPrice.Text == "" || pbxShirt.Image == null)
+                if(frmInventory.bolWantsUpdate == true)
                 {
-                    MessageBox.Show("Please fill out all fields", "Missing Data!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    Cursor.Current = Cursors.WaitCursor;
+                    string color = txtColor.Text;
+                    Image image = resizeImage(pbxShirt.Image, pbxShirt.Width, pbxShirt.Height);
 
-                    DataProduct product = new DataProduct();
-
-                    string strColor = "";
-
-
-                    strColor = txtColor.Text;
-
-                    strColor.ToLower();
-
-                    strColor = char.ToUpper(strColor[0]) + strColor.Substring(1);
-
-                    product.Color = strColor;
-
-                    if (!double.TryParse(txtPrice.Text, out double dblPrice))
+                    if (txtColor.Text == "")
                     {
-                        throw new Exception("Invalid price inputted");
-                    }
-                    if (!double.TryParse(txtCost.Text, out double dblCost))
-                    {
-                        throw new Exception("Invalid cost inputted");
-                    }
-                    if (!int.TryParse(txtAmount.Text, out int intQuantity))
-                    {
-                        throw new Exception("Invalid quantity inputted");
-                    }
-
-                    product.QuantityOnHand = intQuantity;
-                    product.Size = cboSize.SelectedItem.ToString();
-                    product.Price = Math.Round(dblPrice, 2);
-                    product.Cost = Math.Round(dblCost, 2);
-                    product.ProductImage = resizeImage(pbxShirt.Image, pbxShirt.Width, pbxShirt.Height);
-                    product.Deleted = false;
-
-                    DataProduct checkProduct = DataProduct.GetProduct(strColor, cboSize.SelectedItem.ToString());
-
-                    if (checkProduct != null)
-                    {
-                        Cursor.Current = Cursors.Default;
-                        MessageBox.Show("This product already exists!", "Duplicate Item", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Please type the color you'd like to update and esure it is spelled correctly", "No color!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        DataProduct.AddProduct(product);
-                        Cursor.Current = Cursors.Default;
-                        MessageBox.Show("Product Added!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DialogResult dr = MessageBox.Show("Are you sure you want to update these shirt's images?", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                        if (dr == DialogResult.Yes)
+                        {
+                            Cursor.Current = Cursors.WaitCursor;
+
+                            List<string> lstSizes = new List<string>();
+                            lstSizes.Add("Small");
+                            lstSizes.Add("Medium");
+                            lstSizes.Add("Large");
+
+                            bool bolProductFound = false;
+
+                            for (int intIndex = 0; intIndex < lstSizes.Count; intIndex++)
+                            {
+                                DataProduct checkProduct = DataProduct.GetProduct(color, lstSizes[intIndex]);
+                                if (checkProduct != null)
+                                {
+                                    bolProductFound = true;
+                                    break;
+                                }
+                            }
+
+                            if (bolProductFound == true)
+                            {
+                                Cursor.Current = Cursors.Default;
+                                DataProduct.SaveImage(image, color);
+                                MessageBox.Show("Image Updated", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                Cursor.Current = Cursors.Default;
+                                MessageBox.Show("This product doesn't currently exist", "No product(s) found!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
                     }
-
-                    btnUpload.Enabled = false;
-                    txtAmount.Clear();
-                    txtColor.Clear();
-                    txtPrice.Clear();
-                    txtCost.Clear();
-
-                    txtAmount.ReadOnly = true;
-                    txtColor.ReadOnly = true;
-                    txtPrice.ReadOnly = true;
-                    txtCost.ReadOnly = true;
-                    cboSize.Enabled = false;
-                    cboSize.SelectedIndex = -1;
-
-                    pbxShirt.Image = null;
                 }
+                else
+                {
+                    if (txtColor.Text == "" || txtAmount.Text == "" || txtCost.Text == "" ||
+                   txtPrice.Text == "" || pbxShirt.Image == null)
+                    {
+                        MessageBox.Show("Please fill out all fields", "Missing Data!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        Cursor.Current = Cursors.WaitCursor;
+
+                        DataProduct product = new DataProduct();
+
+                        string strColor = "";
+
+                        strColor = txtColor.Text;
+
+                        strColor.ToLower();
+
+                        strColor = char.ToUpper(strColor[0]) + strColor.Substring(1);
+
+                        product.Color = strColor;
+
+                        if (!double.TryParse(txtPrice.Text, out double dblPrice))
+                        {
+                            throw new Exception("Invalid price inputted");
+                        }
+                        if (!double.TryParse(txtCost.Text, out double dblCost))
+                        {
+                            throw new Exception("Invalid cost inputted");
+                        }
+                        if (!int.TryParse(txtAmount.Text, out int intQuantity))
+                        {
+                            throw new Exception("Invalid quantity inputted");
+                        }
+
+                        product.QuantityOnHand = intQuantity;
+                        product.Size = cboSize.SelectedItem.ToString();
+                        product.Price = Math.Round(dblPrice, 2);
+                        product.Cost = Math.Round(dblCost, 2);
+                        product.ProductImage = resizeImage(pbxShirt.Image, pbxShirt.Width, pbxShirt.Height);
+                        product.Deleted = false;
+
+                        DataProduct checkProduct = DataProduct.GetProduct(product.Color, product.Size);
+
+                        if (checkProduct != null)
+                        {
+                            Cursor.Current = Cursors.Default;
+                            DialogResult dr = MessageBox.Show("This product already exists! Would you like to update it?", "Duplicate Item", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                            
+                            if(dr == DialogResult.Yes)
+                            {
+                                DataProduct.SaveImage(product.ProductImage, product.Color);
+                                MessageBox.Show("Image Updated", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                        else
+                        {
+                            DataProduct.AddProduct(product);
+                            Cursor.Current = Cursors.Default;
+                            MessageBox.Show("Product Added!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+
+                        btnUpload.Enabled = false;
+                        txtAmount.Clear();
+                        txtColor.Clear();
+                        txtPrice.Clear();
+                        txtCost.Clear();
+
+                        txtAmount.ReadOnly = true;
+                        txtColor.ReadOnly = true;
+                        txtPrice.ReadOnly = true;
+                        txtCost.ReadOnly = true;
+                        cboSize.Enabled = false;
+                        cboSize.SelectedIndex = -1;
+
+                        pbxShirt.Image = null;
+                    }
+                }               
             }
             catch (Exception ex)
             {
@@ -191,15 +247,6 @@ namespace SU21_Final_Project
             {
                 e.Handled = true;
             }
-
-            if (txtColor.Text == string.Empty)
-            {
-                btnUpdateImage.Enabled = false;
-            }
-            else
-            {
-                btnUpdateImage.Enabled = true;
-            }
         }
 
         private void btnHelp_Click(object sender, EventArgs e)
@@ -220,112 +267,25 @@ namespace SU21_Final_Project
             cboSize.Items.Add("Small");
             cboSize.Items.Add("Medium");
             cboSize.Items.Add("Large");
-        }
 
-        private void btnUpdateImage_Click(object sender, EventArgs e)
-        {
-            try
+            if(frmInventory.bolWantsUpdate == true)
             {
-                string color = txtColor.Text;
-                Image image = resizeImage(pbxShirt.Image, pbxShirt.Width, pbxShirt.Height);
-
-                if(txtColor.Text == "")
-                {
-                    MessageBox.Show("Please type the color you'd like to update and esure it is spelled correctly", "No color!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    DialogResult dr = MessageBox.Show("Are you sure you want to update these shirt's images?", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                    if (dr == DialogResult.Yes)
-                    {
-                        Cursor.Current = Cursors.WaitCursor;
-
-                        List<string> lstSizes = new List<string>();
-                        lstSizes.Add("Small");
-                        lstSizes.Add("Medium");
-                        lstSizes.Add("Large");
-
-                        bool bolProductFound = false;
-
-                        for(int intIndex = 0; intIndex < lstSizes.Count; intIndex++)
-                        {
-                            DataProduct checkProduct = DataProduct.GetProduct(color, lstSizes[intIndex]);
-                            if(checkProduct != null)
-                            {
-                                bolProductFound = true;
-                                break;
-                            }
-                        }
-
-                        if(bolProductFound == true)
-                        {
-                            Cursor.Current = Cursors.Default;
-                            DataProduct.SaveImage(image, color);
-                            MessageBox.Show("Image Updated", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            Cursor.Current = Cursors.Default;
-                            MessageBox.Show("This product doesn't currently exist", "No product(s) found!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                    }
-                }              
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtColor.Text = frmInventory.strUpdatingColor;
+                txtColor.ReadOnly = true;
+                txtAmount.Enabled = false;
+                txtPrice.Enabled = false;
+                txtCost.Enabled = false;
+                lblPrice.Enabled = false;
+                lblQuantity.Enabled = false;
+                lblCost.Enabled = false;
+                cboSize.Enabled = false;
+                lblSize.Enabled = false;
             }
         }
 
         private void txtColor_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
-
-            if (txtColor.Text.Length > 0 && chkUpdate.Checked == true)
-            {
-                btnUpdateImage.Enabled = true;
-            }
-            else
-            {
-                btnUpdateImage.Enabled = false;
-            }
-        }
-
-        private void chkUpdate_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chkUpdate.Checked == true)
-            {
-                txtAmount.Enabled = false;
-                txtPrice.Enabled = false;
-                txtCost.Enabled = false;
-                cboSize.Enabled = false;
-
-                if (txtColor.Text.Length > 0 && chkUpdate.Checked == true)
-                {
-                    btnUpdateImage.Enabled = true;
-                }
-                else
-                {
-                    btnUpdateImage.Enabled = false;
-                }
-            }
-            else
-            {
-                txtAmount.Enabled = true;
-                txtPrice.Enabled = true;
-                txtCost.Enabled = true;
-                cboSize.Enabled = true;
-
-                if (txtColor.Text.Length > 0 && chkUpdate.Checked == true)
-                {
-                    btnUpdateImage.Enabled = true;
-                }
-                else
-                {
-                    btnUpdateImage.Enabled = false;
-                }
-            }
-        }
+        }      
     }
 }

@@ -452,8 +452,20 @@ namespace SU21_Final_Project
             }
         }
 
+        public static string strUpdatingColor = "";
+        public static bool bolWantsUpdate = false;
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            if(cboColor.SelectedIndex != -1)
+            {
+                DialogResult dr = MessageBox.Show("Do you want to update the currently selected item?", "Alert", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                
+                if(dr == DialogResult.Yes)
+                {
+                    strUpdatingColor = cboColor.SelectedItem.ToString();
+                    bolWantsUpdate = true;
+                }
+            }
             frmAddProduct frmNewProduct = new frmAddProduct();
             this.Hide();
             frmNewProduct.ShowDialog();
@@ -479,6 +491,10 @@ namespace SU21_Final_Project
                 {
                     cboSize.Items.Add(lstSizes[intIndex]);
                 }
+                cboSize.Enabled = false;
+                txtAmount.ReadOnly = true;
+                txtCost.ReadOnly = true;
+                txtPrice.ReadOnly = true;
                 this.Show();
             }
             catch (Exception ex)

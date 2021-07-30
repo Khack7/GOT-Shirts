@@ -45,8 +45,6 @@ namespace SU21_Final_Project
             this.pbxShirt = new System.Windows.Forms.PictureBox();
             this.cboSize = new System.Windows.Forms.ComboBox();
             this.lblSize = new System.Windows.Forms.Label();
-            this.btnUpdateImage = new System.Windows.Forms.Button();
-            this.chkUpdate = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbxShirt)).BeginInit();
             this.SuspendLayout();
             // 
@@ -99,7 +97,7 @@ namespace SU21_Final_Project
             // 
             this.lblCost.AutoSize = true;
             this.lblCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCost.Location = new System.Drawing.Point(302, 199);
+            this.lblCost.Location = new System.Drawing.Point(302, 229);
             this.lblCost.Name = "lblCost";
             this.lblCost.Size = new System.Drawing.Size(36, 17);
             this.lblCost.TabIndex = 8;
@@ -107,7 +105,7 @@ namespace SU21_Final_Project
             // 
             // txtCost
             // 
-            this.txtCost.Location = new System.Drawing.Point(401, 196);
+            this.txtCost.Location = new System.Drawing.Point(401, 226);
             this.txtCost.Name = "txtCost";
             this.txtCost.ReadOnly = true;
             this.txtCost.ShortcutsEnabled = false;
@@ -119,7 +117,7 @@ namespace SU21_Final_Project
             // 
             this.lblPrice.AutoSize = true;
             this.lblPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrice.Location = new System.Drawing.Point(298, 137);
+            this.lblPrice.Location = new System.Drawing.Point(298, 157);
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(40, 17);
             this.lblPrice.TabIndex = 6;
@@ -127,7 +125,7 @@ namespace SU21_Final_Project
             // 
             // txtPrice
             // 
-            this.txtPrice.Location = new System.Drawing.Point(401, 135);
+            this.txtPrice.Location = new System.Drawing.Point(401, 155);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.ReadOnly = true;
             this.txtPrice.ShortcutsEnabled = false;
@@ -139,7 +137,7 @@ namespace SU21_Final_Project
             // 
             this.lblQuantity.AutoSize = true;
             this.lblQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQuantity.Location = new System.Drawing.Point(298, 75);
+            this.lblQuantity.Location = new System.Drawing.Point(298, 85);
             this.lblQuantity.Name = "lblQuantity";
             this.lblQuantity.Size = new System.Drawing.Size(61, 17);
             this.lblQuantity.TabIndex = 4;
@@ -147,7 +145,7 @@ namespace SU21_Final_Project
             // 
             // txtAmount
             // 
-            this.txtAmount.Location = new System.Drawing.Point(401, 74);
+            this.txtAmount.Location = new System.Drawing.Point(401, 84);
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.ReadOnly = true;
             this.txtAmount.ShortcutsEnabled = false;
@@ -191,7 +189,7 @@ namespace SU21_Final_Project
             this.cboSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboSize.Enabled = false;
             this.cboSize.FormattingEnabled = true;
-            this.cboSize.Location = new System.Drawing.Point(401, 257);
+            this.cboSize.Location = new System.Drawing.Point(401, 297);
             this.cboSize.Name = "cboSize";
             this.cboSize.Size = new System.Drawing.Size(186, 21);
             this.cboSize.TabIndex = 11;
@@ -200,43 +198,17 @@ namespace SU21_Final_Project
             // 
             this.lblSize.AutoSize = true;
             this.lblSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSize.Location = new System.Drawing.Point(302, 261);
+            this.lblSize.Location = new System.Drawing.Point(302, 301);
             this.lblSize.Name = "lblSize";
             this.lblSize.Size = new System.Drawing.Size(35, 17);
             this.lblSize.TabIndex = 10;
             this.lblSize.Text = "&Size";
-            // 
-            // btnUpdateImage
-            // 
-            this.btnUpdateImage.Enabled = false;
-            this.btnUpdateImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdateImage.Location = new System.Drawing.Point(401, 284);
-            this.btnUpdateImage.Name = "btnUpdateImage";
-            this.btnUpdateImage.Size = new System.Drawing.Size(186, 37);
-            this.btnUpdateImage.TabIndex = 12;
-            this.btnUpdateImage.Text = "Upd&ate Image";
-            this.btnUpdateImage.UseVisualStyleBackColor = true;
-            this.btnUpdateImage.Click += new System.EventHandler(this.btnUpdateImage_Click);
-            // 
-            // chkUpdate
-            // 
-            this.chkUpdate.AutoSize = true;
-            this.chkUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkUpdate.Location = new System.Drawing.Point(305, 300);
-            this.chkUpdate.Name = "chkUpdate";
-            this.chkUpdate.Size = new System.Drawing.Size(84, 21);
-            this.chkUpdate.TabIndex = 1;
-            this.chkUpdate.Text = "Up&dating";
-            this.chkUpdate.UseVisualStyleBackColor = true;
-            this.chkUpdate.CheckedChanged += new System.EventHandler(this.chkUpdate_CheckedChanged);
             // 
             // frmAddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(599, 327);
-            this.Controls.Add(this.chkUpdate);
-            this.Controls.Add(this.btnUpdateImage);
             this.Controls.Add(this.lblSize);
             this.Controls.Add(this.cboSize);
             this.Controls.Add(this.lblColor);
@@ -257,7 +229,7 @@ namespace SU21_Final_Project
             this.MaximizeBox = false;
             this.Name = "frmAddProduct";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Add Product";
+            this.Text = "Add/Update Product";
             this.Load += new System.EventHandler(this.frmAddProduct_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxShirt)).EndInit();
             this.ResumeLayout(false);
@@ -282,7 +254,5 @@ namespace SU21_Final_Project
         private System.Windows.Forms.TextBox txtColor;
         private System.Windows.Forms.ComboBox cboSize;
         private System.Windows.Forms.Label lblSize;
-        private System.Windows.Forms.Button btnUpdateImage;
-        private System.Windows.Forms.CheckBox chkUpdate;
     }
 }

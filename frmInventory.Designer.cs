@@ -204,7 +204,7 @@ namespace SU21_Final_Project
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(123, 42);
             this.btnAdd.TabIndex = 30;
-            this.btnAdd.Text = "&Add New Product";
+            this.btnAdd.Text = "&Add/Update Product";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
