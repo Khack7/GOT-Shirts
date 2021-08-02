@@ -72,21 +72,30 @@ namespace SU21_Final_Project
             cboStates.Items.Add("WI");
             cboStates.Items.Add("WY");
 
-            DataPerson person = null;
+            try
+            {
+                DataPerson person = null;
 
-            person = DataPerson.GetPerson(frmSignIn.strUserName);
+                person = DataPerson.GetPerson(frmSignIn.strUserName);
 
-            txtFirst.Text = person.NameFirst;
-            txtLast.Text = person.NameLast;
-            txtAddress1.Text = person.Address1;
-            txtAddress2.Text = person.Address2;
-            txtAddress3.Text = person.Address3;
-            txtCity.Text = person.City;
-            txtZip.Text = person.Zipcode;
-            txtPhone.Text = person.PhonePrimary;
-            txtEmail.Text = person.Email;
-            cboStates.SelectedItem = person.State;
-            bolChangesMade = false;
+                txtFirst.Text = person.NameFirst;
+                txtLast.Text = person.NameLast;
+                txtAddress1.Text = person.Address1;
+                txtAddress2.Text = person.Address2;
+                txtAddress3.Text = person.Address3;
+                txtCity.Text = person.City;
+                txtZip.Text = person.Zipcode;
+                txtPhone.Text = person.PhonePrimary;
+                txtEmail.Text = person.Email;
+                cboStates.SelectedItem = person.State;
+                bolChangesMade = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
         }
 
         private void btnEdit_Click(object sender, EventArgs e)

@@ -21,9 +21,10 @@ namespace SU21_Final_Project
             {
                 _lstSettings = DataSettings.ListSettings();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
             }
         }
 
@@ -52,13 +53,13 @@ namespace SU21_Final_Project
             try
             {
                 List<string> lstNames = _lstSettings.Select(n => n.SettingName).Distinct().OrderBy(n => n).ToList();
-                
-                for(int intIndex = 0; intIndex < lstNames.Count; intIndex++)
+
+                for (int intIndex = 0; intIndex < lstNames.Count; intIndex++)
                 {
                     cboSettingNames.Items.Add(lstNames[intIndex]);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -66,21 +67,29 @@ namespace SU21_Final_Project
 
         private void cboSettingNames_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cboSettingNames.SelectedItem != null)
+            try
             {
-                btnEdit.Enabled = true;
-                txtValue.ReadOnly = true;
-                btnApply.Enabled = false;
+                if (cboSettingNames.SelectedItem != null)
+                {
+                    btnEdit.Enabled = true;
+                    txtValue.ReadOnly = true;
+                    btnApply.Enabled = false;
 
-                string strSelectedSetting = cboSettingNames.SelectedItem.ToString();
-                var setting = _lstSettings.Where(s => s.SettingName == strSelectedSetting).SingleOrDefault();
-                txtValue.Text = setting.SettingValue;
+                    string strSelectedSetting = cboSettingNames.SelectedItem.ToString();
+                    var setting = _lstSettings.Where(s => s.SettingName == strSelectedSetting).SingleOrDefault();
+                    txtValue.Text = setting.SettingValue;
+                }
+                else
+                {
+                    txtValue.Text = "";
+                    txtValue.ReadOnly = true;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                txtValue.Text = "";
-                txtValue.ReadOnly = true;
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -94,7 +103,7 @@ namespace SU21_Final_Project
 
         private void btnApply_Click(object sender, EventArgs e)
         {
-            if(txtValue.Text == "")
+            if (txtValue.Text == "")
             {
                 MessageBox.Show("Please fill out all fields", "Missing info", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -106,7 +115,7 @@ namespace SU21_Final_Project
 
                     double dblTax = 0;
 
-                    if(settingUpdate.SettingName == "TaxRate")
+                    if (settingUpdate.SettingName == "TaxRate")
                     {
                         if (double.TryParse(txtValue.Text, out double dblSettingValue))
                         {
@@ -117,7 +126,7 @@ namespace SU21_Final_Project
                             throw new Exception("Invalid Value inputed. Please enter a money value");
                         }
 
-                        if(dblTax > 1 || dblTax == 0)
+                        if (dblTax > 1 || dblTax == 0)
                         {
                             MessageBox.Show("Please input tax percentage as a decimal. Example: 8% = 0.08", "Wrong Format Or Value Of Zero", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
                         }
@@ -167,7 +176,7 @@ namespace SU21_Final_Project
                         {
                             cboSettingNames.Items.Add(lstNames[intIndex]);
                         }
-                    }                  
+                    }
                 }
                 catch (Exception ex)
                 {

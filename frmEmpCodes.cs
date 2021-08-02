@@ -22,12 +22,12 @@ namespace SU21_Final_Project
                 _lstActiveCodes = DataCodes.ListActiveOnlyCodes();
                 _lstInactiveCodes = DataCodes.ListInactiveCodes();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
             }
-           
+
         }
 
         private void btnReturn_Click(object sender, EventArgs e)
@@ -42,7 +42,7 @@ namespace SU21_Final_Project
                 DataCodes codes = DataCodes.GetCode(lstActive.SelectedItem.ToString());
                 lblActiveDiscount.Text = codes.PercentOff.ToString() + "%";
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -63,17 +63,25 @@ namespace SU21_Final_Project
 
         private void frmEmpCodes_Load(object sender, EventArgs e)
         {
-            List<string> lstActiveCodes = _lstActiveCodes.Select(c => c.DiscountCode).OrderBy(c => c).ToList();
-            List<string> lstInactiveCodes = _lstInactiveCodes.Select(c => c.DiscountCode).OrderBy(c => c).ToList();
+            try
+            {
+                List<string> lstActiveCodes = _lstActiveCodes.Select(c => c.DiscountCode).OrderBy(c => c).ToList();
+                List<string> lstInactiveCodes = _lstInactiveCodes.Select(c => c.DiscountCode).OrderBy(c => c).ToList();
 
-            for (int intIndex = 0; intIndex < lstActiveCodes.Count; intIndex++)
-            {
-                lstActive.Items.Add(lstActiveCodes[intIndex]);
+                for (int intIndex = 0; intIndex < lstActiveCodes.Count; intIndex++)
+                {
+                    lstActive.Items.Add(lstActiveCodes[intIndex]);
+                }
+                for (int intIndex = 0; intIndex < lstInactiveCodes.Count; intIndex++)
+                {
+                    lstInactive.Items.Add(lstInactiveCodes[intIndex]);
+                }
             }
-            for (int intIndex = 0; intIndex < lstInactiveCodes.Count; intIndex++)
+            catch (Exception ex)
             {
-                lstInactive.Items.Add(lstInactiveCodes[intIndex]);
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
     }
 }

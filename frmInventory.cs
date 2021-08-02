@@ -480,6 +480,9 @@ namespace SU21_Final_Project
                 txtAmount.ReadOnly = true;
                 txtCost.ReadOnly = true;
                 txtPrice.ReadOnly = true;
+                btnRemove.Enabled = false;
+                bolWantsUpdate = false;
+                strUpdatingColor = "";
                 this.Show();
                 Cursor.Current = Cursors.Default;
             }
@@ -492,9 +495,10 @@ namespace SU21_Final_Project
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            DataProduct product = DataProduct.GetProduct(cboColor.SelectedItem.ToString(), cboSize.SelectedItem.ToString());
             try
             {
+                DataProduct product = DataProduct.GetProduct(cboColor.SelectedItem.ToString(), cboSize.SelectedItem.ToString());
+
                 if (product.Deleted == false)
                 {
                     DialogResult dr = MessageBox.Show("Are you sure you want to remove this product?", "WARNING!!!", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);

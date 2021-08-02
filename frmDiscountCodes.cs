@@ -21,7 +21,7 @@ namespace SU21_Final_Project
             {
                 _lstCodes = DataCodes.ListCodes();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
@@ -30,11 +30,18 @@ namespace SU21_Final_Project
 
         private void frmDiscountCodes_Load(object sender, EventArgs e)
         {
-            List<string> lstCodes = _lstCodes.Select(c => c.DiscountCode).OrderBy(c => c).ToList();
-
-            for (int intIndex = 0; intIndex < lstCodes.Count; intIndex++)
+            try
             {
-                cboCodes.Items.Add(lstCodes[intIndex]);
+                List<string> lstCodes = _lstCodes.Select(c => c.DiscountCode).OrderBy(c => c).ToList();
+
+                for (int intIndex = 0; intIndex < lstCodes.Count; intIndex++)
+                {
+                    cboCodes.Items.Add(lstCodes[intIndex]);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -136,25 +143,33 @@ namespace SU21_Final_Project
 
         private void cboCodes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string strSelectedCode = (string)cboCodes.SelectedItem;
-            string strStatus = "";
-
-            var code = _lstCodes.Where(c => c.DiscountCode == strSelectedCode).SingleOrDefault();
-
-            lblPercentDisplay.Text = code.PercentOff.ToString();
-
-            if (bool.TryParse(code.Active.ToString(), out bool bolActivity))
+            try
             {
-                if (bolActivity == true)
+                string strSelectedCode = (string)cboCodes.SelectedItem;
+                string strStatus = "";
+
+                var code = _lstCodes.Where(c => c.DiscountCode == strSelectedCode).SingleOrDefault();
+
+                lblPercentDisplay.Text = code.PercentOff.ToString();
+
+                if (bool.TryParse(code.Active.ToString(), out bool bolActivity))
                 {
-                    strStatus = "Active";
+                    if (bolActivity == true)
+                    {
+                        strStatus = "Active";
+                    }
+                    else
+                    {
+                        strStatus = "Inactive";
+                    }
                 }
-                else
-                {
-                    strStatus = "Inactive";
-                }
+                lblStatus.Text = strStatus;
             }
-            lblStatus.Text = strStatus;
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void txtPercent_KeyPress(object sender, KeyPressEventArgs e)
@@ -182,18 +197,25 @@ namespace SU21_Final_Project
                 }
                 else
                 {
-                    bolStatus = true;
-                    DataCodes.CodeActivity(cboCodes.SelectedItem.ToString(), bolStatus);
-                    _lstCodes = DataCodes.ListCodes();
-                    List<string> lstCodes = _lstCodes.Select(c => c.DiscountCode).OrderBy(c => c).ToList();
-
-                    cboCodes.Items.Clear();
-                    lblStatus.Text = "";
-                    lblPercentDisplay.Text = "";
-
-                    for (int intIndex = 0; intIndex < lstCodes.Count; intIndex++)
+                    try
                     {
-                        cboCodes.Items.Add(lstCodes[intIndex]);
+                        bolStatus = true;
+                        DataCodes.CodeActivity(cboCodes.SelectedItem.ToString(), bolStatus);
+                        _lstCodes = DataCodes.ListCodes();
+                        List<string> lstCodes = _lstCodes.Select(c => c.DiscountCode).OrderBy(c => c).ToList();
+
+                        cboCodes.Items.Clear();
+                        lblStatus.Text = "";
+                        lblPercentDisplay.Text = "";
+
+                        for (int intIndex = 0; intIndex < lstCodes.Count; intIndex++)
+                        {
+                            cboCodes.Items.Add(lstCodes[intIndex]);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -213,18 +235,25 @@ namespace SU21_Final_Project
                 }
                 else
                 {
-                    bolStatus = false;
-                    DataCodes.CodeActivity(cboCodes.SelectedItem.ToString(), bolStatus);
-                    _lstCodes = DataCodes.ListCodes();
-                    List<string> codes = _lstCodes.Select(c => c.DiscountCode).OrderBy(c => c).ToList();
-
-                    cboCodes.Items.Clear();
-                    lblStatus.Text = "";
-                    lblPercentDisplay.Text = "";
-
-                    for (int intIndex = 0; intIndex < codes.Count; intIndex++)
+                    try
                     {
-                        cboCodes.Items.Add(codes[intIndex]);
+                        bolStatus = false;
+                        DataCodes.CodeActivity(cboCodes.SelectedItem.ToString(), bolStatus);
+                        _lstCodes = DataCodes.ListCodes();
+                        List<string> codes = _lstCodes.Select(c => c.DiscountCode).OrderBy(c => c).ToList();
+
+                        cboCodes.Items.Clear();
+                        lblStatus.Text = "";
+                        lblPercentDisplay.Text = "";
+
+                        for (int intIndex = 0; intIndex < codes.Count; intIndex++)
+                        {
+                            cboCodes.Items.Add(codes[intIndex]);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }

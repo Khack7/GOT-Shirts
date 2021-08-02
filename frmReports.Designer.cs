@@ -51,6 +51,7 @@ namespace SU21_Final_Project
             this.btnHelp = new System.Windows.Forms.Button();
             this.btnReturn = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
+            this.btnLastMonth = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReports)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ordersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetReports)).BeginInit();
@@ -177,7 +178,7 @@ namespace SU21_Final_Project
             // btnViewWeek
             // 
             this.btnViewWeek.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnViewWeek.Location = new System.Drawing.Point(165, 366);
+            this.btnViewWeek.Location = new System.Drawing.Point(143, 366);
             this.btnViewWeek.Name = "btnViewWeek";
             this.btnViewWeek.Size = new System.Drawing.Size(107, 44);
             this.btnViewWeek.TabIndex = 2;
@@ -188,7 +189,7 @@ namespace SU21_Final_Project
             // btnViewMonth
             // 
             this.btnViewMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnViewMonth.Location = new System.Drawing.Point(318, 366);
+            this.btnViewMonth.Location = new System.Drawing.Point(274, 366);
             this.btnViewMonth.Name = "btnViewMonth";
             this.btnViewMonth.Size = new System.Drawing.Size(107, 44);
             this.btnViewMonth.TabIndex = 3;
@@ -199,7 +200,7 @@ namespace SU21_Final_Project
             // btnShowInvoice
             // 
             this.btnShowInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnShowInvoice.Location = new System.Drawing.Point(624, 366);
+            this.btnShowInvoice.Location = new System.Drawing.Point(667, 366);
             this.btnShowInvoice.Name = "btnShowInvoice";
             this.btnShowInvoice.Size = new System.Drawing.Size(107, 44);
             this.btnShowInvoice.TabIndex = 7;
@@ -210,7 +211,7 @@ namespace SU21_Final_Project
             // btnHelp
             // 
             this.btnHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHelp.Location = new System.Drawing.Point(777, 366);
+            this.btnHelp.Location = new System.Drawing.Point(798, 366);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(107, 44);
             this.btnHelp.TabIndex = 8;
@@ -221,7 +222,7 @@ namespace SU21_Final_Project
             // btnReturn
             // 
             this.btnReturn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReturn.Location = new System.Drawing.Point(930, 366);
+            this.btnReturn.Location = new System.Drawing.Point(929, 366);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(107, 44);
             this.btnReturn.TabIndex = 9;
@@ -232,7 +233,7 @@ namespace SU21_Final_Project
             // btnPrint
             // 
             this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrint.Location = new System.Drawing.Point(471, 366);
+            this.btnPrint.Location = new System.Drawing.Point(536, 366);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(107, 44);
             this.btnPrint.TabIndex = 10;
@@ -240,11 +241,23 @@ namespace SU21_Final_Project
             this.btnPrint.UseVisualStyleBackColor = true;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
+            // btnLastMonth
+            // 
+            this.btnLastMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLastMonth.Location = new System.Drawing.Point(405, 366);
+            this.btnLastMonth.Name = "btnLastMonth";
+            this.btnLastMonth.Size = new System.Drawing.Size(107, 44);
+            this.btnLastMonth.TabIndex = 11;
+            this.btnLastMonth.Text = "View &Last Month\'s";
+            this.btnLastMonth.UseVisualStyleBackColor = true;
+            this.btnLastMonth.Click += new System.EventHandler(this.btnLastMonth_Click);
+            // 
             // frmReports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1054, 425);
+            this.Controls.Add(this.btnLastMonth);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.btnReturn);
             this.Controls.Add(this.btnHelp);
@@ -289,5 +302,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.DataGridViewTextBoxColumn cardNumberDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cardExperationDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Invoice;
+        private System.Windows.Forms.Button btnLastMonth;
     }
 }

@@ -75,7 +75,14 @@ namespace SU21_Final_Project
                 this.Hide();
                 frmEditUser.ShowDialog();
                 this.Show();
-                this.personTableAdapter.Fill(this.dataSetPerson.Person);
+                try
+                {
+                    this.personTableAdapter.Fill(this.dataSetPerson.Person);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -158,55 +165,78 @@ namespace SU21_Final_Project
 
         private void btnEmployee_Click(object sender, EventArgs e)
         {
-            Cursor.Current = Cursors.WaitCursor;
-            DataView dv;
-            dv = new DataView(dataSetPerson.Tables[0], "AccountType = 'Employee' OR AccountType = 'Manager'", "AccountType Desc", DataViewRowState.CurrentRows);
-            dgvPerson.DataSource = dv;
-            Cursor.Current = Cursors.Default;
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                DataView dv;
+                dv = new DataView(dataSetPerson.Tables[0], "AccountType = 'Employee' OR AccountType = 'Manager'", "AccountType Desc", DataViewRowState.CurrentRows);
+                dgvPerson.DataSource = dv;
+                Cursor.Current = Cursors.Default;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void btnCustomer_Click(object sender, EventArgs e)
         {
-            Cursor.Current = Cursors.WaitCursor;
-            DataView dv;
-            dv = new DataView(dataSetPerson.Tables[0], "AccountType = 'Customer'", "AccountType Desc", DataViewRowState.CurrentRows);
-            dgvPerson.DataSource = dv;
-            Cursor.Current = Cursors.Default;
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                DataView dv;
+                dv = new DataView(dataSetPerson.Tables[0], "AccountType = 'Customer'", "AccountType Desc", DataViewRowState.CurrentRows);
+                dgvPerson.DataSource = dv;
+                Cursor.Current = Cursors.Default;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         public static int intPersonID;
         bool bolIsDeleted = false;
         private void dgvPerson_SelectionChanged(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in dgvPerson.SelectedRows)
+            try
             {
-                if (!int.TryParse(row.Cells[0].Value.ToString(), out int intID))
+                foreach (DataGridViewRow row in dgvPerson.SelectedRows)
                 {
-                    MessageBox.Show("Error occurred while getting selected ID. Please try again", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    dgvPerson.ClearSelection();
-                    btnEdit.Enabled = false;
-                    btnEdit.Enabled = false;
-                    break;
-                }
-                if (!bool.TryParse(row.Cells[8].Value.ToString(), out bool bolStatus))
-                {
-                    dgvPerson.ClearSelection();
-                    MessageBox.Show("Error occurred while getting person's account status. Please try again", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    btnEdit.Enabled = false;
-                    btnEdit.Enabled = false;
-                    break;
-                }
-                intPersonID = intID;
-                strFirstName = row.Cells[1].Value.ToString();
-                strLastName = row.Cells[2].Value.ToString();
-                strEmail = row.Cells[3].Value.ToString();
-                strPhone = row.Cells[4].Value.ToString();
-                strUserName = row.Cells[5].Value.ToString();
-                strAccountType = row.Cells[6].Value.ToString();
-                bolIsDeleted = bolStatus;
+                    if (!int.TryParse(row.Cells[0].Value.ToString(), out int intID))
+                    {
+                        MessageBox.Show("Error occurred while getting selected ID. Please try again", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        dgvPerson.ClearSelection();
+                        btnEdit.Enabled = false;
+                        btnEdit.Enabled = false;
+                        break;
+                    }
+                    if (!bool.TryParse(row.Cells[8].Value.ToString(), out bool bolStatus))
+                    {
+                        dgvPerson.ClearSelection();
+                        MessageBox.Show("Error occurred while getting person's account status. Please try again", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        btnEdit.Enabled = false;
+                        btnEdit.Enabled = false;
+                        break;
+                    }
+                    intPersonID = intID;
+                    strFirstName = row.Cells[1].Value.ToString();
+                    strLastName = row.Cells[2].Value.ToString();
+                    strEmail = row.Cells[3].Value.ToString();
+                    strPhone = row.Cells[4].Value.ToString();
+                    strUserName = row.Cells[5].Value.ToString();
+                    strAccountType = row.Cells[6].Value.ToString();
+                    bolIsDeleted = bolStatus;
 
-                btnEdit.Enabled = true;
-                btnDeleteOrRestore.Enabled = true;
+                    btnEdit.Enabled = true;
+                    btnDeleteOrRestore.Enabled = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

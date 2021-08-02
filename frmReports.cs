@@ -35,21 +35,27 @@ namespace SU21_Final_Project
         private void btnViewToday_Click(object sender, EventArgs e)
         {
             view = currentView.ViewDay;
+            try
+            {
+                DataView dv;
+                dv = new DataView(dataSetReports.Tables[0], $"OrderDate = '{DateTime.Today}'", "OrderNum Desc", DataViewRowState.CurrentRows);
+                dgvReports.DataSource = dv;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
-            DataView dv;
-            dv = new DataView(dataSetReports.Tables[0], $"OrderDate = '{DateTime.Today}'", "OrderNum Desc", DataViewRowState.CurrentRows);
-            dgvReports.DataSource = dv;
         }
 
         private void btnViewWeek_Click(object sender, EventArgs e)
         {
             view = currentView.ViewWeek;
 
-            DateTime startOfWeek = DateTime.Today.AddDays(-1 * (int)(DateTime.Today.DayOfWeek));
-            var endOfWeek = startOfWeek.AddDays(7);
-
             try
             {
+                DateTime startOfWeek = DateTime.Today.AddDays(-1 * (int)(DateTime.Today.DayOfWeek));
+                var endOfWeek = startOfWeek.AddDays(7);
                 DataView dv;
                 dv = new DataView(dataSetReports.Tables[0], $"OrderDate >= '{startOfWeek}' AND OrderDate < '{endOfWeek}'", "OrderNum Desc", DataViewRowState.CurrentRows);
                 dgvReports.DataSource = dv;
@@ -65,10 +71,10 @@ namespace SU21_Final_Project
         {
             view = currentView.ViewMonth;
 
-            var thisMonthStart = DateTime.Today.AddDays(1 - DateTime.Today.Day);
-            var thisMonthEnd = thisMonthStart.AddMonths(1);
             try
             {
+                var thisMonthStart = DateTime.Today.AddDays(1 - DateTime.Today.Day);
+                var thisMonthEnd = thisMonthStart.AddMonths(1);
                 DataView dv;
                 dv = new DataView(dataSetReports.Tables[0], $"OrderDate >= '{thisMonthStart}' AND OrderDate < '{thisMonthEnd}'", "OrderNum Desc", DataViewRowState.CurrentRows);
                 dgvReports.DataSource = dv;
@@ -77,7 +83,6 @@ namespace SU21_Final_Project
             {
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
         private void btnReturn_Click(object sender, EventArgs e)
@@ -103,7 +108,8 @@ namespace SU21_Final_Project
             ViewAll,
             ViewDay,
             ViewWeek,
-            ViewMonth
+            ViewMonth,
+            ViewLastMonth
         };
 
         currentView view = currentView.ViewAll;
@@ -127,15 +133,15 @@ namespace SU21_Final_Project
 
                 int intSelectedRows = 0;
 
-                foreach(DataGridViewRow row in dgvReports.SelectedRows)
+                foreach (DataGridViewRow row in dgvReports.SelectedRows)
                 {
                     intSelectedRows++;
                 }
 
-                if(intSelectedRows == 0)
+                if (intSelectedRows == 0)
                 {
                     MessageBox.Show("Please select a row or select Daily, Weekly, or monthly report", "No row selected", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }               
+                }
                 else
                 {
                     switch (view)
@@ -151,7 +157,7 @@ namespace SU21_Final_Project
 
                                 foreach (DataGridViewRow row in dgvReports.SelectedRows)
                                 {
-                                    string strFileName = $"GOT Shirts-Receipt-{row.Cells[0].Value.ToString()}.html";
+                                    string strFileName = $"GOT Shirts-Order#-{row.Cells[0].Value.ToString()}.html";
 
                                     Cursor.Current = Cursors.Default;
 
@@ -216,7 +222,7 @@ namespace SU21_Final_Project
 
                                 foreach (DataGridViewRow row in dgvReports.SelectedRows)
                                 {
-                                    string strFileName = $"GOT Shirts-Receipt-{row.Cells[0].Value.ToString()}.html";
+                                    string strFileName = $"GOT Shirts-Order#-{row.Cells[0].Value.ToString()}.html";
 
                                     while (bolEmptyFolder == false)
                                     {
@@ -280,7 +286,7 @@ namespace SU21_Final_Project
 
                                 foreach (DataGridViewRow row in dgvReports.SelectedRows)
                                 {
-                                    string strFileName = $"GOT Shirts-Receipt-{row.Cells[0].Value.ToString()}.html";
+                                    string strFileName = $"GOT Shirts-Order#-{row.Cells[0].Value.ToString()}.html";
 
                                     while (bolEmptyFolder == false)
                                     {
@@ -344,7 +350,71 @@ namespace SU21_Final_Project
 
                                 foreach (DataGridViewRow row in dgvReports.SelectedRows)
                                 {
-                                    string strFileName = $"GOT Shirts-Receipt-{row.Cells[0].Value.ToString()}.html";
+                                    string strFileName = $"GOT Shirts-Order#-{row.Cells[0].Value.ToString()}.html";
+
+                                    while (bolEmptyFolder == false)
+                                    {
+                                        Cursor.Current = Cursors.Default;
+
+                                        sfdFile.FileName = strFileName;
+                                        sfdFile.Title = "Select save location. Empty Folder Required";
+                                        sfdFile.InitialDirectory = strPath;
+
+                                        if (sfdFile.ShowDialog() == DialogResult.OK)
+                                        {
+                                            Cursor.Current = Cursors.WaitCursor;
+
+                                            strPath = Path.GetDirectoryName(sfdFile.FileName);
+
+                                            bolEmptyFolder = IsDirectoryEmpty(strPath);
+                                            if (!bolEmptyFolder)
+                                            {
+                                                MessageBox.Show("Please select an empty folder", "Empty Folder Needed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                            }
+                                        }
+                                        else
+                                        {
+                                            Cursor.Current = Cursors.Default;
+                                            bolStopLoop = true;
+                                            break;
+                                        }
+                                    }
+                                    if (bolStopLoop == true)
+                                    {
+                                        Cursor.Current = Cursors.Default;
+                                        dgvReports.ClearSelection();
+                                        break;
+                                    }
+
+                                    strFileName = Path.Combine(strPath, strFileName);
+                                    using (FileStream fs = new FileStream(strFileName, FileMode.Create))
+                                    {
+                                        using (StreamWriter w = new StreamWriter(fs, Encoding.UTF8))
+                                        {
+                                            if (row.Cells[8].Value != null)
+                                            {
+                                                w.Write(row.Cells[8].Value.ToString());
+                                            }
+                                        }
+                                    }
+                                }
+                                System.Diagnostics.Process.Start(strPath);
+                                dgvReports.ClearSelection();
+                                Cursor.Current = Cursors.Default;
+                            }
+                            break;
+                        case currentView.ViewLastMonth:
+                            dr = MessageBox.Show("You are about to print last month's sales reports. This could take quite a while and may cause system issues. Continue?", "Caution!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                            if (dr == DialogResult.Yes)
+                            {
+                                Cursor.Current = Cursors.WaitCursor;
+
+                                dgvReports.SelectAll();
+
+                                foreach (DataGridViewRow row in dgvReports.SelectedRows)
+                                {
+                                    string strFileName = $"GOT Shirts-Order#-{row.Cells[0].Value.ToString()}.html";
 
                                     while (bolEmptyFolder == false)
                                     {
@@ -400,7 +470,7 @@ namespace SU21_Final_Project
                         default:
                             break;
                     }
-                }               
+                }
             }
             catch (Exception ex)
             {
@@ -415,37 +485,65 @@ namespace SU21_Final_Project
 
         private void btnShowInvoice_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in dgvReports.SelectedRows)
+            try
             {
-                intTotalRows++;
-                strOrderNum = row.Cells[0].Value.ToString();
-                strHTML = row.Cells[8].Value.ToString();
-            }
-            if (intTotalRows == 0)
-            {
-                MessageBox.Show("No row selected", "No selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else if (intTotalRows > 1)
-            {
-                MessageBox.Show("Please only select 1 row", "Too many selected!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                if (strHTML == null)
+                foreach (DataGridViewRow row in dgvReports.SelectedRows)
                 {
-                    MessageBox.Show("No Invoice Available", "No Invoice!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    intTotalRows++;
+                    strOrderNum = row.Cells[0].Value.ToString();
+                    strHTML = row.Cells[8].Value.ToString();
+                }
+                if (intTotalRows == 0)
+                {
+                    MessageBox.Show("No row selected", "No selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (intTotalRows > 1)
+                {
+                    MessageBox.Show("Please only select 1 row", "Too many selected!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    frmInvoiceView frmInvoice = new frmInvoiceView();
-                    frmInvoice.Text = $"Invoice #{strOrderNum}";
-                    this.Hide();
-                    frmInvoice.ShowDialog();
-                    this.Show();
+                    if (strHTML == null)
+                    {
+                        MessageBox.Show("No Invoice Available", "No Invoice!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        frmInvoiceView frmInvoice = new frmInvoiceView();
+                        frmInvoice.Text = $"Invoice #{strOrderNum}";
+                        this.Hide();
+                        frmInvoice.ShowDialog();
+                        this.Show();
+                    }
                 }
+                intTotalRows = 0;
+                dgvReports.ClearSelection();
             }
-            intTotalRows = 0;
-            dgvReports.ClearSelection();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void btnLastMonth_Click(object sender, EventArgs e)
+        {
+            view = currentView.ViewLastMonth;
+
+            try
+            {
+                var today = DateTime.Today;
+                var month = new DateTime(today.Year, today.Month, 1);
+                var first = month.AddMonths(-1);
+                var last = month.AddDays(-1);
+                DataView dv;
+                dv = new DataView(dataSetReports.Tables[0], $"OrderDate >= '{first}' AND OrderDate < '{last}'", "OrderNum Desc", DataViewRowState.CurrentRows);
+                dgvReports.DataSource = dv;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

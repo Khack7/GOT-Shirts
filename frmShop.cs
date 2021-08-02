@@ -163,7 +163,6 @@ namespace SU21_Final_Project
                     break;
                 }
             }
-
             return result;
         }
 
@@ -661,7 +660,6 @@ namespace SU21_Final_Project
             {
                 this.Close();
             }
-
         }
 
         private void btnCode_Click(object sender, EventArgs e)
