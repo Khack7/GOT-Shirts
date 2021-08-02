@@ -43,7 +43,7 @@ namespace SU21_Final_Project
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(183, 20);
             this.txtUsername.TabIndex = 1;
-            this.txtUsername.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtUsername_KeyUp);
+            this.txtUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUsername_KeyDown);
             // 
             // lblUserName
             // 

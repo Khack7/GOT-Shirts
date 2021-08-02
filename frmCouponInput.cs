@@ -75,11 +75,12 @@ namespace SU21_Final_Project
             }
         }
 
-        private void txtCode_KeyUp(object sender, KeyEventArgs e)
+        private void txtCode_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 btnEnter.PerformClick();
+                e.SuppressKeyPress = true;
             }
         }
     }

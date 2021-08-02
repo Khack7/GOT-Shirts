@@ -127,11 +127,12 @@ namespace SU21_Final_Project
             }
         }
 
-        private void txtPassword_KeyUp(object sender, KeyEventArgs e)
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 btnSign.PerformClick();
+                e.SuppressKeyPress = true;
             }
         }
     }

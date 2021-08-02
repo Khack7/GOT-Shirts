@@ -99,7 +99,7 @@ namespace SU21_Final_Project
             this.txtConfirmPass.PasswordChar = '•';
             this.txtConfirmPass.Size = new System.Drawing.Size(306, 20);
             this.txtConfirmPass.TabIndex = 17;
-            this.txtConfirmPass.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtConfirmPass_KeyUp);
+            this.txtConfirmPass.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtConfirmPass_KeyDown);
             // 
             // lblConfirm
             // 

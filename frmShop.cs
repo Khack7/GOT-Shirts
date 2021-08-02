@@ -785,7 +785,6 @@ namespace SU21_Final_Project
             }
         }
 
-        int intRadioLoop = 0;
         public void CheckAvailability(string color)
         {
             List<string> lstSizes = new List<string>();
@@ -801,7 +800,6 @@ namespace SU21_Final_Project
                 lstRadioButtons.Add(rdoMedium);
                 lstRadioButtons.Add(rdoLarge);
 
-                intRadioLoop = 0;
 
                 for (int intIndex = 0; intIndex < lstSizes.Count; intIndex++)
                 {
@@ -823,17 +821,28 @@ namespace SU21_Final_Project
                     }
                     else
                     {
+                        bool bolSelectedSize = false;
                         foreach (RadioButton r in lstRadioButtons)
                         {
                             if (r.Text == "&" + lstSizes[intIndex])
                             {
                                 r.Enabled = true;
-                                if (r.Checked == false && intRadioLoop < 1)
-                                {
-                                    r.Checked = true;
-                                    intRadioLoop++;
-                                }
                             }
+                        }
+                        if(rdoSmall.Enabled == true && bolSelectedSize == false)
+                        {
+                            rdoSmall.Checked = true;
+                            bolSelectedSize = true;
+                        }
+                        else if (rdoMedium.Enabled == true && bolSelectedSize == false)
+                        {
+                            rdoMedium.Checked = true;
+                            bolSelectedSize = true;
+                        }
+                        else if(rdoLarge.Enabled == true && bolSelectedSize == false)
+                        {
+                            rdoLarge.Checked = true;
+                            bolSelectedSize = true;
                         }
                     }
                 }

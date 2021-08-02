@@ -28,5 +28,14 @@ namespace SU21_Final_Project
             strSelectedUserName = txtUserName.Text;
             this.Close();
         }
+
+        private void txtUserName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnOk.PerformClick();
+                e.SuppressKeyPress = true;
+            }
+        }
     }
 }

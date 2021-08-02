@@ -55,6 +55,7 @@ namespace SU21_Final_Project
             this.txtUserName.Size = new System.Drawing.Size(480, 20);
             this.txtUserName.TabIndex = 1;
             this.txtUserName.UseSystemPasswordChar = true;
+            this.txtUserName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUserName_KeyDown);
             // 
             // btnOk
             // 

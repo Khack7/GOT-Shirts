@@ -73,11 +73,12 @@ namespace SU21_Final_Project
             }
         }
 
-        private void txtUsername_KeyUp(object sender, KeyEventArgs e)
+        private void txtUsername_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 btnSign.PerformClick();
+                e.SuppressKeyPress = true;
             }
         }
     }
