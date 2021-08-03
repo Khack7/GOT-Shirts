@@ -76,7 +76,7 @@ namespace SU21_Final_Project
                         cboSize.SelectedIndex = -1;
                         cboColor.SelectedIndex = -1;
                         pbxShirt.Image = null;
-                        throw new Exception("There is currently no product in this size");
+                        throw new CustomException("There is currently no product in this size");
                     }
 
                     txtAmount.Text = product.QuantityOnHand.ToString();
@@ -101,11 +101,26 @@ namespace SU21_Final_Project
                     pbxShirt.Image = productImage.ProductImage;
                     Cursor.Current = Cursors.Default;
                 }
+                catch(CustomException ex)
+                {
+                    Cursor.Current = Cursors.Default;
+                    MessageBox.Show(ex.Message, "Attention!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
                 catch (Exception ex)
                 {
                     Cursor.Current = Cursors.Default;
                     MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private class CustomException : Exception
+        {
+            public CustomException() { }
+
+            public CustomException(string strException) : base(strException)
+            {
+
             }
         }
 
@@ -125,7 +140,7 @@ namespace SU21_Final_Project
                         cboSize.SelectedIndex = -1;
                         cboColor.SelectedIndex = -1;
                         pbxShirt.Image = null;
-                        throw new Exception("There is currently no product in this size");
+                        throw new CustomException("There is currently no product in this size");
                     }
 
                     txtAmount.Text = product.QuantityOnHand.ToString();
@@ -149,6 +164,11 @@ namespace SU21_Final_Project
                     DataProduct productImage = DataProduct.GetProduct(strSelectedColor, strSelectedSize);
                     pbxShirt.Image = productImage.ProductImage;
                     Cursor.Current = Cursors.Default;
+                }
+                catch (CustomException ex)
+                {
+                    Cursor.Current = Cursors.Default;
+                    MessageBox.Show(ex.Message, "Attention!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 catch (Exception ex)
                 {

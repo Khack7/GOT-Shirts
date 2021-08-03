@@ -240,7 +240,7 @@ namespace SU21_Final_Project
                 {
                     strSize = "Medium";
                 }
-                else if(rdoLarge.Checked == true)
+                else if (rdoLarge.Checked == true)
                 {
                     strSize = "Large";
                 }
@@ -257,9 +257,22 @@ namespace SU21_Final_Project
                 }
                 else
                 {
-                    lblItemPrice.Text = "$0.00";
-                    pbxShirt.Image = null;
-                    MessageBox.Show("This item is currently not available in any size", "Out of stock!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    List<string> lstSizes = new List<string>();
+                    lstSizes.Add("Small");
+                    lstSizes.Add("Medium");
+                    lstSizes.Add("Large");
+
+                    for (int intIndex = 0; intIndex < lstSizes.Count; intIndex++)
+                    {
+                        DataProduct product = DataProduct.GetProduct(strCurrentColor, lstSizes[intIndex]);
+                        if (product != null)
+                        {
+                            pbxShirt.Image = product.ProductImage;
+                            lblItemPrice.Text = "$0.00";
+                            MessageBox.Show("This item is currently not available in any size", "Out of stock!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            break;
+                        }
+                    }
                 }
                 cboColor.SelectedIndex = -1;
             }
@@ -303,9 +316,22 @@ namespace SU21_Final_Project
                 }
                 else
                 {
-                    lblItemPrice.Text = "$0.00";
-                    pbxShirt.Image = null;
-                    MessageBox.Show("This item is currently not available in any size", "Out of stock!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    List<string> lstSizes = new List<string>();
+                    lstSizes.Add("Small");
+                    lstSizes.Add("Medium");
+                    lstSizes.Add("Large");
+
+                    for (int intIndex = 0; intIndex < lstSizes.Count; intIndex++)
+                    {
+                        DataProduct product = DataProduct.GetProduct(strCurrentColor, lstSizes[intIndex]);
+                        if (product != null)
+                        {
+                            pbxShirt.Image = product.ProductImage;
+                            lblItemPrice.Text = "$0.00";
+                            MessageBox.Show("This item is currently not available in any size", "Out of stock!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            break;
+                        }
+                    }
                 }
                 cboColor.SelectedIndex = -1;
             }
@@ -349,9 +375,22 @@ namespace SU21_Final_Project
                 }
                 else
                 {
-                    lblItemPrice.Text = "$0.00";
-                    pbxShirt.Image = null;
-                    MessageBox.Show("This item is currently not available in any size", "Out of stock!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    List<string> lstSizes = new List<string>();
+                    lstSizes.Add("Small");
+                    lstSizes.Add("Medium");
+                    lstSizes.Add("Large");
+
+                    for (int intIndex = 0; intIndex < lstSizes.Count; intIndex++)
+                    {
+                        DataProduct product = DataProduct.GetProduct(strCurrentColor, lstSizes[intIndex]);
+                        if (product != null)
+                        {
+                            pbxShirt.Image = product.ProductImage;
+                            lblItemPrice.Text = "$0.00";
+                            MessageBox.Show("This item is currently not available in any size", "Out of stock!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            break;
+                        }
+                    }
                 }
                 cboColor.SelectedIndex = -1;
             }
@@ -395,9 +434,22 @@ namespace SU21_Final_Project
                 }
                 else
                 {
-                    lblItemPrice.Text = "$0.00";
-                    pbxShirt.Image = null;
-                    MessageBox.Show("This item is currently not available in any size", "Out of stock!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    List<string> lstSizes = new List<string>();
+                    lstSizes.Add("Small");
+                    lstSizes.Add("Medium");
+                    lstSizes.Add("Large");
+
+                    for (int intIndex = 0; intIndex < lstSizes.Count; intIndex++)
+                    {
+                        DataProduct product = DataProduct.GetProduct(strCurrentColor, lstSizes[intIndex]);
+                        if (product != null)
+                        {
+                            pbxShirt.Image = product.ProductImage;
+                            lblItemPrice.Text = "$0.00";
+                            MessageBox.Show("This item is currently not available in any size", "Out of stock!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            break;
+                        }
+                    }
                 }
                 cboColor.SelectedIndex = -1;
             }
@@ -441,9 +493,22 @@ namespace SU21_Final_Project
                 }
                 else
                 {
-                    lblItemPrice.Text = "$0.00";
-                    pbxShirt.Image = null;
-                    MessageBox.Show("This item is currently not available in any size", "Out of stock!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    List<string> lstSizes = new List<string>();
+                    lstSizes.Add("Small");
+                    lstSizes.Add("Medium");
+                    lstSizes.Add("Large");
+
+                    for (int intIndex = 0; intIndex < lstSizes.Count; intIndex++)
+                    {
+                        DataProduct product = DataProduct.GetProduct(strCurrentColor, lstSizes[intIndex]);
+                        if (product != null)
+                        {
+                            pbxShirt.Image = product.ProductImage;
+                            lblItemPrice.Text = "$0.00";
+                            MessageBox.Show("This item is currently not available in any size", "Out of stock!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            break;
+                        }
+                    }
                 }
                 cboColor.SelectedIndex = -1;
             }
@@ -487,9 +552,22 @@ namespace SU21_Final_Project
                 }
                 else
                 {
-                    lblItemPrice.Text = "$0.00";
-                    pbxShirt.Image = null;
-                    MessageBox.Show("This item is currently not available in any size", "Out of stock!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    List<string> lstSizes = new List<string>();
+                    lstSizes.Add("Small");
+                    lstSizes.Add("Medium");
+                    lstSizes.Add("Large");
+
+                    for (int intIndex = 0; intIndex < lstSizes.Count; intIndex++)
+                    {
+                        DataProduct product = DataProduct.GetProduct(strCurrentColor, lstSizes[intIndex]);
+                        if (product != null)
+                        {
+                            pbxShirt.Image = product.ProductImage;
+                            lblItemPrice.Text = "$0.00";
+                            MessageBox.Show("This item is currently not available in any size", "Out of stock!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            break;
+                        }
+                    }
                 }
                 cboColor.SelectedIndex = -1;
             }
@@ -533,9 +611,22 @@ namespace SU21_Final_Project
                 }
                 else
                 {
-                    lblItemPrice.Text = "$0.00";
-                    pbxShirt.Image = null;
-                    MessageBox.Show("This item is currently not available in any size", "Out of stock!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    List<string> lstSizes = new List<string>();
+                    lstSizes.Add("Small");
+                    lstSizes.Add("Medium");
+                    lstSizes.Add("Large");
+
+                    for (int intIndex = 0; intIndex < lstSizes.Count; intIndex++)
+                    {
+                        DataProduct product = DataProduct.GetProduct(strCurrentColor, lstSizes[intIndex]);
+                        if (product != null)
+                        {
+                            pbxShirt.Image = product.ProductImage;
+                            lblItemPrice.Text = "$0.00";
+                            MessageBox.Show("This item is currently not available in any size", "Out of stock!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            break;
+                        }
+                    }
                 }
                 cboColor.SelectedIndex = -1;
             }
@@ -569,7 +660,7 @@ namespace SU21_Final_Project
                 else
                 {
                     strSize = null;
-                }               
+                }
 
                 if (strSize != null)
                 {
@@ -579,9 +670,22 @@ namespace SU21_Final_Project
                 }
                 else
                 {
-                    lblItemPrice.Text = "$0.00";
-                    pbxShirt.Image = null;
-                    MessageBox.Show("This item is currently not available in any size", "Out of stock!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    List<string> lstSizes = new List<string>();
+                    lstSizes.Add("Small");
+                    lstSizes.Add("Medium");
+                    lstSizes.Add("Large");
+
+                    for (int intIndex = 0; intIndex < lstSizes.Count; intIndex++)
+                    {
+                        DataProduct product = DataProduct.GetProduct(strCurrentColor, lstSizes[intIndex]);
+                        if (product != null)
+                        {
+                            pbxShirt.Image = product.ProductImage;
+                            lblItemPrice.Text = "$0.00";
+                            MessageBox.Show("This item is currently not available in any size", "Out of stock!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            break;
+                        }
+                    }
                 }
                 cboColor.SelectedIndex = -1;
             }
@@ -617,16 +721,32 @@ namespace SU21_Final_Project
                     strSize = null;
                 }
 
-                DataProduct product = DataProduct.GetProduct(strCurrentColor, strSize);
-                pbxShirt.Image = product.ProductImage;
+
 
                 if (strSize != null)
                 {
+                    DataProduct product = DataProduct.GetProduct(strCurrentColor, strSize);
+                    pbxShirt.Image = product.ProductImage;
                     getItemPrice(strCurrentColor, strSize);
                 }
                 else
                 {
-                    lblItemPrice.Text = "$0.00";
+                    List<string> lstSizes = new List<string>();
+                    lstSizes.Add("Small");
+                    lstSizes.Add("Medium");
+                    lstSizes.Add("Large");
+
+                    for (int intIndex = 0; intIndex < lstSizes.Count; intIndex++)
+                    {
+                        DataProduct product = DataProduct.GetProduct(strCurrentColor, lstSizes[intIndex]);
+                        if (product != null)
+                        {
+                            pbxShirt.Image = product.ProductImage;
+                            lblItemPrice.Text = "$0.00";
+                            MessageBox.Show("This item is currently not available in any size", "Out of stock!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            break;
+                        }
+                    }
                 }
                 cboColor.SelectedIndex = -1;
             }
@@ -666,7 +786,7 @@ namespace SU21_Final_Project
         {
             frmCouponInput frmCoupon = new frmCouponInput();
             frmCoupon.ShowDialog();
-            if(frmCouponInput.bolCodeUsed == true)
+            if (frmCouponInput.bolCodeUsed == true)
             {
                 lblCode.Text = frmCouponInput.strCouponCode;
                 lblCode.Visible = true;
@@ -827,7 +947,7 @@ namespace SU21_Final_Project
                                 r.Enabled = true;
                             }
                         }
-                        if(rdoSmall.Enabled == true && bolSelectedSize == false)
+                        if (rdoSmall.Enabled == true && bolSelectedSize == false)
                         {
                             rdoSmall.Checked = true;
                             bolSelectedSize = true;
@@ -837,7 +957,7 @@ namespace SU21_Final_Project
                             rdoMedium.Checked = true;
                             bolSelectedSize = true;
                         }
-                        else if(rdoLarge.Enabled == true && bolSelectedSize == false)
+                        else if (rdoLarge.Enabled == true && bolSelectedSize == false)
                         {
                             rdoLarge.Checked = true;
                             bolSelectedSize = true;
@@ -917,7 +1037,22 @@ namespace SU21_Final_Project
                     }
                     else
                     {
-                        MessageBox.Show("Something went wrong. Please select a different size and/or color", "OOPS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        List<string> lstSizes = new List<string>();
+                        lstSizes.Add("Small");
+                        lstSizes.Add("Medium");
+                        lstSizes.Add("Large");
+
+                        for (int intIndex = 0; intIndex < lstSizes.Count; intIndex++)
+                        {
+                            product = DataProduct.GetProduct(strCurrentColor, lstSizes[intIndex]);
+                            if (product != null)
+                            {
+                                pbxShirt.Image = product.ProductImage;
+                                break;
+                            }
+                        }
+
+                        MessageBox.Show("This product doesn't seem to be available. Please select a different size and/or color", "Unavailable!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         if (cboColor.SelectedIndex != -1)
                         {
                             cboColor.SelectedIndex = -1;
