@@ -208,6 +208,7 @@ namespace SU21_Final_Project
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             this.Close();
         }
 
@@ -251,10 +252,10 @@ namespace SU21_Final_Project
 
         private void btnHelp_Click(object sender, EventArgs e)
         {
-            string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            string strPath = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
             try
             {
-                System.Diagnostics.Process.Start($"{path}\\HelpFiles\\Manager_Add_Product_Help.html");
+                System.Diagnostics.Process.Start($"{strPath}\\HelpFiles\\Manager_Add_Product_Help.html");
             }
             catch (Exception ex)
             {

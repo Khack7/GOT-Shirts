@@ -57,8 +57,8 @@ namespace SU21_Final_Project
                 {
                     if (person.Deleted == true)
                     {
-                        MessageBox.Show("This account has been suspended. If you'd like to reactivate this account, please click on the help file and contact the supervisor via their email", "Account Suspended", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Cursor.Current = Cursors.Default;
+                        MessageBox.Show("This account has been suspended. If you'd like to reactivate this account, please click on the help file and contact the supervisor via their email", "Account Suspended", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
@@ -87,10 +87,10 @@ namespace SU21_Final_Project
                 }
                 else
                 {
+                    Cursor.Current = Cursors.Default;
                     MessageBox.Show("This account doesn't exist", "Invalid Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtUsername.Focus();
                     txtUsername.SelectAll();
-                    Cursor.Current = Cursors.Default;
                 }
 
             }

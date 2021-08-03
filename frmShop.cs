@@ -995,6 +995,33 @@ namespace SU21_Final_Project
                         cboColor.Items.Add(lstColors[intIndex]);
                     }
                 }
+
+                List<string> lstSizes = new List<string>();
+                lstSizes.Add("Small");
+                lstSizes.Add("Medium");
+                lstSizes.Add("Large");
+                DataProduct product = new DataProduct();
+                int intRemoveProduct = 0;
+
+                for (int intIndex = 0; intIndex < cboColor.Items.Count; intIndex++)
+                {
+                    for(int intSizeIndex = 0; intSizeIndex < lstSizes.Count; intSizeIndex++)
+                    {
+                        product = DataProduct.GetProduct(cboColor.Items[intIndex].ToString(), lstSizes[intSizeIndex]);
+                        if(product == null || product.Deleted == true)
+                        {
+                            intRemoveProduct++;
+                        }
+                        if(intRemoveProduct >= 3)
+                        {
+                            cboColor.Items.RemoveAt(intIndex);
+                            intIndex = 0;
+                            intRemoveProduct = 0;
+                        }
+                    }
+                    intRemoveProduct = 0;
+                }
+
                 Cursor.Current = Cursors.Default;
             }
             catch (Exception ex)

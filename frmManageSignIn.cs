@@ -34,11 +34,13 @@ namespace SU21_Final_Project
         {
             try
             {
+                Cursor.Current = Cursors.WaitCursor;
                 DataPerson person = DataPerson.GetPerson(txtUsername.Text);
                 if (person != null)
                 {
                     if (person.Deleted == true)
                     {
+                        Cursor.Current = Cursors.Default;
                         MessageBox.Show("This account has been suspended. If you'd like to reactivate this account, please click on the help file and contact the supervisor via their email", "Account Suspended", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
@@ -52,6 +54,7 @@ namespace SU21_Final_Project
 
                             if (strEmployeeType == "Employee")
                             {
+                                Cursor.Current = Cursors.Default;
                                 frmEmpMain frmEmp = new frmEmpMain();
                                 this.Hide();
                                 this.Close();
@@ -59,6 +62,7 @@ namespace SU21_Final_Project
                             }
                             else if (strEmployeeType == "Manager")
                             {
+                                Cursor.Current = Cursors.Default;
                                 frmManagerMain frmManager = new frmManagerMain();
                                 this.Hide();
                                 this.Close();
@@ -66,12 +70,14 @@ namespace SU21_Final_Project
                             }
                             else
                             {
+                                Cursor.Current = Cursors.Default;
                                 MessageBox.Show("Invalid Login", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             }
 
                         }
                         else
                         {
+                            Cursor.Current = Cursors.Default;
                             MessageBox.Show("Your password is incorrect", "Invalid Password", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             txtPassword.Focus();
                             txtPassword.SelectAll();
@@ -81,6 +87,7 @@ namespace SU21_Final_Project
                 }
                 else
                 {
+                    Cursor.Current = Cursors.Default;
                     MessageBox.Show("This account doesn't exist", "Invalid Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtUsername.Focus();
                     txtUsername.SelectAll();
@@ -89,6 +96,7 @@ namespace SU21_Final_Project
             }
             catch (Exception ex)
             {
+                Cursor.Current = Cursors.Default;
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

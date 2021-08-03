@@ -22,10 +22,12 @@ namespace SU21_Final_Project
             InitializeComponent();
             try
             {
+                Cursor.Current = Cursors.WaitCursor;
                 _lstProducts = DataProduct.ListProducts();
             }
             catch (Exception ex)
             {
+                Cursor.Current = Cursors.Default;
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
             }
