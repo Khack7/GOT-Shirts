@@ -467,6 +467,18 @@ namespace SU21_Final_Project
 
         bool bolShowCardNum = true;
 
+        private void txtCard_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (cboMonth.SelectedIndex >= 0 && cboYear.SelectedIndex >= 0 && txtCard.Text.Length == 16)
+            {
+                btnConfirm.Enabled = true;
+            }
+            else
+            {
+                btnConfirm.Enabled = false;
+            }
+        }
+
         private void btnShowCard_Click(object sender, EventArgs e)
         {
             if (bolShowCardNum == true)

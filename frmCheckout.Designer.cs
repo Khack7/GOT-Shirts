@@ -102,6 +102,7 @@ namespace SU21_Final_Project
             this.txtCard.Size = new System.Drawing.Size(266, 20);
             this.txtCard.TabIndex = 13;
             this.txtCard.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCard_KeyPress);
+            this.txtCard.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtCard_KeyUp);
             // 
             // lblCard
             // 
