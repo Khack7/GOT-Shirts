@@ -460,6 +460,9 @@
     <Content Include="Shirts\Red.PNG" />
     <Content Include="Shirts\White.PNG" />
     <Content Include="Shirts\Yellow.PNG" />
+    <Content Include="Templates\Employee-Info-Report.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Templates\Inventory-Report.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

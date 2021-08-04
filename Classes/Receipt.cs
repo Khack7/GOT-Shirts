@@ -39,5 +39,15 @@ namespace SU21_Final_Project.Classes
                 return srReader.ReadToEnd();
             }
         }
+
+        public static string LoadPersonInfoTemplate()
+        {
+            string strPath = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            string strFilePath = $"{strPath}\\Templates\\Employee-Info-Report.html";
+            using (StreamReader srReader = new StreamReader(strFilePath))
+            {
+                return srReader.ReadToEnd();
+            }
+        }
     }
 }

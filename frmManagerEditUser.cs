@@ -333,7 +333,7 @@ namespace SU21_Final_Project
                 DataPerson person = DataPerson.GetPerson(frmManageUsers.strUserName);
                 txtPayRate.Visible = true;
                 lblPay.Visible = true;
-                txtPayRate.Text = person.PayRate.ToString();
+                txtPayRate.Text = person.PayRate.ToString("C2");
             }
         }
 

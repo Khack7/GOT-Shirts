@@ -7,12 +7,14 @@
 // Form Purpose: This is the form where the manager can view all users and delete/alter them as needed
 //*******************************************
 //*******************************************
+using SU21_Final_Project.Classes;
 using SU21_Final_Project.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -172,11 +174,125 @@ namespace SU21_Final_Project
             }
         }
 
+        enum View
+        {
+            All,
+            Employee,
+            Customer
+        }
+
+        View view = View.All;
+        int intTotalRows = 0;
+
+        private void btnViewEmployee_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dgvPerson.SelectedRows)
+            {
+                intTotalRows++;
+            }
+            if (intTotalRows == 0)
+            {
+                MessageBox.Show("No row selected", "No selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (intTotalRows > 1)
+            {
+                MessageBox.Show("Please only select 1 row", "Too many selected!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                if (view == View.Employee)
+                {
+                    try
+                    {
+                        string strPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                        int intSelectedRows = 0;
+                        string strFileName = "";
+
+                        SaveFileDialog sfdFile = new SaveFileDialog();
+
+                        foreach (DataGridViewRow row in dgvPerson.SelectedRows)
+                        {
+                            intSelectedRows++;
+                        }
+
+                        if (intSelectedRows == 0)
+                        {
+                            MessageBox.Show("Please select a row", "No row selected", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            foreach (DataGridViewRow row in dgvPerson.SelectedRows)
+                            {
+                                strFileName = $"GOT Shirts-{row.Cells[6].Value}-{row.Cells[2].Value.ToString()}-{row.Cells[1].Value}.html";
+
+
+                                sfdFile.FileName = strFileName;
+                                sfdFile.Title = "Select save location.";
+                                sfdFile.InitialDirectory = strPath;
+
+                                if (sfdFile.ShowDialog() == DialogResult.OK)
+                                {
+                                    Cursor.Current = Cursors.WaitCursor;
+
+                                    strPath = Path.GetDirectoryName(sfdFile.FileName);
+
+                                    strFileName = Path.Combine(strPath, strFileName);
+
+                                    DataPerson person = DataPerson.GetPerson(row.Cells[5].Value.ToString()); ;
+
+                                    GenerateReport(person, strFileName);
+                                }
+                            }
+                            System.Diagnostics.Process.Start(strFileName);
+                            Cursor.Current = Cursors.Default;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Cursor.Current = Cursors.Default;
+                        MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please select an employee", "No employee selected", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void GenerateReport(DataPerson person, string strFileName)
+        {
+            string strReport = Receipt.LoadPersonInfoTemplate();
+
+            strReport = strReport.Replace("{Date}", DateTime.Now.ToString());
+            strReport = strReport.Replace("{ID}", person.PersonID.ToString());
+
+            StringBuilder itemHTML = new StringBuilder();
+
+            itemHTML.AppendFormat("<tr>");
+            itemHTML.AppendFormat("    <td>{0}</td>", person.NameFirst);
+            itemHTML.AppendFormat("    <td>{0}</td>", person.NameLast);
+            itemHTML.AppendFormat("    <td>{0:C2}</td>", person.PayRate);
+            itemHTML.AppendFormat("    <td>{0:C2}</td>", person.AccountType);
+            itemHTML.AppendFormat("</tr>");
+
+            strReport = strReport.Replace("{Info}", itemHTML.ToString());
+
+            using (FileStream fs = new FileStream(strFileName, FileMode.Create))
+            {
+                using (StreamWriter w = new StreamWriter(fs, Encoding.UTF8))
+                {
+                    w.Write(strReport);
+                }
+            }
+        }
         private void btnEmployee_Click(object sender, EventArgs e)
         {
             try
             {
                 Cursor.Current = Cursors.WaitCursor;
+                view = View.Employee;
+                btnViewEmployee.Enabled = true;
                 DataView dv;
                 dv = new DataView(dataSetPerson.Tables[0], "AccountType = 'Employee' OR AccountType = 'Manager'", "AccountType Desc", DataViewRowState.CurrentRows);
                 dgvPerson.DataSource = dv;
@@ -194,6 +310,8 @@ namespace SU21_Final_Project
             try
             {
                 Cursor.Current = Cursors.WaitCursor;
+                view = View.Customer;
+                btnViewEmployee.Enabled = false;
                 DataView dv;
                 dv = new DataView(dataSetPerson.Tables[0], "AccountType = 'Customer'", "AccountType Desc", DataViewRowState.CurrentRows);
                 dgvPerson.DataSource = dv;
