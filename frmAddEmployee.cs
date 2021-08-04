@@ -1,4 +1,13 @@
-﻿using SU21_Final_Project.Data;
+﻿//*******************************************
+//*******************************************
+// Programmer: Kevin Hack
+// Course: INEW 2332.7Z1 (Final Project)
+// Program Description: A t-shirts selling application used to sell and ship shirts across the U.S.
+//*******************************************
+// Form Purpose: This is the form where the manager can add new employees or managers
+//*******************************************
+//*******************************************
+using SU21_Final_Project.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -103,7 +112,7 @@ namespace SU21_Final_Project
                     bool bolEmptyTextbox = false;
 
                     if (txtFirst.Text == "" || txtLast.Text == "" || txtAddress1.Text == "" ||
-                       txtCity.Text == "" || cboStates.SelectedItem == null ||
+                       txtCity.Text.Length < 3 || cboStates.SelectedItem == null ||
                        txtZip.Text == "" || txtUsername.Text == "" || txtPassword.Text == "" ||
                        cmboSecurity1.SelectedItem == null || cmboSecurity2.SelectedItem == null ||
                        cmboSecurity3.SelectedItem == null || txtAnswer1.Text == "" || txtAnswer2.Text == ""
@@ -119,6 +128,11 @@ namespace SU21_Final_Project
                         else if (txtPhone.MaskCompleted == false && txtEmail.Text == "")
                         {
                             MessageBox.Show("Employees are required to have at least one method of contact", "Please fill out a contact field", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                        else if (txtCity.Text.Length < 3)
+                        {
+                            txtCity.Focus();
+                            MessageBox.Show("There are no city names with less than 3 charactors", "Invalid City", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
                         else if (bolValidPay == false || txtPayRate.Text == "")
                         {
@@ -209,7 +223,7 @@ namespace SU21_Final_Project
                                     } 
                                     else
                                     {
-                                        throw new Exception("Invalid email inserted. Please enter a vailid email or make sure no text is in the email field");
+                                        throw new CustomException("Invalid email inserted. Please enter a vailid email or make sure no text is in the email field");
                                     }
                                 }
                             }
@@ -267,10 +281,25 @@ namespace SU21_Final_Project
                         }
                     }
                 }
+                catch (CustomException ex)
+                {
+                    Cursor.Current = Cursors.Default;
+                    MessageBox.Show(ex.Message, "Attention!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private class CustomException : Exception
+        {
+            public CustomException() { }
+
+            public CustomException(string strException) : base(strException)
+            {
+
             }
         }
 

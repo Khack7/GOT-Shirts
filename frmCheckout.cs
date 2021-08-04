@@ -7,7 +7,7 @@
 // Form Purpose: This is the form where the selected item(s) are displayed, the pricings,
 // and the payment options.
 //*******************************************
-//*******************************************using System;
+//*******************************************
 using SU21_Final_Project.Classes;
 using SU21_Final_Project.Data;
 using System;

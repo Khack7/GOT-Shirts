@@ -1,4 +1,13 @@
-﻿using SU21_Final_Project.Data;
+﻿//*******************************************
+//*******************************************
+// Programmer: Kevin Hack
+// Course: INEW 2332.7Z1 (Final Project)
+// Program Description: A t-shirts selling application used to sell and ship shirts across the U.S.
+//*******************************************
+// Form Purpose: This is the form where the manager can alter shipping or tax rates
+//*******************************************
+//*******************************************
+using SU21_Final_Project.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -69,21 +78,44 @@ namespace SU21_Final_Project
         {
             try
             {
-                if (cboSettingNames.SelectedItem != null)
+                if(cboSettingNames.SelectedIndex != -1)
                 {
-                    btnEdit.Enabled = true;
-                    txtValue.ReadOnly = true;
-                    btnApply.Enabled = false;
-
                     string strSelectedSetting = cboSettingNames.SelectedItem.ToString();
                     var setting = _lstSettings.Where(s => s.SettingName == strSelectedSetting).SingleOrDefault();
-                    txtValue.Text = setting.SettingValue;
-                }
-                else
-                {
-                    txtValue.Text = "";
-                    txtValue.ReadOnly = true;
-                }
+
+                    if (cboSettingNames.SelectedItem != null && cboSettingNames.SelectedItem.ToString() != "TaxRate")
+                    {
+                        btnEdit.Enabled = true;
+                        txtValue.ReadOnly = true;
+                        btnApply.Enabled = false;
+                        lblPercentSign.Visible = false;
+
+                        if (double.TryParse(setting.SettingValue, out double dblSetting))
+                        {
+                            txtValue.Text = dblSetting.ToString("C2");
+                        }
+                        else
+                        {
+                            cboSettingNames.SelectedIndex = -1;
+                            throw new Exception("Something went wrong. Please try again");
+                        }
+                    }
+                    else if (cboSettingNames.SelectedItem.ToString() == "TaxRate")
+                    {
+                        btnEdit.Enabled = true;
+                        txtValue.ReadOnly = true;
+                        btnApply.Enabled = false;
+                        lblPercentSign.Visible = true;
+
+                        txtValue.Text = setting.SettingValue;
+                    }
+                    else
+                    {
+                        txtValue.Text = "";
+                        txtValue.ReadOnly = true;
+                        lblPercentSign.Visible = false;
+                    }
+                }                
             }
             catch (Exception ex)
             {
@@ -139,6 +171,7 @@ namespace SU21_Final_Project
                             txtValue.Text = "";
                             txtValue.ReadOnly = true;
                             btnApply.Enabled = false;
+                            lblPercentSign.Visible = false;
 
                             cboSettingNames.Items.Clear();
                             _lstSettings = DataSettings.ListSettings();

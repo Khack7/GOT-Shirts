@@ -1,4 +1,13 @@
-﻿using SU21_Final_Project.Classes;
+﻿//*******************************************
+//*******************************************
+// Programmer: Kevin Hack
+// Course: INEW 2332.7Z1 (Final Project)
+// Program Description: A t-shirts selling application used to sell and ship shirts across the U.S.
+//*******************************************
+// Form Purpose: This is the form where the manager can view, update, alter, or add new inventory itmes
+//*******************************************
+//*******************************************
+using SU21_Final_Project.Classes;
 using SU21_Final_Project.Data;
 using System;
 using System.Collections.Generic;

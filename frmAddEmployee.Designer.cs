@@ -229,11 +229,12 @@ namespace SU21_Final_Project
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 9);
+            this.label3.Location = new System.Drawing.Point(12, 2);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(853, 17);
+            this.label3.Size = new System.Drawing.Size(853, 42);
             this.label3.TabIndex = 0;
-            this.label3.Text = "Please fill out all that apply. The fields with \" * \" are required";
+            this.label3.Text = "Please fill out all that apply. The fields with \" * \" are required\r\nand at least " +
+    "1 method of contact is needed(Phone# and/or Email)";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // cboStates
@@ -314,9 +315,9 @@ namespace SU21_Final_Project
             this.lblPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPhone.Location = new System.Drawing.Point(12, 266);
             this.lblPhone.Name = "lblPhone";
-            this.lblPhone.Size = new System.Drawing.Size(54, 17);
+            this.lblPhone.Size = new System.Drawing.Size(49, 17);
             this.lblPhone.TabIndex = 20;
-            this.lblPhone.Text = "&Phone*";
+            this.lblPhone.Text = "&Phone";
             // 
             // txtEmail
             // 
@@ -332,9 +333,9 @@ namespace SU21_Final_Project
             this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmail.Location = new System.Drawing.Point(588, 57);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(47, 17);
+            this.lblEmail.Size = new System.Drawing.Size(42, 17);
             this.lblEmail.TabIndex = 6;
-            this.lblEmail.Text = "Emai&l*";
+            this.lblEmail.Text = "Emai&l";
             // 
             // txtZip
             // 

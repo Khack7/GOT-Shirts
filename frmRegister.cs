@@ -4,7 +4,7 @@
 // Course: INEW 2332.7Z1 (Final Project)
 // Program Description: A t-shirts selling application used to sell and ship shirts across the U.S.
 //*******************************************
-// Form Purpose: This is the form where new customers will create an account for quicker purchases
+// Form Purpose: This is the form where new customers will create an account
 //*******************************************
 //*******************************************
 using SU21_Final_Project.Data;

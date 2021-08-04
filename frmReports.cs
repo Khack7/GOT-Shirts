@@ -1,4 +1,13 @@
-﻿using System;
+﻿//*******************************************
+//*******************************************
+// Programmer: Kevin Hack
+// Course: INEW 2332.7Z1 (Final Project)
+// Program Description: A t-shirts selling application used to sell and ship shirts across the U.S.
+//*******************************************
+// Form Purpose: This is the form where the manager can view orders and print sales reports
+//*******************************************
+//*******************************************
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

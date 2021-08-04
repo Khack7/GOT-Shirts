@@ -1,4 +1,13 @@
-﻿using SU21_Final_Project.Data;
+﻿//*******************************************
+//*******************************************
+// Programmer: Kevin Hack
+// Course: INEW 2332.7Z1 (Final Project)
+// Program Description: A t-shirts selling application used to sell and ship shirts across the U.S.
+//*******************************************
+// Form Purpose: This is the form where employees can view the current inventory
+//*******************************************
+//*******************************************
+using SU21_Final_Project.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -74,7 +83,6 @@ namespace SU21_Final_Project
                     if (product == null)
                     {
                         cboSize.SelectedIndex = -1;
-                        cboColor.SelectedIndex = -1;
                         pbxShirt.Image = null;
                         throw new CustomException("There is currently no product in this size");
                     }
@@ -138,7 +146,6 @@ namespace SU21_Final_Project
                     if (product == null)
                     {
                         cboSize.SelectedIndex = -1;
-                        cboColor.SelectedIndex = -1;
                         pbxShirt.Image = null;
                         throw new CustomException("There is currently no product in this size");
                     }
@@ -185,10 +192,10 @@ namespace SU21_Final_Project
 
         private void btnHelp_Click(object sender, EventArgs e)
         {
-            string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            string strPath = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
             try
             {
-                System.Diagnostics.Process.Start($"{path}\\HelpFiles\\Employee_Inventory_Help.html");
+                System.Diagnostics.Process.Start($"{strPath}\\HelpFiles\\Employee_Inventory_Help.html");
             }
             catch (Exception ex)
             {

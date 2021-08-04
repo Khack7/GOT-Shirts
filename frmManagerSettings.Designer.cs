@@ -33,11 +33,12 @@ namespace SU21_Final_Project
             this.cboSettingNames = new System.Windows.Forms.ComboBox();
             this.lblName = new System.Windows.Forms.Label();
             this.txtValue = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblValue = new System.Windows.Forms.Label();
             this.btnReturn = new System.Windows.Forms.Button();
             this.btnHelp = new System.Windows.Forms.Button();
             this.btnApply = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
+            this.lblPercentSign = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // cboSettingNames
@@ -69,15 +70,15 @@ namespace SU21_Final_Project
             this.txtValue.TabIndex = 4;
             this.txtValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValue_KeyPress);
             // 
-            // label1
+            // lblValue
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(203, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 17);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Setting &Value";
+            this.lblValue.AutoSize = true;
+            this.lblValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblValue.Location = new System.Drawing.Point(203, 20);
+            this.lblValue.Name = "lblValue";
+            this.lblValue.Size = new System.Drawing.Size(92, 17);
+            this.lblValue.TabIndex = 2;
+            this.lblValue.Text = "Setting &Value";
             // 
             // btnReturn
             // 
@@ -125,16 +126,28 @@ namespace SU21_Final_Project
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
+            // lblPercentSign
+            // 
+            this.lblPercentSign.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPercentSign.Location = new System.Drawing.Point(312, 40);
+            this.lblPercentSign.Name = "lblPercentSign";
+            this.lblPercentSign.Size = new System.Drawing.Size(16, 21);
+            this.lblPercentSign.TabIndex = 8;
+            this.lblPercentSign.Text = "%";
+            this.lblPercentSign.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblPercentSign.Visible = false;
+            // 
             // frmManagerSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(331, 276);
+            this.Controls.Add(this.lblPercentSign);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnApply);
             this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.btnReturn);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblValue);
             this.Controls.Add(this.txtValue);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.cboSettingNames);
@@ -155,10 +168,11 @@ namespace SU21_Final_Project
         private System.Windows.Forms.ComboBox cboSettingNames;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.TextBox txtValue;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblValue;
         private System.Windows.Forms.Button btnReturn;
         private System.Windows.Forms.Button btnHelp;
         private System.Windows.Forms.Button btnApply;
         private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Label lblPercentSign;
     }
 }
