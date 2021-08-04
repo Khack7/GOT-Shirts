@@ -171,7 +171,7 @@ namespace SU21_Final_Project
                     bool bolEmptyTextbox = false;
 
                     if (txtFirst.Text == "" || txtLast.Text == "" || txtAddress1.Text == "" ||
-                       txtCity.Text == "" || cboStates.SelectedItem == null ||
+                       txtCity.Text.Length < 3 || cboStates.SelectedItem == null ||
                        txtZip.Text == "" || txtZip.Text.Length < 5 || txtUsername.Text == "" || txtPassword.Text == "" ||
                        cmboSecurity1.SelectedItem == null || cmboSecurity2.SelectedItem == null ||
                        cmboSecurity3.SelectedItem == null || txtAnswer1.Text == "" || txtAnswer2.Text == ""

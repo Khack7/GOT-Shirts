@@ -171,7 +171,7 @@ namespace SU21_Final_Project
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Are you sure want to quit? Your order will be canceled and you will be signed out", "Alert!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult result = MessageBox.Show("Are you sure want to log out? Your order will be canceled and you will be signed out", "Alert!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (result == DialogResult.Yes)
             {
@@ -1092,6 +1092,23 @@ namespace SU21_Final_Project
                     Cursor.Current = Cursors.Default;
                     MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Are you sure you want to clear your cart?", "Are You Sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if(dr == DialogResult.Yes)
+            {
+                lstCart.Items.Clear();
+            }
+            if (lstCart.Items.Count <= 0)
+            {
+                btnCheckout.Enabled = false;
+            }
+            else
+            {
+                btnCheckout.Enabled = true;
             }
         }
     }
