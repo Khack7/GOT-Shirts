@@ -137,6 +137,10 @@ namespace SU21_Final_Project
                 {
                     MessageBox.Show("Make sure all required files are filled out", "Missing information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+                else if(txtLast.Text.Length < 2 || txtFirst.Text.Length < 2)
+                {
+                    MessageBox.Show("Please enter a valid name", "First and/or Last name invalid", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
                 else if (!txtPhone.MaskCompleted)
                 {
                     DialogResult dr = MessageBox.Show("You don't have a valid phone number. Continue without one?", "Invalid phone", MessageBoxButtons.YesNo, MessageBoxIcon.Question);

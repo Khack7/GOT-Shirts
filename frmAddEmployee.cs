@@ -111,9 +111,9 @@ namespace SU21_Final_Project
 
                     bool bolEmptyTextbox = false;
 
-                    if (txtFirst.Text == "" || txtLast.Text == "" || txtAddress1.Text == "" ||
+                    if (txtFirst.Text.Length < 2 || txtLast.Text.Length < 2 || txtAddress1.Text == "" ||
                        txtCity.Text.Length < 3 || cboStates.SelectedItem == null ||
-                       txtZip.Text == "" || txtUsername.Text == "" || txtPassword.Text == "" ||
+                       txtZip.Text == "" || txtUsername.Text.Length < 6 || txtPassword.Text == "" ||
                        cmboSecurity1.SelectedItem == null || cmboSecurity2.SelectedItem == null ||
                        cmboSecurity3.SelectedItem == null || txtAnswer1.Text == "" || txtAnswer2.Text == ""
                        || txtAnswer3.Text == "" || bolValidPay == false)
@@ -124,6 +124,14 @@ namespace SU21_Final_Project
                         {
                             txtZip.Focus();
                             MessageBox.Show("Zipcode must be a valid 5 digit number", "Invalid Zipcode", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                        else if(txtUsername.Text.Length < 6)
+                        {
+                            MessageBox.Show("Username must be between 6 and 30 charactors long", "Invalid UserName", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                        else if (txtFirst.Text.Length < 2 || txtLast.Text.Length < 2)
+                        {
+                            MessageBox.Show("Please enter a valid name", "First and/or Last name invalid", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
                         else if (txtPhone.MaskCompleted == false && txtEmail.Text == "")
                         {

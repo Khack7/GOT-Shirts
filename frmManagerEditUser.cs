@@ -49,6 +49,12 @@ namespace SU21_Final_Project
         }
 
         bool bolEditsSaved = false;
+
+        public static double MoneyParse(string input)
+        {
+            return double.Parse(Regex.Replace(input, @"[^\d.]", ""));
+        }
+
         private void btnApply_Click(object sender, EventArgs e)
         {
             DialogResult dr;
@@ -56,6 +62,14 @@ namespace SU21_Final_Project
             if(txtPhone.MaskCompleted == false && txtEmail.Text == "" && cboAccountType.SelectedItem.ToString() != "Customer")
             {
                 MessageBox.Show("Employees and Managers require at least 1 mehtod of contact", "Email or Phone required", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (txtFirstName.Text.Length < 2 || txtLastName.Text.Length < 2)
+            {
+                MessageBox.Show("Please enter a valid name", "First and/or Last name invalid", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else if (txtUsername.Text.Length < 6)
+            {
+                MessageBox.Show("Username must be between 6 and 30 charactors long", "Invalid UserName", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
@@ -71,7 +85,9 @@ namespace SU21_Final_Project
                             {
                                 DataPerson person = DataPerson.GetPerson(frmManageUsers.strUserName);
 
-                                if (!double.TryParse(txtPayRate.Text, out double dblPay))
+                                double dblMoney = MoneyParse(txtPayRate.Text);
+
+                                if (!double.TryParse(dblMoney.ToString(), out double dblPay))
                                 {
                                     throw new Exception("Invalid Payrate!");
                                 }
@@ -94,7 +110,8 @@ namespace SU21_Final_Project
 
                                 if (txtUsername.Text != frmManageUsers.strUserName)
                                 {
-                                    if (person.UserName != null)
+                                    DataPerson personUsernameCheck = DataPerson.GetPerson(txtUsername.Text);
+                                    if (personUsernameCheck != null)
                                     {
                                         MessageBox.Show("This Username is already taken", "Name in use", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                                     }
@@ -161,7 +178,9 @@ namespace SU21_Final_Project
                         {
                             DataPerson person = DataPerson.GetPerson(frmManageUsers.strUserName);
 
-                            if (!double.TryParse(txtPayRate.Text, out double dblPay))
+                            double dblMoney = MoneyParse(txtPayRate.Text);
+
+                            if (!double.TryParse(dblMoney.ToString(), out double dblPay))
                             {
                                 throw new Exception("Invalid Payrate!");
                             }
@@ -183,7 +202,8 @@ namespace SU21_Final_Project
 
                             if (txtUsername.Text != frmManageUsers.strUserName)
                             {
-                                if (person.UserName != null)
+                                DataPerson personUsernameCheck = DataPerson.GetPerson(txtUsername.Text);
+                                if (personUsernameCheck != null)
                                 {
                                     MessageBox.Show("This Username is already taken", "Name in use", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                                 }

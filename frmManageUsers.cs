@@ -241,11 +241,14 @@ namespace SU21_Final_Project
                                     DataPerson person = DataPerson.GetPerson(row.Cells[5].Value.ToString()); ;
 
                                     GenerateReport(person, strFileName);
+
+                                    System.Diagnostics.Process.Start(strFileName);
                                 }
                             }
-                            System.Diagnostics.Process.Start(strFileName);
-                            Cursor.Current = Cursors.Default;
                         }
+                        intSelectedRows = 0;
+                        intTotalRows = 0;
+                        Cursor.Current = Cursors.Default;
                     }
                     catch (Exception ex)
                     {
