@@ -61,7 +61,7 @@ namespace SU21_Final_Project
 
             if(txtPhone.MaskCompleted == false && CheckEmail(txtEmail.Text) == false)
             {
-                MessageBox.Show("Accounts require at least 1 mehtod of contact", "Email or Phone required", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Accounts require at least 1 mehtod of contact", "Contact Method Required", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else if (txtFirstName.Text.Length < 2 || txtLastName.Text.Length < 2)
             {

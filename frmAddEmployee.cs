@@ -135,7 +135,7 @@ namespace SU21_Final_Project
                         }
                         else if (txtPhone.MaskCompleted == false && txtEmail.Text == "")
                         {
-                            MessageBox.Show("Employees are required to have at least one method of contact", "Please fill out a contact field", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            MessageBox.Show("Employees are required to have at least one method of contact", "Contact Method Required", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
                         else if (txtCity.Text.Length < 3)
                         {

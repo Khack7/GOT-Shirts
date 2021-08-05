@@ -143,7 +143,7 @@ namespace SU21_Final_Project
                 }
                 else if(!txtPhone.MaskCompleted && CheckEmail(txtEmail.Text) == false)
                 {
-                    MessageBox.Show("Please add at least one method of contact and ensure they are correct", "Please fill out phone# or email field", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Please add at least one method of contact and ensure they are correct", "Contact Method Required", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 else if (!txtPhone.MaskCompleted)
                 {
