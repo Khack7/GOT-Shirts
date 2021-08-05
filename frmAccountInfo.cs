@@ -141,6 +141,10 @@ namespace SU21_Final_Project
                 {
                     MessageBox.Show("Please enter a valid name", "First and/or Last name invalid", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
+                else if(!txtPhone.MaskCompleted && CheckEmail(txtEmail.Text) == false)
+                {
+                    MessageBox.Show("Please add at least one method of contact and ensure they are correct", "Please fill out phone# or email field", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
                 else if (!txtPhone.MaskCompleted)
                 {
                     DialogResult dr = MessageBox.Show("You don't have a valid phone number. Continue without one?", "Invalid phone", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -157,7 +161,7 @@ namespace SU21_Final_Project
                             bool isValidEmail = regex.IsMatch(strEmail);
                             if (!isValidEmail)
                             {
-                                throw new Exception("Invalid email inserted. Please enter a vailid email or make sure no text is in the email field");
+                                throw new CustomException("Invalid email inserted. Please enter a vailid email or make sure no text is in the email field");
                             }
                             else
                             {
@@ -215,7 +219,7 @@ namespace SU21_Final_Project
                         bool isValidEmail = regex.IsMatch(strEmail);
                         if (!isValidEmail)
                         {
-                            throw new Exception("Invalid email inserted. Please enter a vailid email or make sure no text is in the email field");
+                            throw new CustomException("Invalid email inserted. Please enter a vailid email or make sure no text is in the email field");
                         }
                         else
                         {
@@ -260,9 +264,23 @@ namespace SU21_Final_Project
                     }
                 }
             }
+            catch (CustomException ex)
+            {
+                MessageBox.Show(ex.Message, "Attention!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private class CustomException : Exception
+        {
+            public CustomException() { }
+
+            public CustomException(string strException) : base(strException)
+            {
+
             }
         }
 
@@ -351,5 +369,32 @@ namespace SU21_Final_Project
             txtPhone.SelectAll();
             this.txtPhone.Select(0, 0);
         }
+
+        public bool CheckEmail(string strEmail)
+        {
+            bool bolResult;
+            Regex regex = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$",
+
+            RegexOptions.CultureInvariant | RegexOptions.Singleline);
+
+            bool isValidEmail = regex.IsMatch(strEmail);
+            if (strEmail == "" && txtPhone.MaskCompleted == true)
+            {
+                bolResult = true;
+            }
+            else
+            {
+                if (!isValidEmail)
+                {
+                    bolResult = false;
+                }
+                else
+                {
+                    bolResult = true;
+                }
+            }
+            return bolResult;
+        }
+
     }
 }

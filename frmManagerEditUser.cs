@@ -59,9 +59,9 @@ namespace SU21_Final_Project
         {
             DialogResult dr;
 
-            if(txtPhone.MaskCompleted == false && txtEmail.Text == "" && cboAccountType.SelectedItem.ToString() != "Customer")
+            if(txtPhone.MaskCompleted == false && CheckEmail(txtEmail.Text) == false)
             {
-                MessageBox.Show("Employees and Managers require at least 1 mehtod of contact", "Email or Phone required", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Accounts require at least 1 mehtod of contact", "Email or Phone required", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else if (txtFirstName.Text.Length < 2 || txtLastName.Text.Length < 2)
             {
@@ -89,14 +89,14 @@ namespace SU21_Final_Project
 
                                 if (!double.TryParse(dblMoney.ToString(), out double dblPay))
                                 {
-                                    throw new Exception("Invalid Payrate!");
+                                    throw new CustomException("Invalid Payrate!");
                                 }
 
                                 if (cboAccountType.SelectedItem.ToString() == "Manager" || cboAccountType.SelectedItem.ToString() == "Employee")
                                 {
                                     if(dblPay < 7.50)
                                     {
-                                        throw new Exception("Invalid payrate. Must be at least $7.50");
+                                        throw new CustomException("Invalid payrate. Must be at least $7.50");
                                     }
                                     else
                                     {
@@ -134,7 +134,7 @@ namespace SU21_Final_Project
                                         }
                                         else
                                         {
-                                            throw new Exception("Invalid email inserted. Please enter a vailid email or make sure no text is in the email field");
+                                            throw new CustomException("Invalid email inserted. Please enter a vailid email or make sure no text is in the email field");
                                         }
 
                                     }
@@ -158,7 +158,7 @@ namespace SU21_Final_Project
                                     }
                                     else
                                     {
-                                        throw new Exception("Invalid email inserted. Please enter a vailid email or make sure no text is in the email field");
+                                        throw new CustomException("Invalid email inserted. Please enter a vailid email or make sure no text is in the email field");
                                     }
                                 }
                             }
@@ -182,13 +182,13 @@ namespace SU21_Final_Project
 
                             if (!double.TryParse(dblMoney.ToString(), out double dblPay))
                             {
-                                throw new Exception("Invalid Payrate!");
+                                throw new CustomException("Invalid Payrate!");
                             }
                             if (cboAccountType.SelectedItem.ToString() == "Manager" || cboAccountType.SelectedItem.ToString() == "Employee")
                             {
                                 if (dblPay < 7.50)
                                 {
-                                    throw new Exception("Invalid payrate. Must be at least $7.50");
+                                    throw new CustomException("Invalid payrate. Must be at least $7.50");
                                 }
                                 else
                                 {
@@ -226,7 +226,7 @@ namespace SU21_Final_Project
                                     }
                                     else
                                     {
-                                        throw new Exception("Invalid email inserted. Please enter a vailid email or make sure no text is in the email field");
+                                        throw new CustomException("Invalid email inserted. Please enter a vailid email or make sure no text is in the email field");
                                     }
                                 }
                             }
@@ -249,9 +249,13 @@ namespace SU21_Final_Project
                                 }
                                 else
                                 {
-                                    throw new Exception("Invalid email inserted. Please enter a vailid email or make sure no text is in the email field");
+                                    throw new CustomException("Invalid email inserted. Please enter a vailid email or make sure no text is in the email field");
                                 }
                             }
+                        }
+                        catch (CustomException ex)
+                        {
+                            MessageBox.Show(ex.Message, "Attention!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
                         catch (Exception ex)
                         {
@@ -262,6 +266,15 @@ namespace SU21_Final_Project
             }                       
         }
 
+        private class CustomException : Exception
+        {
+            public CustomException() { }
+
+            public CustomException(string strException) : base(strException)
+            {
+
+            }
+        }
         private void btnReturn_Click(object sender, EventArgs e)
         {
             frmManageUsers frmManage = new frmManageUsers();
@@ -378,7 +391,7 @@ namespace SU21_Final_Project
             RegexOptions.CultureInvariant | RegexOptions.Singleline);
 
             bool isValidEmail = regex.IsMatch(strEmail);
-            if(strEmail == "")
+            if(strEmail == "" && txtPhone.MaskCompleted == true)
             {
                 bolResult = true;
             }

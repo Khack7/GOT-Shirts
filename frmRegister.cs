@@ -186,9 +186,9 @@ namespace SU21_Final_Project
                         {
                             MessageBox.Show("Username must be between 6 and 30 charactors long", "Invalid UserName", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
-                        else if (txtPhone.MaskCompleted == false && txtEmail.Text == "")
+                        else if (txtPhone.MaskCompleted == false && CheckEmail(txtEmail.Text) == false)
                         {
-                            MessageBox.Show("Please add at least one method of contact", "Please fill out phone# or email field", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            MessageBox.Show("Please add at least one method of contact and ensure they are correct", "Please fill out phone# or email field", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
                         else if(txtFirst.Text.Length < 2 || txtLast.Text.Length < 2)
                         {
@@ -272,7 +272,7 @@ namespace SU21_Final_Project
                                     }
                                     else
                                     {
-                                        throw new Exception("Invalid email inserted. Please enter a vailid email or make sure no text is in the email field");
+                                        throw new CustomException("Invalid email inserted. Please enter a vailid email or make sure no text is in the email field");
                                     }
 
                                 }
@@ -311,11 +311,15 @@ namespace SU21_Final_Project
                                 }
                                 else
                                 {
-                                    throw new Exception("Invalid email inserted. Please enter a vailid email or make sure no text is in the email field");
+                                    throw new CustomException("Invalid email inserted. Please enter a vailid email or make sure no text is in the email field");
                                 }
                             }
                         }
                     }
+                }
+                catch (CustomException ex)
+                {
+                    MessageBox.Show(ex.Message, "Attention!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 catch (Exception ex)
                 {
@@ -324,6 +328,15 @@ namespace SU21_Final_Project
             }
         }
 
+        private class CustomException : Exception
+        {
+            public CustomException() { }
+
+            public CustomException(string strException) : base(strException)
+            {
+
+            }
+        }
         private void txtFirst_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
@@ -449,7 +462,7 @@ namespace SU21_Final_Project
         }
 
         private void txtEmail_KeyPress(object sender, KeyPressEventArgs e)
-        {
+       {
             if (e.KeyChar == (char)Keys.Space || e.KeyChar == '-')
             {
                 e.Handled = true;
@@ -485,7 +498,7 @@ namespace SU21_Final_Project
             RegexOptions.CultureInvariant | RegexOptions.Singleline);
 
             bool isValidEmail = regex.IsMatch(strEmail);
-            if (strEmail == "")
+            if (strEmail == "" && txtPhone.MaskCompleted == true)
             {
                 bolResult = true;
             }

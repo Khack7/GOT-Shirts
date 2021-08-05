@@ -72,7 +72,7 @@ namespace SU21_Final_Project
                             bool isValidEmail = regex.IsMatch(strEmail);
                             if (!isValidEmail)
                             {
-                                throw new Exception("Invalid email inserted. Please enter a vailid email or make sure no text is in the email field");
+                                throw new CustomException("Invalid email inserted. Please enter a vailid email or make sure no text is in the email field");
                             }
                             else
                             {
@@ -115,7 +115,7 @@ namespace SU21_Final_Project
                         bool isValidEmail = regex.IsMatch(strEmail);
                         if (!isValidEmail)
                         {
-                            throw new Exception("Invalid email inserted. Please enter a vailid email or make sure no text is in the email field");
+                            throw new CustomException("Invalid email inserted. Please enter a vailid email or make sure no text is in the email field");
                         }
                         else
                         {
@@ -186,9 +186,22 @@ namespace SU21_Final_Project
                     }
                 }
             }
+            catch (CustomException ex)
+            {
+                MessageBox.Show(ex.Message, "Attention!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private class CustomException : Exception
+        {
+            public CustomException() { }
+
+            public CustomException(string strException) : base(strException)
+            {
+
             }
         }
 
