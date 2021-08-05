@@ -175,16 +175,20 @@ namespace SU21_Final_Project
                        txtZip.Text == "" || txtZip.Text.Length < 5 || txtUsername.Text.Length < 6 || txtPassword.Text == "" ||
                        cmboSecurity1.SelectedItem == null || cmboSecurity2.SelectedItem == null ||
                        cmboSecurity3.SelectedItem == null || txtAnswer1.Text == "" || txtAnswer2.Text == ""
-                       || txtAnswer3.Text == "")
+                       || txtAnswer3.Text == "" || (txtPhone.MaskCompleted == false && CheckEmail(txtEmail.Text) == false))
                     {
                         if (txtZip.Text.Length < 5)
                         {
                             txtZip.Focus();
                             MessageBox.Show("Zipcode must be a valid 5 digit number", "Invalid Zipcode", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
-                        else if (txtUsername.Text.Length < 6)
+                        else if (txtUsername.Text.Length < 6 || txtUsername.Text.Length > 30)
                         {
                             MessageBox.Show("Username must be between 6 and 30 charactors long", "Invalid UserName", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                        else if (txtPhone.MaskCompleted == false && txtEmail.Text == "")
+                        {
+                            MessageBox.Show("Please add at least one method of contact", "Please fill out phone# or email field", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
                         else if(txtFirst.Text.Length < 2 || txtLast.Text.Length < 2)
                         {

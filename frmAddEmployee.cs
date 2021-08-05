@@ -116,7 +116,7 @@ namespace SU21_Final_Project
                        txtZip.Text == "" || txtUsername.Text.Length < 6 || txtPassword.Text == "" ||
                        cmboSecurity1.SelectedItem == null || cmboSecurity2.SelectedItem == null ||
                        cmboSecurity3.SelectedItem == null || txtAnswer1.Text == "" || txtAnswer2.Text == ""
-                       || txtAnswer3.Text == "" || bolValidPay == false)
+                       || txtAnswer3.Text == "" || bolValidPay == false || (txtPhone.MaskCompleted == false && CheckEmail(txtEmail.Text) == false))
                     {
                         MessageBox.Show("Feilds with ' * ' are required", "Please fill out all required fields", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
@@ -125,7 +125,7 @@ namespace SU21_Final_Project
                             txtZip.Focus();
                             MessageBox.Show("Zipcode must be a valid 5 digit number", "Invalid Zipcode", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
-                        else if(txtUsername.Text.Length < 6)
+                        else if(txtUsername.Text.Length < 6 || txtUsername.Text.Length > 30)
                         {
                             MessageBox.Show("Username must be between 6 and 30 charactors long", "Invalid UserName", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
@@ -144,7 +144,7 @@ namespace SU21_Final_Project
                         }
                         else if (bolValidPay == false || txtPayRate.Text == "")
                         {
-                            MessageBox.Show("Payrate must be above $7.50", "Invalid PayRate", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            MessageBox.Show("Payrate must be at least $7.50", "Invalid PayRate", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
                         else
                         {

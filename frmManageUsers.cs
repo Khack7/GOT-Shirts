@@ -276,7 +276,9 @@ namespace SU21_Final_Project
             itemHTML.AppendFormat("    <td>{0}</td>", person.NameFirst);
             itemHTML.AppendFormat("    <td>{0}</td>", person.NameLast);
             itemHTML.AppendFormat("    <td>{0:C2}</td>", person.PayRate);
-            itemHTML.AppendFormat("    <td>{0:C2}</td>", person.AccountType);
+            itemHTML.AppendFormat("    <td>{0}</td>", person.AccountType);
+            itemHTML.AppendFormat("    <td>{0}</td>", person.Email);
+            itemHTML.AppendFormat("    <td>{0}</td>", person.PhonePrimary);
             itemHTML.AppendFormat("</tr>");
 
             strReport = strReport.Replace("{Info}", itemHTML.ToString());

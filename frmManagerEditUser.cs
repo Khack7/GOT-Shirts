@@ -67,7 +67,7 @@ namespace SU21_Final_Project
             {
                 MessageBox.Show("Please enter a valid name", "First and/or Last name invalid", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            else if (txtUsername.Text.Length < 6)
+            else if (txtUsername.Text.Length < 6 || txtUsername.Text.Length > 30)
             {
                 MessageBox.Show("Username must be between 6 and 30 charactors long", "Invalid UserName", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
