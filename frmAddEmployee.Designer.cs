@@ -484,11 +484,11 @@ namespace SU21_Final_Project
             // 
             this.lblPayRate.AutoSize = true;
             this.lblPayRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPayRate.Location = new System.Drawing.Point(209, 522);
+            this.lblPayRate.Location = new System.Drawing.Point(197, 521);
             this.lblPayRate.Name = "lblPayRate";
-            this.lblPayRate.Size = new System.Drawing.Size(67, 17);
+            this.lblPayRate.Size = new System.Drawing.Size(86, 17);
             this.lblPayRate.TabIndex = 38;
-            this.lblPayRate.Text = "PayRa&te*";
+            this.lblPayRate.Text = "PayRa&te/Hr*";
             // 
             // btnHelp
             // 

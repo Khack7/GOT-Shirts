@@ -61,7 +61,7 @@ namespace SU21_Final_Project
         {
             try
             {
-                DataCodes codes = DataCodes.GetCode(lstActive.SelectedItem.ToString());
+                DataCodes codes = DataCodes.GetCode(lstInactive.SelectedItem.ToString());
                 lblInactiveDiscount.Text = codes.PercentOff.ToString() + "%";
             }
             catch (Exception ex)
