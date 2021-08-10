@@ -277,9 +277,7 @@ namespace SU21_Final_Project
         }
         private void btnReturn_Click(object sender, EventArgs e)
         {
-            frmManageUsers frmManage = new frmManageUsers();
             this.Close();
-            frmManage.ShowDialog();
         }
 
         private void txtUsername_KeyPress(object sender, KeyPressEventArgs e)

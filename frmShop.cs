@@ -1110,6 +1110,8 @@ namespace SU21_Final_Project
             {
                 btnCheckout.Enabled = true;
             }
+            dblCurrentTotal = 0;
+            lblAmount.Text = dblCurrentTotal.ToString("C2");
         }
     }
 

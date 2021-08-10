@@ -113,7 +113,7 @@ namespace SU21_Final_Project
                         btnDeactivate.Enabled = true;
                         btnStartCreation.Enabled = true;
                         cboCodes.Focus();
-                        lblPercentOff.Text = "";
+                        lblPercentDisplay.Text = "";
                         lblStatus.Text = "";
                         //REFRESH CBOCODES TO SHOW NEW CODES AFTER CREATION
                         _lstCodes = DataCodes.ListCodes();
