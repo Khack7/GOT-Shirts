@@ -33,6 +33,8 @@ namespace SU21_Final_Project
             this.Close();
         }
 
+        public static bool bolEmpShopping = false;
+
         private void btnSign_Click(object sender, EventArgs e)
         {
             try
@@ -50,6 +52,7 @@ namespace SU21_Final_Project
 
                         frmSignIn.intID = person.PersonID;
                         frmSignIn.strUserName = txtUsername.Text;
+                        bolEmpShopping = true;
 
                         frmShop frmShopping = new frmShop();
                         this.Hide();

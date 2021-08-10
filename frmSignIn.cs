@@ -51,6 +51,7 @@ namespace SU21_Final_Project
             try
             {
                 Cursor.Current = Cursors.WaitCursor;
+                frmEmpPOS.bolEmpShopping = false;
                 DataPerson person = DataPerson.GetPerson(txtUsername.Text);
                 if (person != null)
                 {

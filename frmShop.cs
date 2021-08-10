@@ -808,6 +808,17 @@ namespace SU21_Final_Project
                     frmInfo.ShowDialog();
                     this.Show();
                 }
+                else if(frmSignIn.strCustomerType == "Customer")
+                {
+                    frmAccountInfo frmAccount = new frmAccountInfo();
+                    this.Hide();
+                    frmAccount.ShowDialog();
+                    this.Show();
+                }
+                else if(frmSignIn.strCustomerType == "Manager" && frmEmpPOS.bolEmpShopping == true)
+                {
+                    MessageBox.Show("You don't have permission to edit this user", "Can't edit user", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
                 else
                 {
                     frmAccountInfo frmAccount = new frmAccountInfo();

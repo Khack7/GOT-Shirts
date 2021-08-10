@@ -112,7 +112,7 @@ namespace SU21_Final_Project
 
                     if (txtFirst.Text.Length < 2 || txtLast.Text.Length < 2 || txtAddress1.Text == "" ||
                        txtCity.Text.Length < 3 || cboStates.SelectedItem == null ||
-                       txtZip.Text == "" || txtUsername.Text.Length < 6 || txtPassword.Text == "" ||
+                       txtZip.Text == "" || txtUsername.Text.Length < 8 || txtPassword.Text == "" ||
                        cmboSecurity1.SelectedItem == null || cmboSecurity2.SelectedItem == null ||
                        cmboSecurity3.SelectedItem == null || txtAnswer1.Text == "" || txtAnswer2.Text == ""
                        || txtAnswer3.Text == "" || bolValidPay == false || (txtPhone.MaskCompleted == false && CheckEmail(txtEmail.Text) == false))
@@ -126,7 +126,7 @@ namespace SU21_Final_Project
                         }
                         else if(txtUsername.Text.Length < 6 || txtUsername.Text.Length > 30)
                         {
-                            MessageBox.Show("Username must be between 6 and 30 charactors long", "Invalid UserName", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            MessageBox.Show("Username must be between 8 and 30 charactors long", "Invalid UserName", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
                         else if (txtFirst.Text.Length < 2 || txtLast.Text.Length < 2)
                         {
