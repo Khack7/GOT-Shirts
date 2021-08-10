@@ -182,7 +182,7 @@ namespace SU21_Final_Project
                             txtZip.Focus();
                             MessageBox.Show("Zipcode must be a valid 5 digit number", "Invalid Zipcode", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
-                        else if (txtUsername.Text.Length < 6 || txtUsername.Text.Length > 30)
+                        else if (txtUsername.Text.Length < 8 || txtUsername.Text.Length > 30)
                         {
                             MessageBox.Show("Username must be between 8 and 30 charactors long", "Invalid UserName", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
