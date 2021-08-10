@@ -55,7 +55,6 @@ namespace SU21_Final_Project
                 }
             }
 
-
             if (strAttemptedPassword.Any(char.IsLower))
             {
                 intPasswordRequirements++;

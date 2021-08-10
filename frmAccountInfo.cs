@@ -141,6 +141,11 @@ namespace SU21_Final_Project
                 {
                     MessageBox.Show("Please enter a valid name", "First and/or Last name invalid", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
+                else if(txtCity.Text.Length < 3)
+                {
+                    txtCity.Focus();
+                    MessageBox.Show("There are no city names with less than 3 charactors", "Invalid City", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
                 else if(!txtPhone.MaskCompleted && CheckEmail(txtEmail.Text) == false)
                 {
                     MessageBox.Show("Please add at least one method of contact and ensure they are correct", "Contact Method Required", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
