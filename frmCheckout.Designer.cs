@@ -99,7 +99,7 @@ namespace SU21_Final_Project
             this.txtCard.Location = new System.Drawing.Point(65, 219);
             this.txtCard.Name = "txtCard";
             this.txtCard.PasswordChar = '•';
-            this.txtCard.Size = new System.Drawing.Size(266, 20);
+            this.txtCard.Size = new System.Drawing.Size(324, 20);
             this.txtCard.TabIndex = 13;
             this.txtCard.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCard_KeyPress);
             this.txtCard.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtCard_KeyUp);
@@ -118,7 +118,7 @@ namespace SU21_Final_Project
             // 
             this.rdoDiscover.AutoSize = true;
             this.rdoDiscover.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoDiscover.Location = new System.Drawing.Point(250, 187);
+            this.rdoDiscover.Location = new System.Drawing.Point(338, 187);
             this.rdoDiscover.Name = "rdoDiscover";
             this.rdoDiscover.Size = new System.Drawing.Size(81, 21);
             this.rdoDiscover.TabIndex = 11;
@@ -129,7 +129,7 @@ namespace SU21_Final_Project
             // 
             this.rdoMasterCard.AutoSize = true;
             this.rdoMasterCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoMasterCard.Location = new System.Drawing.Point(108, 187);
+            this.rdoMasterCard.Location = new System.Drawing.Point(152, 187);
             this.rdoMasterCard.Name = "rdoMasterCard";
             this.rdoMasterCard.Size = new System.Drawing.Size(99, 21);
             this.rdoMasterCard.TabIndex = 10;
@@ -282,37 +282,41 @@ namespace SU21_Final_Project
             // 
             // lblSubtotal
             // 
+            this.lblSubtotal.AutoSize = true;
             this.lblSubtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSubtotal.Location = new System.Drawing.Point(276, 8);
             this.lblSubtotal.Name = "lblSubtotal";
-            this.lblSubtotal.Size = new System.Drawing.Size(55, 17);
+            this.lblSubtotal.Size = new System.Drawing.Size(44, 17);
             this.lblSubtotal.TabIndex = 2;
             this.lblSubtotal.Text = "$0.00";
             // 
             // lblTax
             // 
+            this.lblTax.AutoSize = true;
             this.lblTax.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTax.Location = new System.Drawing.Point(276, 74);
             this.lblTax.Name = "lblTax";
-            this.lblTax.Size = new System.Drawing.Size(55, 17);
+            this.lblTax.Size = new System.Drawing.Size(44, 17);
             this.lblTax.TabIndex = 4;
             this.lblTax.Text = "$0.00";
             // 
             // lblShipping
             // 
+            this.lblShipping.AutoSize = true;
             this.lblShipping.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblShipping.Location = new System.Drawing.Point(276, 107);
             this.lblShipping.Name = "lblShipping";
-            this.lblShipping.Size = new System.Drawing.Size(55, 17);
+            this.lblShipping.Size = new System.Drawing.Size(44, 17);
             this.lblShipping.TabIndex = 6;
             this.lblShipping.Text = "$0.00";
             // 
             // lblTotal
             // 
+            this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.Location = new System.Drawing.Point(276, 140);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(55, 17);
+            this.lblTotal.Size = new System.Drawing.Size(44, 17);
             this.lblTotal.TabIndex = 8;
             this.lblTotal.Text = "$0.00";
             // 
@@ -332,7 +336,7 @@ namespace SU21_Final_Project
             this.btnShowCard.BackColor = System.Drawing.Color.Transparent;
             this.btnShowCard.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnShowCard.BackgroundImage")));
             this.btnShowCard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnShowCard.Location = new System.Drawing.Point(337, 217);
+            this.btnShowCard.Location = new System.Drawing.Point(395, 217);
             this.btnShowCard.Name = "btnShowCard";
             this.btnShowCard.Size = new System.Drawing.Size(25, 22);
             this.btnShowCard.TabIndex = 42;
@@ -341,10 +345,11 @@ namespace SU21_Final_Project
             // 
             // lblDiscount
             // 
+            this.lblDiscount.AutoSize = true;
             this.lblDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDiscount.Location = new System.Drawing.Point(276, 41);
             this.lblDiscount.Name = "lblDiscount";
-            this.lblDiscount.Size = new System.Drawing.Size(55, 17);
+            this.lblDiscount.Size = new System.Drawing.Size(44, 17);
             this.lblDiscount.TabIndex = 44;
             this.lblDiscount.Text = "$0.00";
             // 

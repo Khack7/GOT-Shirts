@@ -33,6 +33,7 @@ namespace SU21_Final_Project
             {
                 // TODO: This line of code loads data into the 'dataSetReports.Orders' table. You can move, or remove it, as needed.
                 this.ordersTableAdapter.Fill(this.dataSetReports.Orders);
+                dgvReports.Columns[4].DefaultCellStyle.Format = "C2";
             }
             catch (Exception ex)
             {

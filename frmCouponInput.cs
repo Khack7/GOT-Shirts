@@ -36,7 +36,7 @@ namespace SU21_Final_Project
         }
 
         public static string strCouponCode;
-        public static double dblPercentOff;
+        public static double dblPercentOff = 0;
         public static bool bolCodeUsed = false;
 
         private void btnEnter_Click(object sender, EventArgs e)

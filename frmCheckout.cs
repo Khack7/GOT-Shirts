@@ -446,8 +446,46 @@ namespace SU21_Final_Project
         private void rdoStandard_CheckedChanged(object sender, EventArgs e)
         {
             strShippingMethod = "StandardShipping";
+            if (frmCouponInput.bolCodeUsed == true)
+            {
+                if (!double.TryParse(frmShop.strSubtotal, out double dblSub))
+                {
+                    dblSub = 0;
+                }
+
+                double dblDiscount = frmCouponInput.dblPercentOff;
+                dblSubCost = dblSub;
+                dblDiscountAmount = (dblSub * (dblDiscount / 100));
+                lblDiscount.Text = dblDiscountAmount.ToString("C2");
+                lblSubtotal.Text = dblSubCost.ToString("C2");
+            }
+            else
+            {
+                if (!double.TryParse(frmShop.strSubtotal, out double dblSub))
+                {
+                    dblSub = 0;
+                }
+                dblSubCost = dblSub;
+                lblSubtotal.Text = dblSubCost.ToString("C2");
+            }
             getShipping(strShippingMethod);
-            dblTotalCost = dblSubCost + dblTaxCost + dblShippingCost;
+
+            DataMoney tax = null;
+
+            tax = DataMoney.GetValues("TaxRate");
+
+            if (!double.TryParse(tax.SettingValue, out double dblTax))
+            {
+                dblTax = 0;
+            }
+
+            dblTaxCost = dblTax * dblSubCost;
+
+            lblTax.Text = (dblTaxCost).ToString("C2");
+
+            dblTotalCost = dblSubCost + dblTaxCost + dblShippingCost - dblDiscountAmount;
+
+            lblTotal.Text = (dblTotalCost).ToString("C2");
 
             lblTotal.Text = (dblTotalCost).ToString("C2");
         }
@@ -514,7 +552,45 @@ namespace SU21_Final_Project
         {
             strShippingMethod = "NextDayShipping";
             getShipping(strShippingMethod);
-            dblTotalCost = dblSubCost + dblTaxCost + dblShippingCost;
+            if (frmCouponInput.bolCodeUsed == true)
+            {
+                if (!double.TryParse(frmShop.strSubtotal, out double dblSub))
+                {
+                    dblSub = 0;
+                }
+
+                double dblDiscount = frmCouponInput.dblPercentOff;
+                dblSubCost = dblSub;
+                dblDiscountAmount = (dblSub * (dblDiscount / 100));
+                lblDiscount.Text = dblDiscountAmount.ToString("C2");
+                lblSubtotal.Text = dblSubCost.ToString("C2");
+            }
+            else
+            {
+                if (!double.TryParse(frmShop.strSubtotal, out double dblSub))
+                {
+                    dblSub = 0;
+                }
+                dblSubCost = dblSub;
+                lblSubtotal.Text = dblSubCost.ToString("C2");
+            }
+
+            getShipping(strShippingMethod);
+
+            DataMoney tax = null;
+
+            tax = DataMoney.GetValues("TaxRate");
+
+            if (!double.TryParse(tax.SettingValue, out double dblTax))
+            {
+                dblTax = 0;
+            }
+
+            dblTaxCost = dblTax * dblSubCost;
+
+            lblTax.Text = (dblTaxCost).ToString("C2");
+
+            dblTotalCost = dblSubCost + dblTaxCost + dblShippingCost - dblDiscountAmount;
 
             lblTotal.Text = (dblTotalCost).ToString("C2");
         }
@@ -522,8 +598,45 @@ namespace SU21_Final_Project
         private void rdoSecondDay_CheckedChanged(object sender, EventArgs e)
         {
             strShippingMethod = "SecondDayShipping";
+            if (frmCouponInput.bolCodeUsed == true)
+            {
+                if (!double.TryParse(frmShop.strSubtotal, out double dblSub))
+                {
+                    dblSub = 0;
+                }
+
+                double dblDiscount = frmCouponInput.dblPercentOff;
+                dblSubCost = dblSub;
+                dblDiscountAmount = (dblSub * (dblDiscount / 100));
+                lblDiscount.Text = dblDiscountAmount.ToString("C2");
+                lblSubtotal.Text = dblSubCost.ToString("C2");
+            }
+            else
+            {
+                if (!double.TryParse(frmShop.strSubtotal, out double dblSub))
+                {
+                    dblSub = 0;
+                }
+                dblSubCost = dblSub;
+                lblSubtotal.Text = dblSubCost.ToString("C2");
+            }
+
             getShipping(strShippingMethod);
-            dblTotalCost = dblSubCost + dblTaxCost + dblShippingCost;
+
+            DataMoney tax = null;
+
+            tax = DataMoney.GetValues("TaxRate");
+
+            if (!double.TryParse(tax.SettingValue, out double dblTax))
+            {
+                dblTax = 0;
+            }
+
+            dblTaxCost = dblTax * dblSubCost;
+
+            lblTax.Text = (dblTaxCost).ToString("C2");
+
+            dblTotalCost = dblSubCost + dblTaxCost + dblShippingCost - dblDiscountAmount;
 
             lblTotal.Text = (dblTotalCost).ToString("C2");
         }
