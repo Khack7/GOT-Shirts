@@ -688,7 +688,7 @@ namespace SU21_Final_Project
                     SaveFileDialog sfdFile = new SaveFileDialog();
                     sfdFile.Title = "Select save location";
                     sfdFile.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                    sfdFile.FileName = $"GOT Shirts-Inv.Update-{DateTime.Now.ToString("MM-dd-yyyy--hh_mm")}.html";
+                    sfdFile.FileName = $"GOT Shirts-Inv.Update-{DateTime.Now.ToString("MM-dd-yyyy--hh_mm")}{product.Size + "_" + product.Color}.html";
 
                     if (sfdFile.ShowDialog() == DialogResult.OK)
                     {
