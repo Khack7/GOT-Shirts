@@ -79,6 +79,10 @@ namespace SU21_Final_Project
                 {
                     MessageBox.Show("This code already exists!", "Code Exists!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+                else if(txtCode.Text.Length <= 4)
+                {
+                    MessageBox.Show("Codes must be 5 characters long!", "Code not long enough!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
                 else
                 {
                     int intPercent = 0;
