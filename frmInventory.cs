@@ -652,8 +652,6 @@ namespace SU21_Final_Project
                 string strReceipt = Receipt.LoadInventoryTemplate();
                 strReceipt = strReceipt.Replace("{Date}", DateTime.Now.ToString("MM/dd/yyyy - hh:mm"));
                 strReceipt = strReceipt.Replace("{AdjustmentDate}", DateTime.Now.ToString("MM-dd-yyyy"));
-                var person = DataPerson.GetPerson(frmManageSignIn.intID);
-                strReceipt = strReceipt.Replace("{AddressName}", $"{person.NameFirst} {person.NameLast}");
 
                 StringBuilder itemHTML = new StringBuilder();
 
@@ -688,7 +686,7 @@ namespace SU21_Final_Project
                     SaveFileDialog sfdFile = new SaveFileDialog();
                     sfdFile.Title = "Select save location";
                     sfdFile.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                    sfdFile.FileName = $"GOT Shirts-Inv.Update-{DateTime.Now.ToString("MM-dd-yyyy--hh_mm")}{product.Size + "_" + product.Color}.html";
+                    sfdFile.FileName = $"GOT Shirts-Inv.Update-{DateTime.Now.ToString("MM-dd-yyyy--") + product.Size + "_" + product.Color}.html";
 
                     if (sfdFile.ShowDialog() == DialogResult.OK)
                     {
