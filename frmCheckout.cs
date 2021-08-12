@@ -45,7 +45,7 @@ namespace SU21_Final_Project
                 }
                 else
                 {
-                    dblShippingCost = 0;
+                    throw new Exception("Error getting shipping data! Try again");
                 }
 
                 lblShipping.Text = dblShippingCost.ToString("C2");
@@ -73,7 +73,7 @@ namespace SU21_Final_Project
                 {
                     if (!double.TryParse(frmShop.strSubtotal, out double dblSub))
                     {
-                        dblSub = 0;
+                        throw new Exception("Error getting cost data! Try again");
                     }
 
                     double dblDiscount = frmCouponInput.dblPercentOff;
@@ -86,7 +86,7 @@ namespace SU21_Final_Project
                 {
                     if (!double.TryParse(frmShop.strSubtotal, out double dblSub))
                     {
-                        dblSub = 0;
+                        throw new Exception("Error getting cost data! Try again");
                     }
                     dblSubCost = dblSub;
                     lblSubtotal.Text = dblSubCost.ToString("C2");
@@ -100,7 +100,7 @@ namespace SU21_Final_Project
 
                 if (!double.TryParse(tax.SettingValue, out double dblTax))
                 {
-                    dblTax = 0;
+                    throw new Exception("Error getting cost data! Try again");
                 }
 
                 dblTaxCost = dblTax * dblSubCost;
@@ -445,49 +445,56 @@ namespace SU21_Final_Project
 
         private void rdoStandard_CheckedChanged(object sender, EventArgs e)
         {
-            strShippingMethod = "StandardShipping";
-            if (frmCouponInput.bolCodeUsed == true)
+            try
             {
-                if (!double.TryParse(frmShop.strSubtotal, out double dblSub))
+                strShippingMethod = "StandardShipping";
+                if (frmCouponInput.bolCodeUsed == true)
                 {
-                    dblSub = 0;
+                    if (!double.TryParse(frmShop.strSubtotal, out double dblSub))
+                    {
+                        throw new Exception("Error getting cost data! Try again");
+                    }
+
+                    double dblDiscount = frmCouponInput.dblPercentOff;
+                    dblSubCost = dblSub;
+                    dblDiscountAmount = (dblSub * (dblDiscount / 100));
+                    lblDiscount.Text = dblDiscountAmount.ToString("C2");
+                    lblSubtotal.Text = dblSubCost.ToString("C2");
+                }
+                else
+                {
+                    if (!double.TryParse(frmShop.strSubtotal, out double dblSub))
+                    {
+                        throw new Exception("Error getting cost data! Try again");
+                    }
+                    dblSubCost = dblSub;
+                    lblSubtotal.Text = dblSubCost.ToString("C2");
+                }
+                getShipping(strShippingMethod);
+
+                DataMoney tax = null;
+
+                tax = DataMoney.GetValues("TaxRate");
+
+                if (!double.TryParse(tax.SettingValue, out double dblTax))
+                {
+                    throw new Exception("Error getting cost data! Try again");
                 }
 
-                double dblDiscount = frmCouponInput.dblPercentOff;
-                dblSubCost = dblSub;
-                dblDiscountAmount = (dblSub * (dblDiscount / 100));
-                lblDiscount.Text = dblDiscountAmount.ToString("C2");
-                lblSubtotal.Text = dblSubCost.ToString("C2");
+                dblTaxCost = dblTax * dblSubCost;
+
+                lblTax.Text = (dblTaxCost).ToString("C2");
+
+                dblTotalCost = dblSubCost + dblTaxCost + dblShippingCost - dblDiscountAmount;
+
+                lblTotal.Text = (dblTotalCost).ToString("C2");
+
+                lblTotal.Text = (dblTotalCost).ToString("C2");
             }
-            else
+            catch (Exception ex)
             {
-                if (!double.TryParse(frmShop.strSubtotal, out double dblSub))
-                {
-                    dblSub = 0;
-                }
-                dblSubCost = dblSub;
-                lblSubtotal.Text = dblSubCost.ToString("C2");
-            }
-            getShipping(strShippingMethod);
-
-            DataMoney tax = null;
-
-            tax = DataMoney.GetValues("TaxRate");
-
-            if (!double.TryParse(tax.SettingValue, out double dblTax))
-            {
-                dblTax = 0;
-            }
-
-            dblTaxCost = dblTax * dblSubCost;
-
-            lblTax.Text = (dblTaxCost).ToString("C2");
-
-            dblTotalCost = dblSubCost + dblTaxCost + dblShippingCost - dblDiscountAmount;
-
-            lblTotal.Text = (dblTotalCost).ToString("C2");
-
-            lblTotal.Text = (dblTotalCost).ToString("C2");
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }           
         }
 
         private void btnHelp_Click(object sender, EventArgs e)
@@ -539,7 +546,7 @@ namespace SU21_Final_Project
 
                 if (result == DialogResult.Yes)
                 {
-                    bolCloseShop = true;
+                    bolCloseShop = false;
                 }
                 else
                 {
@@ -550,95 +557,108 @@ namespace SU21_Final_Project
 
         private void rdoNextDay_CheckedChanged(object sender, EventArgs e)
         {
-            strShippingMethod = "NextDayShipping";
-            getShipping(strShippingMethod);
-            if (frmCouponInput.bolCodeUsed == true)
+            try
             {
-                if (!double.TryParse(frmShop.strSubtotal, out double dblSub))
+                strShippingMethod = "NextDayShipping";
+                if (frmCouponInput.bolCodeUsed == true)
                 {
-                    dblSub = 0;
+                    if (!double.TryParse(frmShop.strSubtotal, out double dblSub))
+                    {
+                        throw new Exception("Error getting cost data! Try again");
+                    }
+
+                    double dblDiscount = frmCouponInput.dblPercentOff;
+                    dblSubCost = dblSub;
+                    dblDiscountAmount = (dblSub * (dblDiscount / 100));
+                    lblDiscount.Text = dblDiscountAmount.ToString("C2");
+                    lblSubtotal.Text = dblSubCost.ToString("C2");
+                }
+                else
+                {
+                    if (!double.TryParse(frmShop.strSubtotal, out double dblSub))
+                    {
+                        throw new Exception("Error getting cost data! Try again");
+                    }
+                    dblSubCost = dblSub;
+                    lblSubtotal.Text = dblSubCost.ToString("C2");
                 }
 
-                double dblDiscount = frmCouponInput.dblPercentOff;
-                dblSubCost = dblSub;
-                dblDiscountAmount = (dblSub * (dblDiscount / 100));
-                lblDiscount.Text = dblDiscountAmount.ToString("C2");
-                lblSubtotal.Text = dblSubCost.ToString("C2");
-            }
-            else
-            {
-                if (!double.TryParse(frmShop.strSubtotal, out double dblSub))
+                getShipping(strShippingMethod);
+
+                DataMoney tax = null;
+
+                tax = DataMoney.GetValues("TaxRate");
+
+                if (!double.TryParse(tax.SettingValue, out double dblTax))
                 {
-                    dblSub = 0;
+                    throw new Exception("Error getting cost data! Try again");
                 }
-                dblSubCost = dblSub;
-                lblSubtotal.Text = dblSubCost.ToString("C2");
+
+                dblTaxCost = dblTax * dblSubCost;
+
+                lblTax.Text = (dblTaxCost).ToString("C2");
+
+                dblTotalCost = dblSubCost + dblTaxCost + dblShippingCost - dblDiscountAmount;
+
+                lblTotal.Text = (dblTotalCost).ToString("C2");
             }
-
-            getShipping(strShippingMethod);
-
-            DataMoney tax = null;
-
-            tax = DataMoney.GetValues("TaxRate");
-
-            if (!double.TryParse(tax.SettingValue, out double dblTax))
+            catch (Exception ex)
             {
-                dblTax = 0;
-            }
-
-            dblTaxCost = dblTax * dblSubCost;
-
-            lblTax.Text = (dblTaxCost).ToString("C2");
-
-            dblTotalCost = dblSubCost + dblTaxCost + dblShippingCost - dblDiscountAmount;
-
-            lblTotal.Text = (dblTotalCost).ToString("C2");
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }         
         }
 
         private void rdoSecondDay_CheckedChanged(object sender, EventArgs e)
         {
-            strShippingMethod = "SecondDayShipping";
-            if (frmCouponInput.bolCodeUsed == true)
+            try
             {
-                if (!double.TryParse(frmShop.strSubtotal, out double dblSub))
+                strShippingMethod = "SecondDayShipping";
+                if (frmCouponInput.bolCodeUsed == true)
                 {
-                    dblSub = 0;
+                    if (!double.TryParse(frmShop.strSubtotal, out double dblSub))
+                    {
+                        dblSub = 0;
+                    }
+
+                    double dblDiscount = frmCouponInput.dblPercentOff;
+                    dblSubCost = dblSub;
+                    dblDiscountAmount = (dblSub * (dblDiscount / 100));
+                    lblDiscount.Text = dblDiscountAmount.ToString("C2");
+                    lblSubtotal.Text = dblSubCost.ToString("C2");
+                }
+                else
+                {
+                    if (!double.TryParse(frmShop.strSubtotal, out double dblSub))
+                    {
+                        dblSub = 0;
+                    }
+                    dblSubCost = dblSub;
+                    lblSubtotal.Text = dblSubCost.ToString("C2");
                 }
 
-                double dblDiscount = frmCouponInput.dblPercentOff;
-                dblSubCost = dblSub;
-                dblDiscountAmount = (dblSub * (dblDiscount / 100));
-                lblDiscount.Text = dblDiscountAmount.ToString("C2");
-                lblSubtotal.Text = dblSubCost.ToString("C2");
-            }
-            else
-            {
-                if (!double.TryParse(frmShop.strSubtotal, out double dblSub))
+                getShipping(strShippingMethod);
+
+                DataMoney tax = null;
+
+                tax = DataMoney.GetValues("TaxRate");
+
+                if (!double.TryParse(tax.SettingValue, out double dblTax))
                 {
-                    dblSub = 0;
+                    throw new Exception("Error getting cost data! Try again");
                 }
-                dblSubCost = dblSub;
-                lblSubtotal.Text = dblSubCost.ToString("C2");
+
+                dblTaxCost = dblTax * dblSubCost;
+
+                lblTax.Text = (dblTaxCost).ToString("C2");
+
+                dblTotalCost = dblSubCost + dblTaxCost + dblShippingCost - dblDiscountAmount;
+
+                lblTotal.Text = (dblTotalCost).ToString("C2");
             }
-
-            getShipping(strShippingMethod);
-
-            DataMoney tax = null;
-
-            tax = DataMoney.GetValues("TaxRate");
-
-            if (!double.TryParse(tax.SettingValue, out double dblTax))
+            catch(Exception ex)
             {
-                dblTax = 0;
-            }
-
-            dblTaxCost = dblTax * dblSubCost;
-
-            lblTax.Text = (dblTaxCost).ToString("C2");
-
-            dblTotalCost = dblSubCost + dblTaxCost + dblShippingCost - dblDiscountAmount;
-
-            lblTotal.Text = (dblTotalCost).ToString("C2");
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }         
         }
     }
 }

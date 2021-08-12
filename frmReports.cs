@@ -513,7 +513,7 @@ namespace SU21_Final_Project
                 }
                 else
                 {
-                    if (strHTML == null)
+                    if (strHTML == null || strHTML == "")
                     {
                         MessageBox.Show("No Invoice Available", "No Invoice!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }

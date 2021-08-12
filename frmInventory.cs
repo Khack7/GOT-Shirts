@@ -15,6 +15,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -112,8 +113,8 @@ namespace SU21_Final_Project
                     }
 
                     txtAmount.Text = product.QuantityOnHand.ToString();
-                    txtPrice.Text = product.Price.ToString();
-                    txtCost.Text = product.Cost.ToString();
+                    txtPrice.Text = product.Price.ToString("C2");
+                    txtCost.Text = product.Cost.ToString("C2");
 
                     if (!bool.TryParse(product.Deleted.ToString(), out bool bolDeleted))
                     {
@@ -131,7 +132,7 @@ namespace SU21_Final_Project
                     //TO BE USED FOR INVOICE
                     intOldQuantity = product.QuantityOnHand;
                     dblNewPrice = product.Price;
-                    dblNewCost = product.Price;
+                    dblNewCost = product.Cost;
 
                     DataProduct productImage = DataProduct.GetProduct(strSelectedColor, strSelectedSize);
                     pbxShirt.Image = productImage.ProductImage;
@@ -177,8 +178,8 @@ namespace SU21_Final_Project
                     }
 
                     txtAmount.Text = product.QuantityOnHand.ToString();
-                    txtPrice.Text = product.Price.ToString();
-                    txtCost.Text = product.Cost.ToString();
+                    txtPrice.Text = product.Price.ToString("C2");
+                    txtCost.Text = product.Cost.ToString("C2");
 
                     if (!bool.TryParse(product.Deleted.ToString(), out bool bolDeleted))
                     {
@@ -197,7 +198,7 @@ namespace SU21_Final_Project
                     //TO BE USED FOR INVOICE
                     intOldQuantity = product.QuantityOnHand;
                     dblNewPrice = product.Price;
-                    dblNewCost = product.Price;
+                    dblNewCost = product.Cost;
 
                     DataProduct productImage = DataProduct.GetProduct(strSelectedColor, strSelectedSize);
                     pbxShirt.Image = productImage.ProductImage;
@@ -261,18 +262,29 @@ namespace SU21_Final_Project
                 {
                     Cursor.Current = Cursors.WaitCursor;
 
+                    decimal decParsedMoney = 0.00m;
+
                     DataProduct product = DataProduct.GetProduct(cboColor.SelectedItem.ToString(), cboSize.SelectedItem.ToString()); ;
-                    if (int.TryParse(txtAmount.Text, out int intAmount))
+
+                    decParsedMoney = Decimal.Parse(txtAmount.Text, NumberStyles.Currency);
+
+                    if (int.TryParse(decParsedMoney.ToString(), out int intAmount))
                     {
                         product.QuantityOnHand = intAmount;
                         intNewQuantity = intAmount;
                     }
-                    if (double.TryParse(txtPrice.Text, out double dblPrice))
+
+                    decParsedMoney = Decimal.Parse(txtPrice.Text, NumberStyles.Currency);
+
+                    if (double.TryParse(decParsedMoney.ToString(), out double dblPrice))
                     {
                         product.Price = Math.Round(dblPrice, 2);
                         dblNewPrice = product.Price;
                     }
-                    if (double.TryParse(txtCost.Text, out double dblCost))
+
+                    decParsedMoney = Decimal.Parse(txtCost.Text, NumberStyles.Currency);
+
+                    if (double.TryParse(decParsedMoney.ToString(), out double dblCost))
                     {
                         product.Cost = Math.Round(dblCost, 2);
                         dblNewCost = product.Cost;

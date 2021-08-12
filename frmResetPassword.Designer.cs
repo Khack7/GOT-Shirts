@@ -115,7 +115,7 @@ namespace SU21_Final_Project
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(19, 487);
+            this.btnCancel.Location = new System.Drawing.Point(357, 487);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(104, 36);
             this.btnCancel.TabIndex = 20;
@@ -216,7 +216,7 @@ namespace SU21_Final_Project
             // btnEnter
             // 
             this.btnEnter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEnter.Location = new System.Drawing.Point(357, 487);
+            this.btnEnter.Location = new System.Drawing.Point(15, 487);
             this.btnEnter.Name = "btnEnter";
             this.btnEnter.Size = new System.Drawing.Size(104, 36);
             this.btnEnter.TabIndex = 18;
@@ -254,7 +254,7 @@ namespace SU21_Final_Project
             // btnHelp
             // 
             this.btnHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHelp.Location = new System.Drawing.Point(188, 487);
+            this.btnHelp.Location = new System.Drawing.Point(186, 487);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(104, 36);
             this.btnHelp.TabIndex = 19;
@@ -267,6 +267,7 @@ namespace SU21_Final_Project
             this.btnShowPass.BackColor = System.Drawing.Color.Transparent;
             this.btnShowPass.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnShowPass.BackgroundImage")));
             this.btnShowPass.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnShowPass.Enabled = false;
             this.btnShowPass.Location = new System.Drawing.Point(436, 398);
             this.btnShowPass.Name = "btnShowPass";
             this.btnShowPass.Size = new System.Drawing.Size(25, 22);

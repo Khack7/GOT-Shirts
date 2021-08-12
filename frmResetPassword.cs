@@ -67,6 +67,7 @@ namespace SU21_Final_Project
                         txtSecurity3.Text = person.SecurityQuestion3;
 
                         btnEnter.Text = "&Enter";
+                        btnShowPass.Enabled = true;
                         txtAnswer1.Focus();
                     }
                     else

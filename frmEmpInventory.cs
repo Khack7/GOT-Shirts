@@ -88,8 +88,8 @@ namespace SU21_Final_Project
                     }
 
                     txtAmount.Text = product.QuantityOnHand.ToString();
-                    txtPrice.Text = product.Price.ToString();
-                    txtCost.Text = product.Cost.ToString();
+                    txtPrice.Text = product.Price.ToString("C2");
+                    txtCost.Text = product.Cost.ToString("C2");
 
                     if (!bool.TryParse(product.Deleted.ToString(), out bool bolDeleted))
                     {
@@ -151,8 +151,8 @@ namespace SU21_Final_Project
                     }
 
                     txtAmount.Text = product.QuantityOnHand.ToString();
-                    txtPrice.Text = product.Price.ToString();
-                    txtCost.Text = product.Cost.ToString();
+                    txtPrice.Text = product.Price.ToString("C2");
+                    txtCost.Text = product.Cost.ToString("C2");
 
                     if (!bool.TryParse(product.Deleted.ToString(), out bool bolDeleted))
                     {
